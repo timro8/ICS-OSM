@@ -11,6 +11,12 @@
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
+
+  "defaultRoomData": [
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "roomNotes": "", "owner":  "admin@foo.com"},
+    { "roomNumber": "327", "location": "POST", "status": "Occupied", "roomNotes": "", "owner": "john@foo.com" }
+  ],
+
   "public": {
     "development": true
   }
