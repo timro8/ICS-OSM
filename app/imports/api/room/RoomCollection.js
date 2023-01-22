@@ -27,7 +27,7 @@ class RoomCollection extends BaseCollection {
       status: {
         type: String,
         allowedValues: roomStatus,
-        defaultValue: 'Vacant',
+        defaultValue: 'Occupied',
       },
       roomNotes: {
         type: String,
@@ -38,11 +38,11 @@ class RoomCollection extends BaseCollection {
   }
 
   /**
-   * Defines a new Room item.
+   * Defines a new Stuff item.
    * @param roomNumber the number of the room.
-   * @param location the building location of the room.
+   * @param location the location of the room.
    * @param status the status of the room.
-   * @param roomNotes the notes of the room.
+   * @param roomNotes the notes for the room.
    * @param owner the owner of the room.
    * @return {String} the docID of the new document.
    */
@@ -60,9 +60,8 @@ class RoomCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
-   * @param status the new status of the room (optional).
-   * @param roomNotes the new notes of the room (optional).
-   *
+   * @param status the new status (optional).
+   * @param roomNotes the new room notes (optional).
    */
   update(docID, { status, roomNotes }) {
     const updateData = {};
@@ -89,7 +88,7 @@ class RoomCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the room associated to an owner
+   * It publishes the entire collection for admin and just the room associated to an owner.
    */
   publish() {
     if (Meteor.isServer) {
@@ -97,14 +96,14 @@ class RoomCollection extends BaseCollection {
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
       Meteor.publish(roomPublications.room, function publish() {
-        if (this.userID) {
+        if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
           return instance._collection.find({ owner: username });
         }
         return this.ready();
       });
 
-      /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin */
+      /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
       Meteor.publish(roomPublications.roomAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
@@ -136,9 +135,9 @@ class RoomCollection extends BaseCollection {
   }
 
   /**
-   * Default implementation of asserValidRoleForMethod. Asserts that userId is logged in as an Admin or User.
+   * Default implementation of assertValidRoleForMethod. Asserts that userId is logged in as an Admin or User.
    * This is used in the define, update, and removeIt Meteor methods associated with each class.
-   * @param userId the userId of the logged in user. Can be null or undefined
+   * @param userId The userId of the logged in user. Can be null or undefined
    * @throws { Meteor.Error } If there is no logged in user, or the user is not an Admin or User.
    */
   assertValidRoleForMethod(userId) {
@@ -159,9 +158,9 @@ class RoomCollection extends BaseCollection {
     const owner = doc.owner;
     return { roomNumber, location, status, roomNotes, owner };
   }
-} // end of class
+}
 
 /**
- * Provides the singleton instance of this class to all other entities
+ * Provides the singleton instance of this class to all other entities.
  */
 export const Rooms = new RoomCollection();
