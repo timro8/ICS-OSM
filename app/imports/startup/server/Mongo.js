@@ -7,6 +7,10 @@ import { Rooms } from '../../api/room/RoomCollection';
 function addData(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);
   Stuffs.define(data);
+}
+
+function addRoomData(data) {
+  console.log(`  Adding: ${data.roomNumber} (${data.owner})`);
   Rooms.define(data);
 }
 
@@ -22,6 +26,6 @@ if (Stuffs.count() === 0) {
 if (Rooms.count() === 0) {
   if (Meteor.settings.defaultRoomData) {
     console.log('Creating default room data.');
-    Meteor.settings.defaultRoomData.map(data => addData(data));
+    Meteor.settings.defaultRoomData.map(data => addRoomData(data));
   }
 }

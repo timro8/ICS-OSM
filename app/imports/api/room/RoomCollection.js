@@ -46,7 +46,7 @@ class RoomCollection extends BaseCollection {
    * @param owner the owner of the room.
    * @return {String} the docID of the new document.
    */
-  define({ roomNumber, location, status, roomNotes }) {
+  define({ roomNumber, location, status, roomNotes, owner }) {
     const docID = this._collection.insert({
       roomNumber,
       location,
@@ -66,13 +66,13 @@ class RoomCollection extends BaseCollection {
    */
   update(docID, { status, roomNotes }) {
     const updateData = {};
-      if (status) {
-        updateData.status = status;
-      }
-      if (roomNotes) {
-        updateDate.roomNotes = roomNotes;
-      }
-      this._collection.update(docID, { $set: updateData });
+    if (status) {
+      updateData.status = status;
+    }
+    if (roomNotes) {
+      updateData.roomNotes = roomNotes;
+    }
+    this._collection.update(docID, { $set: updateData });
   }
 
   /**
@@ -159,7 +159,7 @@ class RoomCollection extends BaseCollection {
     const owner = doc.owner;
     return { roomNumber, location, status, roomNotes, owner };
   }
-} //end of class
+} // end of class
 
 /**
  * Provides the singleton instance of this class to all other entities
