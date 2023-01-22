@@ -17,7 +17,7 @@ const ListRoom = () => {
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Room documents
-    const roomItems = Rooms.find({}, { sort: { name: 1 } }).fetch();
+    const roomItems = Rooms.find({}, { sort: { roomNumber: 1 } }).fetch();
     return {
       rooms: roomItems,
       ready: rdy,
