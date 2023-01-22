@@ -6,25 +6,26 @@ import RoomItem from '../components/RoomItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
-/* Renders a table containing all the Room documents. Use <RoomItem> to render each row. */
-
+/* Renders a table containing all of the Room documents. Use <RoomItem> to render each row. */
 const ListRoom = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, rooms } = useTracker(() => {
-    // Note that this subscription will get cleaned up when your component is unmounted or deps change.
-    // Get access to Room documents.
+    // Note that this subscription will get cleaned up
+    // when your component is unmounted or deps change.
+    // Get access to Stuff documents.
     const subscription = Rooms.subscribeRoom();
     // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the Room documents
-    const roomItems = Rooms.find({}, { sort: { roomNumber: 1 } }).fetch();
+    // Get the Stuff documents
+    const roomItems = Rooms.find({}).fetch();
+    console.log(roomItems);
     return {
       rooms: roomItems,
       ready: rdy,
     };
   }, []);
   return (ready ? (
-    <Container id={PAGE_IDS.LIST_ROOM} className="py-3">
+    <Container id={PAGE_IDS.LIST_STUFF} className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">

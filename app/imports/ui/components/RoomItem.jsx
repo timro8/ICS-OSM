@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+// import { Link } from 'react-router-dom';
+// import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
-/** Renders a single row in the List Row table. See pages/ListRoom.jsx */
+/** Renders a single row in the List Room table. See pages/ListRoom.jsx. */
 const RoomItem = ({ room }) => (
   <tr>
     <td>{room.roomNumber}</td>
@@ -11,7 +11,7 @@ const RoomItem = ({ room }) => (
     <td>{room.status}</td>
     <td>{room.roomNotes}</td>
     <td>
-      <Link className={COMPONENT_IDS.LIST_ROOM_EDIT} to={`/edit/${room._id}`}>make edit room</Link>
+      make edit
     </td>
   </tr>
 );
