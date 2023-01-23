@@ -26,3 +26,39 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+.faculty-page {
+  margin: 0 5em 0 5em;
+}
+
+.faculty-card {
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+  width: 20rem;
+  height: 20rem;
+  font-weight: bold;
+  border-color: gray;
+  font-size: 1rem;
+}
+
+.faculty-card button {
+  background: dodgerblue;
+  display: flex;
+  margin-left: auto;
+  font-size: 1rem;
+  border-color: white;
+  text-align: center;
+  padding: 0.5em;
+}
+
+.search-bar {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  display: flex;
+  width: 40rem;
+}
+
+.search-bar Button {
+  display: flex;
+  align-items: center;
+}
