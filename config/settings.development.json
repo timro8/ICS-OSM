@@ -19,7 +19,7 @@
     { "name":  "test3", "quantity":  2, "owner":  "office@foo.com", "condition":  "excellent" },
     { "name":  "test4", "quantity":  2, "owner":  "tech@foo.com", "condition":  "excellent" }
   ],
-
+  
   "public": {
     "development": true
   }
