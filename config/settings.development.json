@@ -24,9 +24,9 @@
     { "roomNumber": "303A", "location":  "POST", "status": "Occupied", "roomNotes": "", "owner":  "admin@foo.com"},
     { "roomNumber": "303B", "location":  "POST", "status": "Occupied", "roomNotes": "", "owner":  "john@foo.com"},
     { "roomNumber": "303G", "location":  "POST", "status": "Occupied", "roomNotes": "", "owner":  "john@foo.com"},
-    { "roomNumber": "303F", "location":  "POST", "status": "Out of Commission", "roomNotes": "", "owner":  "john@foo.com"},
+    { "roomNumber": "303F", "location":  "POST", "status": "Out of Commission", "roomNotes": "Renovations during fall and spring 2023", "owner":  "office@foo.com"},
     { "roomNumber": "317", "location":  "POST", "status": "Occupied", "roomNotes": "", "owner":  "admin@foo.com"},
-    { "roomNumber": "327", "location": "POST", "status": "Occupied", "roomNotes": "", "owner": "john@foo.com" }
+    { "roomNumber": "327", "location": "POST", "status": "Occupied", "roomNotes": "", "owner": "office@foo.com" }
   ],
   
   "public": {

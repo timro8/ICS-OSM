@@ -8,6 +8,7 @@ import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import ListRoom from '../pages/ListRoom';
+import ListRoomAdmin from '../pages/ListRoomAdmin';
 import AddStuff from '../pages/AddStuff';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
@@ -34,6 +35,7 @@ const App = () => (
         <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><ListStuffAdmin /></AdminProtectedRoute>} />
+        <Route path="/adminroom" element={<AdminProtectedRoute><ListRoomAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
