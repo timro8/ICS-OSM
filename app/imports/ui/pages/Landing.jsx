@@ -6,7 +6,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 const Landing = () => (
   <Row id={PAGE_IDS.LANDING} className="py-3 landingpage align-content-center text-center">
     <Col>
-      <h1>Pictures</h1>
+      <h1> </h1>
     </Col>
     <Col>
       <h2 className="landingtitle">WELCOME TO ICS-OSM!</h2>
