@@ -34,25 +34,31 @@ class RoomCollection extends BaseCollection {
         optional: true,
       },
       owner: String,
+      picture: {
+        type: String,
+        optional: true,
+      },
     }));
   }
 
   /**
-   * Defines a new Stuff item.
+   * Defines a new Room item.
    * @param roomNumber the number of the room.
    * @param location the location of the room.
    * @param status the status of the room.
    * @param roomNotes the notes for the room.
    * @param owner the owner of the room.
+   * @param picture the owner of the room.
    * @return {String} the docID of the new document.
    */
-  define({ roomNumber, location, status, roomNotes, owner }) {
+  define({ roomNumber, location, status, roomNotes, owner, picture }) {
     const docID = this._collection.insert({
       roomNumber,
       location,
       status,
       roomNotes,
       owner,
+      picture,
     });
     return docID;
   }
@@ -62,14 +68,18 @@ class RoomCollection extends BaseCollection {
    * @param docID the id of the document to update.
    * @param status the new status (optional).
    * @param roomNotes the new room notes (optional).
+   * @param picture the new picture of the room (optional).
    */
-  update(docID, { status, roomNotes }) {
+  update(docID, { status, roomNotes, picture }) {
     const updateData = {};
     if (status) {
       updateData.status = status;
     }
     if (roomNotes) {
       updateData.roomNotes = roomNotes;
+    }
+    if (picture) {
+      updateData.picture = picture;
     }
     this._collection.update(docID, { $set: updateData });
   }
