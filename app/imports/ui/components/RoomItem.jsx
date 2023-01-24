@@ -11,7 +11,7 @@ const RoomItem = ({ room }) => (
     <td>{room.location}</td>
     <td>{room.status}</td>
     <td>{room.roomNotes}</td>
-    <td><Image src={room.picture} alt="room picture" width="400px" height="300px" /></td>
+    <td><Image src={room.picture} alt={`${room.roomNumber} picture`} width="400px" height="300px" /></td>
     <td>
       make edit
     </td>
