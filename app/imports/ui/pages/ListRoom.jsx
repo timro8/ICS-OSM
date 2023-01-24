@@ -37,6 +37,7 @@ const ListRoom = () => {
                 <th>Location</th>
                 <th>Status</th>
                 <th>Room Notes</th>
+                <th>Room Picture</th>
                 <th>Edit</th>
               </tr>
             </thead>

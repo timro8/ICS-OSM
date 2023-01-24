@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Image } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
 // import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
@@ -10,6 +11,7 @@ const RoomItem = ({ room }) => (
     <td>{room.location}</td>
     <td>{room.status}</td>
     <td>{room.roomNotes}</td>
+    <td><Image src={room.picture} alt="room picture" width="400px" height="300px" /></td>
     <td>
       make edit
     </td>
@@ -23,6 +25,7 @@ RoomItem.propTypes = {
     location: PropTypes.string,
     status: PropTypes.string,
     roomNotes: PropTypes.string,
+    picture: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
