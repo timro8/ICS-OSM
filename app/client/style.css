@@ -54,3 +54,16 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+/* Profile Page */
+#imgProfile{
+  position: relative;
+  z-index: 1;
+}
+
+#cardProfile{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* End Profile Page */
