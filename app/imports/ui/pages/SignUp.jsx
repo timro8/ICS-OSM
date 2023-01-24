@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Card, Col, Container, Row, FormSelect } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
-import { EnvelopeFill, KeyFill } from 'react-bootstrap-icons';
+import { EnvelopeFill, KeyFill, Person } from 'react-bootstrap-icons';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { UserProfiles } from '../../api/user/UserProfileCollection';
@@ -18,6 +18,7 @@ import { defineMethod } from '../../api/base/BaseCollection.methods';
 const SignUp = () => {
   const [error, setError] = useState('');
   const [redirectToReferer, setRedirectToRef] = useState(false);
+  const roles = ['Role', 'Student', 'Faculty', 'Office', 'Tech'];
 
   const schema = new SimpleSchema({
     firstName: String,
@@ -80,7 +81,17 @@ const SignUp = () => {
                   </Col>
                 </Row>
                 <ErrorsField />
-                <Col className="d-flex justify-content-center">
+                <Row id="roleSelectDropdown">
+                  <Col className="col-1 mt-1 ms-1">
+                    <Person style={{ fontSize: '25px', color: 'black' }} />
+                  </Col>
+                  <Col>
+                    <FormSelect>
+                      {roles.map((type, key) => <option value={type} key={key}>{type}</option>)}
+                    </FormSelect>
+                  </Col>
+                </Row>
+                <Col className="d-flex justify-content-center pt-2">
                   <SubmitField id={COMPONENT_IDS.SIGN_UP_FORM_SUBMIT} />
                 </Col>
               </Card.Body>
