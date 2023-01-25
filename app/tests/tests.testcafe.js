@@ -15,8 +15,6 @@ const officeCredentials = { username: 'office@foo.com', password: 'changeme' };
 const techCredentials = { username: 'tech@foo.com', password: 'changeme' };
 const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
 
-const credentials = [userCredentials, adminCredentials, facultyCredentials, studentCredentials, officeCredentials, techCredentials];
-
 fixture('meteor-application-template-production localhost test with default db')
   .page('http://localhost:3000');
 
