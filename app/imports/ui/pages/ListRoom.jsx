@@ -24,7 +24,7 @@ const ListRoom = () => {
     };
   }, []);
   return (ready ? (
-    <Container id={PAGE_IDS.LIST_STUFF} className="py-3">
+    <Container id={PAGE_IDS.LIST_ROOM} className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
           <Col className="text-center">

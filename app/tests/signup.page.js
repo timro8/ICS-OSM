@@ -19,6 +19,10 @@ class SignUpPage {
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_LAST_NAME}`, 'Doe');
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_EMAIL}`, username);
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_PASSWORD}`, password);
+    await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_CONFIRM_PASSWORD}`, password);
+    const dropdown = await Selector(`#${COMPONENT_IDS.SIGN_UP_FORM_ROLE}`);
+    const dropdownOption = dropdown.find('Student');
+    await t.click(dropdown).click(dropdownOption());
     await t.click(`#${COMPONENT_IDS.SIGN_UP_FORM_SUBMIT} input.btn.btn-primary`);
   }
 }
