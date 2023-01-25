@@ -59,11 +59,11 @@ test('Test that list stuff admin page show up for admins', async () => {
   await signOutPage.isDisplayed();
 });
 
-// test('Test that sign up and sign out work', async () => {
-//   await navBar.gotoSignUpPage();
-//   await signUpPage.isDisplayed();
-//   await signUpPage.signupUser(newCredentials.username, newCredentials.password);
-//   await navBar.isLoggedIn(newCredentials.username);
-//   await navBar.logout();
-//   await signOutPage.isDisplayed();
-// });
+test('Test that sign up and sign out work', async () => {
+  await navBar.gotoSignUpPage();
+  await signUpPage.isDisplayed();
+  await signUpPage.signupUser(newCredentials.username, newCredentials.password);
+  await navBar.isLoggedIn(newCredentials.username);
+  await navBar.logout();
+  await signOutPage.isDisplayed();
+});
