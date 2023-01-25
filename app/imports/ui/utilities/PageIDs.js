@@ -13,4 +13,5 @@ export const PAGE_IDS = {
   SIGN_UP: 'sign-up',
   EDIT_ROOM: 'edit-room',
   LIST_ROOM: 'list-room',
+  LIST_ROOM_ADMIN: 'list-room-admin',
 };
