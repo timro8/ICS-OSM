@@ -1,4 +1,4 @@
-import { /* manageDatabasePage, */ signOutPage, listRoomPage } from './simple.page';
+import { /* manageDatabasePage, */ signOutPage, listRoomPage, listStuffAdminPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { signUpPage } from './signup.page';
@@ -45,6 +45,16 @@ test('Test that list room page show up', async () => {
   await navBar.isLoggedIn(userCredentials.username);
   await navBar.gotoListRoomPage();
   await listRoomPage.isDisplayed();
+  await navBar.logout();
+  await signOutPage.isDisplayed();
+});
+
+test('Test that list stuff admin page show up for admins', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListStuffAdminPage();
+  await listStuffAdminPage.isDisplayed();
   await navBar.logout();
   await signOutPage.isDisplayed();
 });
