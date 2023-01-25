@@ -14,10 +14,12 @@ export const COMPONENT_IDS = {
   NAVBAR_SIGN_OUT: 'navbar-sign-out',
   SIGN_IN_FORM_EMAIL: 'sign-in-form-email',
   SIGN_IN_FORM_PASSWORD: 'sign-in-form-password',
+  SIGN_UP_FORM_CONFIRM_PASSWORD: 'sign-in-form-confirm-password',
   SIGN_IN_FORM_SUBMIT: 'sign-in-form-submit',
   SIGN_UP_FORM_FIRST_NAME: 'sign-up-form-first-name',
   SIGN_UP_FORM_LAST_NAME: 'sign-up-form-last-name',
   SIGN_UP_FORM_EMAIL: 'sign-up-form-email',
   SIGN_UP_FORM_PASSWORD: 'sign-up-form-password',
+  SIGN_UP_FORM_ROLE: 'sign-up-form-role',
   SIGN_UP_FORM_SUBMIT: 'sign-up-form-submit',
 };
