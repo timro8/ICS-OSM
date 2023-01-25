@@ -1,4 +1,4 @@
-import { /* manageDatabasePage, */ signOutPage } from './simple.page';
+import { /* manageDatabasePage, */ signOutPage, listRoomPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { signUpPage } from './signup.page';
@@ -37,6 +37,16 @@ test('Test that signin and signout work for all roles', async () => {
   await signin(studentCredentials.username, studentCredentials.password);
   await signin(officeCredentials.username, officeCredentials.password);
   await signin(techCredentials.username, techCredentials.password);
+});
+
+test('Test that list room page show up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(userCredentials.username, userCredentials.password);
+  await navBar.isLoggedIn(userCredentials.username);
+  await navBar.gotoListRoomPage();
+  await listRoomPage.isDisplayed();
+  await navBar.logout();
+  await signOutPage.isDisplayed();
 });
 
 // test('Test that sign up and sign out work', async () => {
