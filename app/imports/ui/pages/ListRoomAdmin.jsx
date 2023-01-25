@@ -1,10 +1,36 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Row, Table } from 'react-bootstrap';
+import { Container, Card, Image, Row, Col, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { Rooms } from '../../api/room/RoomCollection';
-import RoomItemAdmin from '../components/RoomItemAdmin';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
+
+const MakeCard = ({ room }) => (
+  <Col>
+    <Card border="primary" className="h-100">
+      <Card.Header>
+        <Image src={room.picture} alt={`${room.roomNumber} picture`} width={75} />
+        <Card.Title>{room.roomNumber}</Card.Title>
+        <Card.Subtitle><span className="date">{room.location}</span></Card.Subtitle>
+      </Card.Header>
+      <Card.Body>
+        <Card.Text>
+          {room.status}
+        </Card.Text>
+        <Card.Text>
+          {room.roomNotes}
+        </Card.Text>
+        <Card.Text>
+          {room.owner}
+        </Card.Text>
+      </Card.Body>
+      <Card.Footer>
+        <Button variant="primary">Edit Room</Button>
+      </Card.Footer>
+    </Card>
+  </Col>
+);
 
 /* Renders a table containing all of the Room documents. Use <RoomItemAdmin> to render each row. */
 const ListRoomAdmin = () => {
@@ -21,29 +47,25 @@ const ListRoomAdmin = () => {
       ready: rdy,
     };
   }, []);
-  return (ready ? (
+  return ready ? (
     <Container id={PAGE_IDS.LIST_ROOM_ADMIN} className="py-3">
-      <Row className="justify-content-center">
-        <Col md={7}>
-          <Col className="text-center"><h2>List Room (Admin)</h2></Col>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Room Number</th>
-                <th>Location</th>
-                <th>Status</th>
-                <th>Room Notes</th>
-                <th>Owner</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rooms.map((room) => <RoomItemAdmin key={room._id} room={room} />)}
-            </tbody>
-          </Table>
-        </Col>
+      <Row xs={1} md={2} lg={4} className="g-2">
+        {rooms.map((room) => <MakeCard key={room._id} room={room} />)}
       </Row>
     </Container>
-  ) : <LoadingSpinner />);
+  ) : <LoadingSpinner />;
+};
+
+MakeCard.propTypes = {
+  room: PropTypes.shape({
+    roomNumber: PropTypes.string,
+    location: PropTypes.string,
+    status: PropTypes.string,
+    roomNotes: PropTypes.string,
+    _id: PropTypes.string,
+    owner: PropTypes.string,
+    picture: PropTypes.string,
+  }).isRequired,
 };
 
 export default ListRoomAdmin;
