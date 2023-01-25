@@ -42,6 +42,10 @@ body {
   margin-right: 150px;
 }
 
+.scroll {
+  overflow-y: scroll;
+}
+
 /* Set the SignIn and SignUp alerts background. */
 #signin-page .alert-light, #signup-page .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);
