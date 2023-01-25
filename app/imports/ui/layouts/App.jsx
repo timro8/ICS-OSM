@@ -68,6 +68,16 @@ const AdminProtectedRoute = ({ children }) => {
   return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
 };
 
+const OfficeProtectedRoute = ({ children }) => {
+  const isLogged = Meteor.userId() !== null;
+  if (!isLogged) {
+    return <Navigate to="/signin" />;
+  }
+  const isOffice = Roles.userIsInRole(Meteor.userId(), [ROLE.OFFICE]);
+  console.log('OfficeProtectedRoute', isLogged, isOffice);
+  return (isLogged && isOffice) ? children : <Navigate to="/notauthorized" />;
+};
+
 // Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
@@ -83,6 +93,15 @@ AdminProtectedRoute.propTypes = {
 };
 
 AdminProtectedRoute.defaultProps = {
+  children: <Landing />,
+};
+
+// Require a component and location to be passed to each OfficeProtectedRoute.
+OfficeProtectedRoute.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+OfficeProtectedRoute.defaultProps = {
   children: <Landing />,
 };
 
