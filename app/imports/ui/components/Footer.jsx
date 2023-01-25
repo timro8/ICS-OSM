@@ -5,13 +5,12 @@ import { Container, Col } from 'react-bootstrap';
 const Footer = () => {
   const divStyle = { paddingTop: '15px' };
   return (
-    <footer className="mt-auto bg-light">
+    <footer className="bg-light footer mt-auto py-3 pt-1">
       <Container style={divStyle}>
-        <Col className="text-center">
-          Department of Information and Computer Sciences <br />
+        <Col className="text-center small">
+          OSMICS <br />
           University of Hawaii<br />
-          Honolulu, HI 96822 <br />
-          <a href="http://ics-software-engineering.github.io/meteor-application-template-production">Template Home Page</a>
+          <a href="https://ics414t3.github.io/">https://ics414t3.github.io</a>
         </Col>
       </Container>
     </footer>
