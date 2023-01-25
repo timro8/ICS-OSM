@@ -56,11 +56,6 @@ body {
 }
 
 /* Profile Page */
-#imgProfile{
-  position: relative;
-  z-index: 1;
-}
-
 #cardProfile{
   width: 40%;
   margin-left: auto;

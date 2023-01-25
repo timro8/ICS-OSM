@@ -1,13 +1,14 @@
 import React from 'react';
-import { Col, Row, Button, Card, Container, Image } from 'react-bootstrap';
-import { PAGE_IDS } from '../utilities/PageIDs';
+import { Col, Row, Card, Container, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { PAGE_IDS } from '../utilities/PageIDs';
+import { ROLE } from '../../api/role/Role';
 
 const ProfileTemp = () => (
   <Container id={PAGE_IDS.PROFILE} className="py-3" fluid>
     <Row>
       <Col className="d-flex justify-content-center">
-        <Image id="imgProfile" roundedCircle src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" width="300px"/>
+        <Image id="imgProfile" roundedCircle src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg" width="300px" />
       </Col>
     </Row>
     <Card id="cardProfile">
@@ -16,11 +17,15 @@ const ProfileTemp = () => (
         <p>john@foo.com</p>
         <hr />
         <span className="small">Role:</span>
-        <p className="fw-bold">Student</p>
+        <p className="fw-bold">{ROLE.USER}</p>
         <hr />
         <span className="small">About Me:</span>
         <p>I like ICS 414</p>
-
+        <hr />
+        <span className="small">More Information:</span>
+        <p>There can never be too many cherries on an ice cream sundae.
+          Nobody has encountered an explosive daisy and lived to tell the tale.
+        </p>
       </Col>
     </Card>
     <Row>
