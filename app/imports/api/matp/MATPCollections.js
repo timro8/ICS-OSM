@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../stuff/StuffCollection';
+import { Rooms } from '../room/RoomCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 
@@ -16,6 +17,7 @@ class MATPClass {
       AdminProfiles,
       Stuffs,
       UserProfiles,
+      Rooms,
     ];
     /*
      * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -24,6 +26,7 @@ class MATPClass {
       AdminProfiles,
       UserProfiles,
       Stuffs,
+      Rooms,
     ];
 
     /*
