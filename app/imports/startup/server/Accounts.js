@@ -16,7 +16,7 @@ function createUser(email, role, firstName, lastName, password) {
   if (role === ROLE.OFFICE) OfficeProfiles.define({ email, firstName, lastName, password });
   if (role === ROLE.STUDENT) StudentProfiles.define({ email, firstName, lastName, password });
   if (role === ROLE.TECH) TechProfiles.define({ email, firstName, lastName, password });
-  if (!role) UserProfiles.define({ email, firstName, lastName, password });
+  if (role === ROLE.USER) UserProfiles.define({ email, firstName, lastName, password });
 }
 
 // When running app for first time, pass a settings file to set up a default user account.

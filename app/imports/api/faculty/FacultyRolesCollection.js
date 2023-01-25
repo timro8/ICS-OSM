@@ -5,59 +5,34 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const roomLocations = ['POST'];
-
-export const roomStatus = ['Occupied', 'Vacant', 'Out of Commission'];
-
-export const roomPublications = {
-  room: 'Room',
-  roomAdmin: 'RoomAdmin',
+export const FACULTY_ROLES = ['PROFESSOR', 'TA', 'RA', 'N/A'];
+export const FacultyRolePublications = {
+  FacultyRole: 'FacultyRole',
+  FacultyRoleAdmin: 'FacultyRoleAdmin',
 };
 
-class RoomCollection extends BaseCollection {
+class FacultyRoleCollection extends BaseCollection {
   constructor() {
-    super('Rooms', new SimpleSchema({
-      roomNumber: String,
-      location: {
+    super('FacultyRole', new SimpleSchema({
+      role: {
         type: String,
-        allowedValues: roomLocations,
-        defaultValue: 'POST',
+        allowedValues: FACULTY_ROLES,
+        defaultValue: 'N/A',
       },
-      status: {
-        type: String,
-        allowedValues: roomStatus,
-        defaultValue: 'Occupied',
-      },
-      roomNotes: {
-        type: String,
-        optional: true,
-      },
-      owner: String,
-      picture: {
-        type: String,
-        optional: true,
-      },
+      userId: { type: String, optional: false },
     }));
   }
 
   /**
-   * Defines a new Room item.
-   * @param roomNumber the number of the room.
-   * @param location the location of the room.
-   * @param status the status of the room.
-   * @param roomNotes the notes for the room.
-   * @param owner the owner of the room.
-   * @param picture the owner of the room.
+   * Defines a new FacultyRole.
+   * @param role role of faculty member.
+   * @param id user id of faculty member.
    * @return {String} the docID of the new document.
    */
-  define({ roomNumber, location, status, roomNotes, owner, picture }) {
+  define({ role, id }) {
     const docID = this._collection.insert({
-      roomNumber,
-      location,
-      status,
-      roomNotes,
-      owner,
-      picture,
+      role,
+      id,
     });
     return docID;
   }
@@ -65,20 +40,14 @@ class RoomCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
-   * @param status the new status (optional).
-   * @param roomNotes the new room notes (optional).
-   * @param picture the new picture of the room (optional).
+   * @param name the new name (optional).
+   * @param quantity the new quantity (optional).
+   * @param condition the new condition (optional).
    */
-  update(docID, { status, roomNotes, picture }) {
+  update(docID, { role }) {
     const updateData = {};
-    if (status) {
-      updateData.status = status;
-    }
-    if (roomNotes) {
-      updateData.roomNotes = roomNotes;
-    }
-    if (picture) {
-      updateData.picture = picture;
+    if (role) {
+      updateData.role = role;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -97,14 +66,14 @@ class RoomCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the room associated to an owner.
+   * It publishes the entire collection for admin and just the FacultyRole associated to an owner.
    */
   publish() {
     if (Meteor.isServer) {
-      // get the RoomCollection instance.
+      // get the FacultyRoleCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(roomPublications.room, function publish() {
+      Meteor.publish(FacultyRolePublications.FacultyRole, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
           return instance._collection.find({ owner: username });
@@ -113,7 +82,7 @@ class RoomCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(roomPublications.roomAdmin, function publish() {
+      Meteor.publish(FacultyRolePublications.FacultyRoleAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -123,11 +92,11 @@ class RoomCollection extends BaseCollection {
   }
 
   /**
-   * Subscription method for room owned by the current user.
+   * Subscription method for FacultyRole owned by the current user.
    */
-  subscribeRoom() {
+  subscribeFacultyRole() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomPublications.room);
+      return Meteor.subscribe(FacultyRolePublications.FacultyRole);
     }
     return null;
   }
@@ -136,9 +105,9 @@ class RoomCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeRoomAdmin() {
+  subscribeFacultyRoleAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomPublications.roomAdmin);
+      return Meteor.subscribe(FacultyRolePublications.FacultyRoleAdmin);
     }
     return null;
   }
@@ -156,20 +125,19 @@ class RoomCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{owner: (*|number), roomNumber: *, location: *, status: *, roomNotes: *}}
+   * @return {{owner: (*|number), condition: *, quantity: *, name}}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const roomNumber = doc.roomNumber;
-    const location = doc.location;
-    const status = doc.status;
-    const roomNotes = doc.roomNotes;
+    const name = doc.name;
+    const quantity = doc.quantity;
+    const condition = doc.condition;
     const owner = doc.owner;
-    return { roomNumber, location, status, roomNotes, owner };
+    return { name, quantity, condition, owner };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Rooms = new RoomCollection();
+export const FacultyRoles = new FacultyRoleCollection();
