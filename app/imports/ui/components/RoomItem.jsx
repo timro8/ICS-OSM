@@ -10,7 +10,7 @@ const RoomItem = ({ room }) => (
     <td>{room.roomNumber}</td>
     <td>{room.location}</td>
     <td>{room.status}</td>
-    <td>{room.roomNotes}</td>
+    <td>{room.capacity}</td>
     <td><Image src={room.picture} alt={`${room.roomNumber} picture`} width="400px" height="300px" /></td>
     <td>
       make edit
@@ -24,7 +24,7 @@ RoomItem.propTypes = {
     roomNumber: PropTypes.string,
     location: PropTypes.string,
     status: PropTypes.string,
-    roomNotes: PropTypes.string,
+    capacity: PropTypes.number,
     picture: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
