@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Row, Table } from 'react-bootstrap';
+import { Col, Container, Row, Table, Card } from 'react-bootstrap';
 import { Stuffs } from '../../api/stuff/StuffCollection';
 import StuffItemAdmin from '../components/StuffItemAdmin';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -25,20 +25,27 @@ const ListStuffAdmin = () => {
     <Container id={PAGE_IDS.LIST_STUFF_ADMIN} className="py-3">
       <Row className="justify-content-center">
         <Col md={7}>
-          <Col className="text-center"><h2>List Stuff (Admin)</h2></Col>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Condition</th>
-                <th>Owner</th>
-              </tr>
-            </thead>
-            <tbody>
-              {stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff} />)}
-            </tbody>
-          </Table>
+          <Card>
+            <Card.Header>
+              <Col className="text-center"><h2>Admin</h2></Col>
+            </Card.Header>
+            <Card.Body>
+              <div className="scroll">
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Owner</th>
+                      <th> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff} />)}
+                  </tbody>
+                </Table>
+              </div>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>

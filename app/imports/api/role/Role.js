@@ -5,6 +5,10 @@ import { Meteor } from 'meteor/meteor';
 export const ROLE = {
   ADMIN: 'ADMIN',
   USER: 'USER',
+  STUDENT: 'STUDENT',
+  OFFICE: 'OFFICE',
+  TECH: 'TECH',
+  FACULTY: 'FACULTY',
 };
 
 export const ROLES = _.values(ROLE);

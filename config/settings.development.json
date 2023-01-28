@@ -2,15 +2,45 @@
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "firstName": "Admin", "lastName": "MATRP"
     },
-    { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" }
+    { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" },
+    { "email":  "faculty@foo.com", "password":  "changeme", "role":  "FACULTY", "firstName": "Faculty", "lastName":  "FACULTY" },
+    { "email":  "student@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
+    { "email":  "office@foo.com", "password":  "changeme", "role":  "OFFICE", "firstName": "Office", "lastName":  "OFFICE" },
+    { "email":  "tech@foo.com", "password":  "changeme", "role":  "TECH", "firstName":  "Tech", "lastName":  "TECH"}
   ],
 
   "defaultData": [
     { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
     { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" },
+    { "name":  "test", "quantity":  2, "owner":  "faculty@foo.com", "condition":  "excellent" },
+    { "name":  "test2", "quantity":  2, "owner":  "student@foo.com", "condition":  "excellent" },
+    { "name":  "test3", "quantity":  2, "owner":  "office@foo.com", "condition":  "excellent" },
+    { "name":  "test4", "quantity":  2, "owner":  "tech@foo.com", "condition":  "excellent" }
   ],
+
+  "defaultRoomData": [
+    { "roomNumber": "303A", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com",
+      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+    },
+    { "roomNumber": "303B", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "john@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "303G", "location":  "POST", "status": "Occupied", "capacity": "2", "owner":  "office@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "303F", "location":  "POST", "status": "Out of Commission", "capacity": "0", "owner":  "office@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "327", "location": "POST", "status": "Occupied", "capacity": "1", "owner": "john@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"}
+  ],
+
+  "defaultFacultyData": [
+    { "firstName": "Kyungim", "lastName":  "Baek", "officeHours": "", "bio": "Associate Professor", "email":  "kyungim@hawaii.edu"},
+    { "firstName": "Mahdi", "lastName":  "Belcaid", "officeHours": "", "bio": "Assistant Research", "email":  "mahdi@hawaii.edu"},
+    { "firstName": "Edo", "lastName":  "Biagioni", "officeHours": "", "bio": "Associate Professor", "email":  "esb@hawaii.edu"},
+    { "firstName": "Kim", "lastName":  "Binsted", "officeHours": "", "bio": "Professor", "email":  "binsted@hawaii.edu"},
+    { "firstName": "Henri", "lastName":  "Casanova", "officeHours": "", "bio": "Professor", "email":  "henric@hawaii.edu"},
+    { "firstName": "Martha", "lastName": "Crosby", "officeHours": "", "bio": "Professor", "email": "crosby@hawaii.edu"}
+  ],
+
+  
   "public": {
     "development": true
   }

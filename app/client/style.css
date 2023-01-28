@@ -14,6 +14,38 @@ body {
   --bs-light-rgb: var(--matr-navbar-bg-rgb);
 }
 
+.landingpage {
+  background-image: url("https://cdn.pixabay.com/photo/2021/06/24/11/18/background-6360865_960_720.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 90vh;
+}
+
+.landingtitle {
+  font-family: "Bahnschrift", cursive;
+  font-size: 50px;
+  padding-bottom: 15px;
+}
+
+.landingtext {
+  font-family: "Segoe Print", cursive;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.marginland {
+  padding-top: 15px;
+}
+
+.landingbut {
+  margin-right: 150px;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+
 /* Set the SignIn and SignUp alerts background. */
 #signin-page .alert-light, #signup-page .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);
