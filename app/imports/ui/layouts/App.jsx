@@ -18,7 +18,7 @@ import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import { ROLE } from '../../api/role/Role';
-import Calendar from '../pages/CalPage';
+import CalPage2 from '../pages/CalPage2';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -39,7 +39,7 @@ const App = () => (
         <Route path="/adminroom" element={<AdminProtectedRoute><ListRoomAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/cal" element={<Calendar />} />
+        <Route path="/cal" element={<CalPage2 />} />
       </Routes>
       <Footer />
     </div>
