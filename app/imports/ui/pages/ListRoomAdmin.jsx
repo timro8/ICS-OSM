@@ -16,13 +16,13 @@ const MakeCard = ({ room }) => (
       </Card.Header>
       <Card.Body>
         <Card.Text>
-          {room.status}
+          <strong>Status:</strong> {room.status}
         </Card.Text>
         <Card.Text>
-          {room.roomNotes}
+          <strong>Room capacity:</strong> {room.capacity}
         </Card.Text>
         <Card.Text>
-          {room.owner}
+          <strong>Owner:</strong> {room.owner}
         </Card.Text>
       </Card.Body>
       <Card.Footer>
@@ -61,7 +61,7 @@ MakeCard.propTypes = {
     roomNumber: PropTypes.string,
     location: PropTypes.string,
     status: PropTypes.string,
-    roomNotes: PropTypes.string,
+    capacity: PropTypes.number,
     _id: PropTypes.string,
     owner: PropTypes.string,
     picture: PropTypes.string,
