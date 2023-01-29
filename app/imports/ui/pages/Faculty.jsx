@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Card, Container, Form, Modal, Row, Stack} from 'react-bootstrap';
+import {Button, Card, Col, Container, Form, Modal, Row, Stack} from 'react-bootstrap';
 import {Search} from "react-bootstrap-icons";
 
 /* A simple static component to render some text for the landing page. */
@@ -14,17 +14,22 @@ const Faculty = () => {
     const [showDetail, setShowDetail] = useState(false);
     const handleCloseDetail = () => setShowDetail(false);
     const handleShowDetail = () => setShowDetail(true);
-
+    // fontWeight: "bold", width: "250px"
+    //className="d-flex align-items-center justify-content-center"
     function cards(room, name, office_hours){
         return (
-                <Card className="m-2" style={{fontWeight: "bold", width: "250px"}} onClick={handleShowDetail}>
+            <Col style={{marginBottom: "20px"}}>
+                <Card className="w-100" border="info" style={{ width: '18rem'}} onClick={handleShowDetail}>
                     <Card.Body>
                         <Card.Text>{room}</Card.Text>
                         <Card.Text>{name}</Card.Text>
                         <Card.Text>{office_hours}</Card.Text>
-                        <Button className="faculty-card-button">Edit</Button>
+                        <Container style={{display: 'grid', justifyContent: 'right', gridAutoFlow: 'column', gridColumnGap: '10px'}}>
+                            <Button>Edit</Button>
+                        </Container>
                     </Card.Body>
                 </Card>
+            </Col>
         );
     }
 
@@ -40,19 +45,17 @@ const Faculty = () => {
                     </Form>
                 </Container>
 
-                <Button style={{marginLeft: "1vw", marginBottom: "10px"}} variant="primary" onClick={handleShow}>Add Faculty</Button>
+                <Button style={{marginLeft: "1vw", marginBottom: "20px"}} variant="primary" onClick={handleShow}>Add Faculty</Button>
 
-                <Container className="d-flex align-items-center justify-content-center">
-                    <Row>
-                        {cards(307, "Cam Moore", "Office Hours")}
-                        {cards(307, "Cam Moore", "Office Hours")}
-                        {cards(307, "Cam Moore", "Office Hours")}
-                        {cards(307, "Cam Moore", "Office Hours")}
-                        {cards(309, "Person 1, 2, 3", "Office Hours")}
-                        {cards(309, "Person 1, 2, 3", "Office Hours")}
-                        {cards(309, "Person 1, 2, 3", "Office Hours")}
-                    </Row>
-                </Container>
+                <Row xs="1" md="2" xl="4">
+                    {cards(307, "Cam Moore", "Office Hours")}
+                    {cards(307, "Cam Moore", "Office Hours")}
+                    {cards(307, "Cam Moore", "Office Hours")}
+                    {cards(307, "Cam Moore", "Office Hours")}
+                    {cards(309, "Person 1, 2, 3", "Office Hours")}
+                    {cards(309, "Person 1, 2, 3", "Office Hours")}
+                    {cards(309, "Person 1, 2, 3", "Office Hours")}
+                </Row>
             </Container>
         </Container>
 
