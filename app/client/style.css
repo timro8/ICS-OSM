@@ -58,3 +58,23 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+.faculty-page {
+  margin: 0 5em 0 5em;
+}
+
+.faculty-card-button {
+  margin-left: 150px;
+}
+
+.search-input {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  display: flex;
+  width: 40rem;
+}
+
+.search-bar Button {
+  display: flex;
+  align-items: center;
+}
