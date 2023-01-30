@@ -19,7 +19,7 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import { ROLE } from '../../api/role/Role';
 import SignUpRequest from '../pages/SignUpRequest';
-import Faculty from "../pages/Faculty";
+import Faculty from '../pages/Faculty';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
