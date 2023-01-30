@@ -3,13 +3,16 @@ import { Col, Row, Button } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* A simple static component to render some text for the landing page. */
+// TODO: Add a dash for naming convention i.e. landing-page
 const Landing = () => (
   <Row id={PAGE_IDS.LANDING} className="py-3 landingpage align-content-center text-center">
+    {/* TODO: Remove empty col */}
     <Col>
       <h1> </h1>
     </Col>
     <Col>
       <h2 className="landingtitle">WELCOME TO ICS-OSM!</h2>
+      {/* TODO: Combine paragraphs into single div/p/span/etc. */}
       <p className="landingtext">This is an app that allows you to see the 3rd Floor of POST </p>
       <p className="landingtext">as well as some rooms in the Keller building</p>
       <Col direction="horizontal" className="marginland">
