@@ -34,7 +34,7 @@ const SignUp = () => {
     confirmPassword: String,
   });
   const bridge = new SimpleSchema2Bridge(schema);
-  
+
   /* Handle SignUp submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = (doc) => {
     const collectionName = UserProfiles.getCollectionName();

@@ -1,5 +1,5 @@
 import { Selector, t } from 'testcafe';
-import { addStuffPage, listStuffAdminPage, listStuffPage, editStuffPage, /* manageDatabasePage, */ signOutPage } from './simple.page';
+import { addStuffPage, listStuffAdminPage, listStuffPage, editStuffPage, /* manageDatabasePage, */ signOutPage, listRoomAdminPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { signUpPage } from './signup.page';
@@ -67,6 +67,16 @@ test('Test that admin pages show up', async () => {
   await editStuffPage.isDisplayed();
   await navBar.gotoListStuffAdminPage();
   await listStuffAdminPage.isDisplayed();
+  await listRoomAdminPage.isDisplayed();
   // await navBar.gotoManageDatabasePage();
   // await manageDatabasePage.isDisplayed();
+});
+
+test('Test that sign up and sign out work', async () => {
+  await navBar.gotoSignUpPage();
+  await signUpPage.isDisplayed();
+  await signUpPage.signupUser(newCredentials.username, newCredentials.password);
+  await navBar.isLoggedIn(newCredentials.username);
+  await navBar.logout();
+  await signOutPage.isDisplayed();
 });
