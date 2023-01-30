@@ -11,6 +11,7 @@ const Faculty = () => {
   // show pop up to show faculty detail information
   const [showDetail, setShowDetail] = useState(false);
 
+  // TODO: Add more comments, refactor as a separate component
   function cards(room, name, office_hours) {
     return (
       <Col style={{ marginBottom: '20px' }}>
