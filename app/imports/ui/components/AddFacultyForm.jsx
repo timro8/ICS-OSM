@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const AddFacultyForm = (props) => {
-  const [show, setShow] = useState(props);
+const AddFacultyForm = props => {
+  // eslint-disable-next-line react/prop-types
+  const { show, onClose } = props;
   if (!show) {
     return null;
   }
@@ -11,7 +12,7 @@ const AddFacultyForm = (props) => {
   // pop up window: https://react-bootstrap.github.io/components/modal/
   return (
     <Modal show={show}>
-      <Modal.Header closeButton onClick={() => setShow(false)}>
+      <Modal.Header closeButton onClick={onClose}>
         <Modal.Title>Add Faculty</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -46,7 +47,7 @@ const AddFacultyForm = (props) => {
         </Form>
       </Modal.Body>
       <Modal.Footer style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column', gridColumnGap: '10px' }}>
-        <Button variant="danger" onClick={() => setShow(false)}>
+        <Button variant="danger" onClick={onClose}>
           Cancel
         </Button>
         <Button variant="success">
@@ -58,12 +59,10 @@ const AddFacultyForm = (props) => {
 };
 
 AddFacultyForm.propTypes = {
-  props: PropTypes.shape(
-    {
-      show: PropTypes.bool,
-      onClose: PropTypes.bool,
-    },
-  ).isRequired,
+  props: PropTypes.shape({
+    show: PropTypes.bool,
+    onClose: PropTypes.func,
+  }).isRequired,
 };
 
 export default AddFacultyForm;
