@@ -28,8 +28,8 @@ class RoomCollection extends BaseCollection {
         allowedValues: roomStatus,
         defaultValue: 'Occupied',
       },
-      roomNotes: {
-        type: String,
+      capacity: {
+        type: Number,
         optional: true,
       },
       owner: String,
@@ -45,17 +45,17 @@ class RoomCollection extends BaseCollection {
    * @param roomNumber the number of the room.
    * @param location the location of the room.
    * @param status the status of the room.
-   * @param roomNotes the notes for the room.
+   * @param capacity the capacity for the room.
    * @param owner the owner of the room.
    * @param picture the owner of the room.
    * @return {String} the docID of the new document.
    */
-  define({ roomNumber, location, status, roomNotes, owner, picture }) {
+  define({ roomNumber, location, status, capacity, owner, picture }) {
     const docID = this._collection.insert({
       roomNumber,
       location,
       status,
-      roomNotes,
+      capacity,
       owner,
       picture,
     });
@@ -66,16 +66,16 @@ class RoomCollection extends BaseCollection {
    * Updates the given document.
    * @param docID the id of the document to update.
    * @param status the new status (optional).
-   * @param roomNotes the new room notes (optional).
+   * @param capacity the new room capacity (optional).
    * @param picture the new picture of the room (optional).
    */
-  update(docID, { status, roomNotes, picture }) {
+  update(docID, { status, capacity, picture }) {
     const updateData = {};
     if (status) {
       updateData.status = status;
     }
-    if (roomNotes) {
-      updateData.roomNotes = roomNotes;
+    if (capacity) {
+      updateData.capacity = capacity;
     }
     if (picture) {
       updateData.picture = picture;
@@ -156,16 +156,16 @@ class RoomCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{owner: (*|number), roomNumber: *, location: *, status: *, roomNotes: *}}
+   * @return {{owner: (*|number), roomNumber: *, location: *, status: *, capacity: *}}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
     const roomNumber = doc.roomNumber;
     const location = doc.location;
     const status = doc.status;
-    const roomNotes = doc.roomNotes;
+    const capacity = doc.capacity;
     const owner = doc.owner;
-    return { roomNumber, location, status, roomNotes, owner };
+    return { roomNumber, location, status, capacity, owner };
   }
 }
 

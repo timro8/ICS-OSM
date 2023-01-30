@@ -74,6 +74,15 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_STUFF}`);
   }
 
+  async gotoListRoomPage() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_ROOM}`);
+  }
+
   /* Go to the list stuff admin page. */
   async gotoListStuffAdminPage() {
     const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;

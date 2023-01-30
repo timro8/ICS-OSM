@@ -19,6 +19,7 @@ class SignUpPage {
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_LAST_NAME}`, 'Doe');
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_EMAIL}`, username);
     await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_PASSWORD}`, password);
+    await t.typeText(`#${COMPONENT_IDS.SIGN_UP_FORM_CONFIRM_PASSWORD}`, password);
     await t.click(`#${COMPONENT_IDS.SIGN_UP_FORM_SUBMIT} input.btn.btn-primary`);
   }
 }

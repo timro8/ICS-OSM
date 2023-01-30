@@ -24,4 +24,5 @@ export const COMPONENT_IDS = {
   SIGN_UP_FORM_SUBMIT: 'sign-up-form-submit',
   LIST_ROOM_EDIT: 'list-room-edit',
   NAVBAR_LIST_ROOM: 'navbar-list-room',
+  NAVBAR_LIST_ROOM_ADMIN: 'navbar-list-room-admin',
 };

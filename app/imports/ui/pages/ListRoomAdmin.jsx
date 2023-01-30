@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col, Container, Row, Card, Image, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Container, Card, Image, Row, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -8,7 +8,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 
 const MakeCard = ({ room }) => (
   <Col>
-    <Card border="success" className="h-100">
+    <Card border="primary" className="h-100">
       <Card.Header>
         <Image src={room.picture} alt={`${room.roomNumber} picture`} width={75} />
         <Card.Title>{room.roomNumber}</Card.Title>
@@ -32,30 +32,28 @@ const MakeCard = ({ room }) => (
   </Col>
 );
 
-/* Renders a table containing all of the Room documents. Use <RoomItem> to render each row. */
-const ListRoom = () => {
+/* Renders a table containing all of the Room documents. Use <RoomItemAdmin> to render each row. */
+const ListRoomAdmin = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { ready, rooms } = useTracker(() => {
-    // Note that this subscription will get cleaned up
-    // when your component is unmounted or deps change.
-    // Get access to Stuff documents.
-    const subscription = Rooms.subscribeRoom();
+  const { rooms, ready } = useTracker(() => {
+    // Get access to Room documents.
+    const subscription = Rooms.subscribeRoomAdmin();
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
-    const roomItems = Rooms.find({}, { sort: { roomNumber: 1 } }).fetch();
+    const items = Rooms.find({}).fetch();
     return {
-      rooms: roomItems,
+      rooms: items,
       ready: rdy,
     };
   }, []);
-  return (ready ? (
-    <Container id={PAGE_IDS.LIST_ROOM} className="py-3">
+  return ready ? (
+    <Container id={PAGE_IDS.LIST_ROOM_ADMIN} className="py-3">
       <Row xs={1} md={2} lg={4} className="g-2">
         {rooms.map((room) => <MakeCard key={room._id} room={room} />)}
       </Row>
     </Container>
-  ) : <LoadingSpinner message="Loading Room" />);
+  ) : <LoadingSpinner />;
 };
 
 MakeCard.propTypes = {
@@ -70,4 +68,4 @@ MakeCard.propTypes = {
   }).isRequired,
 };
 
-export default ListRoom;
+export default ListRoomAdmin;
