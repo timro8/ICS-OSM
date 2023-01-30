@@ -19,6 +19,8 @@ import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import { ROLE } from '../../api/role/Role';
 import CalPage2 from '../pages/CalPage2';
+import SignUpRequest from '../pages/SignUpRequest';
+import Faculty from '../pages/Faculty';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -29,7 +31,9 @@ const App = () => (
         <Route exact path="/" element={<Landing />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/signuprequest" element={<SignUpRequest />} />
         <Route path="/signout" element={<SignOut />} />
+        <Route path="/faculty" element={<Faculty />} />
         <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/listroom" element={<ProtectedRoute><ListRoom /></ProtectedRoute>} />
