@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { ROLE } from '../../api/role/Role';
 
+/** TODO
+ *Get real user data from collections.
+ */
 const ProfileTemp = () => (
   <Container id={PAGE_IDS.PROFILE} className="py-3" fluid>
     <Row>
@@ -16,16 +19,20 @@ const ProfileTemp = () => (
         <h1>John Doe</h1>
         <p>john@foo.com</p>
         <hr />
-        <span className="small">Role:</span>
-        <p className="fw-bold">{ROLE.USER}</p>
-        <hr />
         <span className="small">About Me:</span>
         <p>I like ICS 414</p>
         <hr />
-        <span className="small">More Information:</span>
-        <p>There can never be too many cherries on an ice cream sundae.
-          Nobody has encountered an explosive daisy and lived to tell the tale.
-        </p>
+        <span className="small">Role:</span>
+        <p className="fw-bold">{ROLE.USER}</p>
+        <hr />
+        <span className="small">Room Number:</span>
+        <p className="fw-bold">Post 303B</p>
+        <hr />
+        <span className="small">Phone Number</span>
+        <p className="fw-bold">(808)123-4567</p>
+        <hr />
+        <span className="small">Office Hours:</span>
+        <p className="fw-bold">Monday 1pm-2pm</p>
       </Col>
     </Card>
     <Row>
