@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
-import * as Prototype from 'prop-types';
 import AddFacultyForm from '../components/AddFacultyForm';
 import FacultyDetail from '../components/FacultyDetail';
 import SearchBar from '../components/SearchBar';
@@ -59,10 +58,6 @@ const Faculty = () => {
       <FacultyDetail show={showDetail} onClose={() => setShowDetail(false)} />
     </Container>
   );
-};
-
-Faculty.prototype = {
-  show: Prototype.bool,
 };
 
 export default Faculty;
