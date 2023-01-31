@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Row, Table, Card } from 'react-bootstrap';
+import { Col, Container, Row, Table, Card, Tab, Tabs } from 'react-bootstrap';
 import { Stuffs } from '../../api/stuff/StuffCollection';
 import StuffItemAdmin from '../components/StuffItemAdmin';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -30,20 +30,37 @@ const ListStuffAdmin = () => {
               <Col className="text-center"><h2>Admin</h2></Col>
             </Card.Header>
             <Card.Body>
-              <div className="scroll">
-                <Table striped bordered hover>
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Owner</th>
-                      <th> </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff} />)}
-                  </tbody>
-                </Table>
-              </div>
+              <Tabs
+                defaultActiveKey="profile"
+                id="fill-tab-example"
+                className="mb-3"
+                fill
+              >
+                <Tab eventKey="home" title="Faculty">
+                  <div className="scroll">
+                    <Table striped bordered hover>
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Owner</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {stuffs.map((stuff) => <StuffItemAdmin key={stuff._id} stuff={stuff} />)}
+                      </tbody>
+                    </Table>
+                  </div>
+                </Tab>
+                <Tab eventKey="profile" title="Rooms">
+                  <h1>h1</h1>
+                </Tab>
+                <Tab eventKey="longer-tab" title="Reservations">
+                  <h1>h1</h1>
+                </Tab>
+                <Tab eventKey="contact" title="Contact" disabled>
+                  <h1>h1</h1>
+                </Tab>
+              </Tabs>
             </Card.Body>
           </Card>
         </Col>
