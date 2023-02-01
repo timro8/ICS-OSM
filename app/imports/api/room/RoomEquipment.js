@@ -96,7 +96,7 @@ class RoomEquipmentCollection extends BaseCollection {
       // get the RoomCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(roomEquipmentPublications.room, function publish() {
+      Meteor.publish(roomEquipmentPublications.roomEquipment, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
           return instance._collection.find({ owner: username });
@@ -105,7 +105,7 @@ class RoomEquipmentCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(roomEquipmentPublications.roomAdmin, function publish() {
+      Meteor.publish(roomEquipmentPublications.roomEquipmentAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
