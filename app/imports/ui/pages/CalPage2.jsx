@@ -10,6 +10,9 @@ const CalPage2 = () => (
       plugins={[timeGridPlugin]}
       initialView="timeGridWeek"
       allDaySlot={false}
+      slotMinTime="07:00:00"
+      slotMaxTime="18:00:00"
+      height="auto"
     />
   </Container>
 );
