@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Image, Modal } from 'react-bootstrap';
+import { Image, Modal } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const FacultyDetail = props => {

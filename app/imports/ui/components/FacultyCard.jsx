@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, Col, Container, Image } from 'react-bootstrap';
+import { Button, Card, Col, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import FacultyDetail from './FacultyDetail';
 
