@@ -31,5 +31,4 @@ export const COMPONENT_IDS = {
   LIST_ROOM_EDIT: 'list-room-edit',
   NAVBAR_LIST_ROOM: 'navbar-list-room',
   NAVBAR_LIST_ROOM_ADMIN: 'navbar-list-room-admin',
-  ROOM_DETAILS: 'room-details',
 };
