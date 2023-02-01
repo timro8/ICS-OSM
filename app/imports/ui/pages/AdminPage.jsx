@@ -1,23 +1,28 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Row, Table, Card, Tab, Tabs } from 'react-bootstrap';
-import { FacultyProfiles } from '../../api/faculty/FacultyCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
-import AdminPageFacultyComponent from '../components/AdminPageFacultyComponent';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import { Stuffs } from '../../api/stuff/StuffCollection';
+import AdminPageFacultyComponent from '../components/AdminPageFacultyComponent';
+import AdminPageRoomsComponent from '../components/AdminPageRoomsComponent';
+import { Rooms } from '../../api/room/RoomCollection';
 
 /* Renders a table containing all of the Faculty documents. Use <AdminPage> to render each row in each tabs. */
 const AdminPage = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { facultys, ready } = useTracker(() => {
+  const { stuffs, rooms, ready } = useTracker(() => {
     // Get access to Faculty documents.
-    const subscription = FacultyProfiles.subscribeFacultyAdmin();
+    const subscription1 = Stuffs.subscribeStuffAdmin();
+    const subscription2 = Rooms.subscribeRoomAdmin();
     // Determine if the subscription is ready
-    const rdy = subscription.ready();
+    const rdy = subscription1.ready() && subscription2.ready();
     // Get the Faculty documents
-    const items = FacultyProfiles.find({}).fetch();
+    const items1 = Stuffs.find({}).fetch();
+    const items2 = Rooms.find({}).fetch();
     return {
-      facultys: items,
+      stuffs: items1,
+      rooms: items2,
       ready: rdy,
     };
   }, []);
@@ -42,17 +47,29 @@ const AdminPage = () => {
                       <thead>
                         <tr>
                           <th>Name</th>
-                          <th>Owner</th>
+                          <th>Email</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {facultys.map((faculty) => <AdminPageFacultyComponent key={faculty._id} faculty={faculty} />)}
+                        {stuffs.map((stuff) => <AdminPageFacultyComponent key={stuff._id} stuff={stuff} />)}
                       </tbody>
                     </Table>
                   </div>
                 </Tab>
                 <Tab eventKey="profile" title="Rooms">
-                  <h1>h1</h1>
+                  <div className="scroll">
+                    <Table striped bordered hover>
+                      <thead>
+                        <tr>
+                          <th>Room Number</th>
+                          <th>Location</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {rooms.map((room) => <AdminPageRoomsComponent key={room._id} room={room} />)}
+                      </tbody>
+                    </Table>
+                  </div>
                 </Tab>
                 <Tab eventKey="longer-tab" title="Reservations">
                   <h1>h1</h1>
