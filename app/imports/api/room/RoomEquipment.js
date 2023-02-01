@@ -117,9 +117,9 @@ class RoomEquipmentCollection extends BaseCollection {
   /**
    * Subscription method for room owned by the current user.
    */
-  subscribeRoom() {
+  subscribeRoomEquipment() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomEquipmentPublications.room);
+      return Meteor.subscribe(roomEquipmentPublications.roomEquipment);
     }
     return null;
   }
@@ -128,9 +128,9 @@ class RoomEquipmentCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeRoomAdmin() {
+  subscribeRoomEquipmentAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomEquipmentPublications.roomAdmin);
+      return Meteor.subscribe(roomEquipmentPublications.roomEquipmentAdmin);
     }
     return null;
   }
