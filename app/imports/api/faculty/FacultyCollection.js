@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
@@ -13,11 +12,11 @@ export const facultyPublications = {
 
 class FacultyCollection extends BaseCollection {
   constructor() {
-    super('Faculties', new SimpleSchema({
+    super('Faculty', new SimpleSchema({
       image: String,
       firstName: String,
       lastName: String,
-      email: String,
+      owner: String,
       bio: String,
       room: String,
       phoneNumber: String,
@@ -30,19 +29,19 @@ class FacultyCollection extends BaseCollection {
    * @param image the picture of user.
    * @param firstName the first name of the user.
    * @param lastName the last name of the user.
-   * @param email the email of the user.
+   * @param owner the owner of the user.
    * @param bio the description of the user.
    * @param room the room location of the user.
    * @param phoneNumber the phone number of the user.
    * @param officeHours the office hour of the user.
    * @return {String} the docID of the new document.
    */
-  define({ image, firstName, lastName, email, bio, room, phoneNumber, officeHours }) {
+  define({ image, firstName, lastName, owner, bio, room, phoneNumber, officeHours }) {
     const docID = this._collection.insert({
       image,
       firstName,
       lastName,
-      email,
+      owner,
       bio,
       room,
       phoneNumber,
@@ -57,13 +56,13 @@ class FacultyCollection extends BaseCollection {
    * @param image the new image (optional).
    * @param firstName the new first name (optional).
    * @param lastName the new last name (optional).
-   * @param email the new email (optional).
+   * @param owner the new owner (optional).
    * @param bio the new bio (optional).
    * @param room the new room (optional).
    * @param phoneNumber the new phone number (optional).
    * @param officeHours the new office hours (optional).
    */
-  update(docID, { image, firstName, lastName, email, bio, room, phoneNumber, officeHours }) {
+  update(docID, { image, firstName, lastName, owner, bio, room, phoneNumber, officeHours }) {
     const updateData = {};
     if (image) {
       updateData.image = image;
@@ -74,8 +73,8 @@ class FacultyCollection extends BaseCollection {
     if (lastName) {
       updateData.lastName = lastName;
     }
-    if (email) {
-      updateData.email = email;
+    if (owner) {
+      updateData.owner = owner;
     }
     if (bio) {
       updateData.bio = bio;
@@ -83,7 +82,7 @@ class FacultyCollection extends BaseCollection {
     if (room) {
       updateData.room = room;
     }
-    if (_.isNumber(phoneNumber)) {
+    if (phoneNumber) {
       updateData.phoneNumber = phoneNumber;
     }
     if (officeHours) {
@@ -172,12 +171,12 @@ class FacultyCollection extends BaseCollection {
     const image = doc.image;
     const firstName = doc.firstName;
     const lastName = doc.lastName;
-    const email = doc.email;
+    const owner = doc.owner;
     const bio = doc.bio;
     const room = doc.room;
     const phoneNumber = doc.phoneNumber;
     const officeHours = doc.officeHours;
-    return { image, firstName, lastName, email, bio, room, phoneNumber, officeHours };
+    return { image, firstName, lastName, owner, bio, room, phoneNumber, officeHours };
   }
 }
 
