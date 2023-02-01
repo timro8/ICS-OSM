@@ -184,4 +184,4 @@ class FacultyCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const FacultyProfiles = new FacultyCollection();
+export const Faculties = new FacultyCollection();
