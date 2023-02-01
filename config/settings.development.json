@@ -32,12 +32,12 @@
   ],
 
   "defaultFacultyData": [
-    { "firstName": "Kyungim", "lastName":  "Baek", "officeHours": "", "bio": "Associate Professor", "email":  "kyungim@hawaii.edu"},
-    { "firstName": "Mahdi", "lastName":  "Belcaid", "officeHours": "", "bio": "Assistant Research", "email":  "mahdi@hawaii.edu"},
-    { "firstName": "Edo", "lastName":  "Biagioni", "officeHours": "", "bio": "Associate Professor", "email":  "esb@hawaii.edu"},
-    { "firstName": "Kim", "lastName":  "Binsted", "officeHours": "", "bio": "Professor", "email":  "binsted@hawaii.edu"},
-    { "firstName": "Henri", "lastName":  "Casanova", "officeHours": "", "bio": "Professor", "email":  "henric@hawaii.edu"},
-    { "firstName": "Martha", "lastName": "Crosby", "officeHours": "", "bio": "Professor", "email": "crosby@hawaii.edu"}
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "Kyungim", "lastName":  "Baek", "email":  "kyungim@hawaii.edu", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"},
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "Mahdi", "lastName":  "Belcaid", "email":  "mahdi@hawaii.edu", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"},
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "Edo", "lastName":  "Biagioni", "email":  "esb@hawaii.edu", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"},
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "Kim", "lastName":  "Binsted", "email":  "binsted@hawaii.edu", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"},
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "Henri", "lastName":  "Casanova", "email":  "henric@hawaii.edu", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"},
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "Martha", "lastName": "Crosby", "email": "crosby@hawaii.edu", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"}
   ],
 
   
