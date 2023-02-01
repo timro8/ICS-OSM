@@ -6,8 +6,8 @@ import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
 export const roomNotesPublications = {
-  roomNote: 'RoomNote',
-  roomNoteAdmin: 'RoomNoteAdmin',
+  roomNotes: 'RoomNotes',
+  roomNotesAdmin: 'RoomNotesAdmin',
 };
 
 class RoomNotesCollection extends BaseCollection {
@@ -59,7 +59,7 @@ class RoomNotesCollection extends BaseCollection {
       // get the RoomCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(roomNotesPublications.room, function publish() {
+      Meteor.publish(roomNotesPublications.roomNotes, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
           return instance._collection.find({ owner: username });
@@ -68,7 +68,7 @@ class RoomNotesCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(roomNotesPublications.roomAdmin, function publish() {
+      Meteor.publish(roomNotesPublications.roomNotesAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -80,9 +80,9 @@ class RoomNotesCollection extends BaseCollection {
   /**
    * Subscription method for room owned by the current user.
    */
-  subscribeRoom() {
+  subscribeRoomNotes() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomNotesPublications.room);
+      return Meteor.subscribe(roomNotesPublications.roomNotes);
     }
     return null;
   }
@@ -91,9 +91,9 @@ class RoomNotesCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeRoomAdmin() {
+  subscribeRoomNotesAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomNotesPublications.roomAdmin);
+      return Meteor.subscribe(roomNotesPublications.roomNotesAdmin);
     }
     return null;
   }
