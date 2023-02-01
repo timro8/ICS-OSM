@@ -5,6 +5,7 @@ export const PAGE_IDS = {
   LANDING: 'landing',
   LIST_STUFF: 'list-stuff',
   LIST_STUFF_ADMIN: 'list-stuff-admin',
+  LIST_FACULTY_ADMIN: 'list-faculty-admin',
   MANAGE_DATABASE: 'manage-database',
   NOT_AUTHORIZED: 'not-authorized',
   NOT_FOUND: 'not-found',
@@ -14,4 +15,5 @@ export const PAGE_IDS = {
   EDIT_ROOM: 'edit-room',
   LIST_ROOM: 'list-room',
   LIST_ROOM_ADMIN: 'list-room-admin',
+  FACULTY: 'faculty',
 };
