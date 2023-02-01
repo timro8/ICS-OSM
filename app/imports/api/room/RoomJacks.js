@@ -76,7 +76,7 @@ class RoomJacksCollection extends BaseCollection {
       // get the RoomCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(roomJacksPublications.room, function publish() {
+      Meteor.publish(roomJacksPublications.roomJacks, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
           return instance._collection.find({ owner: username });
@@ -85,7 +85,7 @@ class RoomJacksCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(roomJacksPublications.roomAdmin, function publish() {
+      Meteor.publish(roomJacksPublications.roomJacksAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -99,7 +99,7 @@ class RoomJacksCollection extends BaseCollection {
    */
   subscribeRoomJacks() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomJacksPublications.room);
+      return Meteor.subscribe(roomJacksPublications.roomJacks);
     }
     return null;
   }
@@ -110,7 +110,7 @@ class RoomJacksCollection extends BaseCollection {
    */
   subscribeRoomJacksAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomJacksPublications.roomAdmin);
+      return Meteor.subscribe(roomJacksPublications.roomJacksAdmin);
     }
     return null;
   }
