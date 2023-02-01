@@ -1,3 +1,3 @@
-[![ci-meteor-application-template-production](https://github.com/ics-software-engineering/meteor-application-template-production/actions/workflows/ci.yml/badge.svg)](https://github.com/ics-software-engineering/meteor-application-template-production/actions/workflows/ci.yml)
+[![ci-osmics](https://github.com/ics414t3/ics-osm/actions/workflows/ci.yml/badge.svg)](https://github.com/ics414t3/ics-osm/actions/workflows/ci.yml/)
 
-For details, please see http://ics-software-engineering.github.io/meteor-application-template-production/
+For details, please see http://ics414t3.github.io
