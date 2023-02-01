@@ -58,6 +58,8 @@ test('Test that admin pages show up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListRoomPage();
+  await listRoomPage.isDisplayed();
   await navBar.gotoListStuffAdminPage();
   await listStuffAdminPage.isDisplayed();
 });
