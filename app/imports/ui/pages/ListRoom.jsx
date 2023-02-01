@@ -31,7 +31,7 @@ const ListRoom = () => {
           <Card>
             <Card.Header style={{ height: '5rem' }} className="py-3"><SearchBar /></Card.Header>
             <Card.Body style={{ height: '30rem' }}>
-              <Carousel interval={null}>
+              <Carousel interval={null} variant="dark">
                 <Carousel.Item>
                   <Carousel.Caption>
                     <h3 className="text-warning">Map of Keller HALL</h3>
