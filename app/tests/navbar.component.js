@@ -51,7 +51,7 @@ class NavBar {
       await t.click('button.navbar-toggler');
     }
     await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
-    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP}`);
+    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP_REQUEST}`);
   }
 
   /* Go to the add stuff page. */
