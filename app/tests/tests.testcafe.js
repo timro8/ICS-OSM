@@ -62,4 +62,6 @@ test('Test that admin pages show up', async () => {
   await listRoomPage.isDisplayed();
   await navBar.gotoListStuffAdminPage();
   await listStuffAdminPage.isDisplayed();
+  await navBar.gotoListRoomAdminPage();
+  await listRoomAdminPage.isDisplayed();
 });
