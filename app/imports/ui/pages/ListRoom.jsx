@@ -1,10 +1,11 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Col, Accordion, Card, Carousel } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Rooms } from '../../api/room/RoomCollection';
-import RoomItem from '../components/RoomItem';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import ListRoomIndexPOSTComponent from '../components/ListRoomIndexPOSTComponent';
+import SearchBar from '../components/SearchBar';
 
 /* Renders a table containing all of the Room documents. Use <RoomItem> to render each row. */
 const ListRoom = () => {
@@ -25,8 +26,56 @@ const ListRoom = () => {
   }, []);
   return (ready ? (
     <Container id={PAGE_IDS.LIST_ROOM} className="py-3">
-      <Row xs={1} md={2} lg={4} className="g-2">
-        {rooms.map((room) => <RoomItem key={room._id} room={room} />)}
+      <Row>
+        <Col>
+          <Card>
+            <Card.Header style={{ height: '5rem' }} className="py-3"><SearchBar /></Card.Header>
+            <Card.Body style={{ height: '30rem' }}>
+              <Carousel interval={null}>
+                <Carousel.Item>
+                  <Carousel.Caption>
+                    <h3 className="text-warning">Map of Keller HALL</h3>
+                  </Carousel.Caption>
+                  <img
+                    style={{ height: '28rem', width: '43rem' }}
+                    src="/images/KELLER.png"
+                    alt="First slide"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <Carousel.Caption>
+                    <h3 className="text-warning">Map of POST</h3>
+                  </Carousel.Caption>
+                  <img
+                    style={{ height: '28rem', width: '43rem' }}
+                    src="/images/POST.png"
+                    alt="Second slide"
+                  />
+                </Carousel.Item>
+              </Carousel>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card style={{ height: '35rem' }}>
+            <Card.Header style={{ height: '3rem' }}>INDEX</Card.Header>
+            <Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>Pacific Ocean Science and Technology 3rd Floor Rooms</Accordion.Header>
+                <Accordion.Body>
+                  <h4>List of Rooms in POST</h4>
+                  {rooms.map((room) => <ListRoomIndexPOSTComponent key={room._id} room={room} />)}
+                </Accordion.Body>
+              </Accordion.Item>
+              <Accordion.Item eventKey="1">
+                <Accordion.Header>Keller Hall</Accordion.Header>
+                <Accordion.Body>
+                  <h4>List of Keller Hall Rooms</h4>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </Card>
+        </Col>
       </Row>
     </Container>
   ) : <LoadingSpinner message="Loading Room" />);
