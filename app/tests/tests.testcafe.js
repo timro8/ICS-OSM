@@ -1,4 +1,4 @@
-import { listStuffAdminPage, /* manageDatabasePage, */ signOutPage, listRoomPage, listRoomAdminPage } from './simple.page';
+import { listStuffAdminPage, /* manageDatabasePage, */ signOutPage, listRoomPage, listRoomAdminPage, facultyPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { signUpPage } from './signup.page';
@@ -64,5 +64,6 @@ test('Test that admin pages show up', async () => {
   await listStuffAdminPage.isDisplayed();
   await navBar.gotoListRoomAdminPage();
   await listRoomAdminPage.isDisplayed();
-  await navBar.goto
+  await navBar.gotoFacultyPage();
+  await facultyPage.isDisplayed();
 });
