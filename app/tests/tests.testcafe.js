@@ -1,4 +1,4 @@
-import { listStuffAdminPage, /* manageDatabasePage, */ signOutPage, listRoomPage } from './simple.page';
+import { listStuffAdminPage, /* manageDatabasePage, */ signOutPage, listRoomPage, listRoomAdminPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { signUpPage } from './signup.page';
