@@ -3,6 +3,7 @@ import { Button, Container, Row } from 'react-bootstrap';
 import AddFacultyForm from '../components/AddFacultyForm';
 import SearchBar from '../components/SearchBar';
 import FacultyCard from '../components/FacultyCard';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 const Faculty = () => {
   // show pop up to add faculty
@@ -10,7 +11,7 @@ const Faculty = () => {
 
   return (
     <Container className="py-3">
-      <Container className="faculty-page">
+      <Container id={PAGE_IDS.FACULTY}>
         { /* Search Bar */ }
         <SearchBar />
 
