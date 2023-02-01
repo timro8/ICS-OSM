@@ -3,6 +3,7 @@ export const PAGE_IDS = {
   ADD_STUFF: 'add-stuff',
   EDIT_STUFF: 'edit-stuff',
   LANDING: 'landing',
+  HOME: 'home',
   LIST_STUFF: 'list-stuff',
   LIST_STUFF_ADMIN: 'list-stuff-admin',
   LIST_FACULTY_ADMIN: 'list-faculty-admin',
