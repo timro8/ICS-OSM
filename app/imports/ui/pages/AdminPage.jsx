@@ -27,10 +27,10 @@ const AdminPage = () => {
     };
   }, []);
   return (ready ? (
-    <Container id={PAGE_IDS.LIST_STUFF_ADMIN} className="py-3">
-      <Row className="justify-content-center">
+    <Container id={PAGE_IDS.LIST_STUFF_ADMIN} className="py-3 text-center justify-content-center">
+      <Row>
         <Col md={7}>
-          <Card>
+          <Card style={{ width: '80rem', height: '37rem' }}>
             <Card.Header>
               <Col className="text-center"><h2>Admin</h2></Col>
             </Card.Header>
