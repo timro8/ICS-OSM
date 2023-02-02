@@ -22,7 +22,7 @@ const MakeProfile = ({ faculty }) => (
         <p>{faculty.owner}</p>
         <hr />
         <span className="small">About Me:</span>
-        <p>{faculty.bio}</p>
+        <p className="fw-bold">{faculty.bio}</p>
         <hr />
         <span className="small">Room Number:</span>
         <p className="fw-bold">{faculty.room}</p>

@@ -20,7 +20,7 @@ import NotAuthorized from '../pages/NotAuthorized';
 import { ROLE } from '../../api/role/Role';
 import SignUpRequest from '../pages/SignUpRequest';
 import Faculty from '../pages/Faculty';
-import FacultyProfile from '../pages/ProfileTemp';
+import FacultyProfile from '../pages/FacultyProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
