@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Row, Table, Card, Tab, Tabs } from 'react-bootstrap';
+import { useNavigate } from 'react-router';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Stuffs } from '../../api/stuff/StuffCollection';
 import AdminPageFacultyComponent from '../components/AdminPageFacultyComponent';
 import AdminPageRoomsComponent from '../components/AdminPageRoomsComponent';
 import { Rooms } from '../../api/room/RoomCollection';
+import { ROLE } from '../../api/role/Role';
 
 /* Renders a table containing all of the Faculty documents. Use <AdminPage> to render each row in each tabs. */
 const AdminPage = () => {
+  const navigate = useNavigate();
+  const isAdmin = () => {
+    const loggedInUser = Meteor.user();
+    if (!Roles.userIsInRole(loggedInUser, ROLE.ADMIN)) {
+      navigate('/notauthorized');
+    }
+  };
+  // uses the isAdmin function the check
+  isAdmin();
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { stuffs, rooms, ready } = useTracker(() => {
     // Get access to Faculty documents.

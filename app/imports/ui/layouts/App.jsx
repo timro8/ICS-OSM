@@ -69,9 +69,9 @@ const AdminProtectedRoute = ({ children }) => {
   if (!isLogged) {
     return <Navigate to="/signin" />;
   }
-  const isAdmin = Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]);
-  console.log('AdminProtectedRoute', isLogged, isAdmin);
-  return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
+  // const isAdmin = Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]);
+  // console.log('AdminProtectedRoute', isLogged, isAdmin);
+  return (isLogged) ? children : <Navigate to="/notauthorized" />;
 };
 
 const OfficeProtectedRoute = ({ children }) => {
