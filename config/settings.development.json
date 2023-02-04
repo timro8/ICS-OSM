@@ -40,6 +40,10 @@
     { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "Martha", "lastName": "Crosby", "email": "crosby@hawaii.edu", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"}
   ],
 
+  "defaultEvents302Data": [
+    { "start": 1678906800000, "end": 1678910400000, "owner": "faculty@foo.com" },
+    { "start": 1678917600000, "end": 1678921200000, "owner": "faculty@foo.com" }
+  ],
   
   "public": {
     "development": true
