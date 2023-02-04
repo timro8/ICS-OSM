@@ -25,10 +25,7 @@ const Calendar = () => {
         customButtons={{
           myCustomButton: {
             text: 'Reserve Room',
-            click: function () {
-              console.log('open modal');
-              handleShow();
-            },
+            click: handleShow,
           },
         }}
       />
