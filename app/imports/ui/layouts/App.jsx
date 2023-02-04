@@ -20,6 +20,8 @@ import NotAuthorized from '../pages/NotAuthorized';
 import { ROLE } from '../../api/role/Role';
 import SignUpRequest from '../pages/SignUpRequest';
 import Faculty from '../pages/Faculty';
+import FacultyProfile from '../pages/FacultyProfile';
+import EditFacultyProfile from '../pages/EditFacultyProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -32,7 +34,9 @@ const App = () => (
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signuprequest" element={<SignUpRequest />} />
         <Route path="/signout" element={<SignOut />} />
+        <Route path="/profile/:_id" element={<FacultyProfile />} />
         <Route path="/faculty" element={<Faculty />} />
+        <Route path="/editfacultyprofile/:_id" element={<EditFacultyProfile />} />
         <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/listroom" element={<ProtectedRoute><ListRoom /></ProtectedRoute>} />

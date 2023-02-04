@@ -1,49 +1,58 @@
-import React, { useState } from 'react';
-import { Button, Card, Col, Container } from 'react-bootstrap';
+import React from 'react';
+import { Card, Col, Container, Image, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import FacultyDetail from './FacultyDetail';
+import { useTracker } from 'meteor/react-meteor-data';
+import { Faculties } from '../../api/faculty/FacultyCollection';
+import { PAGE_IDS } from '../utilities/PageIDs';
+import LoadingSpinner from './LoadingSpinner';
 
-const FacultyCard = props => {
+const MakeFacultyCard = ({ faculty }) => (
+  <Col style={{ marginBottom: '20px' }}>
+    <Card className="w-100" border="info">
+      <Card.Body>
+        <Row>
+          {/* eslint-disable-next-line react/prop-types */}
+          <a style={{ color: 'black', textDecoration: 'none' }} href={`/profile/${faculty._id}`}>
+            <Col className="d-flex justify-content-center">
+              <Image roundedCircle src={faculty.image} width="100px" />
+            </Col>
+            <hr />
+            <Col className="d-flex justify-content-center"><Card.Text>{faculty.firstName} {faculty.lastName}</Card.Text></Col>
+            <Col className="d-flex justify-content-center"><Card.Text>{faculty.room}</Card.Text></Col>
+          </a>
+        </Row>
+      </Card.Body>
+    </Card>
+  </Col>
+);
 
-  const { room, name } = props;
-
-  // show pop up to show faculty detail information
-  const [showDetail, setShowDetail] = useState(false);
-
-  return (
-    <>
-      <Col style={{ marginBottom: '20px' }}>
-        <Card className="w-100" border="info" style={{ width: '18rem' }} onClick={() => setShowDetail(true)}>
-          <Card.Body>
-            <Card.Text>{room}</Card.Text>
-            <Card.Text>{name}</Card.Text>
-            <Container style={{
-              display: 'grid',
-              justifyContent: 'right',
-              gridAutoFlow: 'column',
-              gridColumnGap: '10px',
-            }}
-            >
-              <Button>Edit</Button>
-            </Container>
-          </Card.Body>
-        </Card>
-      </Col>
-
-      { /* pop up for faculty detail */ }
-      <FacultyDetail show={showDetail} onClose={() => setShowDetail(false)} />
-    </>
-  );
+const FacultyCard = () => {
+  const { ready, faculties } = useTracker(() => {
+    const subscription = Faculties.subscribeFaculty();
+    const rdy = subscription.ready();
+    const facultyItems = Faculties.find({}, { sort: { lastName: 1 } }).fetch();
+    return {
+      faculties: facultyItems,
+      ready: rdy,
+    };
+  }, []);
+  return (ready ? (
+    <Container id={PAGE_IDS.PROFILE} className="py-3">
+      <Row>
+        {faculties.map((faculty) => <MakeFacultyCard key={faculty._id} faculty={faculty} />)}
+      </Row>
+    </Container>
+  ) : <LoadingSpinner message="Loading Profile" />);
 };
 
-FacultyCard.propTypes = {
-  room: PropTypes.number,
-  name: PropTypes.string,
-};
-
-FacultyCard.defaultProps = {
-  room: null,
-  name: null,
+MakeFacultyCard.propTypes = {
+  faculty: PropTypes.shape({
+    image: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    owner: PropTypes.string,
+    room: PropTypes.string,
+  }).isRequired,
 };
 
 export default FacultyCard;
