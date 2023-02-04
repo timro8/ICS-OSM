@@ -3,6 +3,7 @@ import { Stuffs } from '../stuff/StuffCollection';
 import { Rooms } from '../room/RoomCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
+import { Events302 } from '../events/Events302Collection';
 
 class MATPClass {
   collections;
@@ -18,6 +19,7 @@ class MATPClass {
       Stuffs,
       UserProfiles,
       Rooms,
+      Events302,
     ];
     /*
      * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -27,6 +29,7 @@ class MATPClass {
       UserProfiles,
       Stuffs,
       Rooms,
+      Events302,
     ];
 
     /*
