@@ -36,7 +36,7 @@ const MakeProfile = ({ faculty }) => (
     </Card>
     <Row>
       <Col className="d-flex justify-content-center py-3">
-        <Link to="/edit-profile" className="btn btn-primary" id="edit-profile-btn">Edit Profile</Link>
+        <Link to="/editfacultyprofile" className="btn btn-primary">Edit Profile</Link>
       </Col>
     </Row>
   </Container>
