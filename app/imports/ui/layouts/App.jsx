@@ -36,7 +36,7 @@ const App = () => (
         <Route path="/signout" element={<SignOut />} />
         <Route path="/profile/:_id" element={<FacultyProfile />} />
         <Route path="/faculty" element={<Faculty />} />
-        <Route path="/editfacultyprofile" element={<EditFacultyProfile />} />
+        <Route path="/editfacultyprofile/:_id" element={<EditFacultyProfile />} />
         <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
         <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
         <Route path="/listroom" element={<ProtectedRoute><ListRoom /></ProtectedRoute>} />

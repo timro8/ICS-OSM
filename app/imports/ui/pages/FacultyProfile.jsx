@@ -36,7 +36,8 @@ const MakeProfile = ({ faculty }) => (
     </Card>
     <Row>
       <Col className="d-flex justify-content-center py-3">
-        <Link to="/editfacultyprofile" className="btn btn-primary">Edit Profile</Link>
+        {/* eslint-disable-next-line react/prop-types */}
+        <Link to={`/editfacultyprofile/${faculty._id}`} className="btn btn-primary">Edit Profile</Link>
       </Col>
     </Row>
   </Container>
