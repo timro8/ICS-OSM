@@ -17,6 +17,11 @@ const Calendar = ({ events }) => {
   //   }
   // ))
   console.log('events in calendar', events);
+  console.log(events.map(event => ({
+    title: event.owner,
+    start: event.start,
+    end: event.end,
+  })));
   return (
     <div className="w-100">
       <h2>Conference Room 302</h2>
@@ -37,18 +42,11 @@ const Calendar = ({ events }) => {
             click: handleShow,
           },
         }}
-        events={[
-          {
-            id: 'a',
-            title: 'test',
-            start: '2023-02-04',
-          },
-          {
-            title: 'test2',
-            start: '2023-02-04T10:00',
-            end: '2023-02-04T16:00',
-          },
-        ]}
+        events={events.map(event => ({
+          title: event.owner,
+          start: event.start,
+          end: event.end,
+        }))}
       />
       <RoomResModal handleClose={handleClose} show={show} />
     </div>
@@ -57,8 +55,8 @@ const Calendar = ({ events }) => {
 
 Calendar.propTypes = {
   events: PropTypes.arrayOf(PropTypes.shape({
-    start: PropTypes.number,
-    end: PropTypes.number,
+    start: PropTypes.string,
+    end: PropTypes.string,
     owner: PropTypes.string,
   })).isRequired,
 };

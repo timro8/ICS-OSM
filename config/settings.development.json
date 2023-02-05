@@ -41,8 +41,8 @@
   ],
 
   "defaultEvents302Data": [
-    { "start": 1678906800000, "end": 1678910400000, "owner": "faculty@foo.com" },
-    { "start": 1678917600000, "end": 1678921200000, "owner": "faculty@foo.com" }
+    { "start": "2023-02-04T10:00", "end": "2023-02-04T12:00", "owner": "faculty@foo.com" },
+    { "start": "2023-02-04T14:00", "end": "2023-02-04T17:00", "owner": "faculty@foo.com" }
   ],
   
   "public": {

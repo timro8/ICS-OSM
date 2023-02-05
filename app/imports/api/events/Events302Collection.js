@@ -13,8 +13,8 @@ export const Events302Publications = {
 class Events302Collection extends BaseCollection {
   constructor() {
     super('Events302', new SimpleSchema({
-      start: Number,
-      end: Number,
+      start: String,
+      end: String,
       owner: String,
     }));
   }
