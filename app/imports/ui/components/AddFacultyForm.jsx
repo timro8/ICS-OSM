@@ -9,6 +9,7 @@ import { AutoForm, ErrorsField, SelectField, TextField } from 'uniforms-bootstra
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { Faculties } from '../../api/faculty/FacultyCollection';
 import { UserProfiles } from '../../api/user/UserProfileCollection';
 
 const AddFacultyForm = props => {
@@ -42,7 +43,7 @@ const AddFacultyForm = props => {
     room: {
       type: String,
       allowedValues: roomNumbers,
-      defaultValue: '301',
+      defaultValue: roomNumbers[0],
     },
     phoneNumber: { type: String, optional: true },
     officeHours: String,
@@ -58,18 +59,35 @@ const AddFacultyForm = props => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { firstName, lastName, email, password } = data;
-    // const collectionName = FacultyProfiles.getCollectionName();
+    const { image, firstName, lastName, email, password, room, bio, phoneNumber, officeHours } = data;
     const collectionName = UserProfiles.getCollectionName();
     const definitionData = { firstName, lastName, email, password };
+    const facultyCollectionName = Faculties.getCollectionName();
+    const facultyDefinitionData = { image, firstName, lastName, email, room, bio, phoneNumber, officeHours };
+    let done = 0; // equal two when it insert successfully in both collection
     defineMethod.callPromise({ collectionName, definitionData })
-      .catch(error => swal('Error', error.message, 'error'))
+      .catch(error => {
+        console.log(error.message);
+        done -= 1;
+      })
       .then(() => {
-        swal('Success', 'Faculty added successfully', 'success');
-        formRef.reset();
+        done += 1;
       });
+    defineMethod.callPromise({ facultyCollectionName, facultyDefinitionData })
+      .catch(error => {
+        console.log(error.message);
+        done -= 1;
+      })
+      .then(() => {
+        done += 1;
+      });
+    if (done === 2) {
+      swal('Success', 'Faculty added successfully', 'success');
+      formRef.reset();
+    } else {
+      swal('Error', 'Cannot add faculty, please try again', 'error');
+    }
   };
-
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
 
@@ -87,7 +105,7 @@ const AddFacultyForm = props => {
       </Modal.Header>
       <Modal.Body>
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-          <TextField name="firstName" checked="false" />
+          <TextField name="firstName" />
           <TextField name="lastName" />
           <SelectField name="room" />
           <SelectField name="role" />

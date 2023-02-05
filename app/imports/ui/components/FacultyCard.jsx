@@ -28,7 +28,7 @@ const MakeFacultyCard = ({ faculty }) => (
 
 const FacultyCard = () => {
   const { ready, faculties } = useTracker(() => {
-    const subscription = Faculties.subscribeFaculty();
+    const subscription = Faculties.subscribeFacultyAdmin();
     const rdy = subscription.ready();
     const facultyItems = Faculties.find({}, { sort: { lastName: 1 } }).fetch();
     return {
@@ -38,7 +38,7 @@ const FacultyCard = () => {
   }, []);
   return (ready ? (
     <Container id={PAGE_IDS.PROFILE} className="py-3">
-      <Row>
+      <Row xs="1" md="2" xl="4">
         {faculties.map((faculty) => <MakeFacultyCard key={faculty._id} faculty={faculty} />)}
       </Row>
     </Container>
