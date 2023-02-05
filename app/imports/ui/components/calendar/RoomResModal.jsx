@@ -17,7 +17,9 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 const RoomResModal = ({ show, handleClose, events }) => {
   const submit = (data, formRef) => {
-    const { start, end } = data;
+    // const { start, end } = data;
+    const start = `${data.start.toISOString().split('.')[0]}`;
+    const end = `${data.end.toISOString().split('.')[0]}`;
     const owner = Meteor.user().username;
     const collectionName = Events302.getCollectionName();
     const definitionData = { owner, start, end };
