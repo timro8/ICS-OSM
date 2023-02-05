@@ -5,7 +5,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import Calendar from '../components/calendar/Calendar';
 import { Events302 } from '../../api/events/Events302Collection';
 
-const CalPage2 = () => {
+const ReserveRoom = () => {
   const { ready, events302 } = useTracker(() => {
     const subscription = Events302.subscribeEvents302();
     const rdy = subscription.ready();
@@ -23,4 +23,4 @@ const CalPage2 = () => {
   );
 };
 
-export default CalPage2;
+export default ReserveRoom;
