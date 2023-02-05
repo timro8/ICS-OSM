@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Accordion, Card, Carousel } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -9,6 +9,7 @@ import SearchBar from '../components/SearchBar';
 
 /* Renders a table containing all of the Room documents. Use <RoomItem> to render each row. */
 const ListRoom = () => {
+  const [roomList, setList] = useState([]);
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, rooms } = useTracker(() => {
     // Note that this subscription will get cleaned up
@@ -19,17 +20,25 @@ const ListRoom = () => {
     const rdy = subscription.ready();
     // Get the Room documents
     const roomItems = Rooms.find({}, { sort: { roomNumber: 1 } }).fetch();
+    setList(roomItems);
     return {
       rooms: roomItems,
       ready: rdy,
     };
   }, []);
+
+  // filter room number and location from search bar
+  const handleSearch = (search) => {
+    const searchInput = search.trim();
+    setList(rooms.filter(room => (room.roomNumber + room.location).toLowerCase().includes(searchInput.toLowerCase())));
+  };
+
   return (ready ? (
     <Container id={PAGE_IDS.LIST_ROOM} className="py-3">
       <Row>
         <Col>
           <Card>
-            <Card.Header style={{ height: '5rem' }} className="py-3"><SearchBar /></Card.Header>
+            <Card.Header style={{ height: '5rem' }} className="py-3"><SearchBar handleSearch={handleSearch} /></Card.Header>
             <Card.Body style={{ height: '30rem' }}>
               <Carousel interval={null} variant="dark">
                 <Carousel.Item>
@@ -64,7 +73,7 @@ const ListRoom = () => {
                 <Accordion.Header>Pacific Ocean Science and Technology 3rd Floor Rooms</Accordion.Header>
                 <Accordion.Body>
                   <h4>List of Rooms in POST</h4>
-                  {rooms.map((room) => <ListRoomIndexPOSTComponent key={room._id} room={room} />)}
+                  {roomList.map((room) => <ListRoomIndexPOSTComponent key={room._id} room={room} />)}
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
