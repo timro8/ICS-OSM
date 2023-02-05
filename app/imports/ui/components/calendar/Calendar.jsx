@@ -1,35 +1,28 @@
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import React, { useState } from 'react';
-import { useTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import RoomResModal from './RoomResModal';
-import { Events302 } from '../../../api/events/Events302Collection';
 
 const Calendar = ({ events }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  const { ready, events302 } = useTracker(() => {
-    const subscription = Events302.subscribeEvents302();
-    const rdy = subscription.ready();
-    const allEvents = Events302.find({}, {}).fetch();
-    console.log('allEvents', allEvents);
-    return {
-      events302: allEvents,
-      ready: rdy,
-    };
-  });
-  console.log(events);
+  // events.map((event) => (
+  //   {
+  //     title: event.owner,
+  //     start: new Date(`${event.start}`),
+  //     end: new Date(`${event.end}`),
+  //   }
+  // ))
+  console.log('events in calendar', events);
   return (
     <div className="w-100">
-      { ready ? console.log('events', events302) : console.log('is ready', ready) }
       <h2>Conference Room 302</h2>
       <FullCalendar
         plugins={[timeGridPlugin]}
         initialView="timeGridWeek"
-        allDaySlot={false}
         slotMinTime="07:00:00"
         slotMaxTime="18:00:00"
         height="auto"
@@ -44,6 +37,18 @@ const Calendar = ({ events }) => {
             click: handleShow,
           },
         }}
+        events={[
+          {
+            id: 'a',
+            title: 'test',
+            start: '2023-02-04',
+          },
+          {
+            title: 'test2',
+            start: '2023-02-04T10:00',
+            end: '2023-02-04T16:00',
+          },
+        ]}
       />
       <RoomResModal handleClose={handleClose} show={show} />
     </div>
