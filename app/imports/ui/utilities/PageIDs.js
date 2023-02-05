@@ -18,4 +18,5 @@ export const PAGE_IDS = {
   LIST_ROOM_ADMIN: 'list-room-admin',
   FACULTY: 'faculty',
   EDIT_FACULTY_PROFILE: 'edit-faculty-profile',
+  ROOM_DETAILS: 'room-details',
 };

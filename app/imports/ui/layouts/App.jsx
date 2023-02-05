@@ -22,6 +22,7 @@ import SignUpRequest from '../pages/SignUpRequest';
 import Faculty from '../pages/Faculty';
 import FacultyProfile from '../pages/FacultyProfile';
 import EditFacultyProfile from '../pages/EditFacultyProfile';
+import RoomDetails from '../pages/RoomDetails';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => (
@@ -44,6 +45,7 @@ const App = () => (
         <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
         <Route path="/admin" element={<AdminProtectedRoute><AdminPage /></AdminProtectedRoute>} />
         <Route path="/adminroom" element={<AdminProtectedRoute><ListRoomAdmin /></AdminProtectedRoute>} />
+        <Route path="/roomdetails/:_id" element={<ProtectedRoute><RoomDetails /></ProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

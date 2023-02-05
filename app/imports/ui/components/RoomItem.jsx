@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Card, Image, Col } from 'react-bootstrap';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a single card in the List Room table. See pages/ListRoom.jsx. */
 const RoomItem = ({ room }) => (
@@ -20,6 +22,9 @@ const RoomItem = ({ room }) => (
           <strong>Room capacity:</strong> {room.capacity}
         </Card.Text>
       </Card.Body>
+      <Card.Footer>
+        <Link className={COMPONENT_IDS.ROOM_DETAILS} to={`/roomdetails/${room._id}`}>Details</Link>
+      </Card.Footer>
     </Card>
   </Col>
 );
