@@ -1,5 +1,4 @@
 import React from 'react';
-// import dayGridPlugin from '@fullcalendar/daygrid';
 import { Container } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import Calendar from '../components/calendar/Calendar';

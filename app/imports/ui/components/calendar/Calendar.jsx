@@ -48,7 +48,7 @@ const Calendar = ({ events }) => {
           end: event.end,
         }))}
       />
-      <RoomResModal handleClose={handleClose} show={show} />
+      <RoomResModal handleClose={handleClose} show={show} events={events}/>
     </div>
   );
 };
