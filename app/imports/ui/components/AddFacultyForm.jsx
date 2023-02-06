@@ -11,6 +11,7 @@ import LoadingSpinner from './LoadingSpinner';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { Faculties } from '../../api/faculty/FacultyCollection';
 import { UserProfiles } from '../../api/user/UserProfileCollection';
+import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 
 const AddFacultyForm = props => {
 
@@ -33,60 +34,68 @@ const AddFacultyForm = props => {
   rooms.map((roomNum) => roomNumbers.push(roomNum.roomNumber));
 
   // Create a schema to specify the structure of the data to appear in the form.
+  // const formSchema = new SimpleSchema({
+  //   image: { type: String, optional: true },
+  //   firstName: String,
+  //   lastName: String,
+  //   email: String,
+  //   password: String,
+  //   bio: String,
+  //   room: {
+  //     type: String,
+  //     allowedValues: roomNumbers,
+  //     defaultValue: roomNumbers[0],
+  //   },
+  //   phoneNumber: { type: String, optional: true },
+  //   officeHours: String,
+  //   role: {
+  //     type: String,
+  //     allowedValues: ['PROFESSOR', 'TA', 'RA', 'N/A'],
+  //     defaultValue: 'N/A',
+  //   },
+  //   userId: { type: String, optional: true },
+  // });
   const formSchema = new SimpleSchema({
-    image: { type: String, optional: true },
-    firstName: String,
-    lastName: String,
     email: String,
     password: String,
-    bio: String,
-    room: {
-      type: String,
-      allowedValues: roomNumbers,
-      defaultValue: roomNumbers[0],
-    },
-    phoneNumber: { type: String, optional: true },
-    officeHours: String,
-    role: {
-      type: String,
-      allowedValues: ['PROFESSOR', 'TA', 'RA', 'N/A'],
-      defaultValue: 'N/A',
-    },
-    userId: { type: String, optional: true },
+    firstName: String,
+    lastName: String,
   });
 
   const bridge = new SimpleSchema2Bridge(formSchema);
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { image, firstName, lastName, email, password, room, bio, phoneNumber, officeHours } = data;
-    const collectionName = UserProfiles.getCollectionName();
-    const definitionData = { firstName, lastName, email, password };
-    const facultyCollectionName = Faculties.getCollectionName();
-    const facultyDefinitionData = { image, firstName, lastName, email, room, bio, phoneNumber, officeHours };
-    let done = 0; // equal two when it insert successfully in both collection
+    // const { image, firstName, lastName, email, password, room, bio, phoneNumber, officeHours } = data;
+    // const { email, password, firstName, lastName } = data;
+    const collectionName = FacultyProfiles.getCollectionName();
+    console.log('faculty profiles name', collectionName);
+    const definitionData = data;
+    // const facultyCollectionName = Faculties.getCollectionName();
+    // const facultyDefinitionData = { image, firstName, lastName, email, room, bio, phoneNumber, officeHours };
+    // let done = 0; // equal two when it insert successfully in both collection
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => {
         console.log(error.message);
-        done -= 1;
       })
       .then(() => {
-        done += 1;
+        console.log('user has been signed up');
+        swal('Success', 'user signed up', 'success');
       });
-    defineMethod.callPromise({ facultyCollectionName, facultyDefinitionData })
-      .catch(error => {
-        console.log(error.message);
-        done -= 1;
-      })
-      .then(() => {
-        done += 1;
-      });
-    if (done === 2) {
-      swal('Success', 'Faculty added successfully', 'success');
-      formRef.reset();
-    } else {
-      swal('Error', 'Cannot add faculty, please try again', 'error');
-    }
+    // defineMethod.callPromise({ facultyCollectionName, facultyDefinitionData })
+    //   .catch(error => {
+    //     console.log(error.message);
+    //     done -= 1;
+    //   })
+    //   .then(() => {
+    //     done += 1;
+    //   });
+    // if (done === 2) {
+    //   swal('Success', 'Faculty added successfully', 'success');
+    //   formRef.reset();
+    // } else {
+    //   swal('Error', 'Cannot add faculty, please try again', 'error');
+    // }
   };
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
@@ -107,13 +116,13 @@ const AddFacultyForm = props => {
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <TextField name="firstName" />
           <TextField name="lastName" />
-          <SelectField name="room" />
-          <SelectField name="role" />
+          {/*<SelectField name="room" />*/}
+          {/*<SelectField name="role" />*/}
           <TextField name="email" />
           <TextField name="password" />
-          <TextField name="bio" />
-          <TextField name="phoneNumber" label="Phone Number (optional)" />
-          <TextField name="officeHours" label="Office Hours" />
+          {/*<TextField name="bio" />*/}
+          {/*<TextField name="phoneNumber" label="Phone Number (optional)" />*/}
+          {/*<TextField name="officeHours" label="Office Hours" />*/}
           <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column', gridColumnGap: '10px' }}>
             <Button onClick={onClose} variant="danger">Cancel</Button>
             <Button type="submit" variant="success">Add</Button>
