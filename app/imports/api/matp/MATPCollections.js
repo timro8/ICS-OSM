@@ -4,6 +4,7 @@ import { Rooms } from '../room/RoomCollection';
 import { Faculties } from '../faculty/FacultyCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
+import { Events302 } from '../events/Events302Collection';
 
 class MATPClass {
   collections;
@@ -20,6 +21,7 @@ class MATPClass {
       UserProfiles,
       Rooms,
       Faculties,
+      Events302,
     ];
     /*
      * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -30,6 +32,7 @@ class MATPClass {
       Stuffs,
       Rooms,
       Faculties,
+      Events302,
     ];
 
     /*

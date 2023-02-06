@@ -18,6 +18,7 @@ import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
 import { ROLE } from '../../api/role/Role';
+import ReserveRoom from '../pages/ReserveRoom';
 import SignUpRequest from '../pages/SignUpRequest';
 import Faculty from '../pages/Faculty';
 import FacultyProfile from '../pages/FacultyProfile';
@@ -46,6 +47,7 @@ const App = () => (
         <Route path="/adminroom" element={<AdminProtectedRoute><ListRoomAdmin /></AdminProtectedRoute>} />
         <Route path="/notauthorized" element={<NotAuthorized />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/cal" element={<ReserveRoom />} />
       </Routes>
       <Footer />
     </div>
