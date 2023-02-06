@@ -18,18 +18,13 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 const RoomResModal = ({ show, handleClose, events }) => {
   function isOverlapping(allEvents, start, end) {
     for (let i = 0; i < allEvents.length; i++) {
-      const existingEventStart = new Date(allEvents[i].start).getTime();
-      const existingEventEnd = new Date(allEvents[i].end).getTime();
-      const newEventStart = start.getTime();
-      const newEventEnd = end.getTime();
-      console.log('start', start);
-      console.log('existingEventStart', new Date(allEvents[i].start));
-      console.log('start', newEventStart, 'existingEventStart', existingEventStart);
-      console.log('start >= existingEventStart', newEventStart >= existingEventStart);
-      console.log('start < existingEventEnd', newEventStart < existingEventEnd);
-      if (newEventStart <= existingEventStart && newEventEnd >= existingEventEnd) return true;
-      if (newEventStart >= existingEventStart && newEventStart < existingEventEnd) return true;
-      if (newEventEnd > existingEventStart && newEventEnd <= existingEventEnd) return true;
+      // converting existing string dates to date object
+      const existingEventStart = new Date(allEvents[i].start);
+      const existingEventEnd = new Date(allEvents[i].end);
+      // conditionals that check for event overlap
+      if (start <= existingEventStart && end >= existingEventEnd) return true;
+      if (start >= existingEventStart && end < existingEventEnd) return true;
+      if (start > existingEventStart && end <= existingEventEnd) return true;
     }
     return false;
   }
@@ -47,20 +42,18 @@ const RoomResModal = ({ show, handleClose, events }) => {
     const end = `${data.end.toISOString().split('.')[0]}`;
     // check if it overlaps
     const overlaps = isOverlapping(events, new Date(start), new Date(end));
-    console.log('is overlapping', overlaps);
     if (overlaps === true) {
-      console.log('is overlapping');
       return swal('Error', 'Invalid start and end times', 'error');
     }
     const owner = Meteor.user().username;
     const collectionName = Events302.getCollectionName();
     const definitionData = { owner, start, end };
-    // defineMethod.callPromise({ collectionName, definitionData })
-    //   .catch(error => swal('Error', error.message, 'error'))
-    //   .then(() => {
-    //     swal('Success', 'Added event', 'success');
-    //     // formRef.reset();
-    //   });
+    defineMethod.callPromise({ collectionName, definitionData })
+      .catch(error => swal('Error', error.message, 'error'))
+      .then(() => {
+        swal('Success', 'Added event', 'success');
+        formRef.reset();
+      });
   };
 
   let fRef = null;
