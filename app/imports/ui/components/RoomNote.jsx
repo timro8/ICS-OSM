@@ -7,6 +7,7 @@ const RoomNote = ({ note }) => (
   <ListGroup.Item>
     <p className="fw-lighter">{note.createdAt.toLocaleDateString('en-US')}</p>
     <p>{note.note}</p>
+    <p className="fw-lighter">{note.owner}</p>
   </ListGroup.Item>
 );
 

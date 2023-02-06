@@ -6,6 +6,7 @@ import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 import { Events302 } from '../events/Events302Collection';
 import { RoomNotes } from '../room/RoomNotes';
+import { RoomJacks } from '../room/RoomJacks';
 
 class MATPClass {
   collections;
@@ -24,6 +25,7 @@ class MATPClass {
       Faculties,
       Events302,
       RoomNotes,
+      RoomJacks,
 
     ];
     /*
@@ -37,6 +39,7 @@ class MATPClass {
       Faculties,
       Events302,
       RoomNotes,
+      RoomJacks,
     ];
 
     /*
