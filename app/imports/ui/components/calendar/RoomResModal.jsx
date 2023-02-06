@@ -17,11 +17,16 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 const RoomResModal = ({ show, handleClose, events }) => {
   function isOverlapping(allEvents, start, end) {
+    // get date without time, and add T07:00 for 7 am
+    const startLimit = `${start.toISOString().split('T')[0]}T07:00`;
+    // limit is 5pm
+    const endLimit = `${end.toISOString().split('T')[0]}T17:00`;
     for (let i = 0; i < allEvents.length; i++) {
       // converting existing string dates to date object
       const existingEventStart = new Date(allEvents[i].start);
       const existingEventEnd = new Date(allEvents[i].end);
       // conditionals that check for event overlap
+      if (start < new Date(startLimit) || end > new Date(endLimit)) return true;
       if (start <= existingEventStart && end >= existingEventEnd) return true;
       if (start >= existingEventStart && end < existingEventEnd) return true;
       if (start > existingEventStart && end <= existingEventEnd) return true;
@@ -36,6 +41,7 @@ const RoomResModal = ({ show, handleClose, events }) => {
 
     return previous;
   }
+  // eslint-disable-next-line consistent-return
   const submit = (data, formRef) => {
     // convert dates into ISO format since JSON doesn't support date objects
     const start = `${data.start.toISOString().split('.')[0]}`;

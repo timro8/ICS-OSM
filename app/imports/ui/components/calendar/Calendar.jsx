@@ -9,13 +9,6 @@ const Calendar = ({ events }) => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  // events.map((event) => (
-  //   {
-  //     title: event.owner,
-  //     start: new Date(`${event.start}`),
-  //     end: new Date(`${event.end}`),
-  //   }
-  // ))
   console.log('events in calendar', events);
   console.log(events.map(event => ({
     title: event.owner,
@@ -27,6 +20,7 @@ const Calendar = ({ events }) => {
       <h2>Conference Room 302</h2>
       <FullCalendar
         plugins={[timeGridPlugin]}
+        allDaySlot={false}
         initialView="timeGridWeek"
         slotMinTime="07:00:00"
         slotMaxTime="18:00:00"
@@ -48,7 +42,7 @@ const Calendar = ({ events }) => {
           end: event.end,
         }))}
       />
-      <RoomResModal handleClose={handleClose} show={show} events={events}/>
+      <RoomResModal handleClose={handleClose} show={show} events={events} />
     </div>
   );
 };
