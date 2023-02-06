@@ -16,19 +16,51 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 const RoomResModal = ({ show, handleClose, events }) => {
+  function isOverlapping(allEvents, start, end) {
+    for (let i = 0; i < allEvents.length; i++) {
+      const existingEventStart = new Date(allEvents[i].start).getTime();
+      const existingEventEnd = new Date(allEvents[i].end).getTime();
+      const newEventStart = start.getTime();
+      const newEventEnd = end.getTime();
+      console.log('start', start);
+      console.log('existingEventStart', new Date(allEvents[i].start));
+      console.log('start', newEventStart, 'existingEventStart', existingEventStart);
+      console.log('start >= existingEventStart', newEventStart >= existingEventStart);
+      console.log('start < existingEventEnd', newEventStart < existingEventEnd);
+      if (newEventStart <= existingEventStart && newEventEnd >= existingEventEnd) return true;
+      if (newEventStart >= existingEventStart && newEventStart < existingEventEnd) return true;
+      if (newEventEnd > existingEventStart && newEventEnd <= existingEventEnd) return true;
+    }
+    return false;
+  }
+
+  /* From: https://bobbyhadz.com/blog/javascript-get-previous-day */
+  function getPreviousDay(date = new Date()) {
+    const previous = new Date(date.getTime());
+    previous.setDate(date.getDate() - 1);
+
+    return previous;
+  }
   const submit = (data, formRef) => {
-    // const { start, end } = data;
+    // convert dates into ISO format since JSON doesn't support date objects
     const start = `${data.start.toISOString().split('.')[0]}`;
     const end = `${data.end.toISOString().split('.')[0]}`;
+    // check if it overlaps
+    const overlaps = isOverlapping(events, new Date(start), new Date(end));
+    console.log('is overlapping', overlaps);
+    if (overlaps === true) {
+      console.log('is overlapping');
+      return swal('Error', 'Invalid start and end times', 'error');
+    }
     const owner = Meteor.user().username;
     const collectionName = Events302.getCollectionName();
     const definitionData = { owner, start, end };
-    defineMethod.callPromise({ collectionName, definitionData })
-      .catch(error => swal('Error', error.message, 'error'))
-      .then(() => {
-        swal('Success', 'Added event', 'success');
-        formRef.reset();
-      });
+    // defineMethod.callPromise({ collectionName, definitionData })
+    //   .catch(error => swal('Error', error.message, 'error'))
+    //   .then(() => {
+    //     swal('Success', 'Added event', 'success');
+    //     // formRef.reset();
+    //   });
   };
 
   let fRef = null;
@@ -39,14 +71,13 @@ const RoomResModal = ({ show, handleClose, events }) => {
       </Modal.Header>
       <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
         <Modal.Body>
-          <DateField name="start" />
-          <DateField name="end" />
+          <DateField name="start" min={getPreviousDay()} />
+          <DateField name="end" min={getPreviousDay()} />
         </Modal.Body>
         <Modal.Footer>
           <Button
             variant="danger"
             onClick={() => {
-              console.log('closed');
               handleClose();
             }}
           >
