@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
-import { _ } from 'meteor/underscore';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
@@ -13,11 +12,11 @@ export const facultyPublications = {
 
 class FacultyCollection extends BaseCollection {
   constructor() {
-    super('Faculties', new SimpleSchema({
+    super('Faculty', new SimpleSchema({
       image: String,
       firstName: String,
       lastName: String,
-      email: String,
+      owner: String,
       bio: String,
       room: String,
       phoneNumber: String,
@@ -30,40 +29,40 @@ class FacultyCollection extends BaseCollection {
    * @param image the picture of user.
    * @param firstName the first name of the user.
    * @param lastName the last name of the user.
-   * @param email the email of the user.
+   * @param owner the owner of the user.
    * @param bio the description of the user.
    * @param room the room location of the user.
    * @param phoneNumber the phone number of the user.
    * @param officeHours the office hour of the user.
-   * @return {String} the docID of the new document.
+   * @return {String} the facID of the new document.
    */
-  define({ image, firstName, lastName, email, bio, room, phoneNumber, officeHours }) {
-    const docID = this._collection.insert({
+  define({ image, firstName, lastName, owner, bio, room, phoneNumber, officeHours }) {
+    const facID = this._collection.insert({
       image,
       firstName,
       lastName,
-      email,
+      owner,
       bio,
       room,
       phoneNumber,
       officeHours,
     });
-    return docID;
+    return facID;
   }
 
   /**
    * Updates the given document.
-   * @param docID the id of the document to update.
+   * @param facID the id of the document to update.
    * @param image the new image (optional).
    * @param firstName the new first name (optional).
    * @param lastName the new last name (optional).
-   * @param email the new email (optional).
+   * @param owner the new owner (optional).
    * @param bio the new bio (optional).
    * @param room the new room (optional).
    * @param phoneNumber the new phone number (optional).
    * @param officeHours the new office hours (optional).
    */
-  update(docID, { image, firstName, lastName, email, bio, room, phoneNumber, officeHours }) {
+  update(facID, { image, firstName, lastName, bio, room, phoneNumber, officeHours }) {
     const updateData = {};
     if (image) {
       updateData.image = image;
@@ -74,27 +73,24 @@ class FacultyCollection extends BaseCollection {
     if (lastName) {
       updateData.lastName = lastName;
     }
-    if (email) {
-      updateData.email = email;
-    }
     if (bio) {
       updateData.bio = bio;
     }
     if (room) {
       updateData.room = room;
     }
-    if (_.isNumber(phoneNumber)) {
+    if (phoneNumber) {
       updateData.phoneNumber = phoneNumber;
     }
     if (officeHours) {
       updateData.officeHours = officeHours;
     }
-    this._collection.update(docID, { $set: updateData });
+    this._collection.update(facID, { $set: updateData });
   }
 
   /**
-   * A stricter form of remove that throws an error if the document or docID could not be found in this collection.
-   * @param { String | Object } name A document or docID in this collection.
+   * A stricter form of remove that throws an error if the document or facID could not be found in this collection.
+   * @param { String | Object } name A document or facID in this collection.
    * @returns true
    */
   removeIt(name) {
@@ -163,25 +159,25 @@ class FacultyCollection extends BaseCollection {
   }
 
   /**
-   * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
-   * @param docID
+   * Returns an object representing the definition of facID in a format appropriate to the restoreOne or define function.
+   * @param facID
    * @return {{owner: (*|number), condition: *, quantity: *, name}}
    */
-  dumpOne(docID) {
-    const doc = this.findDoc(docID);
+  dumpOne(facID) {
+    const doc = this.findDoc(facID);
     const image = doc.image;
     const firstName = doc.firstName;
     const lastName = doc.lastName;
-    const email = doc.email;
+    const owner = doc.owner;
     const bio = doc.bio;
     const room = doc.room;
     const phoneNumber = doc.phoneNumber;
     const officeHours = doc.officeHours;
-    return { image, firstName, lastName, email, bio, room, phoneNumber, officeHours };
+    return { image, firstName, lastName, owner, bio, room, phoneNumber, officeHours };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const FacultyProfiles = new FacultyCollection();
+export const Faculties = new FacultyCollection();

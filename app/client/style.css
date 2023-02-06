@@ -59,6 +59,14 @@ body {
   padding-bottom: 20px;
 }
 
+/* Profile Page */
+#cardProfile{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* End Profile Page */
+
 .faculty-page {
   margin: 0 5em 0 5em;
 }

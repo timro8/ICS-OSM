@@ -5,25 +5,17 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const roomEquipmentPublications = {
-  roomEquipment: 'RoomEquipment',
-  roomEquipmentAdmin: 'RoomEquipmentAdmin',
+export const roomJacksPublications = {
+  roomJacks: 'RoomJacks',
+  roomJacksAdmin: 'RoomJacksAdmin',
 };
 
-class RoomEquipmentCollection extends BaseCollection {
+class RoomJacksCollection extends BaseCollection {
   constructor() {
-    super('RoomEquipment', new SimpleSchema({
+    super('RoomJacks', new SimpleSchema({
       roomId: String,
+      jackNumber: String,
       description: String,
-      quantity: Number,
-      serialNumber: {
-        type: String,
-        optional: true,
-      },
-      assetTag: {
-        type: String,
-        optional: true,
-      },
       owner: String,
     }));
   }
@@ -31,20 +23,16 @@ class RoomEquipmentCollection extends BaseCollection {
   /**
    * Defines a new Room item.
    * @param roomId the Id of the room
-   * @param description the description of the equipment.
-   * @param quantity the quantity of the equipment.
-   * @param serialNumber the serial number of the equipment.
-   * @param assetTag the asset tag of the equipment.
+   * @param jackNumber the number of the jack.
+   * @param description the description of the jack number.
    * @param owner the owner of the room.
    * @return {String} the docID of the new document.
    */
-  define({ roomId, description, quantity, serialNumber, assetTag, owner }) {
+  define({ roomId, jackNumber, description, owner }) {
     const docID = this._collection.insert({
       roomId,
+      jackNumber,
       description,
-      quantity,
-      serialNumber,
-      assetTag,
       owner,
     });
     return docID;
@@ -53,24 +41,16 @@ class RoomEquipmentCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
+   * @param jackNumber the number of the jack (optional).
    * @param description the new status (optional).
-   * @param quantity the new room capacity (optional).
-   * @param serialNumber the new picture of the room (optional).
-   * @param assetTag the new picture of the room (optional).
    */
-  update(docID, { description, quantity, serialNumber, assetTag }) {
+  update(docID, { jackNumber, description }) {
     const updateData = {};
+    if (jackNumber) {
+      updateData.jackNumber = jackNumber;
+    }
     if (description) {
       updateData.description = description;
-    }
-    if (quantity) {
-      updateData.quantity = quantity;
-    }
-    if (serialNumber) {
-      updateData.serialNumber = serialNumber;
-    }
-    if (assetTag) {
-      updateData.assetTag = assetTag;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -96,7 +76,7 @@ class RoomEquipmentCollection extends BaseCollection {
       // get the RoomCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(roomEquipmentPublications.roomEquipment, function publish() {
+      Meteor.publish(roomJacksPublications.roomJacks, function publish() {
         if (this.userId) {
           const username = Meteor.users.findOne(this.userId).username;
           return instance._collection.find({ owner: username });
@@ -105,7 +85,7 @@ class RoomEquipmentCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(roomEquipmentPublications.roomEquipmentAdmin, function publish() {
+      Meteor.publish(roomJacksPublications.roomJacksAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -117,9 +97,9 @@ class RoomEquipmentCollection extends BaseCollection {
   /**
    * Subscription method for room owned by the current user.
    */
-  subscribeRoomEquipment() {
+  subscribeRoomJacks() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomEquipmentPublications.roomEquipment);
+      return Meteor.subscribe(roomJacksPublications.roomJacks);
     }
     return null;
   }
@@ -128,9 +108,9 @@ class RoomEquipmentCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeRoomEquipmentAdmin() {
+  subscribeRoomJacksAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomEquipmentPublications.roomEquipmentAdmin);
+      return Meteor.subscribe(roomJacksPublications.roomJacksAdmin);
     }
     return null;
   }
@@ -153,16 +133,14 @@ class RoomEquipmentCollection extends BaseCollection {
   dumpOne(docID) {
     const doc = this.findDoc(docID);
     const roomId = doc.roomId;
+    const jackNumber = doc.jackNumber;
     const description = doc.description;
-    const quantity = doc.quantity;
-    const serialNumber = doc.serialNumber;
-    const assetTag = doc.assetTag;
     const owner = doc.owner;
-    return { roomId, description, quantity, serialNumber, assetTag, owner };
+    return { roomId, jackNumber, description, owner };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const RoomEquipment = new RoomEquipmentCollection();
+export const RoomJacks = new RoomJacksCollection();

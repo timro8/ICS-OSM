@@ -3,7 +3,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, Row, Table, Card, Tab, Tabs } from 'react-bootstrap';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import { Stuffs } from '../../api/stuff/StuffCollection';
+import { Faculties } from '../../api/faculty/FacultyCollection';
 import AdminPageFacultyComponent from '../components/AdminPageFacultyComponent';
 import AdminPageRoomsComponent from '../components/AdminPageRoomsComponent';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -11,17 +11,17 @@ import { Rooms } from '../../api/room/RoomCollection';
 /* Renders a table containing all of the Faculty documents. Use <AdminPage> to render each row in each tabs. */
 const AdminPage = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { stuffs, rooms, ready } = useTracker(() => {
+  const { facultys, rooms, ready } = useTracker(() => {
     // Get access to Faculty documents.
-    const subscription1 = Stuffs.subscribeStuffAdmin();
+    const subscription1 = Faculties.subscribeFacultyAdmin();
     const subscription2 = Rooms.subscribeRoomAdmin();
     // Determine if the subscription is ready
     const rdy = subscription1.ready() && subscription2.ready();
     // Get the Faculty documents
-    const items1 = Stuffs.find({}).fetch();
+    const items1 = Faculties.find({}).fetch();
     const items2 = Rooms.find({}).fetch();
     return {
-      stuffs: items1,
+      facultys: items1,
       rooms: items2,
       ready: rdy,
     };
@@ -51,7 +51,7 @@ const AdminPage = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {stuffs.map((stuff) => <AdminPageFacultyComponent key={stuff._id} stuff={stuff} />)}
+                        {facultys.map((faculty) => <AdminPageFacultyComponent key={faculty._id} faculty={faculty} />)}
                       </tbody>
                     </Table>
                   </div>

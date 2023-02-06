@@ -5,37 +5,48 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const roomNotesPublications = {
-  roomNotes: 'RoomNotes',
-  roomNotesAdmin: 'RoomNotesAdmin',
+export const Events302Publications = {
+  Events302: 'Events302',
+  Events302Admin: 'Events302Admin',
 };
 
-class RoomNotesCollection extends BaseCollection {
+class Events302Collection extends BaseCollection {
   constructor() {
-    super('RoomNotes', new SimpleSchema({
-      note: String,
-      roomId: String,
+    super('Events302', new SimpleSchema({
+      start: String,
+      end: String,
       owner: String,
-      createdAt: Date,
     }));
   }
 
   /**
-   * Defines a new Room item.
-   * @param note the note for the room.
-   * @param roomId the Id of the room
-   * @param owner the owner of the room.
-   * @param createdAt the date note was created.
+   * Defines a new Events302 item.
+   * @param start start time of the event
+   * @param end end time of event
+   * @param owner owner of the event
    * @return {String} the docID of the new document.
    */
-  define({ note, roomId, owner, createdAt }) {
+  define({ start, end, owner }) {
     const docID = this._collection.insert({
-      note,
-      roomId,
+      start,
+      end,
       owner,
-      createdAt,
     });
     return docID;
+  }
+
+  /**
+   * Updates the given document.
+   * @param docID the id of the document to update.
+   * @param name the new name (optional).
+   * @param quantity the new quantity (optional).
+   * @param condition the new condition (optional).
+   */
+  update(docID, { start, end }) {
+    const updateData = {};
+    if (start) updateData.start = start;
+    if (end) updateData.end = end;
+    this._collection.update(docID, { $set: updateData });
   }
 
   /**
@@ -52,23 +63,22 @@ class RoomNotesCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the room associated to an owner.
+   * It publishes the entire collection for admin and just the Events302 associated to an owner.
    */
   publish() {
     if (Meteor.isServer) {
-      // get the RoomCollection instance.
+      // get the Events302Collection instance.
       const instance = this;
-      /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(roomNotesPublications.roomNotes, function publish() {
+      /** This subscription publishes all users  */
+      Meteor.publish(Events302Publications.Events302, function publish() {
         if (this.userId) {
-          const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ owner: username });
+          return instance._collection.find();
         }
         return this.ready();
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(roomNotesPublications.roomNotesAdmin, function publish() {
+      Meteor.publish(Events302Publications.Events302Admin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -78,11 +88,11 @@ class RoomNotesCollection extends BaseCollection {
   }
 
   /**
-   * Subscription method for room owned by the current user.
+   * Subscription method for Events302 owned by the current user.
    */
-  subscribeRoomNotes() {
+  subscribeEvents302() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomNotesPublications.roomNotes);
+      return Meteor.subscribe(Events302Publications.Events302);
     }
     return null;
   }
@@ -91,9 +101,9 @@ class RoomNotesCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeRoomNotesAdmin() {
+  subscribeEvents302Admin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(roomNotesPublications.roomNotesAdmin);
+      return Meteor.subscribe(Events302Publications.Events302Admin);
     }
     return null;
   }
@@ -111,19 +121,18 @@ class RoomNotesCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{owner: (*|number), roomNumber: *, location: *, status: *, capacity: *}}
+   * @return {{start: (*|number), end: *, owner: * }}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
-    const note = doc.note;
-    const roomId = doc.roomId;
+    const start = doc.start;
+    const end = doc.end;
     const owner = doc.owner;
-    const createdAt = doc.createdAt;
-    return { note, roomId, owner, createdAt };
+    return { start, end, owner };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const RoomNotes = new RoomNotesCollection();
+export const Events302 = new Events302Collection();

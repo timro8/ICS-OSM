@@ -15,6 +15,8 @@ export const PAGE_IDS = {
   SIGN_UP: 'sign-up',
   EDIT_ROOM: 'edit-room',
   LIST_ROOM: 'list-room',
+  PROFILE: 'profile',
   LIST_ROOM_ADMIN: 'list-room-admin',
   FACULTY: 'faculty',
+  EDIT_FACULTY_PROFILE: 'edit-faculty-profile',
 };
