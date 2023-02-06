@@ -1,78 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Row, Card, Container, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router';
 import { useTracker } from 'meteor/react-meteor-data';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import LoadingSpinner from '../components/LoadingSpinner';
 import { Faculties } from '../../api/faculty/FacultyCollection';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 // TODO: Get real user data from collections.
 
-const MakeProfile = ({ faculty }) => (
-  <Container id={PAGE_IDS.PROFILE} className="py-3" fluid>
-    <Row>
-      <Col className="d-flex justify-content-center">
-        <Image id="imgProfile" roundedCircle src={faculty.image} width="300px" />
-      </Col>
-    </Row>
-    <Card id="cardProfile">
-      <Col className="text-center pt-3">
-        <h1>{faculty.firstName} {faculty.lastName}</h1>
-        <p>{faculty.owner}</p>
-        <hr />
-        <span className="small">About Me:</span>
-        <p className="fw-bold">{faculty.bio}</p>
-        <hr />
-        <span className="small">Room Number:</span>
-        <p className="fw-bold">{faculty.room}</p>
-        <hr />
-        <span className="small">Phone Number</span>
-        <p className="fw-bold">{faculty.phoneNumber}</p>
-        <hr />
-        <span className="small">Office Hours:</span>
-        <p className="fw-bold">{faculty.officeHours}</p>
-      </Col>
-    </Card>
-    <Row>
-      <Col className="d-flex justify-content-center py-3">
-        {/* eslint-disable-next-line react/prop-types */}
-        <Link to={`/editfacultyprofile/${faculty._id}`} className="btn btn-primary">Edit Profile</Link>
-      </Col>
-    </Row>
-  </Container>
-);
-
 const FacultyProfile = () => {
-  const { ready, faculties } = useTracker(() => {
-    const subscription = Faculties.subscribeFaculty();
+  const { _id } = useParams();
+  const [faculty, setFaculty] = useState([]);
+  const { ready } = useTracker(() => {
+    const subscription = Faculties.subscribeFacultyAdmin();
     const rdy = subscription.ready();
-    const facultyItems = Faculties.find({}, { sort: { lastName: 1 } }).fetch();
+    setFaculty(Faculties.find({ _id: _id }, { sort: { lastName: 1 } }).fetch());
     return {
-      faculties: facultyItems,
       ready: rdy,
     };
   }, []);
   return (ready ? (
-    <Container id={PAGE_IDS.PROFILE} className="py-3">
+    <Container id={PAGE_IDS.PROFILE} className="py-3" fluid>
       <Row>
-        {faculties.map((faculty) => <MakeProfile key={faculty._id} faculty={faculty} />)}
+        <Col className="d-flex justify-content-center">
+          <Image id="imgProfile" roundedCircle src={faculty[0].image} width="300px" />
+        </Col>
+      </Row>
+      <Card id="cardProfile">
+        <Col className="text-center pt-3">
+          <h1>{faculty[0].firstName} {faculty[0].lastName}</h1>
+          <p>{faculty[0].owner}</p>
+          <hr />
+          <span className="small">About Me:</span>
+          <p className="fw-bold">{faculty[0].bio}</p>
+          <hr />
+          <span className="small">Room Number:</span>
+          <p className="fw-bold">{faculty[0].room}</p>
+          <hr />
+          <span className="small">Phone Number</span>
+          <p className="fw-bold">{faculty[0].phoneNumber}</p>
+          <hr />
+          <span className="small">Office Hours:</span>
+          <p className="fw-bold">{faculty[0].officeHours}</p>
+        </Col>
+      </Card>
+      <Row>
+        <Col className="d-flex justify-content-center py-3">
+          <Link to={`/editfacultyprofile/${_id}`} className="btn btn-primary">Edit Profile</Link>
+        </Col>
       </Row>
     </Container>
-  ) : <LoadingSpinner message="Loading Profile" />);
-};
-
-MakeProfile.propTypes = {
-  faculty: PropTypes.shape({
-    image: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    owner: PropTypes.string,
-    bio: PropTypes.string,
-    room: PropTypes.string,
-    phoneNumber: PropTypes.string,
-    officeHours: PropTypes.string,
-  }).isRequired,
+  ) : <LoadingSpinner message="Loading Faculty Profile" />);
 };
 
 export default FacultyProfile;
