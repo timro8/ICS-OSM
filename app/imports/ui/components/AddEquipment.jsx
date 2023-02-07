@@ -5,20 +5,28 @@ import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField } from 'unif
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { RoomNotes } from '../../api/room/RoomNotes';
+import { RoomEquipments } from '../../api/room/RoomEquipments';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 const formSchema = new SimpleSchema({
-  note: String,
   roomId: String,
+  description: String,
+  quantity: Number,
+  serialNumber: {
+    type: String,
+    optional: true,
+  },
+  assetTag: {
+    type: String,
+    optional: true,
+  },
   owner: String,
-  createdAt: Date,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddNote component for adding a new note. */
-const AddNote = ({ roomId, owner }) => {
+const AddEquipment = ({ roomId, owner }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
 
@@ -26,14 +34,14 @@ const AddNote = ({ roomId, owner }) => {
   const handleShow = () => setShow(true);
 
   const submit = (data, formRef) => {
-    const { note, createdAt } = data;
-    const collectionName = RoomNotes.getCollectionName();
-    const definitionData = { note, roomId, owner, createdAt };
+    const { description, quantity, serialNumber, assetTag } = data;
+    const collectionName = RoomEquipments.getCollectionName();
+    const definitionData = { roomId, description, quantity, serialNumber, assetTag, owner };
     console.log(definitionData);
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
-        swal('Success', 'Note added successfully', 'success');
+        swal('Success', 'Equipment added successfully', 'success');
         formRef.reset();
       });
   };
@@ -41,22 +49,24 @@ const AddNote = ({ roomId, owner }) => {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Add Notes
+        Add Equipment
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Notes</Modal.Title>
+          <Modal.Title>Add Equipment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Add Notes
+          Add Equipment
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="note" />
+            <TextField name="description" />
+            <TextField name="quantity" />
+            <TextField name="serialNumber" />
+            <TextField name="assetTag" />
             <SubmitField value="submit" />
             <ErrorsField />
             <HiddenField name="owner" value={owner} />
             <HiddenField name="roomId" value={roomId} />
-            <HiddenField name="createdAt" value={new Date()} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
@@ -69,9 +79,9 @@ const AddNote = ({ roomId, owner }) => {
   );
 };
 
-AddNote.propTypes = {
+AddEquipment.propTypes = {
   roomId: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
 };
 
-export default AddNote;
+export default AddEquipment;

@@ -49,9 +49,7 @@ const AddJack = ({ roomId, owner }) => {
           <Modal.Title>Add Jacks</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Add Jacks form
-          <p>Room id: {roomId}</p>
-          <p>Owner: {owner}</p>
+          Add Jacks
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <TextField name="jackNumber" />
             <TextField name="description" />
@@ -64,9 +62,6 @@ const AddJack = ({ roomId, owner }) => {
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

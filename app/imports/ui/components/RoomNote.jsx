@@ -5,9 +5,8 @@ import { ListGroup } from 'react-bootstrap';
 /** Renders a note. See pages/RoomDetails.jsx. */
 const RoomNote = ({ note }) => (
   <ListGroup.Item>
-    <p className="fw-lighter">{note.createdAt.toLocaleDateString('en-US')}</p>
+    <p className="fw-lighter">{note.createdAt.toLocaleDateString('en-US')}: {note.owner}</p>
     <p>{note.note}</p>
-    <p className="fw-lighter">{note.owner}</p>
   </ListGroup.Item>
 );
 
