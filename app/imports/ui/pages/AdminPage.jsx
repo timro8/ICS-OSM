@@ -57,7 +57,7 @@ const AdminPage = () => {
                   </div>
                 </Tab>
                 <Tab eventKey="profile" title="Rooms">
-                  <div className="scroll">
+                  <Container className="scroll">
                     <Table striped bordered hover>
                       <thead>
                         <tr>
@@ -69,7 +69,7 @@ const AdminPage = () => {
                         {rooms.map((room) => <AdminPageRoomsComponent key={room._id} room={room} />)}
                       </tbody>
                     </Table>
-                  </div>
+                  </Container>
                 </Tab>
                 <Tab eventKey="longer-tab" title="Reservations">
                   <h1>h1</h1>
