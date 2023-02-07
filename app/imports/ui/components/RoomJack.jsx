@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListGroup } from 'react-bootstrap';
+import EditJack from './EditJack';
 
 /** Renders the jacks for the room. See pages/RoomDetails.jsx. */
 const RoomJack = ({ jack }) => (
-  <ListGroup.Item as="li">
-    {jack.jackNumber} - {jack.description}
-  </ListGroup.Item>
+  <tr>
+    <td>{jack.jackNumber}</td>
+    <td>{jack.description}</td>
+    <td><EditJack jackId={jack._id} /></td>
+  </tr>
 );
 
 // Require a document to be passed to this component.

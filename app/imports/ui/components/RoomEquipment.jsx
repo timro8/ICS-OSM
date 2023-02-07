@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import EditEquipment from './EditEquipment';
 
 /** Renders the equipment for the room. See pages/RoomDetails.jsx. */
 const RoomEquipment = ({ equipment }) => (
@@ -8,6 +9,7 @@ const RoomEquipment = ({ equipment }) => (
     <td>{equipment.description}</td>
     <td>{equipment.serialNumber}</td>
     <td>{equipment.assetTag}</td>
+    <td><EditEquipment equipmentId={equipment._id} /></td>
   </tr>
 );
 

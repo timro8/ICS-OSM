@@ -71,23 +71,39 @@ const RoomDetails = () => {
           <AddEquipment owner={loggedInOwner} roomId={_id} />
           <Table>
             <thead>
-              <th>Quantity</th>
-              <th>Description</th>
-              <th>Serial Number</th>
-              <th>Asset Tag</th>
+              <tr>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Serial Number</th>
+                <th>Asset Tag</th>
+                <th>Edit</th>
+              </tr>
             </thead>
             <tbody>
               {docEquipment.map((equipment) => <RoomEquipment key={equipment._id} equipment={equipment} />) }
             </tbody>
           </Table>
         </Col>
+      </Row>
+      <Row>
         <Col>
           <h2>Room Data Jacks</h2>
           <AddJack owner={loggedInOwner} roomId={_id} />
-          <ListGroup as="ol" numbered variant="flush">
-            {docJacks.map((jack) => <RoomJack key={jack._id} jack={jack} />)}
-          </ListGroup>
+          <Table>
+            <thead>
+              <tr>
+                <th>Jack Number</th>
+                <th>Description</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              {docJacks.map((jack) => <RoomJack key={jack._id} jack={jack} />)}
+            </tbody>
+          </Table>
         </Col>
+      </Row>
+      <Row>
         <Col>
           <h2>Room Notes</h2>
           <AddNote roomId={_id} owner={loggedInOwner} />
