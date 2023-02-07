@@ -14,6 +14,10 @@ const NavBar = () => {
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
   const menuStyle = {};
+
+  const signout = () => {
+    Meteor.logout();
+  };
   return (
     <Navbar bg="light" expand="lg" style={menuStyle}>
       <Container>
@@ -43,7 +47,7 @@ const NavBar = () => {
             ) : (
               <NavDropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} title={currentUser}>
                 <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_PROFILE} as={NavLink} to="/profile/:_id  "><PersonFill />Profile</NavDropdown.Item>
-                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} to="/"><BoxArrowRight /> Sign out</NavDropdown.Item>
+                <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} onClick={signout} to="/"><BoxArrowRight /> Sign out</NavDropdown.Item>
               </NavDropdown>
             )}
           </Nav>
