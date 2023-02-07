@@ -1,4 +1,4 @@
-import { listStuffAdminPage, /* manageDatabasePage, */ signOutPage, listRoomPage, listRoomAdminPage, facultyPage } from './simple.page';
+import { listStuffAdminPage, /* manageDatabasePage, */ listRoomPage, listRoomAdminPage, facultyPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 import { signUpPage } from './signup.page';
@@ -27,7 +27,7 @@ async function signinAndSignout(username, password) {
   await signInPage.signin(username, password);
   await navBar.isLoggedIn(username);
   await navBar.logout();
-  await signOutPage.isDisplayed();
+  await landingPage.isDisplayed();
 }
 
 test('Test that signin and signout work for all roles', async () => {
@@ -46,7 +46,7 @@ test('Test that user pages shows up', async () => {
   await navBar.gotoListRoomPage();
   await listRoomPage.isDisplayed();
   await navBar.logout();
-  await signOutPage.isDisplayed();
+  await landingPage.isDisplayed();
 });
 
 test('Test that sign up page shows up', async () => {
