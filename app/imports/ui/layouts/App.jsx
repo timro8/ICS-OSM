@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { useTracker } from 'meteor/react-meteor-data';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
@@ -24,36 +25,45 @@ import SignUpRequest from '../pages/SignUpRequest';
 import Faculty from '../pages/Faculty';
 import FacultyProfile from '../pages/FacultyProfile';
 import EditFacultyProfile from '../pages/EditFacultyProfile';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
-const App = () => (
-  <Router>
-    <div className="d-flex flex-column min-vh-100">
-      <NavBar />
-      <Routes>
-        <Route exact path="/" element={<Landing />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signuprequest" element={<SignUpRequest />} />
-        <Route path="/signout" element={<SignOut />} />
-        <Route path="/profile/:_id" element={<FacultyProfile />} />
-        <Route path="/faculty" element={<Faculty />} />
-        <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/editfacultyprofile/:_id" element={<EditFacultyProfile />} />
-        <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
-        <Route path="/listroom" element={<ProtectedRoute><ListRoom /></ProtectedRoute>} />
-        <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
-        <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-        <Route path="/admin" element={<AdminProtectedRoute><AdminPage /></AdminProtectedRoute>} />
-        <Route path="/adminroom" element={<AdminProtectedRoute><ListRoomAdmin /></AdminProtectedRoute>} />
-        <Route path="/notauthorized" element={<NotAuthorized />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="/cal" element={<ReserveRoom />} />
-      </Routes>
-      <Footer />
-    </div>
-  </Router>
-);
+const App = () => {
+  const { ready } = useTracker(() => {
+    const rdy = Roles.subscription.ready();
+    return {
+      ready: rdy,
+    };
+  });
+  return (
+    <Router>
+      <div className="d-flex flex-column min-vh-100">
+        <NavBar />
+        <Routes>
+          <Route exact path="/" element={<Landing />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signuprequest" element={<SignUpRequest />} />
+          <Route path="/signout" element={<SignOut />} />
+          <Route path="/profile/:_id" element={<FacultyProfile />} />
+          <Route path="/faculty" element={<Faculty />} />
+          <Route path="/editfacultyprofile/:_id" element={<EditFacultyProfile />} />
+          <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+          <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
+          <Route path="/listroom" element={<ProtectedRoute><ListRoom /></ProtectedRoute>} />
+          <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
+          <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
+          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><AdminPage /></AdminProtectedRoute>} />
+          <Route path="/adminroom" element={<AdminProtectedRoute ready={ready}><ListRoomAdmin /></AdminProtectedRoute>} />
+          <Route path="/notauthorized" element={<NotAuthorized />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/cal" element={<ReserveRoom />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  );
+};
 
 /*
  * ProtectedRoute (see React Router v6 sample)
@@ -62,7 +72,6 @@ const App = () => (
  */
 const ProtectedRoute = ({ children }) => {
   const isLogged = Meteor.userId() !== null;
-  console.log('ProtectedRoute', isLogged);
   return isLogged ? children : <Navigate to="/signin" />;
 };
 
@@ -71,23 +80,27 @@ const ProtectedRoute = ({ children }) => {
  * Checks for Meteor login and admin role before routing to the requested page, otherwise goes to signin page.
  * @param {any} { component: Component, ...rest }
  */
-const AdminProtectedRoute = ({ children }) => {
+const AdminProtectedRoute = ({ ready, children }) => {
   const isLogged = Meteor.userId() !== null;
   if (!isLogged) {
     return <Navigate to="/signin" />;
   }
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
   const isAdmin = Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]);
-  console.log('AdminProtectedRoute', isLogged, isAdmin);
   return (isLogged && isAdmin) ? children : <Navigate to="/notauthorized" />;
 };
 
-const OfficeProtectedRoute = ({ children }) => {
+const OfficeProtectedRoute = ({ ready, children }) => {
   const isLogged = Meteor.userId() !== null;
   if (!isLogged) {
     return <Navigate to="/signin" />;
   }
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
   const isOffice = Roles.userIsInRole(Meteor.userId(), [ROLE.OFFICE]);
-  console.log('OfficeProtectedRoute', isLogged, isOffice);
   return (isLogged && isOffice) ? children : <Navigate to="/notauthorized" />;
 };
 
@@ -102,19 +115,23 @@ ProtectedRoute.defaultProps = {
 
 // Require a component and location to be passed to each AdminProtectedRoute.
 AdminProtectedRoute.propTypes = {
+  ready: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 AdminProtectedRoute.defaultProps = {
+  ready: false,
   children: <Landing />,
 };
 
 // Require a component and location to be passed to each OfficeProtectedRoute.
 OfficeProtectedRoute.propTypes = {
+  ready: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 OfficeProtectedRoute.defaultProps = {
+  ready: false,
   children: <Landing />,
 };
 
