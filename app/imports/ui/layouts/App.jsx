@@ -6,6 +6,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
+import Home from '../pages/Home';
 import ListStuff from '../pages/ListStuff';
 import AdminPage from '../pages/AdminPage';
 import ListRoom from '../pages/ListRoom';
@@ -48,7 +49,7 @@ const App = () => {
           <Route path="/profile/:_id" element={<FacultyProfile />} />
           <Route path="/faculty" element={<Faculty />} />
           <Route path="/editfacultyprofile/:_id" element={<EditFacultyProfile />} />
-          <Route path="/home" element={<ProtectedRoute><Landing /></ProtectedRoute>} />
+          <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/listroom" element={<ProtectedRoute><ListRoom /></ProtectedRoute>} />
           <Route path="/add" element={<ProtectedRoute><AddStuff /></ProtectedRoute>} />
