@@ -34,12 +34,13 @@ const App = () => {
       ready: rdy,
     };
   });
+
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<Landing />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signuprequest" element={<SignUpRequest />} />
