@@ -9,8 +9,6 @@ import { AutoForm, ErrorsField, SelectField, TextField } from 'uniforms-bootstra
 import { Meteor } from 'meteor/meteor';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
-import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 
 const AddFacultyForm = props => {
 
@@ -74,16 +72,11 @@ const AddFacultyForm = props => {
       (err) => {
         if (err) {
           console.log(err.message);
+          swal('Error', err.message, 'error');
         }
+        swal('Success', 'Faculty added successfully', 'success');
       },
     );
-    const collectionName = FacultyProfiles.getCollectionName();
-    // create the new UserProfile
-    defineMethod.callPromise({ collectionName, definitionData })
-      .then(() => {
-        swal('Success', 'Faculty added successfully', 'success');
-      })
-      .catch((err) => { swal('Error', err.message, 'error'); });
 
     formRef.reset();
   };
