@@ -9,22 +9,22 @@ const Landing = () => (
       <Card style={{ width: '20rem' }}>
         <Card.Body>
           <Card.Title>Rooms Occupied</Card.Title>
-          <Card.Text style={{ fontSize: '3rem' }}>70%</Card.Text>
+          <Card.Text style={{ fontSize: '3rem' }}>45</Card.Text>
           <ProgressBar now={70} />
         </Card.Body>
       </Card>
       <Card style={{ width: '20rem' }}>
         <Card.Body>
           <Card.Title>Rooms Vacant</Card.Title>
-          <Card.Text style={{ fontSize: '3rem' }}>20%</Card.Text>
+          <Card.Text style={{ fontSize: '3rem' }}>4</Card.Text>
           <ProgressBar now={20} />
         </Card.Body>
       </Card>
       <Card style={{ width: '20rem' }}>
         <Card.Body>
           <Card.Title>Rooms Out of Commission</Card.Title>
-          <Card.Text style={{ fontSize: '3rem' }}>10%</Card.Text>
-          <ProgressBar now={10} />
+          <Card.Text style={{ fontSize: '3rem' }}>2</Card.Text>
+          <ProgressBar variant='danger' now={10} />
         </Card.Body>
       </Card>
     </Row>
