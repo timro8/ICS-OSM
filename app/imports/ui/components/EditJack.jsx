@@ -9,6 +9,7 @@ import { RoomJacks } from '../../api/room/RoomJacks';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from './LoadingSpinner';
 
+// form schema based on RoomJacks collection schema
 const bridge = new SimpleSchema2Bridge(RoomJacks._schema);
 
 /* Renders the AddNote component for adding a new note. */
@@ -19,12 +20,13 @@ const EditJack = ({ jackId }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // subscription to RoomJacks (Admin)
   const { doc, ready } = useTracker(() => {
-    // Get access to Stuff documents.
+    // Get access to RoomJacks documents.
     const subscription = RoomJacks.subscribeRoomJacksAdmin();
     // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the document
+    // Get the document based on the jackId
     const document = RoomJacks.findDoc(jackId);
     return {
       doc: document,
@@ -32,6 +34,7 @@ const EditJack = ({ jackId }) => {
     };
   }, [jackId]);
 
+  // data submitted to update a jack. If there are errors, an error message will appear. If the data successfully updates, a success message appears.
   const submit = (data) => {
     const { jackNumber, description } = data;
     const collectionName = RoomJacks.getCollectionName();

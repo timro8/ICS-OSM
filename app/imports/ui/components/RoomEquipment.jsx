@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditEquipment from './EditEquipment';
 
-/** Renders the equipment for the room. See pages/RoomDetails.jsx. */
+// Renders the equipment for the room. See pages/RoomDetails.jsx. The EditEquipment component used for each equipment based on the equipment id
 const RoomEquipment = ({ equipment }) => (
   <tr>
     <td>{equipment.quantity}</td>
@@ -13,7 +13,7 @@ const RoomEquipment = ({ equipment }) => (
   </tr>
 );
 
-// Require a document to be passed to this component.
+// Requires a document to be passed to this component.
 RoomEquipment.propTypes = {
   equipment: PropTypes.shape({
     roomId: PropTypes.string,

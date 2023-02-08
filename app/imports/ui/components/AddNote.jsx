@@ -8,6 +8,7 @@ import SimpleSchema from 'simpl-schema';
 import { RoomNotes } from '../../api/room/RoomNotes';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
+// form schema based on RoomNotes collection
 const formSchema = new SimpleSchema({
   note: String,
   roomId: String,
@@ -25,11 +26,11 @@ const AddNote = ({ roomId, owner }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // data submitted to add a new note. If there are errors, an error message will appear. If the data is added successfully, a success message will appear. Upon success, the form resets to allow the user to add additional notes.
   const submit = (data, formRef) => {
     const { note, createdAt } = data;
     const collectionName = RoomNotes.getCollectionName();
     const definitionData = { note, roomId, owner, createdAt };
-    console.log(definitionData);
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {

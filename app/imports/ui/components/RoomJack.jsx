@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditJack from './EditJack';
 
-/** Renders the jacks for the room. See pages/RoomDetails.jsx. */
+// Renders the jacks for the room. See pages/RoomDetails.jsx. The EditJack component used for each jack based on jackId
 const RoomJack = ({ jack }) => (
   <tr>
     <td>{jack.jackNumber}</td>
@@ -11,7 +11,7 @@ const RoomJack = ({ jack }) => (
   </tr>
 );
 
-// Require a document to be passed to this component.
+// Requires a document to be passed to this component.
 RoomJack.propTypes = {
   jack: PropTypes.shape({
     roomId: PropTypes.string,

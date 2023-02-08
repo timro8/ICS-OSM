@@ -8,6 +8,7 @@ import SimpleSchema from 'simpl-schema';
 import { RoomEquipments } from '../../api/room/RoomEquipments';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
+// form schema based on the Equipment collection
 const formSchema = new SimpleSchema({
   roomId: String,
   description: String,
@@ -25,7 +26,7 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddNote component for adding a new note. */
+/* Renders the AddEquipment component for adding a new equipment. */
 const AddEquipment = ({ roomId, owner }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
@@ -33,11 +34,11 @@ const AddEquipment = ({ roomId, owner }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // data added to the RoomEquipments collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional equipment.
   const submit = (data, formRef) => {
     const { description, quantity, serialNumber, assetTag } = data;
     const collectionName = RoomEquipments.getCollectionName();
     const definitionData = { roomId, description, quantity, serialNumber, assetTag, owner };
-    console.log(definitionData);
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {

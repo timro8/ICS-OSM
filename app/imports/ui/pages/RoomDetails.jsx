@@ -16,11 +16,12 @@ import RoomEquipment from '../components/RoomEquipment';
 import AddEquipment from '../components/AddEquipment';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-/* A simple static component to render some text for the landing page. */
+/* The RoomDetails page with equipment, jacks, and notes. */
 const RoomDetails = () => {
   // Get the documentID from the URL field.
   const { _id } = useParams();
-  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracke
+  // consts for the page
   const {
     doc,
     doc: { roomNumber, capacity, picture, status },
@@ -30,6 +31,7 @@ const RoomDetails = () => {
     ready,
     loggedInOwner,
   } = useTracker(() => {
+    // subscriptions (Admin) to Rooms, RoomNotes, RoomJacks, RoomEquipments collections
     const subRoom = Rooms.subscribeRoomAdmin();
     const subNotes = RoomNotes.subscribeRoomNotesAdmin();
     const subJacks = RoomJacks.subscribeRoomJacksAdmin();
@@ -40,6 +42,7 @@ const RoomDetails = () => {
     const documentNotes = RoomNotes.find({ roomId: _id }).fetch();
     const documentJacks = RoomJacks.find({ roomId: _id }).fetch();
     const documentEquipment = RoomEquipments.find({ roomId: _id }).fetch();
+    // ready when subscriptions are completed
     return {
       doc: document,
       docNotes: documentNotes,

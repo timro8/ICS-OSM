@@ -9,6 +9,7 @@ import { RoomEquipments } from '../../api/room/RoomEquipments';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from './LoadingSpinner';
 
+// form based on RoomEquipments collection
 const bridge = new SimpleSchema2Bridge(RoomEquipments._schema);
 
 /* Renders the AddNote component for adding a new note. */
@@ -19,12 +20,13 @@ const EditEquipment = ({ equipmentId }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // subscriptions and ready
   const { doc, ready } = useTracker(() => {
-    // Get access to Stuff documents.
+    // Get access to RoomEquipments documents (Admin).
     const subscription = RoomEquipments.subscribeRoomEquipmentAdmin();
     // Determine if the subscription is ready
     const rdy = subscription.ready();
-    // Get the document
+    // Get the document based on the equipmentId
     const document = RoomEquipments.findDoc(equipmentId);
     return {
       doc: document,
@@ -32,6 +34,7 @@ const EditEquipment = ({ equipmentId }) => {
     };
   }, [equipmentId]);
 
+  // data submitted to edit an equipment. If there are errors, an error message will pop up. If the data is successfully updated, a success message will appear.
   const submit = (data) => {
     const { description, quantity, serialNumber, assetTag } = data;
     const collectionName = RoomEquipments.getCollectionName();
