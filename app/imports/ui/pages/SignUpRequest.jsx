@@ -14,7 +14,9 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 // import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 const SignUpRequest = () => {
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [redirectToReferer, setRedirectToRef] = useState(false);
 
   const schema = new SimpleSchema({
