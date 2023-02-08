@@ -6,13 +6,13 @@ import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
 export const roomEquipmentPublications = {
-  roomEquipment: 'RoomEquipment',
+  roomEquipment: 'RoomEquipments',
   roomEquipmentAdmin: 'RoomEquipmentAdmin',
 };
 
 class RoomEquipmentCollection extends BaseCollection {
   constructor() {
-    super('RoomEquipment', new SimpleSchema({
+    super('RoomEquipments', new SimpleSchema({
       roomId: String,
       description: String,
       quantity: Number,
@@ -165,4 +165,4 @@ class RoomEquipmentCollection extends BaseCollection {
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const RoomEquipment = new RoomEquipmentCollection();
+export const RoomEquipments = new RoomEquipmentCollection();
