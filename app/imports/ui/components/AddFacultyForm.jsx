@@ -9,8 +9,8 @@ import { AutoForm, ErrorsField, SelectField, TextField } from 'uniforms-bootstra
 import { Meteor } from 'meteor/meteor';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
-import { UserProfiles } from '../../api/user/UserProfileCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 
 const AddFacultyForm = props => {
 
@@ -67,32 +67,24 @@ const AddFacultyForm = props => {
     }
     const facultyDefinitionData = { image: userImg, firstName, lastName, email, room, bio, phoneNumber, officeHours, owner: email, role };
 
-    let done = 0;
     Meteor.call(
       'insertFaculty',
       facultyDefinitionData,
       (err) => {
         if (err) {
-          done -= 1;
-        } else {
-          done += 1;
+          console.log(err.message);
         }
       },
     );
-    const collectionName = UserProfiles.getCollectionName();
+    const collectionName = FacultyProfiles.getCollectionName();
     // create the new UserProfile
     defineMethod.callPromise({ collectionName, definitionData })
       .then(() => {
-        done += 1;
+        swal('Success', 'Faculty added successfully', 'success');
       })
-      .catch(() => {});
+      .catch((err) => { swal('Error', err.message, 'error'); });
 
-    if (done === 2) {
-      swal('Success', 'Faculty added successfully', 'success');
-      formRef.reset();
-    } else {
-      swal('Error', 'Faculty was not added, please try again', 'error');
-    }
+    formRef.reset();
   };
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
