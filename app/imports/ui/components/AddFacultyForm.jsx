@@ -70,6 +70,7 @@ const AddFacultyForm = props => {
     Meteor.call(
       'insertFaculty',
       facultyDefinitionData,
+      definitionData,
       (err) => {
         if (err) {
           console.log(err.message);
