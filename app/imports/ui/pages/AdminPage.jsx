@@ -4,8 +4,8 @@ import { Col, Container, Row, Table, Card, Tab, Tabs } from 'react-bootstrap';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Faculties } from '../../api/faculty/FacultyCollection';
-import AdminPageFacultyComponent from '../components/AdminPageFacultyComponent';
-import AdminPageRoomsComponent from '../components/AdminPageRoomsComponent';
+import AdminPageFacultyComponent from '../components/AdminPage/AdminPageFacultyComponent';
+import AdminPageRoomsComponent from '../components/AdminPage/AdminPageRoomsComponent';
 import { Rooms } from '../../api/room/RoomCollection';
 
 /* Renders a table containing all of the Faculty documents. Use <AdminPage> to render each row in each tabs. */
