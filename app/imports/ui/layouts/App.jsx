@@ -15,7 +15,6 @@ import AddStuff from '../pages/AddStuff';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
-import SignOut from '../pages/SignOut';
 import NavBar from '../components/NavBar';
 import SignIn from '../pages/SignIn';
 import NotAuthorized from '../pages/NotAuthorized';
@@ -36,16 +35,16 @@ const App = () => {
       ready: rdy,
     };
   });
+
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<Landing />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signuprequest" element={<SignUpRequest />} />
-          <Route path="/signout" element={<SignOut />} />
           <Route path="/profile/:_id" element={<FacultyProfile />} />
           <Route path="/faculty" element={<Faculty />} />
           <Route path="/editfacultyprofile/:_id" element={<EditFacultyProfile />} />
