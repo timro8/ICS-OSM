@@ -19,7 +19,7 @@ class NavBar {
       await t.click('button.navbar-toggler');
     }
     await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN}`);
-    await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN}`);
+    // await t.click(`#${COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_IN}`);
   }
 
   /* Check that the specified user is currently logged in. */
