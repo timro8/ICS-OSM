@@ -29,7 +29,7 @@ class NavBar {
       await t.click('button.navbar-toggler');
     }
     const loggedInUser = Selector(`#${COMPONENT_IDS.NAVBAR_CURRENT_USER}`).innerText;
-    await t.wait(10000).expect(loggedInUser).eql(username);
+    await t.wait(1).expect(loggedInUser).eql(username);
   }
 
   /* Check that someone is logged in, then click items to logout. */
