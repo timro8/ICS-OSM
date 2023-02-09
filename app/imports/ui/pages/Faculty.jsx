@@ -24,7 +24,7 @@ const Faculty = () => {
   }, []);
   const handleSearch = (search) => {
     const searchInput = search.trim();
-    setList(faculties.filter(faculty => (faculty.firstName + faculty.lastName + faculty.room).toLowerCase().includes(searchInput.toLowerCase())));
+    setList(faculties.filter(faculty => (`${faculty.firstName} + ' ' + ${faculty.lastName} + ' ' + ${faculty.room}`).toLowerCase().includes(searchInput.toLowerCase())));
   };
   return (ready ? (
     <Container className="py-3">
