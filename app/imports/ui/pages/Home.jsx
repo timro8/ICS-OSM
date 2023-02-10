@@ -9,6 +9,12 @@ import LoadingSpinner from '../components/LoadingSpinner';
 // - Map through each facultyroom and make it return an element
 
 // TODO: Associate the room with the positioning of the elements (maybe use the room #)
+const roomLocations = [
+  { roomNumber: '305F', top: '200px', left: '120px' },
+  { roomNumber: '306B', top: '200px', left: '135px' },
+  { roomNumber: '306C', top: '200px', left: '150px' },
+  { roomNumber: '307A', top: '200px', left: '165px' },
+];
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => {
