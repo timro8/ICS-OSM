@@ -30,7 +30,7 @@ const ListRoom = () => {
   // filter room number and location from search bar
   const handleSearch = (search) => {
     const searchInput = search.trim();
-    setList(rooms.filter(room => (room.roomNumber + room.location).toLowerCase().includes(searchInput.toLowerCase())));
+    setList(rooms.filter(room => (`${room.roomNumber} + ' ' + ${room.location}`).toLowerCase().includes(searchInput.toLowerCase())));
   };
 
   return (ready ? (

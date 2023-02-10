@@ -76,7 +76,7 @@ const SignIn = () => {
               </Card.Body>
             </Card>
           </AutoForm>
-          <Alert variant="secondary">
+          <Alert variant="secondary" id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP_REQUEST}>
             Not a member?&nbsp;
             <Link to="/signup">Click here to Register</Link>
           </Alert>

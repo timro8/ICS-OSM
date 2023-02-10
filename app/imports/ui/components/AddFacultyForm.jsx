@@ -6,11 +6,9 @@ import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { AutoForm, ErrorsField, SelectField, TextField } from 'uniforms-bootstrap5';
+import { Meteor } from 'meteor/meteor';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
-import { Faculties } from '../../api/faculty/FacultyCollection';
-import { UserProfiles } from '../../api/user/UserProfileCollection';
 
 const AddFacultyForm = props => {
 
@@ -59,34 +57,28 @@ const AddFacultyForm = props => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { image, firstName, lastName, email, password, room, bio, phoneNumber, officeHours } = data;
-    const collectionName = UserProfiles.getCollectionName();
+    const { image, firstName, lastName, email, password, room, bio, phoneNumber, officeHours, role } = data;
     const definitionData = { firstName, lastName, email, password };
-    const facultyCollectionName = Faculties.getCollectionName();
-    const facultyDefinitionData = { image, firstName, lastName, email, room, bio, phoneNumber, officeHours };
-    let done = 0; // equal two when it insert successfully in both collection
-    defineMethod.callPromise({ collectionName, definitionData })
-      .catch(error => {
-        console.log(error.message);
-        done -= 1;
-      })
-      .then(() => {
-        done += 1;
-      });
-    defineMethod.callPromise({ facultyCollectionName, facultyDefinitionData })
-      .catch(error => {
-        console.log(error.message);
-        done -= 1;
-      })
-      .then(() => {
-        done += 1;
-      });
-    if (done === 2) {
-      swal('Success', 'Faculty added successfully', 'success');
-      formRef.reset();
-    } else {
-      swal('Error', 'Cannot add faculty, please try again', 'error');
+    let userImg = image;
+    if (userImg === undefined) {
+      userImg = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
     }
+    const facultyDefinitionData = { image: userImg, firstName, lastName, email, room, bio, phoneNumber, officeHours, owner: email, role };
+
+    Meteor.call(
+      'insertFaculty',
+      facultyDefinitionData,
+      definitionData,
+      (err) => {
+        if (err) {
+          console.log(err.message);
+          swal('Error', err.message, 'error');
+        }
+        swal('Success', 'Faculty added successfully', 'success');
+      },
+    );
+
+    formRef.reset();
   };
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
