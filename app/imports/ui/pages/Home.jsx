@@ -5,10 +5,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-// TODO: Use FacultyRoomCollection to determine who's in which room
-// - Map through each facultyroom and make it return an element
 // TODO: Associate the room with the positioning of the elements (maybe use the room #)
-
 const roomLocations = [
   { roomNumber: '305F', top: '200px', left: '120px' },
   { roomNumber: '306B', top: '200px', left: '135px' },
@@ -18,6 +15,7 @@ const roomLocations = [
 
 /* A simple static component to render some text for the landing page. */
 const Landing = () => {
+  // TODO: Use FacultyRoomCollection to determine who's in which room
   const { ready, rooms } = useTracker(() => {
     const subscription = Rooms.subscribeRoom();
     return {
@@ -30,11 +28,7 @@ const Landing = () => {
     <Row id={PAGE_IDS.HOME} className="py-3 align-content-center text-center">
       <Col>
         <h2>WELCOME</h2>
-        {rooms.map(room => (
-          <div key={room._id}>
-            Room Number: {room.roomNumber}
-          </div>
-        ))}
+        {/* Map through each facultyroom and make it return an element */}
         <div style={{ backgroundImage: 'url(\'/images/post-3rd-floor.svg\')', height: '900px', width: '1100px', position: 'relative' }}>
           <div
             className="map-icon"
@@ -59,13 +53,6 @@ const Landing = () => {
               top: '150px',
               left: '135px',
               backgroundImage: 'url(\'https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-300x300.jpeg\')',
-            }}
-          />
-          <div
-            className="map-icon"
-            style={{
-              top: '150px',
-              left: '200px',
             }}
           />
         </div>
