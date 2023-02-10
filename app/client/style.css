@@ -83,3 +83,19 @@ body {
   display: flex;
   align-items: center;
 }
+
+.map-icon {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50%;
+  background: center / contain;
+}
+
+.map-icon:hover {
+  transform: scale(1.2);
+  z-index: 2;
+}
