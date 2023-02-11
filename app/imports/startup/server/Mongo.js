@@ -3,6 +3,7 @@ import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Rooms } from '../../api/room/RoomCollection';
 import { Faculties } from '../../api/faculty/FacultyCollection';
 import { Events302 } from '../../api/events/Events302Collection';
+import { FacultyRoom } from '../../api/faculty/FacultyRoomCollection';
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
@@ -24,6 +25,11 @@ function addFacultyData(data) {
 function addEvents302Data(data) {
   console.log(`Adding event created by: ${data.owner}`);
   Events302.define(data);
+}
+
+function addFacultyRoomData(data) {
+  console.log(`Adding faculty room: ${data.email} (${data.roomKey})`);
+  FacultyRoom.define(data);
 }
 
 // Initialize the StuffsCollection if empty.
@@ -54,5 +60,12 @@ if (Events302.count() === 0) {
   if (Meteor.settings.defaultEvents302Data) {
     console.log('Creating default event data for room 302.');
     Meteor.settings.defaultEvents302Data.map(data => addEvents302Data(data));
+  }
+}
+
+if (FacultyRoom.count() === 0) {
+  if (Meteor.settings.defaultFacultyRoomData) {
+    console.log('Creating default faculty room data.');
+    Meteor.settings.defaultFacultyRoomData.map(data => addFacultyRoomData(data));
   }
 }
