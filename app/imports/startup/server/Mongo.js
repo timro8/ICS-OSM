@@ -13,7 +13,7 @@ function addData(data) {
 }
 
 function addRoomData(data) {
-  console.log(`  Adding: ${data.roomNumber} (${data.owner})`);
+  console.log(`  Adding: ${data.roomNumber} (${data.occupants})`);
   Rooms.define(data);
 }
 
