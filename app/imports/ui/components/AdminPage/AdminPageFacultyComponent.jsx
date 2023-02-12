@@ -9,7 +9,7 @@ const AdminPageFacultyComponent = ({ faculty }) => (
     <td>{faculty.firstName}</td>
     <td>{faculty.owner}</td>
     <td>
-      <Link className={COMPONENT_IDS.LIST_FACULTY_ADMIN} to={`/edit/${faculty._id}`}>Edit Profile</Link>
+      <Link className={COMPONENT_IDS.LIST_FACULTY_ADMIN} to={`/profile/${faculty._id}`}>Edit Profile</Link>
     </td>
   </tr>
 );
