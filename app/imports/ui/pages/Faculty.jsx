@@ -5,17 +5,17 @@ import AddFacultyForm from '../components/AddFacultyForm';
 import SearchBar from '../components/SearchBar';
 import FacultyCard from '../components/FacultyCard';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import { Faculties } from '../../api/faculty/FacultyCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 
 const Faculty = () => {
   // show pop up to add faculty
   const [show, setShow] = useState(false);
   const [facultyList, setList] = useState([]);
   const { ready, faculties } = useTracker(() => {
-    const subscription = Faculties.subscribeFacultyAdmin();
+    const subscription = FacultyProfiles.subscribeFacultyProfileAdmin();
     const rdy = subscription.ready();
-    const facultyItems = Faculties.find({}, { sort: { lastName: 1 } }).fetch();
+    const facultyItems = FacultyProfiles.find({}, { sort: { lastName: 1 } }).fetch();
     setList(facultyItems);
     return {
       faculties: facultyItems,

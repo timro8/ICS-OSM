@@ -23,11 +23,15 @@ const FacultyCard = ({ faculty }) => (
 
 FacultyCard.propTypes = {
   faculty: PropTypes.shape({
-    image: PropTypes.string,
+    email: PropTypes.string,
     firstName: PropTypes.string,
     lastName: PropTypes.string,
-    owner: PropTypes.string,
+    facRole: PropTypes.string,
+    image: PropTypes.string,
+    bio: PropTypes.string,
     room: PropTypes.string,
+    phoneNumber: PropTypes.string,
+    officeHours: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

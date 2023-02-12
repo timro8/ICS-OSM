@@ -1,11 +1,52 @@
+import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
+import { Roles } from 'meteor/alanning:roles';
 import BaseProfileCollection from './BaseProfileCollection';
 import { ROLE } from '../role/Role';
 import { Users } from './UserCollection';
 
+export const FACULTY_ROLES = ['PROFESSOR', 'TA', 'RA', 'N/A'];
+
+export const roomNumbers = ['309', '310', '311', '312', '313', '314'];
+
+export const facultyProfilePublications = {
+  facultyProfile: 'facultyProfile',
+  facultyProfileAdmin: 'facultyProfileAdmin',
+};
+
 class FacultyProfileCollection extends BaseProfileCollection {
   constructor() {
-    super('FacultyProfile', new SimpleSchema({}));
+    super('FacultyProfile', new SimpleSchema({
+      email: String,
+      firstName: String,
+      lastName: String,
+      facRole: {
+        type: String,
+        allowedValues: FACULTY_ROLES,
+        defaultValue: 'N/A',
+      },
+      image: {
+        type: String,
+        optional: true,
+      },
+      bio: {
+        type: String,
+        optional: true,
+      },
+      room: {
+        type: String,
+        allowedValues: roomNumbers,
+        defaultValue: '309',
+      },
+      phoneNumber: {
+        type: String,
+        optional: true,
+      },
+      officeHours: {
+        type: String,
+        optional: true,
+      },
+    }));
   }
 
   /**
@@ -15,14 +56,14 @@ class FacultyProfileCollection extends BaseProfileCollection {
    * @param firstName The first name.
    * @param lastName The last name.
    */
-  define({ email, firstName, lastName, password }) {
+  define({ email, firstName, lastName, password, facRole, image, bio, room, phoneNumber, officeHours }) {
     // if (Meteor.isServer) {
     const username = email;
     const user = this.findOne({ email, firstName, lastName });
     if (!user) {
-      const role = ROLE.FACULTY;
+      const role = ROLE.USER;
       const userID = Users.define({ username, role, password });
-      const profileID = this._collection.insert({ email, firstName, lastName, userID, role });
+      const profileID = this._collection.insert({ email, firstName, lastName, userID, role, facRole, image, bio, room, phoneNumber, officeHours });
       // this._collection.update(profileID, { $set: { userID } });
       return profileID;
     }
@@ -32,13 +73,13 @@ class FacultyProfileCollection extends BaseProfileCollection {
   }
 
   /**
-   * Updates the FacultyProfile. You cannot change the email or role.
-   * @param docID the id of the FacultyProfile
+   * Updates the StudentProfile. You cannot change the email or role.
+   * @param docID the id of the StudentProfile
    * @param firstName new first name (optional).
    * @param lastName new last name (optional).
    */
-  update(docID, { firstName, lastName }) {
-    this.assertDefined(docID);
+  update(profileID, { firstName, lastName, facRole, image, bio, room, phoneNumber, officeHours }) {
+    this.assertDefined(profileID);
     const updateData = {};
     if (firstName) {
       updateData.firstName = firstName;
@@ -46,7 +87,25 @@ class FacultyProfileCollection extends BaseProfileCollection {
     if (lastName) {
       updateData.lastName = lastName;
     }
-    this._collection.update(docID, { $set: updateData });
+    if (facRole) {
+      updateData.facRole = facRole;
+    }
+    if (image) {
+      updateData.image = image;
+    }
+    if (bio) {
+      updateData.bio = bio;
+    }
+    if (room) {
+      updateData.room = room;
+    }
+    if (phoneNumber) {
+      updateData.phoneNumber = phoneNumber;
+    }
+    if (officeHours) {
+      updateData.officeHours = officeHours;
+    }
+    this._collection.update(profileID, { $set: updateData });
   }
 
   /**
@@ -81,24 +140,74 @@ class FacultyProfileCollection extends BaseProfileCollection {
   checkIntegrity() {
     const problems = [];
     this.find().forEach((doc) => {
-      if (doc.role !== ROLE.User) {
+      if (doc.role !== ROLE.FACULTY) {
         problems.push(`FacultyProfile instance does not have ROLE.FACULTY: ${doc}`);
       }
     });
     return problems;
   }
 
+  publish() {
+    if (Meteor.isServer) {
+      // get the FacultyCollection instance.
+      const instance = this;
+      /** This subscription publishes only the documents associated with the logged in user */
+      Meteor.publish(facultyProfilePublications.facultyProfile, function publish() {
+        if (this.userId) {
+          const username = Meteor.users.findOne(this.userId).username;
+          return instance._collection.find({ email: username });
+        }
+        return this.ready();
+      });
+
+      /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
+      Meteor.publish(facultyProfilePublications.facultyProfileAdmin, function publish() {
+        if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
+          return instance._collection.find();
+        }
+        return this.ready();
+      });
+    }
+  }
+
   /**
-   * Returns an object representing the FacultyProfile docID in a format acceptable to define().
-   * @param docID The docID of a FacultyProfile
+   * Subscription method for faculty owned by the current user.
+   */
+  subscribeFacultyProfile() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(facultyProfilePublications.facultyProfile);
+    }
+    return null;
+  }
+
+  /**
+   * Subscription method for admin users.
+   * It subscribes to the entire collection.
+   */
+  subscribeFacultyProfileAdmin() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(facultyProfilePublications.facultyProfileAdmin);
+    }
+    return null;
+  }
+
+  /**
+   * Returns an object representing the StudentProfile docID in a format acceptable to define().
+   * @param docID The docID of a StudentProfile
    * @returns { Object } An object representing the definition of docID.
    */
-  dumpOne(docID) {
-    const doc = this.findDoc(docID);
+  dumpOne(profileID) {
+    const doc = this.findDoc(profileID);
     const email = doc.email;
     const firstName = doc.firstName;
     const lastName = doc.lastName;
-    return { email, firstName, lastName }; // CAM this is not enough for the define method. We lose the password.
+    const facRole = doc.facRole;
+    const image = doc.role;
+    const bio = doc.bio;
+    const room = doc.room;
+    const phoneNumber = doc.roomNumber;
+    const officeHours = doc.officeHours;
+    return { email, firstName, lastName, facRole, image, bio, room, phoneNumber, officeHours }; // CAM this is not enough for the define method. We lose the password.
   }
 }
 
