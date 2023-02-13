@@ -7,7 +7,7 @@ import { Users } from './UserCollection';
 
 export const FACULTY_ROLES = ['PROFESSOR', 'TA', 'RA', 'N/A'];
 
-export const roomNumbers = ['309', '310', '311', '312', '313', '314'];
+// export const roomNumbers = ['307A', '307B', '309', '310', '311', '312', '313', '314'];
 
 export const facultyProfilePublications = {
   facultyProfile: 'facultyProfile',
@@ -17,7 +17,14 @@ export const facultyProfilePublications = {
 class FacultyProfileCollection extends BaseProfileCollection {
   constructor() {
     super('FacultyProfile', new SimpleSchema({
-      email: String,
+      email: {
+        type: String,
+        optional: false,
+      },
+      password: {
+        type: String,
+        optional: false,
+      },
       firstName: String,
       lastName: String,
       facRole: {
@@ -33,11 +40,9 @@ class FacultyProfileCollection extends BaseProfileCollection {
         type: String,
         optional: true,
       },
-      room: {
-        type: String,
-        allowedValues: roomNumbers,
-        defaultValue: '309',
-      },
+      rooms: [String],
+      // allowedValues: roomNumbers,
+      // defaultValue: ['309', '307A'],
       phoneNumber: {
         type: String,
         optional: true,
@@ -56,20 +61,20 @@ class FacultyProfileCollection extends BaseProfileCollection {
    * @param firstName The first name.
    * @param lastName The last name.
    */
-  define({ email, firstName, lastName, password, facRole, image, bio, room, phoneNumber, officeHours }) {
-    // if (Meteor.isServer) {
-    const username = email;
-    const user = this.findOne({ email, firstName, lastName });
-    if (!user) {
-      const role = ROLE.USER;
-      const userID = Users.define({ username, role, password });
-      const profileID = this._collection.insert({ email, firstName, lastName, userID, role, facRole, image, bio, room, phoneNumber, officeHours });
-      // this._collection.update(profileID, { $set: { userID } });
-      return profileID;
+  define({ email, firstName, lastName, password, facRole, image, bio, rooms, phoneNumber, officeHours }) {
+    if (Meteor.isServer) {
+      const username = email;
+      const user = this.findOne({ email, firstName, lastName });
+      if (!user) {
+        const role = ROLE.USER;
+        const userID = Users.define({ username, role, password });
+        const profileID = this._collection.insert({ email, password, firstName, lastName, userID, role, facRole, image, bio, rooms, phoneNumber, officeHours });
+        this._collection.update(profileID, { $set: { userID } });
+        return profileID;
+      }
+      return user._id;
     }
-    return user._id;
-    // }
-    // return undefined;
+    return undefined;
   }
 
   /**
@@ -78,9 +83,12 @@ class FacultyProfileCollection extends BaseProfileCollection {
    * @param firstName new first name (optional).
    * @param lastName new last name (optional).
    */
-  update(profileID, { firstName, lastName, facRole, image, bio, room, phoneNumber, officeHours }) {
+  update(profileID, { password, firstName, lastName, facRole, image, bio, rooms, phoneNumber, officeHours }) {
     this.assertDefined(profileID);
     const updateData = {};
+    if (password) {
+      updateData.password = password;
+    }
     if (firstName) {
       updateData.firstName = firstName;
     }
@@ -96,8 +104,8 @@ class FacultyProfileCollection extends BaseProfileCollection {
     if (bio) {
       updateData.bio = bio;
     }
-    if (room) {
-      updateData.room = room;
+    if (rooms) {
+      updateData.rooms = rooms;
     }
     if (phoneNumber) {
       updateData.phoneNumber = phoneNumber;
@@ -154,8 +162,7 @@ class FacultyProfileCollection extends BaseProfileCollection {
       /** This subscription publishes only the documents associated with the logged in user */
       Meteor.publish(facultyProfilePublications.facultyProfile, function publish() {
         if (this.userId) {
-          const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ email: username });
+          return instance._collection.find(this.userId);
         }
         return this.ready();
       });
@@ -199,15 +206,16 @@ class FacultyProfileCollection extends BaseProfileCollection {
   dumpOne(profileID) {
     const doc = this.findDoc(profileID);
     const email = doc.email;
+    const password = doc.password;
     const firstName = doc.firstName;
     const lastName = doc.lastName;
     const facRole = doc.facRole;
     const image = doc.role;
     const bio = doc.bio;
-    const room = doc.room;
+    const rooms = doc.rooms;
     const phoneNumber = doc.roomNumber;
     const officeHours = doc.officeHours;
-    return { email, firstName, lastName, facRole, image, bio, room, phoneNumber, officeHours }; // CAM this is not enough for the define method. We lose the password.
+    return { email, password, firstName, lastName, facRole, image, bio, rooms, phoneNumber, officeHours }; // CAM this is not enough for the define method. We lose the password.
   }
 }
 

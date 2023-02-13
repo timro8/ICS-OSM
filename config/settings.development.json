@@ -45,26 +45,29 @@
   "defaultFacultyProfileData": [
     {
       "email": "johnson@foo.com",
+      "password": "changeme",
       "firstName": "Carleton",
       "lastName": "Moore",
       "facRole": "PROFESSOR",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore-180x180.jpg",
       "bio": "I like Software management, computer games, human and social aspects of security and privacy, human-centered computing, interactive games, massively-multiplayer online games, privacy policies, process validation, project and people management, software creation and management, software development process management..",
-      "room": "307B",
+      "rooms": ["307B"],
       "phoneNumber": "8089566920",
       "officeHours": "Mondays 1pm-2pm"
     },
     {
       "email": "cmoore@foo.com",
+      "password": "changeme",
       "firstName": "Phillip",
       "lastName": "Johnson",
       "facRole": "PROFESSOR",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-180x180.jpeg",
       "bio": "I like Climate change, Food resiliency, Software engineering, Educational technology..",
-      "room": "307A",
+      "rooms": ["307A"],
       "phoneNumber": "8089563489",
       "officeHours": "Mondays 1pm-2pm"
     }
+  ],
 
   "defaultFacultyData": [
     { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "admin", "lastName":  "ADMIN", "owner":  "admin@foo.com", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"},

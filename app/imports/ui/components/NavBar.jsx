@@ -57,6 +57,7 @@ const NavBar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+  )
   const location = useLocation();
 
   return (!(location.pathname === '/' || location.pathname === '/signin') ?
@@ -97,6 +98,7 @@ const NavBar = () => {
         </Container>
       </Navbar>
     ) : ''
+
   );
 };
 
