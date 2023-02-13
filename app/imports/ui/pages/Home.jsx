@@ -25,16 +25,24 @@ const Home = () => {
     <Row id={PAGE_IDS.HOME} className="py-3">
       <h1>Hi (user), Good Morning</h1>
       {/* TODO: Map through each facultyroom and return an element */}
+
       <div style={{ backgroundImage: 'url(\'/images/post-3rd-floor.svg\')', height: '900px', width: '1100px', position: 'relative' }}>
-        <div
-          className="map-icon"
-          style={{
-            // TODO: replace the strings
-            top: roomPositions.find(element => element.roomNumber === '305F').top,
-            left: roomPositions.find(element => element.roomNumber === '305F').left,
-            backgroundImage: 'url(\'https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-300x300.jpeg\')',
-          }}
-        />
+        {rooms.map(room => {
+          const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
+          if (roomPosition) {
+            return (
+              <div
+                className="map-icon"
+                style={{
+                  top: roomPosition.top,
+                  left: roomPosition.left,
+                  backgroundImage: 'url(\'https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-300x300.jpeg\')',
+                }}
+              />
+            );
+          }
+          return false;
+        })}
       </div>
       <Row>
         <h2>Total</h2>
