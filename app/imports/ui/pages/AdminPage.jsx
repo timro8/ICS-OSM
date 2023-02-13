@@ -31,6 +31,9 @@ const AdminPage = () => {
       ready: rdy,
     };
   }, []);
+
+  document.title = 'Admin';
+
   return (ready ? (
     <Container
       id={PAGE_IDS.LIST_STUFF_ADMIN}

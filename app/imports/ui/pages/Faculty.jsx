@@ -22,6 +22,8 @@ const Faculty = () => {
       ready: rdy,
     };
   }, []);
+
+  document.title = 'Faculty';
   const handleSearch = (search) => {
     const searchInput = search.trim();
     setList(faculties.filter(faculty => (`${faculty.firstName} + ' ' + ${faculty.lastName} + ' ' + ${faculty.room}`).toLowerCase().includes(searchInput.toLowerCase())));

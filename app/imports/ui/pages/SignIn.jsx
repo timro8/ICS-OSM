@@ -39,7 +39,7 @@ const SignIn = () => {
     return (<Navigate to="/home" />);
   }
 
-  document.title = 'OSMICS - Sign In';
+  document.title = 'Sign In';
   // Otherwise return the Login form.
   return (
     <div style={{ background: '#DED9C3' }}>

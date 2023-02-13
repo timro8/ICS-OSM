@@ -10,6 +10,8 @@ import SearchBar from '../components/SearchBar';
 /* Renders a table containing all of the Room documents. Use <RoomItem> to render each row. */
 const ListRoom = () => {
   const [roomList, setList] = useState([]);
+
+  document.title = 'Rooms';
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, rooms } = useTracker(() => {
     // Note that this subscription will get cleaned up
