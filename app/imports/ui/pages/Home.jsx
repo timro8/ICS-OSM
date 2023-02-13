@@ -5,7 +5,6 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-// TODO: Associate the room with the positioning of the elements (maybe use the room #)
 const roomLocations = [
   { roomNumber: '305F', top: '200px', left: '120px' },
   { roomNumber: '306B', top: '200px', left: '135px' },
@@ -13,9 +12,7 @@ const roomLocations = [
   { roomNumber: '307A', top: '200px', left: '165px' },
 ];
 
-/* A simple static component to render some text for the landing page. */
 const Landing = () => {
-  // TODO: Use FacultyRoomCollection to determine who's in which room
   const { ready, rooms } = useTracker(() => {
     const subscription = Rooms.subscribeRoom();
     return {
