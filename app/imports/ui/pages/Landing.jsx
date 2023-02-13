@@ -11,7 +11,7 @@ const Landing = () => {
     return <Navigate to="/home" />;
   }
   return (
-    <Row id={PAGE_IDS.LANDING} className="py-3 landingpage align-content-center text-center">
+    <Row id={PAGE_IDS.LANDING} className="py-3 landingpage align-content-center text-center min-vh-100">
       <Col>
         <h2 className="landingtitle">WELCOME TO ICS-OSM!</h2>
         {/* TODO: Combine paragraphs into single div/p/span/etc. */}
