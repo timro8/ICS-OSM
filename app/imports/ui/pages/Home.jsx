@@ -12,7 +12,7 @@ const roomLocations = [
   { roomNumber: '307A', top: '200px', left: '165px' },
 ];
 
-const Landing = () => {
+const Home = () => {
   const { ready, rooms } = useTracker(() => {
     const subscription = Rooms.subscribeRoom();
     return {
@@ -72,4 +72,4 @@ const Landing = () => {
   ) : <LoadingSpinner message="Loading Room" />;
 };
 
-export default Landing;
+export default Home;
