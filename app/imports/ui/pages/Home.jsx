@@ -36,22 +36,6 @@ const Landing = () => {
               backgroundImage: 'url(\'https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-300x300.jpeg\')',
             }}
           />
-          <div
-            className="map-icon"
-            style={{
-              top: '150px',
-              left: '120px',
-              backgroundImage: 'url(\'https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore.jpg\')',
-            }}
-          />
-          <div
-            className="map-icon"
-            style={{
-              top: '150px',
-              left: '135px',
-              backgroundImage: 'url(\'https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-300x300.jpeg\')',
-            }}
-          />
         </div>
       </Col>
       <Row>
@@ -83,30 +67,6 @@ const Landing = () => {
             <Card.Title>Rooms Out of Commission</Card.Title>
             <Card.Text style={{ fontSize: '3rem' }}>2</Card.Text>
             <ProgressBar variant="danger" now={2} />
-          </Card.Body>
-        </Card>
-      </Row>
-      <Row>
-        <h2>Keller Hall</h2>
-        <Card style={{ width: '20rem' }}>
-          <Card.Body>
-            <Card.Title>Rooms Occupied</Card.Title>
-            <Card.Text style={{ fontSize: '3rem' }}>42</Card.Text>
-            <ProgressBar now={42} />
-          </Card.Body>
-        </Card>
-        <Card style={{ width: '20rem' }}>
-          <Card.Body>
-            <Card.Title>Rooms Vacant</Card.Title>
-            <Card.Text style={{ fontSize: '3rem' }}>3</Card.Text>
-            <ProgressBar now={3} />
-          </Card.Body>
-        </Card>
-        <Card style={{ width: '20rem' }}>
-          <Card.Body>
-            <Card.Title>Rooms Out of Commission</Card.Title>
-            <Card.Text style={{ fontSize: '3rem' }}>0</Card.Text>
-            <ProgressBar variant="danger" now={0} />
           </Card.Body>
         </Card>
       </Row>
