@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Card, ProgressBar, Row } from 'react-bootstrap';
+import { Card, ProgressBar, Row } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -22,22 +22,20 @@ const Landing = () => {
   });
 
   return ready ? (
-    <Row id={PAGE_IDS.HOME} className="py-3 align-content-center text-center">
-      <Col>
-        <h1>Hi (user), Good Morning</h1>
-        {/* Map through each facultyroom and make it return an element */}
-        <div style={{ backgroundImage: 'url(\'/images/post-3rd-floor.svg\')', height: '900px', width: '1100px', position: 'relative' }}>
-          <div
-            className="map-icon"
-            style={{
-              // TODO: replace the strings
-              top: roomLocations.find(element => element.roomNumber === '305F').top,
-              left: roomLocations.find(element => element.roomNumber === '305F').left,
-              backgroundImage: 'url(\'https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-300x300.jpeg\')',
-            }}
-          />
-        </div>
-      </Col>
+    <Row id={PAGE_IDS.HOME} className="py-3">
+      <h1>Hi (user), Good Morning</h1>
+      {/* TODO: Map through each facultyroom and return an element */}
+      <div style={{ backgroundImage: 'url(\'/images/post-3rd-floor.svg\')', height: '900px', width: '1100px', position: 'relative' }}>
+        <div
+          className="map-icon"
+          style={{
+            // TODO: replace the strings
+            top: roomLocations.find(element => element.roomNumber === '305F').top,
+            left: roomLocations.find(element => element.roomNumber === '305F').left,
+            backgroundImage: 'url(\'https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-300x300.jpeg\')',
+          }}
+        />
+      </div>
       <Row>
         <h2>Total</h2>
         <ProgressBar>
