@@ -7,7 +7,9 @@ import { ROLE } from '../role/Role';
 
 export const roomLocations = ['POST'];
 
-export const roomStatus = ['Occupied', 'Vacant', 'Out of Commission'];
+export const roomStatus = ['Occupied', 'Vacant', 'Out of Commission', 'Other'];
+
+export const roomClassifications = ['Office', 'Sink', 'Conference', 'Cubicle', 'ICS Library', 'ASECOLAB', 'Mail', 'Main Office', 'Lab', 'ICSpace', 'Storage', 'ICS IT', 'OFCSVC', 'LNG'];
 
 export const roomPublications = {
   room: 'Room',
@@ -17,6 +19,7 @@ export const roomPublications = {
 class RoomCollection extends BaseCollection {
   constructor() {
     super('Rooms', new SimpleSchema({
+      roomKey: { type: String, index: true, unique: true },
       roomNumber: String,
       location: {
         type: String,
@@ -32,7 +35,16 @@ class RoomCollection extends BaseCollection {
         type: Number,
         optional: true,
       },
-      owner: String,
+      roomSqFoot: {
+        type: String,
+        optional: true,
+      },
+      roomClassification: {
+        type: String,
+        allowedValues: roomClassifications,
+        defaultValue: 'Office',
+      },
+      occupants: [String],
       picture: {
         type: String,
         optional: true,
@@ -42,21 +54,27 @@ class RoomCollection extends BaseCollection {
 
   /**
    * Defines a new Room item.
+   * @param roomKey the unique Id of the room.
    * @param roomNumber the number of the room.
    * @param location the location of the room.
    * @param status the status of the room.
    * @param capacity the capacity for the room.
-   * @param owner the owner of the room.
+   * @param roomSqFoot the square footage of the room.
+   * @param roomClassification the classification of the room.
+   * @param occupants the occupants of the room.
    * @param picture the owner of the room.
    * @return {String} the docID of the new document.
    */
-  define({ roomNumber, location, status, capacity, owner, picture }) {
+  define({ roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture }) {
     const docID = this._collection.insert({
+      roomKey,
       roomNumber,
       location,
       status,
       capacity,
-      owner,
+      roomSqFoot,
+      roomClassification,
+      occupants,
       picture,
     });
     return docID;
@@ -67,15 +85,26 @@ class RoomCollection extends BaseCollection {
    * @param docID the id of the document to update.
    * @param status the new status (optional).
    * @param capacity the new room capacity (optional).
+   * @param roomSqFoot the new square footage of the room (optional).
+   * @param roomClassification the new room classification (optional).
    * @param picture the new picture of the room (optional).
    */
-  update(docID, { status, capacity, picture }) {
+  update(docID, { status, capacity, roomSqFoot, roomClassification, occupants, picture }) {
     const updateData = {};
     if (status) {
       updateData.status = status;
     }
     if (capacity) {
       updateData.capacity = capacity;
+    }
+    if (roomSqFoot) {
+      updateData.roomSqFoot = roomSqFoot;
+    }
+    if (roomClassification) {
+      updateData.roomClassification = roomClassification;
+    }
+    if (occupants) {
+      updateData.occupants = occupants;
     }
     if (picture) {
       updateData.picture = picture;
@@ -106,8 +135,7 @@ class RoomCollection extends BaseCollection {
       /** This subscription publishes only the documents associated with the logged in user */
       Meteor.publish(roomPublications.room, function publish() {
         if (this.userId) {
-          const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ owner: username });
+          return instance._collection.find();
         }
         return this.ready();
       });
@@ -156,16 +184,20 @@ class RoomCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{owner: (*|number), roomNumber: *, location: *, status: *, capacity: *}}
+   * @return {{occupants: (*|number), roomKey: *, roomNumber: *, location: *, status: *, capacity: *, roomSqFoot: *, roomClassification: *, picture: * }}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
+    const roomKey = doc.roomKey;
     const roomNumber = doc.roomNumber;
     const location = doc.location;
     const status = doc.status;
     const capacity = doc.capacity;
-    const owner = doc.owner;
-    return { roomNumber, location, status, capacity, owner };
+    const roomSqFoot = doc.roomSqFoot;
+    const roomClassification = doc.roomClassification;
+    const occupants = doc.occupants;
+    const picture = doc.picture;
+    return { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture };
   }
 }
 
