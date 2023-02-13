@@ -110,16 +110,6 @@ const Landing = () => {
           </Card.Body>
         </Card>
       </Row>
-      <Row>
-        <Card style={{ width: '30rem' }}>
-          <Card.Header>Equipments</Card.Header>
-          <Card.Body>
-            <Card.Text>Total Computers: 150</Card.Text>
-            <Card.Text>Total Network Jacks: 300</Card.Text>
-            <Card.Text>Total Phone Jacks: 300</Card.Text>
-          </Card.Body>
-        </Card>
-      </Row>
     </Row>
   ) : <LoadingSpinner message="Loading Room" />;
 };
