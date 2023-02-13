@@ -5,7 +5,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 
-const roomLocations = [
+const roomPositions = [
   { roomNumber: '305F', top: '200px', left: '120px' },
   { roomNumber: '306B', top: '200px', left: '135px' },
   { roomNumber: '306C', top: '200px', left: '150px' },
@@ -30,8 +30,8 @@ const Home = () => {
           className="map-icon"
           style={{
             // TODO: replace the strings
-            top: roomLocations.find(element => element.roomNumber === '305F').top,
-            left: roomLocations.find(element => element.roomNumber === '305F').left,
+            top: roomPositions.find(element => element.roomNumber === '305F').top,
+            left: roomPositions.find(element => element.roomNumber === '305F').left,
             backgroundImage: 'url(\'https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-300x300.jpeg\')',
           }}
         />
