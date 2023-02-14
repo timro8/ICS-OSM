@@ -24,24 +24,29 @@ const Home = () => {
   return ready ? (
     <Row id={PAGE_IDS.HOME} className="py-3">
       <h1>Hi (user), Good Morning</h1>
-      {/* TODO: Map through each facultyroom and return an element */}
+      {/* TODO: Map through each occupant in each of the room and return a map icon.
+       if room is empty, display an empty icon regardless.
+        Depending on the index change the left of the room position */}
 
-      <div style={{ backgroundImage: 'url(\'/images/post-3rd-floor.svg\')', height: '900px', width: '1100px', position: 'relative' }}>
         {rooms.map(room => {
           const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
           if (roomPosition) {
-            return (
-              <div
-                className="map-icon"
-                style={{
-                  top: roomPosition.top,
-                  left: roomPosition.left,
-                  backgroundImage: 'url(\'https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-300x300.jpeg\')',
-                }}
-              />
-            );
+            return room.occupants.map(occupant => {
+              console.log(`occupant = ${occupant}`);
+              // TODO: Occupant returns the email of the occupant. Use that email to get the actual occupant
+              return (
+                <div
+                  className="map-icon"
+                  style={{
+                    top: roomPosition.top,
+                    left: roomPosition.left,
+                    backgroundImage: `url(${occupant.image})`,
+                  }}
+                />
+              );
+            });
           }
-          return false;
+          return null;
         })}
       </div>
       <Row>
