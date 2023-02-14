@@ -13,7 +13,7 @@ const Faculty = () => {
   const [show, setShow] = useState(false);
   const [facultyList, setList] = useState([]);
   const { ready, faculties } = useTracker(() => {
-    const subscription = FacultyProfiles.subscribeFacultyProfileAdmin();
+    const subscription = FacultyProfiles.subscribeFacultyProfile();
     const rdy = subscription.ready();
     const facultyItems = FacultyProfiles.find({}, { sort: { lastName: 1 } }).fetch();
     setList(facultyItems);

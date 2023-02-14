@@ -44,25 +44,25 @@
 
   "defaultFacultyProfileData": [
     {
-      "email": "johnson@foo.com",
+      "email": "cmoore@hawaii.edu",
       "password": "changeme",
       "firstName": "Carleton",
       "lastName": "Moore",
       "facRole": "PROFESSOR",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore-180x180.jpg",
-      "bio": "I like Software management, computer games, human and social aspects of security and privacy, human-centered computing, interactive games, massively-multiplayer online games, privacy policies, process validation, project and people management, software creation and management, software development process management..",
+      "bio": "I like Software management, computer games, human and social aspects of security and privacy.",
       "rooms": ["307B"],
       "phoneNumber": "8089566920",
       "officeHours": "Mondays 1pm-2pm"
     },
     {
-      "email": "cmoore@foo.com",
+      "email": "johnson@hawaii.edu",
       "password": "changeme",
       "firstName": "Phillip",
       "lastName": "Johnson",
       "facRole": "PROFESSOR",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-180x180.jpeg",
-      "bio": "I like Climate change, Food resiliency, Software engineering, Educational technology..",
+      "bio": "I like Climate change, Food resiliency, Software engineering, Educational technology.",
       "rooms": ["307A"],
       "phoneNumber": "8089563489",
       "officeHours": "Mondays 1pm-2pm"

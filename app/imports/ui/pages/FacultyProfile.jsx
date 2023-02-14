@@ -20,7 +20,7 @@ const FacultyProfile = () => {
   return (ready ? (
     <Container id={PAGE_IDS.PROFILE} className="py-3" fluid>
       <Row>
-        <Col className="d-flex justify-content-center">
+        <Col className="d-flex justify-content-center py-3">
           <Image id="imgProfile" roundedCircle src={faculty[0].image} width="300px" />
         </Col>
       </Row>
@@ -29,11 +29,14 @@ const FacultyProfile = () => {
           <h1>{faculty[0].firstName} {faculty[0].lastName}</h1>
           <p>{faculty[0].email}</p>
           <hr />
+          <span className="small">Faculty Role:</span>
+          <p className="fw-bold">{faculty[0].facRole}</p>
+          <hr />
           <span className="small">About Me:</span>
           <p className="fw-bold">{faculty[0].bio}</p>
           <hr />
           <span className="small">Room Number:</span>
-          <p className="fw-bold">{faculty[0].room}</p>
+          <p className="fw-bold">{faculty[0].rooms}</p>
           <hr />
           <span className="small">Phone Number</span>
           <p className="fw-bold">{faculty[0].phoneNumber}</p>
