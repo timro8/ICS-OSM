@@ -28,6 +28,7 @@ const Home = () => {
        if room is empty, display an empty icon regardless.
         Depending on the index change the left of the room position */}
 
+      <div style={{ backgroundImage: 'url(\'/images/post-3rd-floor(1).svg\')', height: '100vh', width: '100vw', backgroundSize: 'cover', position: 'relative' }}>
         {rooms.map(room => {
           const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
           if (roomPosition) {
