@@ -13,7 +13,9 @@ const NavBar = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
-  const menuStyle = {};
+  const menuStyle = {
+    boxShadow: '0px 0px 10px darkgray',
+  };
   const handleSignout = async () => {
     await Meteor.logout(() => {
       window.location.assign('/');
