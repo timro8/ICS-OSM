@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Button } from 'react-bootstrap';
+import { Col, Row, Button, Container } from 'react-bootstrap';
 import { Meteor } from 'meteor/meteor';
 import { Navigate } from 'react-router-dom';
 import { PAGE_IDS } from '../utilities/PageIDs';
@@ -14,17 +14,28 @@ const Landing = () => {
   }
 
   return (
-    <Row id={PAGE_IDS.LANDING} className="py-3 landingpage align-content-center text-center min-vh-100">
-      <Col>
-        <h2 className="landingtitle">WELCOME TO ICS-OSM!</h2>
-        {/* TODO: Combine paragraphs into single div/p/span/etc. */}
-        <p className="landingtext">This is an app that allows you to see the 3rd Floor of POST </p>
-        <p className="landingtext">as well as some rooms in the Keller building</p>
-        <Col direction="horizontal" className="marginland">
-          <Button variant="success" size="lg" href="/signin">Sign In</Button>
-        </Col>
-      </Col>
-    </Row>
+    <div
+      id={PAGE_IDS.LANDING}
+      className="py-3 d-flex align-items-center text-center min-vh-100"
+      style={{
+        background: '#004730',
+      }}
+    >
+      <Container className="h-100 d-flex flex-column gap-5 justify-content-center text-white">
+        <h1 className="display-1">WELCOME TO OSMICS!</h1>
+        <h2 className="display-6">An application designed to improved your experience in the ICS department.</h2>
+        <div>
+          <Button
+            variant="dark"
+            size="lg"
+            href="/signin"
+            style={{ width: '200px', padding: '20px' }}
+          >
+            Sign In
+          </Button>
+        </div>
+      </Container>
+    </div>
   );
 };
 
