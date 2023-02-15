@@ -43,6 +43,7 @@ const RoomDetails = () => {
     const documentNotes = RoomNotes.find({ roomId: _id }).fetch();
     const documentJacks = RoomJacks.find({ roomId: _id }).fetch();
     const documentEquipment = RoomEquipments.find({ roomId: _id }).fetch();
+
     // ready when subscriptions are completed
     return {
       doc: document,

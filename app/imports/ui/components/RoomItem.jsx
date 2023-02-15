@@ -13,7 +13,7 @@ const RoomItem = ({ room }) => (
         <Card.Title>{room.roomNumber}</Card.Title>
         <Card.Subtitle>{room.location}</Card.Subtitle>
         <Card.Subtitle>
-          {room.occupants.map((o) => <p>{o}</p>)}
+          {room.occupants.map((o, index) => <p key={index}>{o}</p>)}
         </Card.Subtitle>
       </Card.Header>
       <Card.Body>
