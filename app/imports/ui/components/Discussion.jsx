@@ -4,7 +4,7 @@ import { Card, Badge } from 'react-bootstrap';
 
 /** Renders a single row of Faculty members in a (Admin) table. See pages/AdminPageFacultyComponent.jsx. */
 const Discussions = ({ discussion }) => (
-  <Card>
+  <Card className="py-2 px-2">
     <Card.Subtitle> Posted by user: {discussion.firstName} {discussion.lastName}</Card.Subtitle>
     <Card.Title>{discussion.name}</Card.Title>
     <Badge pill bg="dark" style={{ width: '10rem' }}>
