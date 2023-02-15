@@ -33,6 +33,7 @@ const NavBar = () => {
               {currentUser ? ([
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_ROOM} as={NavLink} to="/listroom" key="listroom">List Room</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FACULTY} as={NavLink} to="/faculty" key="faculty">Faculty</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
               ]) : ''}
               {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
                 [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin</Nav.Link>,
@@ -41,10 +42,6 @@ const NavBar = () => {
               ) : ''}
               {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.FACULTY, ROLE.TECH, ROLE.OFFICE]) ? (
                 [<Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/cal" key="cal">Reserve</Nav.Link>,
-                ]
-              ) : ''}
-              {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.FACULTY, ROLE.TECH, ROLE.OFFICE]) ? (
-                [<Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
                 ]
               ) : ''}
             </Nav>
