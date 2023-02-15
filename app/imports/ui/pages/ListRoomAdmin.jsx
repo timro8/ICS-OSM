@@ -24,7 +24,7 @@ const ListRoomAdmin = () => {
   return ready ? (
     <Container id={PAGE_IDS.LIST_ROOM_ADMIN} className="py-3">
       <Row xs={1} md={2} lg={4} className="g-2">
-        {rooms.map((room) => <RoomItem key={room._id} room={room} />)}
+        {rooms.map((room) => <RoomItem key={room.roomKey} room={room} />)}
       </Row>
     </Container>
   ) : <LoadingSpinner />;

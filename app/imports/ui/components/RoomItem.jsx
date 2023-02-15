@@ -12,7 +12,9 @@ const RoomItem = ({ room }) => (
         <Image src={room.picture} alt={`${room.roomNumber} picture`} width={75} />
         <Card.Title>{room.roomNumber}</Card.Title>
         <Card.Subtitle>{room.location}</Card.Subtitle>
-        <Card.Subtitle>Occupant First Name Last Name</Card.Subtitle>
+        <Card.Subtitle>
+          {room.occupants.map((o) => <p>{o}</p>)}
+        </Card.Subtitle>
       </Card.Header>
       <Card.Body>
         <Card.Text>
@@ -23,7 +25,7 @@ const RoomItem = ({ room }) => (
         </Card.Text>
       </Card.Body>
       <Card.Footer>
-        <Link className={COMPONENT_IDS.ROOM_DETAILS} to={`/roomdetails/${room._id}`}>Details</Link>
+        <Link className={COMPONENT_IDS.ROOM_DETAILS} to={`/roomdetails/${room.roomKey}`}>Details</Link>
       </Card.Footer>
     </Card>
   </Col>
@@ -32,12 +34,14 @@ const RoomItem = ({ room }) => (
 // Require a document to be passed to this component.
 RoomItem.propTypes = {
   room: PropTypes.shape({
+    roomKey: PropTypes.string,
     roomNumber: PropTypes.string,
     location: PropTypes.string,
     status: PropTypes.string,
     capacity: PropTypes.number,
     _id: PropTypes.string,
     owner: PropTypes.string,
+    occupants: PropTypes.arrayOf(PropTypes.string),
     picture: PropTypes.string,
   }).isRequired,
 };
