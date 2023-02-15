@@ -53,7 +53,8 @@ const FacultyProfile = () => {
           <p className="fw-bold">{faculty[0].officeHours}</p>
         </Col>
       </Card>
-      <EditFacultyProfile />
+      <EditFacultyProfile key={faculty[0]._id} faculty={faculty[0]} />
+      {console.log(faculty[0])}
     </Container>
   ) : <LoadingSpinner message="Loading Faculty Profile" />);
 };
