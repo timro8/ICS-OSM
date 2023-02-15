@@ -21,6 +21,8 @@ const ListRoomAdmin = () => {
       ready: rdy,
     };
   }, []);
+
+  document.title = 'Rooms';
   return ready ? (
     <Container id={PAGE_IDS.LIST_ROOM_ADMIN} className="py-3">
       <Row xs={1} md={2} lg={4} className="g-2">
