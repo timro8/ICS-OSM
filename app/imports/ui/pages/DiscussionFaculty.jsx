@@ -25,7 +25,7 @@ const ListStuff = () => {
   return (ready ? (
     <Container className="py-3">
       <h1>This is a Reddit style post page to increase communication with users</h1>
-      <div className="scroll">{discussions.map((discussion) => <Discussion key={discussion._id} discussion={discussion} />)} </div>
+      <div className="scroll1">{discussions.map((discussion) => <Discussion key={discussion._id} discussion={discussion} />)} </div>
     </Container>
   ) : <LoadingSpinner message="Loading Stuff" />);
 };

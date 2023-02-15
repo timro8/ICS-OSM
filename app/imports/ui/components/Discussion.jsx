@@ -5,8 +5,8 @@ import { Card, Badge } from 'react-bootstrap';
 /** Renders a single row of Faculty members in a (Admin) table. See pages/AdminPageFacultyComponent.jsx. */
 const Discussions = ({ discussion }) => (
   <Card>
-    <Card.Subtitle> Posted by user: {discussion.firstName}</Card.Subtitle>
-    <Card.Title>Title</Card.Title>
+    <Card.Subtitle> Posted by user: {discussion.firstName} {discussion.lastName}</Card.Subtitle>
+    <Card.Title>{discussion.name}</Card.Title>
     <Badge pill bg="dark" style={{ width: '10rem' }}>
       User-Inputted flair(announcements, important, etc)
     </Badge>
@@ -17,7 +17,9 @@ const Discussions = ({ discussion }) => (
 // Require a document to be passed to this component.
 Discussions.propTypes = {
   discussion: PropTypes.shape({
+    name: PropTypes.string,
     firstName: PropTypes.string,
+    lastName: PropTypes.string,
     owner: PropTypes.string,
     id: PropTypes.string,
   }).isRequired,
