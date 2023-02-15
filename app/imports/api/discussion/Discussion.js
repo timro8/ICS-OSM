@@ -108,7 +108,7 @@ class DiscussionCollection extends BaseCollection {
       // get the FacultyCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(discussionPublications.discussion, function publish() {
+      Meteor.publish(discussionPublications.discussionAdmin, function publish() {
         if (this.userId) {
           return instance._collection.find();
         }

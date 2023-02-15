@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Discussions } from '../../api/discussion/Discussion';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -12,7 +12,7 @@ const ListStuff = () => {
     // Note that this subscription will get cleaned up
     // when your component is unmounted or deps change.
     // Get access to Stuff documents.
-    const subscription = Discussions.subscribeDiscussion();
+    const subscription = Discussions.subscribeDiscussionAdmin();
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the Stuff documents
@@ -24,19 +24,8 @@ const ListStuff = () => {
   }, []);
   return (ready ? (
     <Container className="py-3">
-      <div className="scroll">
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {discussions.map((discussion) => <Discussion key={discussion._id} discussion={discussion} />)}
-          </tbody>
-        </Table>
-      </div>
+      <h1>This is a Reddit style post page to increase communication with users</h1>
+      <div className="scroll">{discussions.map((discussion) => <Discussion key={discussion._id} discussion={discussion} />)} </div>
     </Container>
   ) : <LoadingSpinner message="Loading Stuff" />);
 };
