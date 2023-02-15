@@ -9,6 +9,7 @@ import { RoomNotes } from '../room/RoomNotes';
 import { RoomJacks } from '../room/RoomJacks';
 import { RoomEquipments } from '../room/RoomEquipments';
 import { FacultyRoom } from '../faculty/FacultyRoomCollection';
+import { Discussions } from '../discussion/Discussion';
 
 class MATPClass {
   collections;
@@ -30,6 +31,7 @@ class MATPClass {
       RoomJacks,
       RoomEquipments,
       FacultyRoom,
+      Discussions,
 
     ];
     /*
@@ -46,6 +48,7 @@ class MATPClass {
       RoomJacks,
       RoomEquipments,
       FacultyRoom,
+      Discussions,
     ];
 
     /*

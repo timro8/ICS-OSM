@@ -43,6 +43,10 @@ const NavBar = () => {
                 [<Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/cal" key="cal">Reserve</Nav.Link>,
                 ]
               ) : ''}
+              {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.FACULTY, ROLE.TECH, ROLE.OFFICE]) ? (
+                [<Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
+                ]
+              ) : ''}
             </Nav>
             <Nav className="justify-content-end">
               {currentUser === '' ? (
