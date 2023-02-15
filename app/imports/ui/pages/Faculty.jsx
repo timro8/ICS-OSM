@@ -43,7 +43,7 @@ const Faculty = () => {
         </Button>
 
         { /* pop up for add faculty */ }
-        <AddFacultyForm show={show} onClose={() => setShow(false)} />
+        <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
 
         { /* show all the faculty card */ }
         <Row xs="1" md="2" xl="4">
