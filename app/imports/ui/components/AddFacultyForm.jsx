@@ -10,6 +10,7 @@ import { Meteor } from 'meteor/meteor';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
 
+// TODO: Implement upload image
 const AddFacultyForm = props => {
 
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -98,18 +99,11 @@ const AddFacultyForm = props => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { image, firstName, lastName, email, password, bio, phoneNumber, role } = data;
-    const definitionData = { firstName, lastName, email, password };
-    let userImg = image;
-    if (userImg === undefined) {
-      userImg = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
-    }
-    const facultyDefinitionData = { image: userImg, firstName, lastName, email, room: selectedRoom.toString(), bio, phoneNumber, officeHours: selectedOfficeHours.toString(), owner: Meteor.users().username, role };
-
     Meteor.call(
       'insertFaculty',
-      facultyDefinitionData,
-      definitionData,
+      data,
+      selectedRoom,
+      selectedOfficeHours,
       (err) => {
         if (err) {
           console.log(err.message);

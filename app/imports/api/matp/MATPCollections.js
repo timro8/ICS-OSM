@@ -9,6 +9,7 @@ import { RoomNotes } from '../room/RoomNotes';
 import { RoomJacks } from '../room/RoomJacks';
 import { RoomEquipments } from '../room/RoomEquipments';
 import { FacultyRoom } from '../faculty/FacultyRoomCollection';
+import {FacultyProfiles} from "../user/FacultyProfileCollection";
 
 class MATPClass {
   collections;
@@ -30,7 +31,7 @@ class MATPClass {
       RoomJacks,
       RoomEquipments,
       FacultyRoom,
-
+      FacultyProfiles,
     ];
     /*
      * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -46,6 +47,7 @@ class MATPClass {
       RoomJacks,
       RoomEquipments,
       FacultyRoom,
+      FacultyProfiles,
     ];
 
     /*

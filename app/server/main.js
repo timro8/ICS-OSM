@@ -10,12 +10,20 @@ import { Faculties } from '../imports/api/faculty/FacultyCollection';
 import { UserProfiles } from '../imports/api/user/UserProfileCollection';
 
 Meteor.methods({
-  insertFaculty(data, data2) {
+  insertFaculty(data, rooms, officeHours) {
     // Make sure that all argument is object.
     check(data, Object);
-    check(data2, Object);
+    check(rooms, Array);
+    check(officeHours, Array);
     this.unblock();
-    Faculties.define(data);
-    UserProfiles.define(data2);
+    const { image, firstName, lastName, email, password, bio, phoneNumber, role } = data;
+    const definitionData = { firstName, lastName, email, password };
+    let userImg = image;
+    if (userImg === undefined) {
+      userImg = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
+    }
+    const facultyDefinitionData = { image: userImg, firstName, lastName, email, room: rooms.toString(), bio, phoneNumber, officeHours: officeHours.toString(), owner: Meteor.user().emails[0].address, role };
+    Faculties.define(facultyDefinitionData);
+    UserProfiles.define(definitionData);
   },
 });
