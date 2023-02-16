@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Badge } from 'react-bootstrap';
+import { Card, Badge, Image } from 'react-bootstrap';
 
 /** Renders a single row of Faculty members in a (Admin) table. See pages/AdminPageFacultyComponent.jsx. */
 const Discussions = ({ discussion }) => (
@@ -13,12 +13,14 @@ const Discussions = ({ discussion }) => (
       </Badge>
     </div>
     <Card.Body>{discussion.description}</Card.Body>
+    <Card.Body><Image src={discussion.image} fluid /></Card.Body>
   </Card>
 );
 
 // Require a document to be passed to this component.
 Discussions.propTypes = {
   discussion: PropTypes.shape({
+    image: PropTypes.string,
     name: PropTypes.string,
     firstName: PropTypes.string,
     lastName: PropTypes.string,
