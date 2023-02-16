@@ -13,7 +13,7 @@ const FacultyCard = ({ faculty }) => (
             </Col>
             <hr />
             <Col className="d-flex justify-content-center"><Card.Text>{faculty.firstName} {faculty.lastName}</Card.Text></Col>
-            <Col className="d-flex justify-content-center"><Card.Text>Room: {faculty.rooms}</Card.Text></Col>
+            <Col className="d-flex justify-content-center"><Card.Text>Room: {faculty.rooms} </Card.Text></Col>
           </a>
         </Row>
       </Card.Body>

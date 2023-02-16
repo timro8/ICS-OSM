@@ -5,9 +5,9 @@ import BaseProfileCollection from './BaseProfileCollection';
 import { ROLE } from '../role/Role';
 import { Users } from './UserCollection';
 
-export const FACULTY_ROLES = ['PROFESSOR', 'TA', 'RA', 'N/A'];
+// TODO: Fix Rooms Bug
 
-// export const roomNumbers = ['307A', '307B', '309', '310', '311', '312', '313', '314'];
+export const FACULTY_ROLES = ['PROFESSOR', 'ASSOCIATE PROFESSOR', 'TA', 'RA', 'N/A'];
 
 export const facultyProfilePublications = {
   facultyProfile: 'facultyProfile',
@@ -41,8 +41,6 @@ class FacultyProfileCollection extends BaseProfileCollection {
         optional: true,
       },
       rooms: [String],
-      // allowedValues: roomNumbers,
-      // defaultValue: ['309', '307A'],
       phoneNumber: {
         type: String,
         optional: true,
@@ -60,6 +58,12 @@ class FacultyProfileCollection extends BaseProfileCollection {
    * @param password The password for this user.
    * @param firstName The first name.
    * @param lastName The last name.
+   * @param facRole
+   * @param image
+   * @param bio
+   * @param rooms
+   * @param phoneNumber
+   * @param officeHours
    */
   define({ email, firstName, lastName, password, facRole, image, bio, rooms, phoneNumber, officeHours }) {
     if (Meteor.isServer) {
@@ -79,9 +83,16 @@ class FacultyProfileCollection extends BaseProfileCollection {
 
   /**
    * Updates the StudentProfile. You cannot change the email or role.
-   * @param docID the id of the StudentProfile
+   * @param profileID the id of the StudentProfile
+   * @param password
    * @param firstName new first name (optional).
    * @param lastName new last name (optional).
+   * @param facRole
+   * @param image
+   * @param bio
+   * @param rooms
+   * @param phoneNumber
+   * @param officeHours
    */
   update(profileID, { password, firstName, lastName, facRole, image, bio, rooms, phoneNumber, officeHours }) {
     this.assertDefined(profileID);
@@ -199,9 +210,9 @@ class FacultyProfileCollection extends BaseProfileCollection {
   }
 
   /**
-   * Returns an object representing the StudentProfile docID in a format acceptable to define().
-   * @param docID The docID of a StudentProfile
-   * @returns { Object } An object representing the definition of docID.
+   * Returns an object representing the StudentProfile profileID in a format acceptable to define().
+   * @param profileID The profileID of a StudentProfile
+   * @returns {{firstName: *, lastName: *, image: *, password: *, rooms: *, phoneNumber: (*|number), facRole: *, bio: *, officeHours: *, email: *}} An object representing the definition of docID.
    */
   dumpOne(profileID) {
     const doc = this.findDoc(profileID);
