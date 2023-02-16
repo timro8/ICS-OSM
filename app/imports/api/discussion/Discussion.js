@@ -18,50 +18,47 @@ class DiscussionCollection extends BaseCollection {
       firstName: String,
       lastName: String,
       owner: String,
-      room: String,
-      phoneNumber: String,
+      description: String,
+      flair: String,
     }));
   }
 
   /**
-   * Defines a new Faculty item.
+   * Defines a new Discussion item.
    * @param image the picture of user.
    * @param firstName the first name of the user.
    * @param lastName the last name of the user.
    * @param owner the owner of the user.
    * @param bio the description of the user.
    * @param room the room location of the user.
-   * @param phoneNumber the phone number of the user.
-   * @param officeHours the office hour of the user.
+   * @param flair the room location of the user.
    * @return {String} the facID of the new document.
    */
-  define({ image, name, firstName, lastName, owner, room, phoneNumber, officeHours }) {
+  define({ image, name, firstName, lastName, owner, description, flair }) {
     const discID = this._collection.insert({
       image,
       name,
       firstName,
       lastName,
       owner,
-      room,
-      phoneNumber,
-      officeHours,
+      description,
+      flair,
     });
     return discID;
   }
 
   /**
    * Updates the given document.
-   * @param facID the id of the document to update.
+   * @param discID the id of the document to update.
    * @param image the new image (optional).
+   * @param name the new image (optional).
    * @param firstName the new first name (optional).
    * @param lastName the new last name (optional).
    * @param owner the new owner (optional).
-   * @param bio the new bio (optional).
-   * @param room the new room (optional).
-   * @param phoneNumber the new phone number (optional).
-   * @param officeHours the new office hours (optional).
+   * @param description the new owner (optional).
+   * @param flair the new owner (optional).
    */
-  update(facID, { image, name, firstName, lastName, room, phoneNumber, officeHours }) {
+  update(discID, { image, name, firstName, lastName, owner, description, flair }) {
     const updateData = {};
     if (image) {
       updateData.image = image;
@@ -75,16 +72,16 @@ class DiscussionCollection extends BaseCollection {
     if (lastName) {
       updateData.lastName = lastName;
     }
-    if (room) {
-      updateData.room = room;
+    if (owner) {
+      updateData.owner = owner;
     }
-    if (phoneNumber) {
-      updateData.phoneNumber = phoneNumber;
+    if (description) {
+      updateData.description = description;
     }
-    if (officeHours) {
-      updateData.officeHours = officeHours;
+    if (flair) {
+      updateData.flair = flair;
     }
-    this._collection.update(facID, { $set: updateData });
+    this._collection.update(discID, { $set: updateData });
   }
 
   /**
@@ -158,19 +155,19 @@ class DiscussionCollection extends BaseCollection {
 
   /**
    * Returns an object representing the definition of facID in a format appropriate to the restoreOne or define function.
-   * @param facID
+   * @param discID
    * @return {{owner: (*|number), condition: *, quantity: *, name}}
    */
-  dumpOne(facID) {
-    const doc = this.findDoc(facID);
+  dumpOne(discID) {
+    const doc = this.findDoc(discID);
     const image = doc.image;
     const name = doc.name;
     const firstName = doc.firstName;
     const lastName = doc.lastName;
     const owner = doc.owner;
-    const room = doc.room;
-    const phoneNumber = doc.phoneNumber;
-    return { image, name, firstName, lastName, owner, room, phoneNumber };
+    const description = doc.description;
+    const flair = doc.flair;
+    return { image, name, firstName, lastName, owner, description, flair };
   }
 }
 

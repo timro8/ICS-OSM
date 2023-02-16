@@ -50,6 +50,8 @@ body {
 .scroll1 {
   overflow-y: scroll;
   height: 560px;
+  padding-right: 8px;
+
 }
 
 /* Set the SignIn and SignUp alerts background. */

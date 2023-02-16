@@ -21,11 +21,11 @@
   ],
 
   "defaultDiscussion": [
-    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "Room Reservation for Students?", "firstName": "John", "lastName": "X", "owner": "john@foo.com", "room": "POST 319", "phoneNumber": "8081234567" },
-    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "Possible leakage in the Boys Bathrooms...", "firstName": "John", "lastName": "X", "owner": "john@foo.com", "room": "POST 319", "phoneNumber": "8081234567" },
-    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "Simulated Gunfire!", "firstName": "Admine", "lastName": "Y", "owner": "admin@foo.com", "room": "POST 319", "phoneNumber": "8081234567" },
-    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "Maintenance in POST 319", "firstName": "Admine", "lastName": "Y", "owner": "tech@foo.com", "room": "POST 319", "phoneNumber": "8081234567" },
-    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "System-wide Reset for Faculty", "firstName": "Admine", "lastName": "Y", "owner": "admin@foo.com", "room": "POST 319", "phoneNumber": "8081234567" }
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "Room Reservation for Students?", "firstName": "John", "lastName": "X", "owner": "john@foo.com", "description": "I heard this war something going on and was wondering whether we should do something about it? Also, is it possible to get Rooms by reserving them? Is there a way to do it?", "flair": "Question" },
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "Possible leakage in the Boys Bathrooms...", "firstName": "John", "lastName": "X", "owner": "john@foo.com", "description": "Title", "flair": "Problem" },
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "Simulated Gunfire!", "firstName": "Admine", "lastName": "Y", "owner": "admin@foo.com", "description": "Aloha Students, we will be simulating gunfire for security purposes and such. The entire building will be locked during Saturday and Sundays. Please and Thank you for Patience.", "flair": "Announcements" },
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "Maintenance in POST 319", "firstName": "Todd", "lastName": "A", "owner": "tech@foo.com", "description": "The bathroom near POST 319 will be unavailable during this time. Thank you for understanding. ", "flair": "Maintenance" },
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "System-wide Reset for Faculty", "firstName": "Admine", "lastName": "Y", "owner": "admin@foo.com", "description": "Yeahs", "flair": "News" }
   ],
 
   "defaultFacultyData": [
