@@ -7,6 +7,16 @@ import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const roomPositions = [
+  { roomNumber: '305F', top: 9, left: 4, vertical: false },
+  { roomNumber: '306B', top: 9, left: 13, vertical: false },
+  { roomNumber: '306C', top: 9, left: 21, vertical: false },
+  { roomNumber: '307A', top: 9, left: 28, vertical: false },
+  { roomNumber: '305E', top: 17, left: 3, vertical: false },
+  { roomNumber: '306A', top: 17, left: 11.4, vertical: true },
+  { roomNumber: '306D', top: 17, left: 22, vertical: false },
+  { roomNumber: '307C', top: 18.5, left: 36.7, vertical: false },
+  { roomNumber: '305D', top: 26, left: 3, vertical: true },
+  { roomNumber: '305G', top: 30, left: 11.5, vertical: true },
 ];
 
 const Home = () => {
