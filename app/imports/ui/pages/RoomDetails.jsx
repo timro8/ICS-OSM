@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
-import { Col, Row, Container, ListGroup, Image, Table } from 'react-bootstrap';
+import { Col, Row, Container, ListGroup, Image, Button, Table } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import { RoomNotes } from '../../api/room/RoomNotes';
@@ -21,10 +21,10 @@ const RoomDetails = () => {
   // Get the documentID from the URL field.
   const { _id } = useParams();
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracke
-  // consts for the page
+  // constants for the page
   const {
     doc,
-    doc: { roomNumber, capacity, picture, status },
+    doc: { roomNumber, capacity, picture, status, occupants, roomSqFoot, roomClassification },
     docNotes,
     docJacks,
     docEquipment,
@@ -32,16 +32,18 @@ const RoomDetails = () => {
     loggedInOwner,
   } = useTracker(() => {
     // subscriptions (Admin) to Rooms, RoomNotes, RoomJacks, RoomEquipments collections
+
     const subRoom = Rooms.subscribeRoomAdmin();
     const subNotes = RoomNotes.subscribeRoomNotesAdmin();
     const subJacks = RoomJacks.subscribeRoomJacksAdmin();
     const subEquipment = RoomEquipments.subscribeRoomEquipmentAdmin();
     const owner = Meteor.user().username;
     const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready();
-    const document = Rooms.findDoc(_id);
+    const document = Rooms.findDoc({ roomKey: _id });
     const documentNotes = RoomNotes.find({ roomId: _id }).fetch();
     const documentJacks = RoomJacks.find({ roomId: _id }).fetch();
     const documentEquipment = RoomEquipments.find({ roomId: _id }).fetch();
+
     // ready when subscriptions are completed
     return {
       doc: document,
@@ -60,16 +62,20 @@ const RoomDetails = () => {
   }, [ready]);
   return ready ? (
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
+      <Button variant="success" href="/adminroom">Back to List Room (Admin)</Button>
       <h1>Room {roomNumber} Details</h1>
       <Row>
         <Col>
-          <p>Connect me to the room occupant collection</p>
+          <h2>Occupants</h2>
+          {occupants.map((o) => <p>{o}</p>)}
         </Col>
       </Row>
       <Row>
         <Col>
           <p><strong>Room Status:</strong> {status}</p>
           <p><strong>Capacity:</strong> {capacity}</p>
+          <p><strong>Room Sq Ft:</strong> {roomSqFoot}</p>
+          <p><strong>Room Classification:</strong> {roomClassification}</p>
           <Image src={picture} alt={`${roomNumber} picture`} width={100} />
         </Col>
       </Row>
@@ -120,7 +126,6 @@ const RoomDetails = () => {
           </ListGroup>
         </Col>
       </Row>
-
     </Container>
   ) : <LoadingSpinner message="Loading room details" />;
 };

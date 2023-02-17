@@ -323,7 +323,7 @@
       "roomNumber": "303E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
+      "occupants":  ["faculty@foo.com"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
