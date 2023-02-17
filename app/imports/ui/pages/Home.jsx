@@ -64,6 +64,7 @@ const Home = () => {
                     style={{
                       top: roomPosition.vertical ? `${roomPosition.top + 6}px` : `${roomPosition.top}px`,
                       left: roomPosition.vertical ? `${roomPosition.left}px` : `${roomPosition.left + 6}px`,
+                      background: 'center / contain url(https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore.jpg)',
                     }}
                   />
                 ));
