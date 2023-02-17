@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Card, ProgressBar, Row } from 'react-bootstrap';
+import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -21,34 +22,36 @@ const Home = () => {
     };
   });
 
-  return ready ? (
-    <Row id={PAGE_IDS.HOME} className="py-3">
-      <h1>Hi (user), Good Morning</h1>
-      {/* TODO: Map through each occupant in each of the room and return a map icon.
-       if room is empty, display an empty icon regardless.
-        Depending on the index change the left of the room position */}
+  const height = 850;
+  const width = 950;
 
-      <div style={{ height: '100vh', width: '80vw', background: 'no-repeat url(\'/images/post-3rd-floor-is(1).svg\')', position: 'relative' }}>
-        {rooms.map(room => {
-          const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
-          if (roomPosition) {
-            return room.occupants.map(occupant => {
-              console.log(`occupant = ${occupant}`);
-              // TODO: Occupant returns the email of the occupant. Use that email to get the actual occupant
-              return (
-                <div
-                  className="map-icon"
-                  style={{
-                    top: roomPosition.top,
-                    left: roomPosition.left,
-                    backgroundImage: `url(${occupant.image})`,
-                  }}
-                />
-              );
-            });
-          }
-          return null;
-        })}
+  useEffect(() => {
+    const handleZoom = (e) => {
+      const map = document.querySelector('.map');
+      map.style.transform = `translate(${e.transform.x}px, ${e.transform.y}px) scale(${e.transform.k})`;
+    };
+
+    const zoom = d3.zoom()
+      .scaleExtent([1, 2])
+      .translateExtent([[0, 0], [width, height]])
+      .on('zoom', handleZoom);
+
+    d3.select('.map-container').call(zoom);
+  }, []);
+
+  return (
+    <Row id={PAGE_IDS.HOME} className="py-3">
+      <div className="map-container" style={{ overflow: 'hidden', width: width, height: height }}>
+        <div
+          className="map"
+          style={{
+            width: width,
+            height: height,
+            background: 'center / contain no-repeat url(\'/images/post-3rd-floor-is(1).svg\')',
+            position: 'relative',
+            transformOrigin: 'top left',
+          }}
+        />
       </div>
       <Row>
         <h2>Total</h2>
@@ -83,7 +86,7 @@ const Home = () => {
         </Card>
       </Row>
     </Row>
-  ) : <LoadingSpinner message="Loading Room" />;
+  );
 };
 
 export default Home;
