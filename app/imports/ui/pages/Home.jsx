@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Card, ProgressBar, Row } from 'react-bootstrap';
+import { Card, Col, ProgressBar, Row } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -42,47 +42,44 @@ const Home = () => {
 
   return (
     <Row id={PAGE_IDS.HOME} className="py-3">
-      <div className="map-container" style={{ overflow: 'hidden', width: mapWidth, height: mapHeight }}>
-        <div
-          className="map"
-          style={{
-            width: mapWidth,
-            height: mapHeight,
-            background: 'center / contain no-repeat url(\'/images/post-3rd-floor-is(1).svg\')',
-            position: 'relative',
-            transformOrigin: 'top left',
-          }}
-        >
-          {rooms.map(room => {
-            const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
-            if (roomPosition) {
-              return room.occupants.map(occupant => {
-                return (
-                  <div
-                    className="map-icon"
-                    style={{
-                      top: roomPosition.top,
-                      left: roomPosition.left,
-                      backgroundImage: `url(${occupant.image})`,
-                    }}
-                  />
-                );
-              });
-            }
-            return null;
-          })}
+      <h2>Pacific Ocean Science and Technology</h2>
+      <Col md="8">
+        <div className="map-container" style={{ overflow: 'hidden', width: mapWidth, height: mapHeight }}>
+          <div
+            className="map"
+            style={{
+              width: mapWidth,
+              height: mapHeight,
+              background: 'center / contain no-repeat url(\'/images/post-3rd-floor-is(1).svg\')',
+              position: 'relative',
+              transformOrigin: 'top left',
+            }}
+          >
+            {rooms.map(room => {
+              const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
+              if (roomPosition) {
+                return room.occupants.map(occupant => {
+                  return (
+                    <div
+                      className="map-icon"
+                      style={{
+                        top: roomPosition.top,
+                        left: roomPosition.left,
+                        backgroundImage: `url(${occupant.image})`,
+                      }}
+                    />
+                  );
+                });
+              }
+              return null;
+            })}
+          </div>
         </div>
-      </div>
+      </Col>
+      <Col md="4">
+        <h3>Rooms</h3>
+      </Col>
       <Row>
-        <h2>Total</h2>
-        <ProgressBar>
-          <ProgressBar variant="success" now={83} key={1} />
-          <ProgressBar variant="warning" now={14} key={2} />
-          <ProgressBar variant="danger" now={3} key={3} />
-        </ProgressBar>
-      </Row>
-      <Row>
-        <h2>Pacific Ocean Science and Technology</h2>
         <Card style={{ width: '20rem' }}>
           <Card.Body>
             <Card.Title>Rooms Occupied</Card.Title>
