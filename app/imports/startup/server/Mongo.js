@@ -20,6 +20,7 @@ function addRoomData(data) {
 
 function addFacultyData(data) {
   console.log(`  Adding: ${data.lastName} (${data.email})`);
+  console.log(data);
   FacultyProfiles.define(data);
 }
 
@@ -60,7 +61,7 @@ if (FacultyProfiles.count() === 0) {
     Meteor.settings.defaultFacultyProfileData.map(data => addFacultyData(data));
   }
 }
-
+Meteor.settings.defaultFacultyProfileData.map(data => addFacultyData(data));
 if (Events302.count() === 0) {
   if (Meteor.settings.defaultEvents302Data) {
     console.log('Creating default event data for room 302.');
