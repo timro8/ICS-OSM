@@ -99,12 +99,15 @@ body {
   border-style: solid;
   border-width: 1px;
   border-radius: 50%;
-  background: center / contain;
+  background: rgba(211, 211, 211, 0.66) center;
+  box-shadow: 0px 3px 7px #808080FF;
 }
 
 .map-icon:hover {
   transform: scale(1.2);
   z-index: 2;
+  cursor: pointer;
+  background-color: rgb(211, 211, 211);
 }
 
 .map:hover:active {
