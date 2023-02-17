@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
-import { Col, Row, Container, ListGroup, Image, Table } from 'react-bootstrap';
+import { Col, Row, Container, ListGroup, Image, Button, Table } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import { RoomNotes } from '../../api/room/RoomNotes';
@@ -62,6 +62,7 @@ const RoomDetails = () => {
   }, [ready]);
   return ready ? (
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
+      <Button variant="success" href="/adminroom">Back to List Room (Admin)</Button>
       <h1>Room {roomNumber} Details</h1>
       <Row>
         <Col>

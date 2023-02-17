@@ -1,22 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, Image, Col } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /** Renders a single card in the List Room Admin card. See pages/ListRoomAdmin.jsx. */
 const RoomItem = ({ room }) => (
   <Col>
     <Card border="success" className="h-100">
-      <Card.Header>
-        <Image src={room.picture} alt={`${room.roomNumber} picture`} width={75} />
-        <Card.Title>{room.roomNumber}</Card.Title>
-        <Card.Subtitle>{room.location}</Card.Subtitle>
+      <Card.Img variant="top" src={room.picture} alt={`${room.roomNumber} picture`} />
+      <Card.Body>
+        <Card.Title>{room.location} {room.roomNumber}</Card.Title>
         <Card.Subtitle>
           {room.occupants.map((o, index) => <p key={index}>{o}</p>)}
         </Card.Subtitle>
-      </Card.Header>
-      <Card.Body>
         <Card.Text>
           <strong>Status:</strong> {room.status}
         </Card.Text>
