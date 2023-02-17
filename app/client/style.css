@@ -113,5 +113,5 @@ body {
 }
 
 .map:hover:active {
-  cursor: pointer;
+  cursor: grabbing;
 }
