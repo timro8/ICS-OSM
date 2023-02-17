@@ -7,10 +7,6 @@ import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const roomPositions = [
-  { roomNumber: '305F', top: 80, left: 30, vertical: false },
-  { roomNumber: '306B', top: 80, left: 110, vertical: true },
-  { roomNumber: '306C', top: 80, left: 180, vertical: false },
-  { roomNumber: '307A', top: 80, left: 260, vertical: false },
 ];
 
 const Home = () => {
@@ -58,12 +54,15 @@ const Home = () => {
             {rooms.map(room => {
               const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
               if (roomPosition) {
+                const roomPositionTop = (roomPosition.top / 100) * mapHeight;
+                const roomPositionLeft = (roomPosition.left / 100) * mapWidth;
+                const COLLISION_SPACING = 6;
                 return room.occupants.map(occupant => (
                   <div
                     className="map-icon map-icon-occupant"
                     style={{
-                      top: roomPosition.vertical ? `${roomPosition.top + 6}px` : `${roomPosition.top}px`,
-                      left: roomPosition.vertical ? `${roomPosition.left}px` : `${roomPosition.left + 6}px`,
+                      top: roomPosition.vertical ? `${roomPositionTop + COLLISION_SPACING}px` : `${roomPositionTop}px`,
+                      left: roomPosition.vertical ? `${roomPositionLeft}px` : `${roomPositionLeft + COLLISION_SPACING}px`,
                       background: 'center / contain url(https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore.jpg)',
                     }}
                   />
@@ -74,12 +73,14 @@ const Home = () => {
               rooms.map(room => {
                 const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                 if (roomPosition) {
+                  const roomPositionTop = (roomPosition.top / 100) * mapHeight;
+                  const roomPositionLeft = (roomPosition.left / 100) * mapWidth;
                   return (
                     <div
                       className="map-icon map-icon-room"
                       style={{
-                        top: `${roomPosition.top}px`,
-                        left: `${roomPosition.left}px`,
+                        top: `${roomPositionTop}px`,
+                        left: `${roomPositionLeft}px`,
                       }}
                     >
                       {room.roomNumber}
