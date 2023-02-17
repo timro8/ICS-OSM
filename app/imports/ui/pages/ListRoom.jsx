@@ -75,7 +75,7 @@ const ListRoom = () => {
                 <Accordion.Header>Pacific Ocean Science and Technology 3rd Floor Rooms</Accordion.Header>
                 <Accordion.Body>
                   <h4>List of Rooms in POST</h4>
-                  {roomList.map((room) => <ListRoomIndexPOSTComponent key={room._id} room={room} />)}
+                  <div className="scroll">{roomList.map((room) => <ListRoomIndexPOSTComponent key={room._id} room={room} />)} </div>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">
