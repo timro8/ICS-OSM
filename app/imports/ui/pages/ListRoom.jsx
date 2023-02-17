@@ -10,6 +10,8 @@ import SearchBar from '../components/SearchBar';
 /* Renders a table containing all of the Room documents. Use <RoomItem> to render each row. */
 const ListRoom = () => {
   const [roomList, setList] = useState([]);
+
+  document.title = 'Rooms';
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { ready, rooms } = useTracker(() => {
     // Note that this subscription will get cleaned up
@@ -73,7 +75,7 @@ const ListRoom = () => {
                 <Accordion.Header>Pacific Ocean Science and Technology 3rd Floor Rooms</Accordion.Header>
                 <Accordion.Body>
                   <h4>List of Rooms in POST</h4>
-                  {roomList.map((room) => <ListRoomIndexPOSTComponent key={room._id} room={room} />)}
+                  <div className="scroll">{roomList.map((room) => <ListRoomIndexPOSTComponent key={room._id} room={room} />)} </div>
                 </Accordion.Body>
               </Accordion.Item>
               <Accordion.Item eventKey="1">

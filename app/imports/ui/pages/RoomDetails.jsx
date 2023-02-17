@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
@@ -53,6 +53,11 @@ const RoomDetails = () => {
     };
   });
 
+  useEffect(() => {
+    if (ready) {
+      document.title = `Room - ${roomNumber}`;
+    }
+  }, [ready]);
   return ready ? (
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
       <h1>Room {roomNumber} Details</h1>

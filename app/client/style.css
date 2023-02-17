@@ -47,6 +47,13 @@ body {
   height: 450px;
 }
 
+.scroll1 {
+  overflow-y: scroll;
+  height: 560px;
+  padding-right: 8px;
+
+}
+
 /* Set the SignIn and SignUp alerts background. */
 #signin-page .alert-light, #signup-page .alert-light {
   --bs-alert-bg: var(--matr-navbar-bg);

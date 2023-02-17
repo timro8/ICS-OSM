@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row, Card, Container, Image } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -11,15 +11,23 @@ import EditFacultyProfile from './EditFacultyProfile';
 
 const FacultyProfile = () => {
   const { _id } = useParams();
-  const [faculty, setFaculty] = useState([]);
-  const { ready } = useTracker(() => {
+  const { ready, faculty } = useTracker(() => {
     const subscription = Faculties.subscribeFacultyAdmin();
     const rdy = subscription.ready();
-    setFaculty(Faculties.find({ _id: _id }, { sort: { lastName: 1 } }).fetch());
+    const facultyItem = Faculties.find({ _id: _id }, { sort: { lastName: 1 } }).fetch();
     return {
       ready: rdy,
+      faculty: facultyItem,
     };
   }, []);
+
+  /* updates the title based on name of person clicked on */
+  useEffect(() => {
+    if (ready) {
+      document.title = `${faculty[0].firstName} ${faculty[0].lastName}`;
+    }
+  }, [ready, faculty]);
+
   return (ready ? (
     <Container id={PAGE_IDS.PROFILE} className="py-3" fluid>
       <Row>
