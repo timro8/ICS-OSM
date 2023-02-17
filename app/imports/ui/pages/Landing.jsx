@@ -18,7 +18,7 @@ const Landing = () => {
       id={PAGE_IDS.LANDING}
       className="py-3 d-flex align-items-center text-center min-vh-100"
       style={{
-        background: 'radial-gradient(circle at 10% 80%, rgb(220, 217, 249) 10%, rgb(172, 224, 217) 89.8%)',
+        background: 'radial-gradient(circle at 10% 80%, rgb(200, 194, 252) 10%, rgb(140, 222, 211) 89.8%)',
       }}
     >
       <Container className="h-100 d-flex flex-column gap-5 justify-content-center text-white">
@@ -26,12 +26,12 @@ const Landing = () => {
         <h2 className="display-6 fw-bold">Designed to improve your experience in the ICS department.</h2>
         <div>
           <Button
+            id="landing-login-btn"
             variant="outline-light"
             size="lg"
             href="/signin"
-            style={{ width: '200px', padding: '20px', border: '4px solid #F8F9FA', fontWeight: 'bold' }}
           >
-            Sign In
+            Login
           </Button>
         </div>
       </Container>
