@@ -3,6 +3,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Container, Row } from 'react-bootstrap';
 import { Rooms } from '../../api/room/RoomCollection';
 import RoomItem from '../components/RoomItem';
+import AddRoom from '../components/AddRoom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
@@ -25,6 +26,7 @@ const ListRoomAdmin = () => {
   document.title = 'Rooms';
   return ready ? (
     <Container id={PAGE_IDS.LIST_ROOM_ADMIN} className="py-3">
+      <h3><AddRoom /></h3>
       <Row xs={1} md={2} lg={4} className="g-2">
         {rooms.map((room) => <RoomItem key={room._id} room={room} />)}
       </Row>
