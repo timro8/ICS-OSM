@@ -45,6 +45,7 @@ body {
 .scroll {
   overflow-y: scroll;
   height: 450px;
+  padding-right: 3px;
 }
 
 .scroll1 {

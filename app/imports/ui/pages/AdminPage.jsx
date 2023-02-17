@@ -8,20 +8,20 @@ import AdminPageRoomsComponent from '../components/AdminPage/AdminPageRoomsCompo
 import AdminPageReservationComponent from '../components/AdminPage/AdminPageReservationComponent';
 import { Rooms } from '../../api/room/RoomCollection';
 import { Events302 } from '../../api/events/Events302Collection';
-import { Faculties } from '../../api/faculty/FacultyCollection';
+import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 
 /* Renders a table containing all of the Faculty documents. Use <AdminPage> to render each row in each tabs. */
 const AdminPage = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { facultys, rooms, events, ready } = useTracker(() => {
     // Get access to Faculty documents.
-    const subscription1 = Faculties.subscribeFacultyAdmin();
+    const subscription1 = FacultyProfiles.subscribeFacultyProfileAdmin();
     const subscription2 = Rooms.subscribeRoomAdmin();
     const subscription3 = Events302.subscribeEvents302Admin();
     // Determine if the subscription is ready
     const rdy = subscription1.ready() && subscription2.ready() && subscription3.ready();
     // Get the Faculty documents
-    const items1 = Faculties.find({}).fetch();
+    const items1 = FacultyProfiles.find({}).fetch();
     const items2 = Rooms.find({}).fetch();
     const items3 = Events302.find({}).fetch();
     return {
@@ -59,10 +59,12 @@ const AdminPage = () => {
                         <tr>
                           <th>Name</th>
                           <th>Email</th>
+                          <th>Role</th>
+                          <th>Room</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {facultys.map((faculty) => <AdminPageFacultyComponent key={faculty._id} faculty={faculty} />)}
+                        {facultys.map((faculty) => <AdminPageFacultyComponent key={faculty._id} faculty={faculty} facultyProfile={faculty} />)}
                       </tbody>
                     </Table>
                   </div>
@@ -97,9 +99,6 @@ const AdminPage = () => {
                       </tbody>
                     </Table>
                   </Container>
-                </Tab>
-                <Tab eventKey="contact" title="Contact" disabled>
-                  <h1>h1</h1>
                 </Tab>
               </Tabs>
             </Card.Body>

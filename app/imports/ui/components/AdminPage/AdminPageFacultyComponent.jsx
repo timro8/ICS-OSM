@@ -1,24 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Image } from 'react-bootstrap';
 import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 /** Renders a single row of Faculty members in a (Admin) table. See pages/AdminPageFacultyComponent.jsx. */
-const AdminPageFacultyComponent = ({ faculty }) => (
+const AdminPageFacultyComponent = ({ facultyProfile }) => (
   <tr>
-    <td>{faculty.firstName}</td>
-    <td>{faculty.owner}</td>
     <td>
-      <Link className={COMPONENT_IDS.LIST_FACULTY_ADMIN} to={`/profile/${faculty._id}`}>Edit Profile</Link>
+      <Image roundedCircle src={facultyProfile.image} height="35rem" className="px-2" />
+      <Link className={COMPONENT_IDS.LIST_FACULTY_ADMIN} to={`/profile/${facultyProfile._id}`}>{facultyProfile.firstName} {facultyProfile.lastName}</Link>
     </td>
+    <td>{facultyProfile.email}</td>
+    <td>{facultyProfile.facRole}</td>
+    <td>{facultyProfile.rooms}</td>
   </tr>
 );
 
 // Require a document to be passed to this component.
 AdminPageFacultyComponent.propTypes = {
-  faculty: PropTypes.shape({
+  facultyProfile: PropTypes.shape({
     firstName: PropTypes.string,
-    owner: PropTypes.string,
+    lastName: PropTypes.string,
+    email: PropTypes.string,
+    image: PropTypes.string,
+    facRole: PropTypes.string,
+    rooms: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
