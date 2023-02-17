@@ -5,7 +5,7 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const roomLocations = ['POST'];
+export const roomLocations = ['POST', 'KELLER'];
 
 export const roomStatus = ['Occupied', 'Vacant', 'Out of Commission', 'Other'];
 
