@@ -94,15 +94,15 @@ body {
 
 .map-icon {
   position: absolute;
-  height: 35px;
-  width: 35px;
-  border-color: white;
-  border-style: solid;
-  border-width: 1px;
+  height: 25px;
+  width: 25px;
   border-radius: 50%;
-  background: rgba(211, 211, 211, 0.66) center;
   box-shadow: 0px 3px 7px #808080FF;
   transition: transform 200ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 }
 
 .map-icon:hover {
