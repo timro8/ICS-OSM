@@ -106,3 +106,7 @@ body {
   color: #B2CDED;
   border: 4px solid white;
 }
+
+.green-purple-gradient {
+  background: radial-gradient(circle at 10% 80%, rgb(200, 194, 252) 10%, rgb(140, 222, 211) 89.8%);
+}

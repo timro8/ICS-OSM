@@ -16,10 +16,7 @@ const Landing = () => {
   return (
     <div
       id={PAGE_IDS.LANDING}
-      className="py-3 d-flex align-items-center text-center min-vh-100"
-      style={{
-        background: 'radial-gradient(circle at 10% 80%, rgb(200, 194, 252) 10%, rgb(140, 222, 211) 89.8%)',
-      }}
+      className="py-3 d-flex align-items-center text-center min-vh-100 green-purple-gradient"
     >
       <Container className="h-100 d-flex flex-column gap-5 justify-content-center text-white">
         <h1 className="display-1 fw-bold">WELCOME TO OSMICS!</h1>
