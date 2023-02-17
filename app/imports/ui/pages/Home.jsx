@@ -52,7 +52,26 @@ const Home = () => {
             position: 'relative',
             transformOrigin: 'top left',
           }}
-        />
+        >
+          {rooms.map(room => {
+            const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
+            if (roomPosition) {
+              return room.occupants.map(occupant => {
+                return (
+                  <div
+                    className="map-icon"
+                    style={{
+                      top: roomPosition.top,
+                      left: roomPosition.left,
+                      backgroundImage: `url(${occupant.image})`,
+                    }}
+                  />
+                );
+              });
+            }
+            return null;
+          })}
+        </div>
       </div>
       <Row>
         <h2>Total</h2>
