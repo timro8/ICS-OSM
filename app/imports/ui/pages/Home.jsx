@@ -67,12 +67,12 @@ const Home = () => {
                 const roomPositionTop = (roomPosition.top / 100) * mapHeight;
                 const roomPositionLeft = (roomPosition.left / 100) * mapWidth;
                 const COLLISION_SPACING = 6;
-                return room.occupants.map(occupant => (
+                return room.occupants.map((occupant, index) => (
                   <div
                     className="map-icon map-icon-occupant"
                     style={{
-                      top: roomPosition.vertical ? `${roomPositionTop + COLLISION_SPACING}px` : `${roomPositionTop}px`,
-                      left: roomPosition.vertical ? `${roomPositionLeft}px` : `${roomPositionLeft + COLLISION_SPACING}px`,
+                      top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1))}px` : `${roomPositionTop}px`,
+                      left: roomPosition.vertical ? `${roomPositionLeft}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1))}px`,
                       background: 'center / contain url(https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore.jpg)',
                     }}
                   />
