@@ -103,6 +103,15 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.map-icon-occupant {
+  background: rgba(77, 145, 89) center;
+}
+
+.map-icon-room {
+  border: 1px solid white;
+  color: rgba(255, 255, 255, 0.98);
+  font-size: 0.5rem;
 }
 
 .map-icon:hover {
