@@ -5,7 +5,111 @@
     { "email":  "faculty@foo.com", "password":  "changeme", "role":  "FACULTY", "firstName": "Faculty", "lastName":  "FACULTY" },
     { "email":  "student@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
     { "email":  "office@foo.com", "password":  "changeme", "role":  "OFFICE", "firstName": "Office", "lastName":  "OFFICE" },
-    { "email":  "tech@foo.com", "password":  "changeme", "role":  "TECH", "firstName":  "Tech", "lastName":  "TECH" }
+    { "email":  "tech@foo.com", "password":  "changeme", "role":  "TECH", "firstName":  "Tech", "lastName":  "TECH" },
+    {
+      "role": "FACULTY",
+      "email": "kyungim@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Kyungim",
+      "lastName": "Baek",
+      "facRole": "ASSOCIATE PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Kyungim_Baek1-180x180.jpg",
+      "bio": "I like  Pattern recognition and machine learning in bioinformatics, Computer vision, Computational modeling of visual perception, Deep learning, Neural computation..",
+      "rooms": ["303F"],
+      "phoneNumber": "8089568560",
+      "officeHours": "Mondays 1pm-2pm"
+    },
+    {
+      "role": "FACULTY",
+      "email": "mahdi@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Mahdi",
+      "lastName": "Belcaid",
+      "facRole": "RA",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2019/02/mahdi-180x180.png",
+      "bio": "I like Data science education, Probabilistic programming in genomics, Big data approximation.",
+      "rooms": ["306B"],
+      "phoneNumber": "8089566049",
+      "officeHours": "Mondays 1pm-2pm"
+    },
+    {
+      "role": "FACULTY",
+      "email": "esb@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Edo",
+      "lastName": "Biagioni",
+      "facRole": "ASSOCIATE PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/edo_biagioni2-180x180.jpg",
+      "bio": "I like Wireless networking; Power, security, routing, and reliability in wireless networks, particularly wireless sensor networks.",
+      "rooms": ["305F"],
+      "phoneNumber": "8089563891",
+      "officeHours": "Mondays 1pm-2pm"
+    },
+    {
+      "role": "FACULTY",
+      "email": "binsted@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Kim",
+      "lastName": "Binsted",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-180x180.jpg",
+      "bio": "I like Climate change, Food resiliency, Software engineering, Educational technology.",
+      "rooms": ["303D"],
+      "phoneNumber": "8089566107",
+      "officeHours": "Mondays 1pm-2pm"
+    },
+    {
+      "role": "FACULTY",
+      "email": "henric@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Henry",
+      "lastName": "Casanova",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Henri_Casanova1-180x180.jpg",
+      "bio": "I like High performance computing, parallel and distributed computing, parallel application scheduling, simulation of distributed applications and platforms.",
+      "rooms": ["310C"],
+      "phoneNumber": "8089562649",
+      "officeHours": "Mondays 1pm-2pm"
+    },
+    {
+      "role": "FACULTY",
+      "email": "crosby@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Martha",
+      "lastName": "Crosby",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/MarthaCrosby-180x180.jpg",
+      "bio": "I like Human Computer Interaction; Artificial intelligence; Cognitive science; Computer science education; Information science education; Authentication; Cognitive robotics.",
+      "rooms": ["305D"],
+      "phoneNumber": "8089563493",
+      "officeHours": "Mondays 1pm-2pm"
+    },
+    {
+      "role": "FACULTY",
+      "email": "johnson@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Phillip",
+      "lastName": "Johnson",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-180x180.jpeg",
+      "bio": "I like Artificial intelligence, human-computer interfaces, and long-duration human space exploration.",
+      "rooms": ["307A"],
+      "phoneNumber": "8089563489",
+      "officeHours": "Mondays 1pm-2pm"
+    },
+    {
+      "role": "FACULTY",
+      "email": "cmoore@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Carleton",
+      "lastName": "Moore",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore-180x180.jpg",
+      "bio": "I like Software management, computer games, human and social aspects of security and privacy, human-centered computing, interactive games, massively-multiplayer online games.",
+      "rooms": ["307B"],
+      "phoneNumber": "8089566920",
+      "officeHours": "Mondays 1pm-2pm"
+    }
   ],
 
   "defaultData": [
@@ -43,6 +147,7 @@
 
   "defaultFacultyProfileData": [
     {
+      "role": "FACULTY",
       "email": "kyungim@hawaii.edu",
       "password": "changeme",
       "firstName": "Kyungim",
@@ -55,6 +160,7 @@
       "officeHours": "Mondays 1pm-2pm"
     },
     {
+      "role": "FACULTY",
       "email": "mahdi@hawaii.edu",
       "password": "changeme",
       "firstName": "Mahdi",
@@ -67,6 +173,7 @@
       "officeHours": "Mondays 1pm-2pm"
     },
     {
+      "role": "FACULTY",
       "email": "esb@hawaii.edu",
       "password": "changeme",
       "firstName": "Edo",

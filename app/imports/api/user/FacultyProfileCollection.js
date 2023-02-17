@@ -40,7 +40,13 @@ class FacultyProfileCollection extends BaseProfileCollection {
         type: String,
         optional: true,
       },
-      rooms: [String],
+      rooms: {
+        type: Array,
+        optional: true,
+      },
+      'rooms.$': {
+        type: String,
+      },
       phoneNumber: {
         type: String,
         optional: true,
@@ -159,7 +165,7 @@ class FacultyProfileCollection extends BaseProfileCollection {
   checkIntegrity() {
     const problems = [];
     this.find().forEach((doc) => {
-      if (doc.role !== ROLE.FACULTY) {
+      if (doc.role !== ROLE.USER) {
         problems.push(`FacultyProfile instance does not have ROLE.FACULTY: ${doc}`);
       }
     });
