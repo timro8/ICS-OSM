@@ -106,3 +106,7 @@ body {
   transform: scale(1.2);
   z-index: 2;
 }
+
+.map:hover:active {
+  cursor: pointer;
+}
