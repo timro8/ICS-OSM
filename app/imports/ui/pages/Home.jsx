@@ -7,10 +7,10 @@ import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const roomPositions = [
-  { roomNumber: '305F', top: '200px', left: '120px' },
-  { roomNumber: '306B', top: '200px', left: '135px' },
-  { roomNumber: '306C', top: '200px', left: '150px' },
-  { roomNumber: '307A', top: '200px', left: '165px' },
+  { roomNumber: '305F', top: 80, left: 30, vertical: false },
+  { roomNumber: '306B', top: 80, left: 110, vertical: true },
+  { roomNumber: '306C', top: 80, left: 180, vertical: false },
+  { roomNumber: '307A', top: 80, left: 260, vertical: false },
 ];
 
 const Home = () => {
@@ -58,7 +58,18 @@ const Home = () => {
             {rooms.map(room => {
               const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
               if (roomPosition) {
-                return room.occupants.map(occupant => {
+                return room.occupants.map(occupant => (
+                  <div
+                    className="map-icon map-icon-occupant"
+                    style={{
+                      top: roomPosition.vertical ? `${roomPosition.top + 6}px` : `${roomPosition.top}px`,
+                      left: roomPosition.vertical ? `${roomPosition.left}px` : `${roomPosition.left + 6}px`,
+                    }}
+                  />
+                ));
+              }
+              return null;
+            })}{
               rooms.map(room => {
                 const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                 if (roomPosition) {
