@@ -22,9 +22,10 @@ const Home = () => {
     };
   });
 
-  const height = 850;
-  const width = 950;
+  const mapHeight = 850;
+  const mapWidth = 950;
 
+  // Handle the zooming and panning of the map
   useEffect(() => {
     const handleZoom = (e) => {
       const map = document.querySelector('.map');
@@ -33,7 +34,7 @@ const Home = () => {
 
     const zoom = d3.zoom()
       .scaleExtent([1, 2])
-      .translateExtent([[0, 0], [width, height]])
+      .translateExtent([[0, 0], [mapWidth, mapHeight]]) // This prevents the map from being moved off the container
       .on('zoom', handleZoom);
 
     d3.select('.map-container').call(zoom);
@@ -41,12 +42,12 @@ const Home = () => {
 
   return (
     <Row id={PAGE_IDS.HOME} className="py-3">
-      <div className="map-container" style={{ overflow: 'hidden', width: width, height: height }}>
+      <div className="map-container" style={{ overflow: 'hidden', width: mapWidth, height: mapHeight }}>
         <div
           className="map"
           style={{
-            width: width,
-            height: height,
+            width: mapWidth,
+            height: mapHeight,
             background: 'center / contain no-repeat url(\'/images/post-3rd-floor-is(1).svg\')',
             position: 'relative',
             transformOrigin: 'top left',
