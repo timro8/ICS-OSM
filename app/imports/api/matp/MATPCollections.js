@@ -8,8 +8,8 @@ import { Events302 } from '../events/Events302Collection';
 import { RoomNotes } from '../room/RoomNotes';
 import { RoomJacks } from '../room/RoomJacks';
 import { RoomEquipments } from '../room/RoomEquipments';
+import { FacultyProfiles } from '../user/FacultyProfileCollection';
 import { FacultyRoom } from '../faculty/FacultyRoomCollection';
-import { Discussions } from '../discussion/Discussion';
 
 class MATPClass {
   collections;
@@ -24,6 +24,7 @@ class MATPClass {
       AdminProfiles,
       Stuffs,
       UserProfiles,
+      FacultyProfiles,
       Rooms,
       Faculties,
       Events302,
@@ -31,8 +32,6 @@ class MATPClass {
       RoomJacks,
       RoomEquipments,
       FacultyRoom,
-      Discussions,
-
     ];
     /*
      * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -40,6 +39,7 @@ class MATPClass {
     this.collectionLoadSequence = [
       AdminProfiles,
       UserProfiles,
+      FacultyProfiles,
       Stuffs,
       Rooms,
       Faculties,
@@ -48,7 +48,6 @@ class MATPClass {
       RoomJacks,
       RoomEquipments,
       FacultyRoom,
-      Discussions,
     ];
 
     /*
