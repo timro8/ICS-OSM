@@ -8,6 +8,7 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Faculties } from '../imports/api/faculty/FacultyCollection';
 import { UserProfiles } from '../imports/api/user/UserProfileCollection';
+import {FacultyProfiles} from "../imports/api/user/FacultyProfileCollection";
 
 Meteor.methods({
   insertFaculty(data, rooms, officeHours) {
@@ -22,8 +23,8 @@ Meteor.methods({
     if (userImg === undefined) {
       userImg = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
     }
-    const facultyDefinitionData = { image: userImg, firstName, lastName, email, room: rooms.toString(), bio, phoneNumber, officeHours: officeHours.toString(), owner: Meteor.user().emails[0].address, role };
-    Faculties.define(facultyDefinitionData);
+    const facultyDefinitionData = { image: userImg, firstName, lastName, email, rooms: rooms, bio, phoneNumber, officeHours: officeHours.toString(), owner: Meteor.user().emails[0].address, role, password: password };
+    FacultyProfiles.define(facultyDefinitionData);
     UserProfiles.define(definitionData);
   },
 });
