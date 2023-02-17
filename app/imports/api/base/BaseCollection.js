@@ -185,7 +185,7 @@ class BaseCollection {
 
   /**
    * Verifies that the passed object is one of this collection's instances.
-   * @param { String | List } name Should be a defined ID or doc in this collection.
+   * @param {Object} name Should be a defined ID or doc in this collection.
    * @throws { Meteor.Error } If not defined.
    */
   assertDefined(name) {

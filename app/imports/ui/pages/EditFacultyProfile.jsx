@@ -21,7 +21,7 @@ const EditFacultyProfile = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { doc, ready } = useTracker(() => {
     // Get access to Faculty documents.
-    const subscription = Faculties.subscribeFaculty();
+    const subscription = Faculties.subscribeFacultyAdmin();
     // Determine if the subscription is ready
     const rdy = subscription.ready();
     // Get the document
