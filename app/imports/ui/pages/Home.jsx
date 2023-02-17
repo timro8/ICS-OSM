@@ -59,20 +59,24 @@ const Home = () => {
               const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
               if (roomPosition) {
                 return room.occupants.map(occupant => {
+              rooms.map(room => {
+                const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
+                if (roomPosition) {
                   return (
                     <div
-                      className="map-icon"
+                      className="map-icon map-icon-room"
                       style={{
-                        top: roomPosition.top,
-                        left: roomPosition.left,
-                        backgroundImage: `url(${occupant.image})`,
+                        top: `${roomPosition.top}px`,
+                        left: `${roomPosition.left}px`,
                       }}
-                    />
+                    >
+                      {room.roomNumber}
+                    </div>
                   );
-                });
-              }
-              return null;
-            })}
+                }
+                return null;
+              })
+            }
           </div>
         </div>
       </Col>
