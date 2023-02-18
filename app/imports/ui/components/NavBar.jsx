@@ -13,9 +13,12 @@ const NavBar = () => {
   const { currentUser } = useTracker(() => ({
     currentUser: Meteor.user() ? Meteor.user().username : '',
   }), []);
+
   const menuStyle = {
-    boxShadow: '0px 0px 10px darkgray',
+    boxShadow: '0px 0px 10px rgb(0 0 0 /20%)',
+    background: '#FFF',
   };
+
   const handleSignout = async () => {
     await Meteor.logout(() => {
       window.location.assign('/');
@@ -25,8 +28,8 @@ const NavBar = () => {
 
   return (!(location.pathname === '/' || location.pathname === '/signin') ?
     (
-      <Navbar bg="light" expand="lg" style={menuStyle}>
-        <Container>
+      <Navbar expand="lg" style={menuStyle} className="px-3">
+        <Container fluid>
           <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/"><h1>ICS-OSM</h1></Navbar.Brand>
           <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
           <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
