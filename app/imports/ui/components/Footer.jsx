@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (!(location.pathname === '/' || location.pathname === '/signin') ?
     (
-      <footer className="bg-light footer mt-auto py-3 pt-1">
+      <footer className="footer mt-auto py-3 pt-1 mt-3" style={{ borderTop: '1px solid rgb(0 0 0/10%)' }}>
         <Container style={divStyle}>
           <Col className="text-center small">
             OSMICS <br />
