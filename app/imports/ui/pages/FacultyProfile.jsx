@@ -33,7 +33,7 @@ const FacultyProfile = () => {
           <p className="fw-bold">{faculty[0].facRole}</p>
           <hr />
           <span className="small">About Me:</span>
-          <p className="fw-bold">{faculty[0].bio}</p>
+          <p className="fw-bold p-2">{faculty[0].bio}</p>
           <hr />
           <span className="small">Room Number:</span>
           <p className="fw-bold">{faculty[0].rooms}</p>
