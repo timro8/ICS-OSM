@@ -58,21 +58,18 @@ const Home = () => {
             <Card>
               <Card.Body>
                 <Card.Title>Rooms Occupied</Card.Title>
-                <Card.Text style={{ fontSize: '3rem' }}>45</Card.Text>
                 <ProgressBar now={45} />
               </Card.Body>
             </Card>
             <Card>
               <Card.Body>
                 <Card.Title>Rooms Vacant</Card.Title>
-                <Card.Text style={{ fontSize: '3rem' }}>9</Card.Text>
                 <ProgressBar variant="info" now={9} />
               </Card.Body>
             </Card>
             <Card>
               <Card.Body>
                 <Card.Title>Rooms Out of Commission</Card.Title>
-                <Card.Text style={{ fontSize: '3rem' }}>2</Card.Text>
                 <ProgressBar variant="danger" now={2} />
               </Card.Body>
             </Card>
