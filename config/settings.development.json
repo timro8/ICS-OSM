@@ -125,8 +125,8 @@
       "facRole": "ASSOCIATE PROFESSOR",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/BarbaraEndicottPopovsky-180x180.jpg",
       "bio": "I like omputer science education; Computer crime; Information systems education; Model curricula; Security and privacy; Information science education.",
-      "rooms": [""],
-      "phoneNumber": "",
+      "rooms": ["N/A"],
+      "phoneNumber": "N/A",
       "officeHours": "Mondays 1pm-2pm"
     },
     {
@@ -136,9 +136,9 @@
       "lastName": "Halverson",
       "facRole": "PROFESSOR",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/06/RichardHalverson.jpg",
-      "bio": "",
-      "rooms": [""],
-      "phoneNumber": "",
+      "bio": "N/A",
+      "rooms": ["N/A"],
+      "phoneNumber": "N/A",
       "officeHours": "Mondays 1pm-2pm"
     },
     {
@@ -196,9 +196,9 @@
       "lastName": "Ravi",
       "facRole": "PROFESSOR",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Ravi_Narayan-2014-180x180.jpg",
-      "bio": "",
+      "bio": "N/A",
       "rooms": ["314A"],
-      "phoneNumber": "",
+      "phoneNumber": "N/A",
       "officeHours": "Mondays 1pm-2pm"
     },
     {
@@ -208,7 +208,7 @@
       "lastName": "Ogawa",
       "facRole": "PROFESSOR",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/MB_Ogawa-180x180.jpg",
-      "bio": "",
+      "bio": "N/A",
       "rooms": ["314B"],
       "phoneNumber": "8089565069",
       "officeHours": "Mondays 1pm-2pm"
@@ -318,7 +318,7 @@
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/07/peterWashington-300x300.png",
       "bio": "I like Digital Health, Precision Health, Data Science, Machine Learning, Human-Centered Computing, Biomedical Informatics.",
       "rooms": ["312B"],
-      "phoneNumber": "",
+      "phoneNumber": "N/A",
       "officeHours": "Mondays 1pm-2pm"
     },
     {
@@ -330,7 +330,7 @@
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/06/DavidChin300x300.jpg",
       "bio": "I like User modeling, natural language processing, intelligent agents, empirical evaluation, AI for computer games.",
       "rooms": ["303G"],
-      "phoneNumber": "",
+      "phoneNumber": "N/A",
       "officeHours": "Mondays 1pm-2pm"
     },
     {
@@ -342,7 +342,7 @@
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Stephen_Itoga1-180x180.jpg",
       "bio": "I like Online Education.",
       "rooms": ["303G"],
-      "phoneNumber": "",
+      "phoneNumber": "N/A",
       "officeHours": "Mondays 1pm-2pm"
     },
     {
@@ -354,7 +354,7 @@
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/DavidPager-180x180.jpg",
       "bio": "I like Parsers.",
       "rooms": ["303G"],
-      "phoneNumber": "",
+      "phoneNumber": "N/A",
       "officeHours": "Mondays 1pm-2pm"
     },
     {
@@ -366,7 +366,7 @@
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg",
       "bio": "I like Software engineering; Human-computer interaction; Formal methods of software development.",
       "rooms": ["303G"],
-      "phoneNumber": "",
+      "phoneNumber": "N/A",
       "officeHours": "N/A"
     },
     {
@@ -389,8 +389,8 @@
       "facRole": "N/A",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/07/AliceKoniges300x300.jpg",
       "bio": "I like Emerging architectures; Programming models; Machine learning; Partial differential equations.",
-      "rooms": [""],
-      "phoneNumber": "",
+      "rooms": ["N/A"],
+      "phoneNumber": "N/A",
       "officeHours": "N/A"
     },
     {
@@ -401,8 +401,8 @@
       "facRole": "N/A",
       "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Dennis_Streveler1-180x180.jpg",
       "bio": "I like Global medical informatics.",
-      "rooms": [""],
-      "phoneNumber": "",
+      "rooms": ["N/A"],
+      "phoneNumber": "N/A",
       "officeHours": "N/A"
     }
   ],
