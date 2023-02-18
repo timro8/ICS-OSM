@@ -37,12 +37,8 @@ class ClubCollection extends BaseCollection {
   }
 
   /**
-   * Defines a new Stuff item.
-   * @param name the name of the item.
-   * @param quantity how many.
-   * @param owner the owner of the item.
-   * @param condition the condition of the item.
-   * @return {String} the docID of the new document.
+   * Defines a new Club item.
+   * @return {String} the clubID of the new document.
    */
   define({ clubName, image, description, website, officers }) {
     const clubID = this._collection.insert({
@@ -57,10 +53,12 @@ class ClubCollection extends BaseCollection {
 
   /**
    * Updates the given document.
-   * @param docID the id of the document to update.
-   * @param name the new name (optional).
-   * @param quantity the new quantity (optional).
-   * @param condition the new condition (optional).
+   * @param clubID
+   * @param clubName
+   * @param image
+   * @param description
+   * @param website
+   * @param officers
    */
   update(clubID, { clubName, image, description, website, officers }) {
     const updateData = {};
@@ -83,8 +81,8 @@ class ClubCollection extends BaseCollection {
   }
 
   /**
-   * A stricter form of remove that throws an error if the document or docID could not be found in this collection.
-   * @param { String | Object } name A document or docID in this collection.
+   * A stricter form of remove that throws an error if the document or clubID could not be found in this collection.
+   * @param { String | Object } name A document or clubID in this collection.
    * @returns true
    */
   removeIt(name) {
@@ -96,11 +94,11 @@ class ClubCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the stuff associated to an owner.
+   * It publishes the entire collection for admin and just the club associated to an owner.
    */
   publish() {
     if (Meteor.isServer) {
-      // get the StuffCollection instance.
+      // get the ClubCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
       Meteor.publish(clubPublications.club, function publish() {
@@ -121,11 +119,11 @@ class ClubCollection extends BaseCollection {
   }
 
   /**
-   * Subscription method for stuff owned by the current user.
+   * Subscription method for club owned by the current user.
    */
-  subscribeStuff() {
+  subscribeClub() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(clubPublications.stuff);
+      return Meteor.subscribe(clubPublications.club);
     }
     return null;
   }
@@ -134,9 +132,9 @@ class ClubCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeStuffAdmin() {
+  subscribeClubAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(clubPublications.stuffAdmin);
+      return Meteor.subscribe(clubPublications.clubAdmin);
     }
     return null;
   }
@@ -152,8 +150,7 @@ class ClubCollection extends BaseCollection {
   }
 
   /**
-   * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
-   * @return {{owner: (*|number), condition: *, quantity: *, name}}
+   * Returns an object representing the definition of clubID in a format appropriate to the restoreOne or define function.
    * @param clubID
    */
   dumpOne(clubID) {
