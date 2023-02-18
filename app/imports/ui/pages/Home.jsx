@@ -126,13 +126,6 @@ const Home = () => {
                 })
               }
             </div>
-            <Card>
-              <Card.Body>
-                <Card.Title>Rooms Out of Commission</Card.Title>
-                <Card.Text style={{ fontSize: '3rem' }}>2</Card.Text>
-                <ProgressBar variant="danger" now={2} />
-              </Card.Body>
-            </Card>
           </div>
         </Col>
         <Col>
