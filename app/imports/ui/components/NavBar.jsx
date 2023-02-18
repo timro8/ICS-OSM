@@ -30,12 +30,18 @@ const NavBar = () => {
     (
       <Navbar expand="lg" style={menuStyle} className="px-3">
         <Container fluid>
-          <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/"><h1>ICS-OSM</h1></Navbar.Brand>
+          <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/">
+            <img
+              src="/images/Hawaii_Warriors_logo.svg.png"
+              width="70"
+              className="d-inline-block align-top"
+              alt="UH Manoa logo"
+            />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls={COMPONENT_IDS.NAVBAR_COLLAPSE} />
           <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
             <Nav className="me-auto justify-content-start">
               {currentUser ? ([
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_ROOM} as={NavLink} to="/listroom" key="listroom">List Room</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FACULTY} as={NavLink} to="/faculty" key="faculty">Faculty</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
               ]) : ''}
