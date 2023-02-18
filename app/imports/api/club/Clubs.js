@@ -33,6 +33,10 @@ class ClubCollection extends BaseCollection {
       'officers.$': {
         type: String,
       },
+      advisor: {
+        type: String,
+        optional: true,
+      },
     }));
   }
 
@@ -40,13 +44,14 @@ class ClubCollection extends BaseCollection {
    * Defines a new Club item.
    * @return {String} the clubID of the new document.
    */
-  define({ clubName, image, description, website, officers }) {
+  define({ clubName, image, description, website, officers, advisor }) {
     const clubID = this._collection.insert({
       clubName,
       image,
       description,
       website,
       officers,
+      advisor,
     });
     return clubID;
   }
@@ -60,7 +65,7 @@ class ClubCollection extends BaseCollection {
    * @param website
    * @param officers
    */
-  update(clubID, { clubName, image, description, website, officers }) {
+  update(clubID, { clubName, image, description, website, officers, advisor }) {
     const updateData = {};
     if (clubName) {
       updateData.clubName = clubName;
@@ -76,6 +81,9 @@ class ClubCollection extends BaseCollection {
     }
     if (officers) {
       updateData.officers = officers;
+    }
+    if (advisor) {
+      updateData.advisor = advisor;
     }
     this._collection.update(clubID, { $set: updateData });
   }
@@ -160,7 +168,8 @@ class ClubCollection extends BaseCollection {
     const description = doc.description;
     const website = doc.website;
     const officers = doc.officers;
-    return { clubName, image, description, website, officers };
+    const advisor = doc.advisor;
+    return { clubName, image, description, website, officers, advisor };
   }
 }
 
