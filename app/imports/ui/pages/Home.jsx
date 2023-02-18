@@ -28,8 +28,8 @@ const Home = () => {
     };
   });
 
-  const mapHeight = 850;
-  const mapWidth = 950;
+  const MAP_HEIGHT = 850;
+  const MAP_WIDTH = 950;
 
   // Handle the zooming and panning of the map
   useEffect(() => {
@@ -40,7 +40,7 @@ const Home = () => {
 
     const zoom = d3.zoom()
       .scaleExtent([1, 2])
-      .translateExtent([[0, 0], [mapWidth, mapHeight]]) // This prevents the map from being moved off the container
+      .translateExtent([[0, 0], [MAP_WIDTH, MAP_HEIGHT]]) // This prevents the map from being moved off the container
       .on('zoom', handleZoom);
 
     d3.select('.map-container').call(zoom);
@@ -75,12 +75,12 @@ const Home = () => {
             </Card>
           </Row>
           <h2>Pacific Ocean Science and Technology</h2>
-          <div className="map-container" style={{ overflow: 'hidden', width: mapWidth, height: mapHeight }}>
+          <div className="map-container" style={{ overflow: 'hidden', width: MAP_WIDTH, height: MAP_HEIGHT }}>
             <div
               className="map"
               style={{
-                width: mapWidth,
-                height: mapHeight,
+                width: MAP_WIDTH,
+                height: MAP_HEIGHT,
                 background: 'center / contain no-repeat url(\'/images/post-3rd-floor-is(1).svg\')',
                 position: 'relative',
                 transformOrigin: 'top left',
@@ -89,8 +89,8 @@ const Home = () => {
               {rooms.map(room => {
                 const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                 if (roomPosition) {
-                  const roomPositionTop = (roomPosition.top / 100) * mapHeight;
-                  const roomPositionLeft = (roomPosition.left / 100) * mapWidth;
+                  const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
+                  const roomPositionLeft = (roomPosition.left / 100) * MAP_WIDTH;
                   const COLLISION_SPACING = 6;
                   return room.occupants.map((occupant, index) => (
                     <div
@@ -108,8 +108,8 @@ const Home = () => {
                 rooms.map(room => {
                   const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                   if (roomPosition) {
-                    const roomPositionTop = (roomPosition.top / 100) * mapHeight;
-                    const roomPositionLeft = (roomPosition.left / 100) * mapWidth;
+                    const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
+                    const roomPositionLeft = (roomPosition.left / 100) * MAP_WIDTH;
                     return (
                       <div
                         className="map-icon map-icon-room"
