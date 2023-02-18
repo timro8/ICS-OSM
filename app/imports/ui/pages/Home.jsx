@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Card, Col, ProgressBar, Row } from 'react-bootstrap';
+import { Card, Col, Container, ProgressBar, Row } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -47,89 +47,94 @@ const Home = () => {
   }, []);
 
   return (
-    <Row id={PAGE_IDS.HOME} className="py-3">
+    <Container id={PAGE_IDS.HOME} className="py-3">
       <h2>Pacific Ocean Science and Technology</h2>
-      <Col md="8">
-        <div className="map-container" style={{ overflow: 'hidden', width: mapWidth, height: mapHeight }}>
-          <div
-            className="map"
-            style={{
-              width: mapWidth,
-              height: mapHeight,
-              background: 'center / contain no-repeat url(\'/images/post-3rd-floor-is(1).svg\')',
-              position: 'relative',
-              transformOrigin: 'top left',
-            }}
-          >
-            {rooms.map(room => {
-              const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
-              if (roomPosition) {
-                const roomPositionTop = (roomPosition.top / 100) * mapHeight;
-                const roomPositionLeft = (roomPosition.left / 100) * mapWidth;
-                const COLLISION_SPACING = 6;
-                return room.occupants.map((occupant, index) => (
-                  <div
-                    className="map-icon map-icon-occupant"
-                    style={{
-                      top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1))}px` : `${roomPositionTop}px`,
-                      left: roomPosition.vertical ? `${roomPositionLeft}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1))}px`,
-                      background: 'center / contain url(https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore.jpg)',
-                    }}
-                  />
-                ));
-              }
-              return null;
-            })}{
-              rooms.map(room => {
+      <Row>
+        <Col>
+          <div className="map-container" style={{ overflow: 'hidden', width: mapWidth, height: mapHeight }}>
+            <div
+              className="map"
+              style={{
+                width: mapWidth,
+                height: mapHeight,
+                background: 'center / contain no-repeat url(\'/images/post-3rd-floor-is(1).svg\')',
+                position: 'relative',
+                transformOrigin: 'top left',
+              }}
+            >
+              {rooms.map(room => {
                 const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                 if (roomPosition) {
                   const roomPositionTop = (roomPosition.top / 100) * mapHeight;
                   const roomPositionLeft = (roomPosition.left / 100) * mapWidth;
-                  return (
+                  const COLLISION_SPACING = 6;
+                  return room.occupants.map((occupant, index) => (
                     <div
-                      className="map-icon map-icon-room"
+                      className="map-icon map-icon-occupant"
                       style={{
-                        top: `${roomPositionTop}px`,
-                        left: `${roomPositionLeft}px`,
+                        top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1))}px` : `${roomPositionTop}px`,
+                        left: roomPosition.vertical ? `${roomPositionLeft}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1))}px`,
+                        background: 'center / contain url(https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore.jpg)',
                       }}
-                    >
-                      {room.roomNumber}
-                    </div>
-                  );
+                    />
+                  ));
                 }
                 return null;
-              })
-            }
+              })}{
+                rooms.map(room => {
+                  const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
+                  if (roomPosition) {
+                    const roomPositionTop = (roomPosition.top / 100) * mapHeight;
+                    const roomPositionLeft = (roomPosition.left / 100) * mapWidth;
+                    return (
+                      <div
+                        className="map-icon map-icon-room"
+                        style={{
+                          top: `${roomPositionTop}px`,
+                          left: `${roomPositionLeft}px`,
+                        }}
+                      >
+                        {room.roomNumber}
+                      </div>
+                    );
+                  }
+                  return null;
+                })
+              }
+            </div>
           </div>
-        </div>
-      </Col>
-      <Col md="4">
-        <h3>Rooms</h3>
-      </Col>
-      <Row>
-        <Card style={{ width: '20rem' }}>
-          <Card.Body>
-            <Card.Title>Rooms Occupied</Card.Title>
-            <Card.Text style={{ fontSize: '3rem' }}>45</Card.Text>
-            <ProgressBar now={45} />
-          </Card.Body>
-        </Card>
-        <Card style={{ width: '20rem' }}>
-          <Card.Body>
-            <Card.Title>Rooms Vacant</Card.Title>
-            <Card.Text style={{ fontSize: '3rem' }}>9</Card.Text>
-            <ProgressBar variant="info" now={9} />
-          </Card.Body>
-        </Card>
-        <Card style={{ width: '20rem' }}>
-          <Card.Body>
-            <Card.Title>Rooms Out of Commission</Card.Title>
-            <Card.Text style={{ fontSize: '3rem' }}>2</Card.Text>
-            <ProgressBar variant="danger" now={2} />
-          </Card.Body>
-        </Card>
+        </Col>
+        <Col>
+          <Row>
+            <Card style={{ width: '20rem' }}>
+              <Card.Body>
+                <Card.Title>Rooms Occupied</Card.Title>
+                <Card.Text style={{ fontSize: '3rem' }}>45</Card.Text>
+                <ProgressBar now={45} />
+              </Card.Body>
+            </Card>
+          </Row>
+          <Row>
+            <Card style={{ width: '20rem' }}>
+              <Card.Body>
+                <Card.Title>Rooms Vacant</Card.Title>
+                <Card.Text style={{ fontSize: '3rem' }}>9</Card.Text>
+                <ProgressBar variant="info" now={9} />
+              </Card.Body>
+            </Card>
+          </Row>
+          <Row>
+            <Card style={{ width: '20rem' }}>
+              <Card.Body>
+                <Card.Title>Rooms Out of Commission</Card.Title>
+                <Card.Text style={{ fontSize: '3rem' }}>2</Card.Text>
+                <ProgressBar variant="danger" now={2} />
+              </Card.Body>
+            </Card>
+          </Row>
+        </Col>
       </Row>
-    </Row>
+    </Container>
   );
 };
 
