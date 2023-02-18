@@ -7,16 +7,16 @@ import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const roomPositions = [
-  { roomNumber: '305F', top: 9, left: 4, vertical: false },
-  { roomNumber: '306B', top: 9, left: 13, vertical: false },
-  { roomNumber: '306C', top: 9, left: 21, vertical: false },
-  { roomNumber: '307A', top: 9, left: 28, vertical: false },
-  { roomNumber: '305E', top: 17, left: 3, vertical: false },
-  { roomNumber: '306A', top: 17, left: 11.4, vertical: true },
-  { roomNumber: '306D', top: 17, left: 22, vertical: false },
-  { roomNumber: '307C', top: 18.5, left: 36.7, vertical: false },
-  { roomNumber: '305D', top: 26, left: 3, vertical: true },
-  { roomNumber: '305G', top: 30, left: 11.5, vertical: true },
+  { roomNumber: '305F', top: 4, left: 4, vertical: false },
+  { roomNumber: '306B', top: 4, left: 13, vertical: false },
+  { roomNumber: '306C', top: 4, left: 21, vertical: false },
+  { roomNumber: '307A', top: 4, left: 28, vertical: false },
+  { roomNumber: '305E', top: 12, left: 3, vertical: false },
+  { roomNumber: '306A', top: 12, left: 11.4, vertical: true },
+  { roomNumber: '306D', top: 12, left: 22, vertical: false },
+  { roomNumber: '307C', top: 14, left: 37, vertical: false },
+  { roomNumber: '305D', top: 22, left: 3, vertical: true },
+  { roomNumber: '305G', top: 27, left: 11.5, vertical: true },
 ];
 
 const Home = () => {
@@ -28,8 +28,11 @@ const Home = () => {
     };
   });
 
-  const MAP_HEIGHT = 850;
-  const MAP_WIDTH = 950;
+  // The aspect ratio is to make sure that the map container and map size is always the same
+  // This preserves (for the most part) the position of the icons if width is changed
+  const MAP_ASPECT_RATIO = 1.2704;
+  const MAP_WIDTH = 900;
+  const MAP_HEIGHT = MAP_WIDTH / MAP_ASPECT_RATIO;
 
   // Handle the zooming and panning of the map
   useEffect(() => {
