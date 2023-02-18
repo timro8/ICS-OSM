@@ -128,3 +128,9 @@ body {
   box-shadow: 0 0 20px 1px #ececec;
   border-radius: 15px;
 }
+
+#home h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 3rem 0 1rem 0;
+}

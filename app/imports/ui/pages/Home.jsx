@@ -50,7 +50,7 @@ const Home = () => {
     <Container id={PAGE_IDS.HOME} className="py-3">
       <Row>
         <Col style={{ borderLeft: '0.1px solid lightgray', borderRight: '0.1px solid lightgray', padding: '0 2rem' }}>
-          <h2 style={{ fontSize: '1.3rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Good Morning James!</h2>
+          <h2>Good Morning James!</h2>
           <Row className="d-flex row-cols-3">
             <Card>
               <Card.Body>
@@ -74,7 +74,7 @@ const Home = () => {
               </Card.Body>
             </Card>
           </Row>
-          <h2 style={{ fontSize: '1.5rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Pacific Ocean Science and Technology</h2>
+          <h2>Pacific Ocean Science and Technology</h2>
           <div className="map-container" style={{ overflow: 'hidden', width: mapWidth, height: mapHeight }}>
             <div
               className="map"
@@ -136,7 +136,7 @@ const Home = () => {
           </div>
         </Col>
         <Col>
-          <h2 style={{ fontSize: '1.3rem', paddingTop: '3rem', paddingBottom: '1rem' }}>List View</h2>
+          <h2>List View</h2>
           <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Occupied Rooms</h3>
           <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Vacant Rooms</h3>
           <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Rooms Out of Commission</h3>
