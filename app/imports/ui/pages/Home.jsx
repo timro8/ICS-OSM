@@ -42,7 +42,7 @@ const Home = () => {
     };
 
     const zoom = d3.zoom()
-      .scaleExtent([1, 2])
+      .scaleExtent([1, 2.5])
       .translateExtent([[0, 0], [MAP_WIDTH, MAP_HEIGHT]]) // This prevents the map from being moved off the container
       .on('zoom', handleZoom);
 
