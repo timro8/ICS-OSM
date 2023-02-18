@@ -123,3 +123,8 @@ body {
 .map:hover:active {
   cursor: grabbing;
 }
+
+.map-container {
+  box-shadow: 0 0 10px 1px #e1e1e1;
+  border-radius: 15px;
+}
