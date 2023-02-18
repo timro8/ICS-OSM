@@ -5,9 +5,7 @@ import BaseProfileCollection from './BaseProfileCollection';
 import { ROLE } from '../role/Role';
 import { Users } from './UserCollection';
 
-// TODO: Fix Rooms Bug
-
-export const FACULTY_ROLES = ['PROFESSOR', 'ASSOCIATE PROFESSOR', 'TA', 'RA', 'N/A'];
+export const FACULTY_ROLES = ['PROFESSOR', 'ASSISTANT PROFESSOR', 'ASSOCIATE PROFESSOR', 'PROFESSOR EMERITUS', 'TA', 'RA', 'N/A'];
 
 export const facultyProfilePublications = {
   facultyProfile: 'facultyProfile',
