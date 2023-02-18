@@ -130,7 +130,7 @@ const Home = () => {
         </Col>
         <Col>
           <h2>List View</h2>
-          <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Occupied Rooms</h3>
+          <h3 style={{ fontSize: '1.1rem', paddingBottom: '1rem' }}>Occupied Rooms</h3>
           <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Vacant Rooms</h3>
           <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Rooms Out of Commission</h3>
         </Col>
