@@ -20,4 +20,5 @@ export const PAGE_IDS = {
   FACULTY: 'faculty',
   EDIT_FACULTY_PROFILE: 'edit-faculty-profile',
   ROOM_DETAILS: 'room-details',
+  CLUB: 'club',
 };
