@@ -429,7 +429,7 @@
       "roomNumber": "303A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Kenny Ka‘aiakamanu-Quibilan (kennydq@hawaii.edu)"],
+      "occupants":  ["Kenny Ka‘aiakamanu-Quibilan"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -437,7 +437,7 @@
       "roomNumber": "303B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Wesley Sugimoto (wesleysu@hawaii.edu)"],
+      "occupants":  ["Wesley Sugimoto"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ2sGgWwehw6Zr5gqp5cqEV1e_oQI981Y_9g&usqp=CAU"
     },
     {
@@ -445,7 +445,7 @@
       "roomNumber": "303C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Guylaine Poisson (guylaine@hawaii.edu)"],
+      "occupants":  ["Guylaine Poisson"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -453,7 +453,7 @@
       "roomNumber": "303D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Kim Binsted (binsted@hawaii.edu)"],
+      "occupants":  ["Kim Binsted"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -461,7 +461,7 @@
       "roomNumber": "303E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Faculty FACULTY (faculty@foo.com)"],
+      "occupants":  ["Faculty FACULTY"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -469,7 +469,7 @@
       "roomNumber": "303F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Kyungim Baek (kyungim@hawaii.edu)"],
+      "occupants":  ["Kyungim Baek"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -477,7 +477,7 @@
       "roomNumber": "303G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["David Chin (chin@hawaii.edu)", "Stephen Itoga (itoga@hawaii.edu)"],
+      "occupants":  ["David Chin", "Stephen Itoga"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -565,7 +565,7 @@
       "roomNumber": "305D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "occupants":  ["Martha Crosby (crosby@hawaii.edu)"],
+      "occupants":  ["Martha Crosby"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -581,7 +581,7 @@
       "roomNumber": "305F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Edo Biagioni (esb@hawaii.edu)"],
+      "occupants":  ["Edo Biagioni"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
 
@@ -614,7 +614,7 @@
       "roomNumber": "306B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "168",
       "roomClassification": "Office",
-      "occupants":  ["Mahdi Belcaid (mahdi@hawaii.edu)"],
+      "occupants":  ["Mahdi Belcaid"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -622,7 +622,7 @@
       "roomNumber": "306C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "168",
       "roomClassification": "Office",
-      "occupants":  ["Peter Sadowski (psadow@hawaii.edu)"],
+      "occupants":  ["Peter Sadowski"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -646,7 +646,7 @@
       "roomNumber": "307A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "occupants":  ["Philip Johnson (johnson@hawaii.edu)"],
+      "occupants":  ["Philip Johnson"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -654,7 +654,7 @@
       "roomNumber": "307B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "245",
       "roomClassification": "Office",
-      "occupants":  ["Carleton Moore (cmoore@hawaii.edu)"],
+      "occupants":  ["Carleton Moore"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -686,7 +686,7 @@
       "roomNumber": "309B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "224",
       "roomClassification": "Office",
-      "occupants":  ["Dan Suthers (suthers@hawaii.edu)"],
+      "occupants":  ["Dan Suthers"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -694,7 +694,7 @@
       "roomNumber": "309C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Nodari Sitchinava (nodari@hawaii.edu)"],
+      "occupants":  ["Nodari Sitchinava"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -710,7 +710,7 @@
       "roomNumber": "310B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Anthony Peruma (peruma@hawaii.edu)"],
+      "occupants":  ["Anthony Peruma"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -718,7 +718,7 @@
       "roomNumber": "310C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Henri Casanova (henric@hawaii.edu)"],
+      "occupants":  ["Henri Casanova"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -734,7 +734,7 @@
       "roomNumber": "311A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Peter-Michael Seidel (pseidel@hawaii.edu)"],
+      "occupants":  ["Peter-Michael Seidel"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -742,7 +742,7 @@
       "roomNumber": "311B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Dusko Pavlovic (dusko@hawaii.edu)"],
+      "occupants":  ["Dusko Pavlovic"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -758,7 +758,7 @@
       "roomNumber": "312B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Peter Washington (pyw@hawaii.edu)"],
+      "occupants":  ["Peter Washington"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -774,7 +774,7 @@
       "roomNumber": "314A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Ravi Narayan (rnarayan@hawaii.edu)"],
+      "occupants":  ["Ravi Narayan"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -782,7 +782,7 @@
       "roomNumber": "314B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Michael Brian Ogawa (ogawam@hawaii.edu)"],
+      "occupants":  ["Michael Brian Ogawa"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -798,7 +798,7 @@
       "roomNumber": "314D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Depeng Li (depengli@hawaii.edu)"],
+      "occupants":  ["Depeng Li"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -943,7 +943,7 @@
       "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "3",
       "roomSqFoot": "100",
       "roomClassification": "Main Office",
-      "occupants":  ["Scott Robertson (scottpr@hawaii.edu)"],
+      "occupants":  ["Scott Robertson"],
       "picture": "https://c.pxhere.com/photos/fc/d9/office_sitting_room_executive_sitting_business_desk_workplace_corporate-735699.jpg!d"
     },
     {
@@ -984,7 +984,7 @@
       "roomNumber": "327", "location":  "POST", "status": "Occupied", "capacity": "2",
       "roomSqFoot": "200",
       "roomClassification": "Office",
-      "occupants":  ["Todd Tomita (toddtt@hawaii.edu)", "Charles Shackford (shackfor@hawaii.edu)"],
+      "occupants":  ["Todd Tomita", "Charles Shackford"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {

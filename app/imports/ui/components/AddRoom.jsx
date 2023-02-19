@@ -31,11 +31,13 @@ const AddRoom = () => {
   });
 
   const facOccupants = [];
-  facOccupants.push('---');
-  faculty.map((fac) => facOccupants.push(`${fac.firstName} ${fac.lastName} (${fac.email})`));
+  facOccupants.push({ label: '---', value: '---' });
+  faculty.map((fac) => facOccupants.push(({ label: `${fac.firstName} ${fac.lastName}`, value: `${fac.email}` })));
+  console.log(facOccupants);
 
   // data added to the Room collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional rooms.
   const submit = (data, formRef) => {
+    console.log(data);
     const { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture } = data;
     const collectionName = Rooms.getCollectionName();
     const definitionData = { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture };
@@ -60,7 +62,7 @@ const AddRoom = () => {
         <Modal.Body>
           Add Room
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="roomKey" />
+            <TextField name="roomKey" placeholder="location and room number" />
             <TextField name="roomNumber" />
             <SelectField
               name="location"
@@ -76,7 +78,7 @@ const AddRoom = () => {
               name="roomClassification"
               allowedValues={['Office', 'Sink', 'Conference', 'Cubicle', 'ICS Library', 'ASECOLAB', 'Mail', 'Main Office', 'Lab', 'ICSpace', 'Storage', 'ICS IT', 'OFCSVC', 'LNG']}
             />
-            <SelectField name="occupants" allowedValues={facOccupants} />
+            <SelectField name="occupants" options={facOccupants} />
             <TextField name="picture" />
             <SubmitField value="submit" />
             <ErrorsField />
