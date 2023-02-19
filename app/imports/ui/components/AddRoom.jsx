@@ -37,6 +37,7 @@ const AddRoom = () => {
   // data added to the Room collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional rooms.
   const submit = (data, formRef) => {
     const { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture } = data;
+    console.log(data);
     const collectionName = Rooms.getCollectionName();
     const definitionData = { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture };
     defineMethod.callPromise({ collectionName, definitionData })

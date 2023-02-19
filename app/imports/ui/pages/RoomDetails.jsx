@@ -8,6 +8,7 @@ import { Rooms } from '../../api/room/RoomCollection';
 import { RoomNotes } from '../../api/room/RoomNotes';
 import { RoomJacks } from '../../api/room/RoomJacks';
 import { RoomEquipments } from '../../api/room/RoomEquipments';
+import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import RoomNote from '../components/RoomNote';
 import AddNote from '../components/AddNote';
 import RoomJack from '../components/RoomJack';
@@ -24,10 +25,11 @@ const RoomDetails = () => {
   // constants for the page
   const {
     doc,
-    doc: { roomNumber, capacity, picture, status, occupants, roomSqFoot, roomClassification },
+    doc: { roomNumber, capacity, picture, status, roomSqFoot, roomClassification },
     docNotes,
     docJacks,
     docEquipment,
+    docFaculty,
     ready,
     loggedInOwner,
   } = useTracker(() => {
@@ -37,12 +39,14 @@ const RoomDetails = () => {
     const subNotes = RoomNotes.subscribeRoomNotesAdmin();
     const subJacks = RoomJacks.subscribeRoomJacksAdmin();
     const subEquipment = RoomEquipments.subscribeRoomEquipmentAdmin();
+    const subFaculty = FacultyProfiles.subscribeFacultyProfileAdmin();
     const owner = Meteor.user().username;
-    const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready();
+    const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready() && subFaculty.ready();
     const document = Rooms.findDoc({ roomKey: _id });
     const documentNotes = RoomNotes.find({ roomId: _id }).fetch();
     const documentJacks = RoomJacks.find({ roomId: _id }).fetch();
     const documentEquipment = RoomEquipments.find({ roomId: _id }).fetch();
+    const documentFaculty = FacultyProfiles.find({}).fetch();
 
     // ready when subscriptions are completed
     return {
@@ -50,11 +54,27 @@ const RoomDetails = () => {
       docNotes: documentNotes,
       docJacks: documentJacks,
       docEquipment: documentEquipment,
+      docFaculty: documentFaculty,
       loggedInOwner: owner,
       ready: rdy,
     };
   });
 
+  console.log(doc.occupants);
+  console.log(docFaculty);
+  const occupantsList = [];
+  // for each occupant, return the first and last name in docFaulty
+  const facList = [];
+  facList.push({ label: '---', value: '---' });
+  docFaculty.map((fac) => facList.push(({ label: `${fac.firstName} ${fac.lastName}`, value: `${fac.email}` })));
+
+  console.log(facList);
+  doc.occupants.forEach(e => console.log(e));
+  console.log(facList.find(e => e.value === 'scottpr@hawaii.edu'));
+
+  
+
+  console.log(occupantsList);
   useEffect(() => {
     if (ready) {
       document.title = `Room - ${roomNumber}`;
@@ -67,7 +87,7 @@ const RoomDetails = () => {
       <Row>
         <Col>
           <h2>Occupants</h2>
-          {occupants.map((o) => <p>{o}</p>)}
+          {occupantsList.map((o) => <p>{o}</p>)}
         </Col>
       </Row>
       <Row>
