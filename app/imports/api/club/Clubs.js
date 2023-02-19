@@ -26,6 +26,22 @@ class ClubCollection extends BaseCollection {
         type: String,
         optional: true,
       },
+      joinLink: {
+        type: String,
+        optional: true,
+      },
+      meetingDay: {
+        type: String,
+        optional: true,
+      },
+      meetingTime: {
+        type: String,
+        optional: true,
+      },
+      meetingLocation: {
+        type: String,
+        optional: true,
+      },
       officers: {
         type: Array,
         optional: true,
@@ -44,12 +60,16 @@ class ClubCollection extends BaseCollection {
    * Defines a new Club item.
    * @return {String} the clubID of the new document.
    */
-  define({ clubName, image, description, website, officers, advisor }) {
+  define({ clubName, image, description, website, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor }) {
     const clubID = this._collection.insert({
       clubName,
       image,
       description,
       website,
+      joinLink,
+      meetingDay,
+      meetingTime,
+      meetingLocation,
       officers,
       advisor,
     });
@@ -65,7 +85,7 @@ class ClubCollection extends BaseCollection {
    * @param website
    * @param officers
    */
-  update(clubID, { clubName, image, description, website, officers, advisor }) {
+  update(clubID, { clubName, image, description, website, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor }) {
     const updateData = {};
     if (clubName) {
       updateData.clubName = clubName;
@@ -78,6 +98,18 @@ class ClubCollection extends BaseCollection {
     }
     if (website) {
       updateData.website = website;
+    }
+    if (joinLink) {
+      updateData.joinLink = joinLink;
+    }
+    if (meetingDay) {
+      updateData.meetingDay = meetingDay;
+    }
+    if (meetingTime) {
+      updateData.meetingTime = meetingTime;
+    }
+    if (meetingLocation) {
+      updateData.meetingLocation = meetingLocation;
     }
     if (officers) {
       updateData.officers = officers;
@@ -167,9 +199,13 @@ class ClubCollection extends BaseCollection {
     const image = doc.image;
     const description = doc.description;
     const website = doc.website;
+    const joinLink = doc.joinLink;
+    const meetingDay = doc.meetingDay;
+    const meetingTime = doc.meetingTime;
+    const meetingLocation = doc.meetingLocation;
     const officers = doc.officers;
     const advisor = doc.advisor;
-    return { clubName, image, description, website, officers, advisor };
+    return { clubName, image, description, website, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
   }
 }
 
