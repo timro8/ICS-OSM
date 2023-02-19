@@ -1038,6 +1038,10 @@
       "owner":  "admin@foo.com"
     }
   ],
+
+  "defaultClubsData": [
+    { "clubName":  "IEEE","image":  "image", "description":  "description", "website": "website" }
+  ],
   
   "public": {
     "development": true
