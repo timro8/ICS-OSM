@@ -1040,7 +1040,7 @@
   ],
 
   "defaultClubsData": [
-    { "clubName":  "IEEE","image":  "image", "description":  "description", "website": "website" }
+    { "clubName":  "Institute of Electrical and Electronics Engineer Student Branch","image":  "image", "description":  "description", "website": "website" }
   ],
   
   "public": {

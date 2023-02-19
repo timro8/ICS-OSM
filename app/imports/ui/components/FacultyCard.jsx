@@ -4,7 +4,7 @@ import PropTypes, { arrayOf } from 'prop-types';
 
 const FacultyCard = ({ faculty }) => (
   <Col style={{ marginBottom: '20px' }}>
-    <Card className="w-100" border="info">
+    <Card className="w-100" border="success">
       <Card.Body>
         <Row>
           <a style={{ color: 'black', textDecoration: 'none' }} href={`/profile/${faculty._id}`}>
