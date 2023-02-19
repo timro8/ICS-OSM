@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, NumField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Rooms } from '../../api/room/RoomCollection';
+import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
+import LoadingSpinner from './LoadingSpinner';
 
 // form schema based on the Room collection
 const bridge = new SimpleSchema2Bridge(Rooms._schema);
@@ -16,6 +19,20 @@ const AddRoom = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const { faculty, ready } = useTracker(() => {
+    const subscription = FacultyProfiles.subscribeFacultyProfileAdmin();
+    const rdy = subscription.ready();
+    const facultyList = FacultyProfiles.find({}, { sort: { lastName: 1, firstName: 1 } }).fetch();
+    return {
+      faculty: facultyList,
+      ready: rdy,
+    };
+  });
+
+  const facOccupants = [];
+  facOccupants.push('---');
+  faculty.map((fac) => facOccupants.push(`${fac.firstName} ${fac.lastName} (${fac.email})`));
 
   // data added to the Room collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional rooms.
   const submit = (data, formRef) => {
@@ -30,7 +47,7 @@ const AddRoom = () => {
       });
   };
   let fRef = null;
-  return (
+  return ready ? (
     <>
       <Button variant="primary" onClick={handleShow}>
         Add Room
@@ -59,7 +76,7 @@ const AddRoom = () => {
               name="roomClassification"
               allowedValues={['Office', 'Sink', 'Conference', 'Cubicle', 'ICS Library', 'ASECOLAB', 'Mail', 'Main Office', 'Lab', 'ICSpace', 'Storage', 'ICS IT', 'OFCSVC', 'LNG']}
             />
-            <TextField name="occupants" />
+            <SelectField name="occupants" allowedValues={facOccupants} />
             <TextField name="picture" />
             <SubmitField value="submit" />
             <ErrorsField />
@@ -72,6 +89,6 @@ const AddRoom = () => {
         </Modal.Footer>
       </Modal>
     </>
-  );
+  ) : <LoadingSpinner />;
 };
 export default AddRoom;

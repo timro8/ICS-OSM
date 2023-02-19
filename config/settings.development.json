@@ -18,28 +18,6 @@
     { "name":  "test3", "quantity":  2, "owner":  "office@foo.com", "condition":  "excellent" },
     { "name":  "test4", "quantity":  2, "owner":  "tech@foo.com", "condition":  "excellent" }
   ],
-  
-  "defaultRoomData": [
-    { "roomNumber": "303A", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
-    },
-    { "roomNumber": "303B", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "john@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "303G", "location":  "POST", "status": "Occupied", "capacity": "2", "owner":  "office@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "303F", "location":  "POST", "status": "Out of Commission", "capacity": "0", "owner":  "office@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
-    { "roomNumber": "327", "location": "POST", "status": "Occupied", "capacity": "1", "owner": "john@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"}
-  ],
 
   "defaultFacultyProfileData": [
     {
@@ -436,7 +414,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Sink",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/3022/2814793353_54966edfd3_b.jpg"
     },
     {
       "roomKey": "POST302",
@@ -444,63 +422,63 @@
       "roomSqFoot": "100",
       "roomClassification": "Conference",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://i0.hippopx.com/photos/669/176/967/chairs-empty-office-room-preview.jpg"
     },
     {
       "roomKey": "POST303A",
       "roomNumber": "303A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["kennydq@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Kenny Ka‘aiakamanu-Quibilan (kennydq@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST303B",
       "roomNumber": "303B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["wesleysu@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Wesley Sugimoto (wesleysu@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ2sGgWwehw6Zr5gqp5cqEV1e_oQI981Y_9g&usqp=CAU"
     },
     {
       "roomKey": "POST303C",
       "roomNumber": "303C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["guylaine@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Guylaine Poisson (guylaine@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST303D",
       "roomNumber": "303D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["binsted@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Kim Binsted (binsted@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST303E",
       "roomNumber": "303E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["faculty@foo.com"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Faculty FACULTY (faculty@foo.com)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST303F",
       "roomNumber": "303F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["kyungim@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Kyungim Baek (kyungim@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST303G",
       "roomNumber": "303G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["chin@hawaii.edu", "itoga@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["David Chin (chin@hawaii.edu)", "Stephen Itoga (itoga@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST303-1",
@@ -508,7 +486,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST303-2",
@@ -516,7 +494,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST303-3",
@@ -524,7 +502,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST303-4",
@@ -532,7 +510,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST303-5",
@@ -540,7 +518,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST303.0",
@@ -564,7 +542,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST305B",
@@ -572,7 +550,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST305C",
@@ -580,15 +558,15 @@
       "roomSqFoot": "173",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST305D",
       "roomNumber": "305D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "occupants":  ["crosby@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Martha Crosby (crosby@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST305E",
@@ -596,15 +574,15 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST305F",
       "roomNumber": "305F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["esb@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Edo Biagioni (esb@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
 
     {
@@ -613,7 +591,7 @@
       "roomSqFoot": "186",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST306",
@@ -629,23 +607,23 @@
       "roomSqFoot": "141",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST306B",
       "roomNumber": "306B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "168",
       "roomClassification": "Office",
-      "occupants":  ["mahdi@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Mahdi Belcaid (mahdi@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST306C",
       "roomNumber": "306C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "168",
       "roomClassification": "Office",
-      "occupants":  ["psadow@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Peter Sadowski (psadow@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST306D",
@@ -653,7 +631,7 @@
       "roomSqFoot": "156",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST307",
@@ -668,16 +646,16 @@
       "roomNumber": "307A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "occupants":  ["johnson@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Philip Johnson (johnson@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST307B",
       "roomNumber": "307B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "245",
       "roomClassification": "Office",
-      "occupants":  ["cmoore@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Carleton Moore (cmoore@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST307C",
@@ -685,7 +663,7 @@
       "roomSqFoot": "139",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST309",
@@ -693,7 +671,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST309A",
@@ -701,23 +679,23 @@
       "roomSqFoot": "212",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST309B",
       "roomNumber": "309B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "224",
       "roomClassification": "Office",
-      "occupants":  ["suthers@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Dan Suthers (suthers@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST309C",
       "roomNumber": "309C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["nodari@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Nodari Sitchinava (nodari@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST310A",
@@ -725,23 +703,23 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST310B",
       "roomNumber": "310B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["peruma@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Anthony Peruma (peruma@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST310C",
       "roomNumber": "310C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["henric@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Henri Casanova (henric@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST311",
@@ -756,16 +734,16 @@
       "roomNumber": "311A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["pseidel@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Peter-Michael Seidel (pseidel@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST311B",
       "roomNumber": "311B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["dusko@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Dusko Pavlovic (dusko@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST312A",
@@ -773,15 +751,15 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST312B",
       "roomNumber": "312B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["pyw@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Peter Washington (pyw@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST312C",
@@ -789,23 +767,23 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST314A",
       "roomNumber": "314A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["rnarayan@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Ravi Narayan (rnarayan@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST314B",
       "roomNumber": "314B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["ogawam@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Michael Brian Ogawa (ogawam@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST314C",
@@ -813,15 +791,15 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST314D",
       "roomNumber": "314D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["depengli@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Depeng Li (depengli@hawaii.edu)"],
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
       "roomKey": "POST314E",
@@ -829,7 +807,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST314F",
@@ -837,7 +815,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST314G",
@@ -845,7 +823,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST314H",
@@ -853,7 +831,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST314I",
@@ -861,7 +839,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
 
     {
@@ -870,7 +848,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST3142",
@@ -878,7 +856,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST3143",
@@ -886,7 +864,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST3144",
@@ -894,7 +872,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST3145",
@@ -902,7 +880,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST3146",
@@ -910,7 +888,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST3147",
@@ -918,7 +896,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST3148",
@@ -926,7 +904,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST3149",
@@ -934,7 +912,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST31410",
@@ -942,7 +920,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
       "roomKey": "POST315",
@@ -950,7 +928,7 @@
       "roomSqFoot": "100",
       "roomClassification": "Office",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
       "roomKey": "POST316",
@@ -965,8 +943,8 @@
       "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "3",
       "roomSqFoot": "100",
       "roomClassification": "Main Office",
-      "occupants":  ["scottpr@hawaii.edu"],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "occupants":  ["Scott Robertson (scottpr@hawaii.edu)"],
+      "picture": "https://c.pxhere.com/photos/fc/d9/office_sitting_room_executive_sitting_business_desk_workplace_corporate-735699.jpg!d"
     },
     {
       "roomKey": "POST318",
@@ -983,7 +961,7 @@
       "roomSqFoot": "100",
       "roomClassification": "ICSpace",
       "occupants":  [""],
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "http://dev.ics.hawaii.edu/wp-content/uploads/2015/09/post318b.jpg"
     },
     {
       "roomKey": "POST319",
@@ -1006,7 +984,7 @@
       "roomNumber": "327", "location":  "POST", "status": "Occupied", "capacity": "2",
       "roomSqFoot": "200",
       "roomClassification": "Office",
-      "occupants":  ["toddtt@hawaii.edu", "shackfor@hawaii.edu"],
+      "occupants":  ["Todd Tomita (toddtt@hawaii.edu)", "Charles Shackford (shackfor@hawaii.edu)"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
