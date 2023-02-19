@@ -1,12 +1,11 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "firstName": "Admin", "lastName": "MATRP"
-    },
+    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "firstName": "Admin", "lastName": "MATRP" },
     { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" },
     { "email":  "faculty@foo.com", "password":  "changeme", "role":  "FACULTY", "firstName": "Faculty", "lastName":  "FACULTY" },
     { "email":  "student@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
     { "email":  "office@foo.com", "password":  "changeme", "role":  "OFFICE", "firstName": "Office", "lastName":  "OFFICE" },
-    { "email":  "tech@foo.com", "password":  "changeme", "role":  "TECH", "firstName":  "Tech", "lastName":  "TECH"}
+    { "email":  "tech@foo.com", "password":  "changeme", "role":  "TECH", "firstName":  "Tech", "lastName":  "TECH" }
   ],
 
   "defaultData": [
@@ -19,6 +18,402 @@
     { "name":  "test3", "quantity":  2, "owner":  "office@foo.com", "condition":  "excellent" },
     { "name":  "test4", "quantity":  2, "owner":  "tech@foo.com", "condition":  "excellent" }
   ],
+  
+  "defaultRoomData": [
+    { "roomNumber": "303A", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com",
+      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+    },
+    { "roomNumber": "303B", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "john@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "303G", "location":  "POST", "status": "Occupied", "capacity": "2", "owner":  "office@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "303F", "location":  "POST", "status": "Out of Commission", "capacity": "0", "owner":  "office@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "1", "owner":  "admin@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"},
+    { "roomNumber": "327", "location": "POST", "status": "Occupied", "capacity": "1", "owner": "john@foo.com", "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"}
+  ],
+
+  "defaultFacultyProfileData": [
+    {
+      "role": "FACULTY",
+      "email": "kyungim@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Kyungim",
+      "lastName": "Baek",
+      "facRole": "ASSOCIATE PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Kyungim_Baek1-180x180.jpg",
+      "bio": "I like  Pattern recognition and machine learning in bioinformatics, Computer vision, Computational modeling of visual perception, Deep learning, Neural computation..",
+      "rooms": ["303F"],
+      "phoneNumber": "8089568560",
+      "officeHours": "Monday"
+    },
+    {
+      "role": "FACULTY",
+      "email": "mahdi@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Mahdi",
+      "lastName": "Belcaid",
+      "facRole": "ASSISTANT PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2019/02/mahdi-180x180.png",
+      "bio": "I like Data science education, Probabilistic programming in genomics, Big data approximation.",
+      "rooms": ["306B"],
+      "phoneNumber": "8089566049",
+      "officeHours": "Monday"
+    },
+    {
+      "role": "FACULTY",
+      "email": "esb@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Edo",
+      "lastName": "Biagioni",
+      "facRole": "ASSOCIATE PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/edo_biagioni2-180x180.jpg",
+      "bio": "I like Wireless networking; Power, security, routing, and reliability in wireless networks, particularly wireless sensor networks.",
+      "rooms": ["305F"],
+      "phoneNumber": "8089563891",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "binsted@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Kim",
+      "lastName": "Binsted",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-180x180.jpg",
+      "bio": "I like Climate change, Food resiliency, Software engineering, Educational technology.",
+      "rooms": ["303D"],
+      "phoneNumber": "8089566107",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "henric@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Henry",
+      "lastName": "Casanova",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Henri_Casanova1-180x180.jpg",
+      "bio": "I like High performance computing, parallel and distributed computing, parallel application scheduling, simulation of distributed applications and platforms.",
+      "rooms": ["310C"],
+      "phoneNumber": "8089562649",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "crosby@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Martha",
+      "lastName": "Crosby",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/MarthaCrosby-180x180.jpg",
+      "bio": "I like Human Computer Interaction; Artificial intelligence; Cognitive science; Computer science education; Information science education; Authentication; Cognitive robotics.",
+      "rooms": ["305D"],
+      "phoneNumber": "8089563493",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "endicott@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Barbara",
+      "lastName": "Endicott-Popovsky",
+      "facRole": "ASSOCIATE PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/BarbaraEndicottPopovsky-180x180.jpg",
+      "bio": "I like omputer science education; Computer crime; Information systems education; Model curricula; Security and privacy; Information science education.",
+      "rooms": ["N/A"],
+      "phoneNumber": "N/A",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "richardh@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Richard",
+      "lastName": "Halverson",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/06/RichardHalverson.jpg",
+      "bio": "N/A",
+      "rooms": ["N/A"],
+      "phoneNumber": "N/A",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "johnson@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Phillip",
+      "lastName": "Johnson",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2019/05/johnson-180x180.jpeg",
+      "bio": "I like Artificial intelligence, human-computer interfaces, and long-duration human space exploration.",
+      "rooms": ["307A"],
+      "phoneNumber": "8089563489",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "leighj@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Jason",
+      "lastName": "Leigh",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/07/jasonLeigh300x300.jpg",
+      "bio": "I like Big data visualization, virtual reality, high performance networking, video game design.",
+      "rooms": ["102A"],
+      "phoneNumber": "8089569164",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "depengli@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Depeng",
+      "lastName": "Li",
+      "facRole": "ASSOCIATE PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Depeng_Li-2014-180x180.jpg",
+      "bio": "I like Security and privacy, Internet of Things, Applied cryptography, Operating system development, Network security.",
+      "rooms": ["314d"],
+      "phoneNumber": "8089563973",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "cmoore@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Carleton",
+      "lastName": "Moore",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore-180x180.jpg",
+      "bio": "I like Software management, computer games, human and social aspects of security and privacy, human-centered computing, interactive games, massively-multiplayer online games.",
+      "rooms": ["307B"],
+      "phoneNumber": "8089566920",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "rnarayan@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Narayan",
+      "lastName": "Ravi",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Ravi_Narayan-2014-180x180.jpg",
+      "bio": "N/A",
+      "rooms": ["314A"],
+      "phoneNumber": "N/A",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "ogawam@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Michael Brian",
+      "lastName": "Ogawa",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/MB_Ogawa-180x180.jpg",
+      "bio": "N/A",
+      "rooms": ["314B"],
+      "phoneNumber": "8089565069",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "dusko@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Dusko",
+      "lastName": "Pavlovic",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/07/dusko-e1656997097828-300x300.jpg",
+      "bio": "I like Security, Network computation and economics, Quantum computation, Software, Semantics, Categories",
+      "rooms": ["311B"],
+      "phoneNumber": "8089569639",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "peruma@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Anthony",
+      "lastName": "Peruma",
+      "facRole": "ASSISTANT PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/07/anthonyPeruma.jpg",
+      "bio": "I like Program comprehension, Software refactoring, Software maintenance & evolution.",
+      "rooms": ["310B"],
+      "phoneNumber": "8089569639",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "guylaine@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Guylaine",
+      "lastName": "Poisson",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2018/11/gpsmall-180x180.jpg",
+      "bio": "I like Bioinformatics, Computational Biology.",
+      "rooms": ["303C"],
+      "phoneNumber": "8089563496",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "scottpr@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Scott",
+      "lastName": "Robertson",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Scott_Robertson1-180x180.jpg",
+      "bio": "I like Bioinformatics, Computational Biology.",
+      "rooms": ["317"],
+      "phoneNumber": "8089563500",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "psadow@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Peter",
+      "lastName": "Sadowski",
+      "facRole": "ASSISTANT PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2018/08/peter-sadowski_300x300-180x180.jpg",
+      "bio": "I like Machine learning, artificial intelligence, neural networks, learning in biological systems.",
+      "rooms": ["306C"],
+      "phoneNumber": "8089562023",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "psadow@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Peter",
+      "lastName": "Sadowski",
+      "facRole": "ASSISTANT PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/07/dusko-e1656997097828-300x300.jpg",
+      "bio": "I like Machine learning, artificial intelligence, neural networks, learning in biological systems.",
+      "rooms": ["306C"],
+      "phoneNumber": "8089562023",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "pseidel@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Nodari",
+      "lastName": "Sitchinava",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Nodari_Sitchinava-2014-180x180.jpg",
+      "bio": "I like Algorithms for modern parallel systems; Cache-efficient parallel algorithms for multicores and GPUs; I/O-efficient algorithms",
+      "rooms": ["309C"],
+      "phoneNumber": "8089563581",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "suthers@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Dan",
+      "lastName": "Suthers",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Dan_Suthers_2014-180x180.jpg",
+      "bio": "I like Technology Enhanced Learning, Human-Computer Interaction, Social Informatics. Cognitive, social and computational perspectives.",
+      "rooms": ["309B"],
+      "phoneNumber": "8089563890",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "pyw@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Peter",
+      "lastName": "Washington",
+      "facRole": "ASSISTANT PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/07/peterWashington-300x300.png",
+      "bio": "I like Digital Health, Precision Health, Data Science, Machine Learning, Human-Centered Computing, Biomedical Informatics.",
+      "rooms": ["312B"],
+      "phoneNumber": "N/A",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "chin@hawaii.edu",
+      "password": "changeme",
+      "firstName": "David",
+      "lastName": "Chin",
+      "facRole": "PROFESSOR EMERITUS",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/06/DavidChin300x300.jpg",
+      "bio": "I like User modeling, natural language processing, intelligent agents, empirical evaluation, AI for computer games.",
+      "rooms": ["303G"],
+      "phoneNumber": "N/A",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "itoga@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Stephen",
+      "lastName": "Itoga",
+      "facRole": "PROFESSOR EMERITUS",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Stephen_Itoga1-180x180.jpg",
+      "bio": "I like Online Education.",
+      "rooms": ["303G"],
+      "phoneNumber": "N/A",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "davidpager@hawaii.edu",
+      "password": "changeme",
+      "firstName": "David",
+      "lastName": "Pager",
+      "facRole": "PROFESSOR EMERITUS",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/DavidPager-180x180.jpg",
+      "bio": "I like Parsers.",
+      "rooms": ["303G"],
+      "phoneNumber": "N/A",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "brent@csufresno.edu",
+      "password": "changeme",
+      "firstName": "Brent",
+      "lastName": "Aurenheimer",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg",
+      "bio": "I like Software engineering; Human-computer interaction; Formal methods of software development.",
+      "rooms": ["303G"],
+      "phoneNumber": "N/A",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "kazman@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Rick",
+      "lastName": "Kazman",
+      "facRole": "PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/07/RickKazman300x300.jpg",
+      "bio": "I like Software architecture design and analysis; Architecture/Design analysis tools and methods; Technical debt/Architecture debt; Socio-technical congruence; IT economics.",
+      "rooms": ["401C"],
+      "phoneNumber": "8089566948",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "koniges@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Alice",
+      "lastName": "Koniges",
+      "facRole": "N/A",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/07/AliceKoniges300x300.jpg",
+      "bio": "I like Emerging architectures; Programming models; Machine learning; Partial differential equations.",
+      "rooms": ["N/A"],
+      "phoneNumber": "N/A",
+      "officeHours": "Monday"
+    },
+    {
+      "email": "strev@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Dennis",
+      "lastName": "Streveler",
+      "facRole": "N/A",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Dennis_Streveler1-180x180.jpg",
+      "bio": "I like Global medical informatics.",
+      "rooms": ["N/A"],
+      "phoneNumber": "N/A",
+      "officeHours": "Monday"
+    }
+  ],
+
+  "defaultDiscussion": [
+    { "image":"https://media.tenor.com/_Lz5BPKaJZAAAAAM/crying-crying-meme.gif", "name": "Room Reservation for Students?", "firstName": "John", "lastName": "X", "owner": "john@foo.com", "description": "I heard there was changes in room reservation and was wondering whether we should do something about it? Also, is it possible to get Rooms by reserving them? Is there a way to do it?", "flair": "Question" },
+    { "image":"https://media.tenor.com/8rAXolE-CYwAAAAM/spongebob-scared.gif", "name": "Possible leakage in the Boys Bathrooms...", "firstName": "John", "lastName": "X", "owner": "john@foo.com", "description": "Title", "flair": "Problem" },
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "Simulated Gunfire!", "firstName": "Admine", "lastName": "Y", "owner": "admin@foo.com", "description": "Aloha Students, we will be simulating gunfire for security purposes and such. The entire building will be locked during Saturday and Sundays. Please and Thank you for Patience.", "flair": "Announcements" },
+    { "image":"https://png.pngtree.com/png-vector/20210519/ourmid/pngtree-bathroom-cleaning-health-home-cleaning-illustration-png-image_3303392.png", "name": "Maintenance in POST 319", "firstName": "Todd", "lastName": "A", "owner": "tech@foo.com", "description": "The bathroom near POST 319 will be unavailable during this time. Thank you for understanding. ", "flair": "Maintenance" },
+    { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "name": "System-wide Reset for Faculty", "firstName": "Admine", "lastName": "Y", "owner": "admin@foo.com", "description": "Yeahs", "flair": "News" }
+  ],
 
   "defaultFacultyData": [
     { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "admin", "lastName":  "ADMIN", "owner":  "admin@foo.com", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"},
@@ -26,6 +421,7 @@
     { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "office", "lastName": "OFFICE", "owner": "office@foo.com", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"},
     { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "student", "lastName":  "STUDENT", "owner":  "student@foo.com", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"},
     { "image":"https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg", "firstName": "tech", "lastName":  "TECH", "owner":  "tech@foo.com", "bio": "I like ICS 414.", "room": "POST 319", "phoneNumber": "8081234567", "officeHours": "Monday 1pm-2pm"}
+
   ],
 
   "defaultEvents302Data": [
@@ -39,7 +435,7 @@
       "roomNumber": "301", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Sink",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -47,7 +443,7 @@
       "roomNumber": "302", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Conference",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -55,7 +451,7 @@
       "roomNumber": "303A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["kennydq@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -63,7 +459,7 @@
       "roomNumber": "303B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["wesleysu@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -71,7 +467,7 @@
       "roomNumber": "303C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["guylaine@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -79,7 +475,7 @@
       "roomNumber": "303D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["binsted@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -87,7 +483,7 @@
       "roomNumber": "303E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["faculty@foo.com"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -95,7 +491,7 @@
       "roomNumber": "303F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["kyungim@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -103,7 +499,7 @@
       "roomNumber": "303G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["chin@hawaii.edu", "itoga@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -111,7 +507,7 @@
       "roomNumber": "303-1", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -119,7 +515,7 @@
       "roomNumber": "303-2", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -127,7 +523,7 @@
       "roomNumber": "303-3", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -135,7 +531,7 @@
       "roomNumber": "303-4", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -143,7 +539,7 @@
       "roomNumber": "303-5", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -151,7 +547,7 @@
       "roomNumber": "303.0", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "ICS Library",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -159,7 +555,7 @@
       "roomNumber": "305", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "311",
       "roomClassification": "OFCSVC",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -167,7 +563,7 @@
       "roomNumber": "305A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -175,7 +571,7 @@
       "roomNumber": "305B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -183,7 +579,7 @@
       "roomNumber": "305C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -191,7 +587,7 @@
       "roomNumber": "305D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["crosby@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -199,7 +595,7 @@
       "roomNumber": "305E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -207,7 +603,7 @@
       "roomNumber": "305F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["esb@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
 
@@ -216,7 +612,7 @@
       "roomNumber": "305G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "186",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -224,7 +620,7 @@
       "roomNumber": "306", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "124",
       "roomClassification": "LNG",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -232,7 +628,7 @@
       "roomNumber": "306A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "141",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -240,7 +636,7 @@
       "roomNumber": "306B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "168",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["mahdi@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -248,7 +644,7 @@
       "roomNumber": "306C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "168",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["psadow@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -256,7 +652,7 @@
       "roomNumber": "306D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "156",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -264,7 +660,7 @@
       "roomNumber": "307", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "214",
       "roomClassification": "Lab",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -272,7 +668,7 @@
       "roomNumber": "307A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["johnson@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -280,7 +676,7 @@
       "roomNumber": "307B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "245",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["cmoore@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -288,7 +684,7 @@
       "roomNumber": "307C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "139",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -296,7 +692,7 @@
       "roomNumber": "309", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -304,7 +700,7 @@
       "roomNumber": "309A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "212",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -312,7 +708,7 @@
       "roomNumber": "309B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "224",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["suthers@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -320,7 +716,7 @@
       "roomNumber": "309C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["nodari@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -328,7 +724,7 @@
       "roomNumber": "310A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -336,7 +732,7 @@
       "roomNumber": "310B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["peruma@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -344,7 +740,7 @@
       "roomNumber": "310C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["henric@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -352,16 +748,31 @@
       "roomNumber": "311", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "ASECOLAB",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
-
+    {
+      "roomKey": "POST311A",
+      "roomNumber": "311A", "location":  "POST", "status": "Occupied", "capacity": "1",
+      "roomSqFoot": "100",
+      "roomClassification": "Office",
+      "occupants":  ["pseidel@hawaii.edu"],
+      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+    },
+    {
+      "roomKey": "POST311B",
+      "roomNumber": "311B", "location":  "POST", "status": "Occupied", "capacity": "1",
+      "roomSqFoot": "100",
+      "roomClassification": "Office",
+      "occupants":  ["dusko@hawaii.edu"],
+      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+    },
     {
       "roomKey": "POST312A",
       "roomNumber": "312A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -369,7 +780,7 @@
       "roomNumber": "312B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["pyw@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -377,7 +788,7 @@
       "roomNumber": "312C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -385,7 +796,7 @@
       "roomNumber": "314A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["rnarayan@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -393,7 +804,7 @@
       "roomNumber": "314B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["ogawam@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -401,7 +812,7 @@
       "roomNumber": "314C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -409,7 +820,7 @@
       "roomNumber": "314D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["depengli@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -417,7 +828,7 @@
       "roomNumber": "314E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -425,7 +836,7 @@
       "roomNumber": "314F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -433,7 +844,7 @@
       "roomNumber": "314G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -441,7 +852,7 @@
       "roomNumber": "314H", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -449,7 +860,7 @@
       "roomNumber": "314I", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
 
@@ -458,7 +869,7 @@
       "roomNumber": "314-1", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -466,7 +877,7 @@
       "roomNumber": "314-2", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -474,7 +885,7 @@
       "roomNumber": "314-3", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -482,7 +893,7 @@
       "roomNumber": "314-4", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -490,7 +901,7 @@
       "roomNumber": "314-5", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -498,7 +909,7 @@
       "roomNumber": "314-6", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -506,7 +917,7 @@
       "roomNumber": "314-7", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -514,7 +925,7 @@
       "roomNumber": "314-9", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -522,7 +933,7 @@
       "roomNumber": "314-9", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -530,7 +941,7 @@
       "roomNumber": "314-10", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -538,7 +949,7 @@
       "roomNumber": "315", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -546,7 +957,7 @@
       "roomNumber": "316", "location":  "POST", "status": "Other", "capacity": "0",
       "roomSqFoot": "100",
       "roomClassification": "Mail",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -554,7 +965,7 @@
       "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "3",
       "roomSqFoot": "100",
       "roomClassification": "Main Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["scottpr@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -562,7 +973,7 @@
       "roomNumber": "318", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Lab",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
 
@@ -571,7 +982,7 @@
       "roomNumber": "318B", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "ICSpace",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -579,7 +990,7 @@
       "roomNumber": "319", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Lab",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -587,7 +998,7 @@
       "roomNumber": "326", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "279",
       "roomClassification": "Storage",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -595,7 +1006,7 @@
       "roomNumber": "327", "location":  "POST", "status": "Occupied", "capacity": "2",
       "roomSqFoot": "200",
       "roomClassification": "Office",
-      "owner":  "admin@foo.com",
+      "occupants":  ["toddtt@hawaii.edu", "shackfor@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -603,7 +1014,7 @@
       "roomNumber": "328", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "279",
       "roomClassification": "ICS IT",
-      "owner":  "admin@foo.com",
+      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     }
   ],

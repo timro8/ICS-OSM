@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
-import { Alert, Card, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Button, Card, Col, Container, Image, Row } from 'react-bootstrap';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
-import { EnvelopeFill, KeyFill } from 'react-bootstrap-icons';
+import { AutoForm, ErrorsField, TextField } from 'uniforms-bootstrap5';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
@@ -40,57 +39,38 @@ const SignIn = () => {
     return (<Navigate to="/home" />);
   }
 
-  document.title = 'OSMICS - Sign In';
+  document.title = 'Sign In';
   // Otherwise return the Login form.
   return (
-    <Container id={PAGE_IDS.SIGN_IN} className="py-3">
-      <Row className="justify-content-center">
-        <Col xs={5}>
-          <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-            <Card>
-              <Card.Body height="50%">
-                <Col className="text-center">
-                  <h2>Login to your account</h2>
+    <div className="green-purple-gradient">
+      <Container id={PAGE_IDS.SIGN_IN} className="py-3 d-flex min-vh-100 align-items-center justify-content-center">
+        <AutoForm schema={bridge} onSubmit={data => submit(data)}>
+          <Card style={{ boxShadow: '0 2px 6px rgb(0 0 0 / 20%)' }}>
+            <Card.Body className="w-100 d-flex align-items-center py-3" style={{ minHeight: '18rem', minWidth: '25rem', maxWidth: '35rem' }}>
+              <Row>
+                <Col xs={3}>
+                  <Image fluid src="/images/uh-seal.png" />
                 </Col>
-                <Row className="mt-4">
-                  <Col className="col-1 mt-1 ms-1">
-                    <EnvelopeFill style={{ fontSize: '25px', color: 'lightskyblue' }} />
-                  </Col>
-                  <Col className="mx-2">
-                    <TextField id={COMPONENT_IDS.SIGN_IN_FORM_EMAIL} name="email" placeholder="Email" label="" />
-                  </Col>
-                </Row>
-                <Row>
-                  <Col className="col-1 mt-1 ms-1">
-                    <KeyFill style={{ fontSize: '25px', color: 'gold' }} />
-                  </Col>
-                  <Col className="mx-2">
-                    <TextField id={COMPONENT_IDS.SIGN_IN_FORM_PASSWORD} name="password" placeholder="Password" type="password" label="" />
-                  </Col>
-                </Row>
-                <ErrorsField />
-                <Col className="d-flex justify-content-center">
-                  <SubmitField id={COMPONENT_IDS.SIGN_IN_FORM_SUBMIT} />
+                <Col>
+                  <TextField id={COMPONENT_IDS.SIGN_IN_FORM_EMAIL} name="email" placeholder="UH Email" label="" />
+                  <TextField id={COMPONENT_IDS.SIGN_IN_FORM_PASSWORD} name="password" placeholder="UH Password" type="password" label="" />
+                  <ErrorsField />
+                  <Button type="submit" variant="secondary" className="w-100" id={COMPONENT_IDS.SIGN_IN_FORM_SUBMIT}>Login</Button>
                 </Col>
-
-              </Card.Body>
-            </Card>
-          </AutoForm>
-          <Alert variant="secondary" id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN_SIGN_UP_REQUEST}>
-            Not a member?&nbsp;
-            <Link to="/signup">Click here to Register</Link>
+              </Row>
+            </Card.Body>
+          </Card>
+        </AutoForm>
+        {error === '' ? (
+          ''
+        ) : (
+          <Alert variant="danger">
+            <Alert.Heading>Login was not successful</Alert.Heading>
+            {error}
           </Alert>
-          {error === '' ? (
-            ''
-          ) : (
-            <Alert variant="danger">
-              <Alert.Heading>Login was not successful</Alert.Heading>
-              {error}
-            </Alert>
-          )}
-        </Col>
-      </Row>
-    </Container>
+        )}
+      </Container>
+    </div>
   );
 };
 

@@ -5,67 +5,66 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const facultyPublications = {
-  faculty: 'faculty',
-  facultyAdmin: 'FacultyAdmin',
+export const discussionPublications = {
+  discussion: 'discussion',
+  discussionAdmin: 'discussionAdmin',
 };
 
-class FacultyCollection extends BaseCollection {
+class DiscussionCollection extends BaseCollection {
   constructor() {
-    super('Faculty', new SimpleSchema({
+    super('Discussions', new SimpleSchema({
       image: String,
+      name: String,
       firstName: String,
       lastName: String,
       owner: String,
-      bio: String,
-      room: String,
-      phoneNumber: String,
-      officeHours: String,
+      description: String,
+      flair: String,
     }));
   }
 
   /**
-   * Defines a new Faculty item.
+   * Defines a new Discussion item.
    * @param image the picture of user.
    * @param firstName the first name of the user.
    * @param lastName the last name of the user.
    * @param owner the owner of the user.
    * @param bio the description of the user.
    * @param room the room location of the user.
-   * @param phoneNumber the phone number of the user.
-   * @param officeHours the office hour of the user.
+   * @param flair the room location of the user.
    * @return {String} the facID of the new document.
    */
-  define({ image, firstName, lastName, owner, bio, room, phoneNumber, officeHours }) {
-    const facID = this._collection.insert({
+  define({ image, name, firstName, lastName, owner, description, flair }) {
+    const discID = this._collection.insert({
       image,
+      name,
       firstName,
       lastName,
       owner,
-      bio,
-      room,
-      phoneNumber,
-      officeHours,
+      description,
+      flair,
     });
-    return facID;
+    return discID;
   }
 
   /**
    * Updates the given document.
-   * @param facID the id of the document to update.
+   * @param discID the id of the document to update.
    * @param image the new image (optional).
+   * @param name the new image (optional).
    * @param firstName the new first name (optional).
    * @param lastName the new last name (optional).
    * @param owner the new owner (optional).
-   * @param bio the new bio (optional).
-   * @param room the new room (optional).
-   * @param phoneNumber the new phone number (optional).
-   * @param officeHours the new office hours (optional).
+   * @param description the new owner (optional).
+   * @param flair the new owner (optional).
    */
-  update(facID, { image, firstName, lastName, bio, room, phoneNumber, officeHours }) {
+  update(discID, { image, name, firstName, lastName, owner, description, flair }) {
     const updateData = {};
     if (image) {
       updateData.image = image;
+    }
+    if (name) {
+      updateData.name = name;
     }
     if (firstName) {
       updateData.firstName = firstName;
@@ -73,19 +72,16 @@ class FacultyCollection extends BaseCollection {
     if (lastName) {
       updateData.lastName = lastName;
     }
-    if (bio) {
-      updateData.bio = bio;
+    if (owner) {
+      updateData.owner = owner;
     }
-    if (room) {
-      updateData.room = room;
+    if (description) {
+      updateData.description = description;
     }
-    if (phoneNumber) {
-      updateData.phoneNumber = phoneNumber;
+    if (flair) {
+      updateData.flair = flair;
     }
-    if (officeHours) {
-      updateData.officeHours = officeHours;
-    }
-    this._collection.update(facID, { $set: updateData });
+    this._collection.update(discID, { $set: updateData });
   }
 
   /**
@@ -109,7 +105,7 @@ class FacultyCollection extends BaseCollection {
       // get the FacultyCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(facultyPublications.facultyAdmin, function publish() {
+      Meteor.publish(discussionPublications.discussionAdmin, function publish() {
         if (this.userId) {
           return instance._collection.find();
         }
@@ -117,7 +113,7 @@ class FacultyCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(facultyPublications.facultyAdmin, function publish() {
+      Meteor.publish(discussionPublications.discussionAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -129,9 +125,9 @@ class FacultyCollection extends BaseCollection {
   /**
    * Subscription method for faculty owned by the current user.
    */
-  subscribeFaculty() {
+  subscribeDiscussion() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(facultyPublications.faculty);
+      return Meteor.subscribe(discussionPublications.discussion);
     }
     return null;
   }
@@ -140,9 +136,9 @@ class FacultyCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeFacultyAdmin() {
+  subscribeDiscussionAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(facultyPublications.facultyAdmin);
+      return Meteor.subscribe(discussionPublications.discussionAdmin);
     }
     return null;
   }
@@ -159,24 +155,23 @@ class FacultyCollection extends BaseCollection {
 
   /**
    * Returns an object representing the definition of facID in a format appropriate to the restoreOne or define function.
-   * @param facID
+   * @param discID
    * @return {{owner: (*|number), condition: *, quantity: *, name}}
    */
-  dumpOne(facID) {
-    const doc = this.findDoc(facID);
+  dumpOne(discID) {
+    const doc = this.findDoc(discID);
     const image = doc.image;
+    const name = doc.name;
     const firstName = doc.firstName;
     const lastName = doc.lastName;
     const owner = doc.owner;
-    const bio = doc.bio;
-    const room = doc.room;
-    const phoneNumber = doc.phoneNumber;
-    const officeHours = doc.officeHours;
-    return { image, firstName, lastName, owner, bio, room, phoneNumber, officeHours };
+    const description = doc.description;
+    const flair = doc.flair;
+    return { image, name, firstName, lastName, owner, description, flair };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Faculties = new FacultyCollection();
+export const Discussions = new DiscussionCollection();

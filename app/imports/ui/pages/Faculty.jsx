@@ -5,23 +5,25 @@ import AddFacultyForm from '../components/AddFacultyForm';
 import SearchBar from '../components/SearchBar';
 import FacultyCard from '../components/FacultyCard';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import { Faculties } from '../../api/faculty/FacultyCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 
 const Faculty = () => {
   // show pop up to add faculty
   const [show, setShow] = useState(false);
   const [facultyList, setList] = useState([]);
   const { ready, faculties } = useTracker(() => {
-    const subscription = Faculties.subscribeFacultyAdmin();
+    const subscription = FacultyProfiles.subscribeFacultyProfile();
     const rdy = subscription.ready();
-    const facultyItems = Faculties.find({}, { sort: { lastName: 1 } }).fetch();
+    const facultyItems = FacultyProfiles.find({}, { sort: { lastName: 1 } }).fetch();
     setList(facultyItems);
     return {
       faculties: facultyItems,
       ready: rdy,
     };
   }, []);
+
+  document.title = 'Faculty';
   const handleSearch = (search) => {
     const searchInput = search.trim();
     setList(faculties.filter(faculty => (`${faculty.firstName} + ' ' + ${faculty.lastName} + ' ' + ${faculty.room}`).toLowerCase().includes(searchInput.toLowerCase())));
@@ -41,7 +43,7 @@ const Faculty = () => {
         </Button>
 
         { /* pop up for add faculty */ }
-        <AddFacultyForm show={show} onClose={() => setShow(false)} />
+        <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
 
         { /* show all the faculty card */ }
         <Row xs="1" md="2" xl="4">

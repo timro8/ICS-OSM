@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Image, Row } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import PropTypes, { arrayOf } from 'prop-types';
 
 const FacultyCard = ({ faculty }) => (
   <Col style={{ marginBottom: '20px' }}>
@@ -13,7 +13,7 @@ const FacultyCard = ({ faculty }) => (
             </Col>
             <hr />
             <Col className="d-flex justify-content-center"><Card.Text>{faculty.firstName} {faculty.lastName}</Card.Text></Col>
-            <Col className="d-flex justify-content-center"><Card.Text>{faculty.room}</Card.Text></Col>
+            <Col className="d-flex justify-content-center"><Card.Text>Room: {faculty.rooms} </Card.Text></Col>
           </a>
         </Row>
       </Card.Body>
@@ -23,11 +23,15 @@ const FacultyCard = ({ faculty }) => (
 
 FacultyCard.propTypes = {
   faculty: PropTypes.shape({
-    image: PropTypes.string,
+    email: PropTypes.string,
     firstName: PropTypes.string,
     lastName: PropTypes.string,
-    owner: PropTypes.string,
-    room: PropTypes.string,
+    facRole: PropTypes.string,
+    image: PropTypes.string,
+    bio: PropTypes.string,
+    rooms: arrayOf(PropTypes.string),
+    phoneNumber: PropTypes.string,
+    officeHours: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };
