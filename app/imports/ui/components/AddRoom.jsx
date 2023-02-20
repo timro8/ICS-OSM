@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Rooms } from '../../api/room/RoomCollection';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from './LoadingSpinner';
 
 // form schema based on the Room collection
@@ -37,8 +37,8 @@ const AddRoom = () => {
   // data added to the Room collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional rooms.
   const submit = (data, formRef) => {
     const { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture } = data;
-    console.log(data);
     const collectionName = Rooms.getCollectionName();
+    const collectionFacultyName = FacultyProfiles.getCollectionName();
     const definitionData = { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -46,6 +46,10 @@ const AddRoom = () => {
         swal('Success', 'Room added successfully', 'success');
         formRef.reset();
       });
+    // for each occupant: find the faculty id and update rooms array push
+    occupants.forEach((o) => {
+      
+    } );
   };
   let fRef = null;
   return ready ? (
