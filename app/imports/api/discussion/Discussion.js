@@ -15,17 +15,17 @@ class DiscussionCollection extends BaseCollection {
     super('Discussions', new SimpleSchema({
       image: {
         type: String,
-        optional: false,
+        optional: true,
       },
       title: String,
       owner: String,
       description: {
         type: String,
-        optional: false,
+        optional: true,
       },
       flair: {
         type: String,
-        optional: false,
+        optional: true,
       },
     }));
   }
