@@ -139,12 +139,32 @@ const AddFacultyForm = props => {
   function putOfficeHours() {
     const time = `${currentDay} ${currentStartTime} - ${currentEndTime}`;
     if (!selectedOfficeHours.includes(time) && currentDay !== '--' && currentStartTime !== '--' && currentEndTime !== '--') {
-      if (!selectedOfficeHours.includes(`${currentDay} ${currentStartTime}`) && currentDay !== '' && currentStartTime !== '' && currentEndTime !== '') {
-        setSelectedOfficeHours([...selectedOfficeHours, time]);
-      } else if (currentDay !== '' && currentStartTime !== '' && currentEndTime !== '') {
+      if (!(selectedOfficeHours.map((existOfficeHour) => { if (existOfficeHour.includes(`${currentDay} ${currentStartTime}`)) { return false; } return true; })).includes(false)) {
+        if (parseInt(currentStartTime.substring(0, 2), 10) >= parseInt(currentEndTime.substring(0, 2), 10)) {
+          if (parseInt(currentStartTime.substring(3, 5), 10) >= parseInt(currentEndTime.substring(3, 5), 10)) {
+            swal('Error', 'End Time cannot be earlier than start time.', 'error');
+          } else {
+            setSelectedOfficeHours([...selectedOfficeHours, time]);
+          }
+        }
+      } else if (currentDay !== '' && currentStartTime !== '' && currentEndTime !== '' && selectedOfficeHours.length < 1) {
         setSelectedOfficeHours([...selectedOfficeHours, time]);
       }
     }
+  }
+
+  function removeOfficeHours(value) {
+    for (let i = 0; i < selectedOfficeHours.length; i++) {
+      if (selectedOfficeHours.includes(value)) {
+        selectedOfficeHours.splice(i, 1);
+      }
+    }
+    if (selectedOfficeHours.length < 1) {
+      setDay('--');
+      setStartTime('--');
+      setEndTime('--');
+    }
+    setSelectedOfficeHours([...selectedOfficeHours]);
   }
 
   // pop up window: https://react-bootstrap.github.io/components/modal/
@@ -189,9 +209,7 @@ const AddFacultyForm = props => {
                   <CloseButton
                     variant="white"
                     style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
-                    onClick={() => {
-                      setSelectedOfficeHours([...selectedOfficeHours.filter(item => item.trim() !== value.trim())]);
-                    }}
+                    onClick={() => { removeOfficeHours(value); }}
                   />
                 </Badge>
               ))}
