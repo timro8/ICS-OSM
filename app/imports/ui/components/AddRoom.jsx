@@ -21,7 +21,7 @@ const AddRoom = () => {
   const handleShow = () => setShow(true);
 
   const { faculty, ready } = useTracker(() => {
-    const subscription = FacultyProfiles.subscribeFacultyProfileAdmin();
+    const subscription = FacultyProfiles.subscribeFacultyProfile();
     const rdy = subscription.ready();
     const facultyList = FacultyProfiles.find({}, { sort: { lastName: 1, firstName: 1 } }).fetch();
     return {
@@ -43,25 +43,27 @@ const AddRoom = () => {
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
+        let facultyId = '';
+        let updateFacultyData = {};
+        let rooms = [];
+        occupants.forEach((o) => {
+          updateFacultyData = FacultyProfiles.findByEmail(o);
+          facultyId = FacultyProfiles.findByEmail(o)._id;
+          rooms = FacultyProfiles.findByEmail(o).rooms;
+          rooms.push(roomNumber);
+          updateFacultyData.rooms.push(roomNumber);
+          console.log(updateFacultyData);
+          console.log(collectionFacultyName);
+          updateFacultyData = { id: facultyId, rooms };
+          updateMethod.callPromise({ collectionFacultyName, updateFacultyData })
+            .catch(error => swal('Error', error.message, 'error'))
+            .then(() => swal('Success', 'Faculty updated rooms successfully', 'success'));
+        });
         swal('Success', 'Room added successfully', 'success');
+        formRef.reset();
       });
-    let facultyId = '';
-    let updateFacultyData = {};
-    let rooms = [];
-    occupants.forEach((o) => {
-      updateFacultyData = FacultyProfiles.findByEmail(o);
-      facultyId = FacultyProfiles.findByEmail(o)._id;
-      rooms = FacultyProfiles.findByEmail(o).rooms;
-      rooms.push(roomNumber);
-      updateFacultyData.rooms.push(roomNumber);
-      console.log(updateFacultyData);
-      console.log(collectionFacultyName);
-      updateFacultyData = { id: facultyId, rooms };
-      updateMethod.callPromise({ collectionFacultyName, updateFacultyData })
-        .catch(error => swal('Error', error.message, 'error'))
-        .then(() => swal('Success', 'Faculty updated rooms successfully', 'success'));
-      formRef.reset();
-    });
+
+
   };
   let fRef = null;
   return ready ? (
