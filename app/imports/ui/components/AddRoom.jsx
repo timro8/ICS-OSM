@@ -44,12 +44,24 @@ const AddRoom = () => {
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         swal('Success', 'Room added successfully', 'success');
-        formRef.reset();
       });
-    // for each occupant: find the faculty id and update rooms array push
+    let facultyId = '';
+    let updateFacultyData = {};
+    let rooms = [];
     occupants.forEach((o) => {
-      
-    } );
+      updateFacultyData = FacultyProfiles.findByEmail(o);
+      facultyId = FacultyProfiles.findByEmail(o)._id;
+      rooms = FacultyProfiles.findByEmail(o).rooms;
+      rooms.push(roomNumber);
+      updateFacultyData.rooms.push(roomNumber);
+      console.log(updateFacultyData);
+      console.log(collectionFacultyName);
+      updateFacultyData = { id: facultyId, rooms };
+      updateMethod.callPromise({ collectionFacultyName, updateFacultyData })
+        .catch(error => swal('Error', error.message, 'error'))
+        .then(() => swal('Success', 'Faculty updated rooms successfully', 'success'));
+      formRef.reset();
+    });
   };
   let fRef = null;
   return ready ? (
