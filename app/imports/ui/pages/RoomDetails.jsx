@@ -59,22 +59,16 @@ const RoomDetails = () => {
       ready: rdy,
     };
   });
-
-  console.log(doc.occupants);
-  console.log(docFaculty);
-  const occupantsList = [];
   // for each occupant, return the first and last name in docFaulty
+  const occupantsList = [];
   const facList = [];
   facList.push({ label: '---', value: '---' });
   docFaculty.map((fac) => facList.push(({ label: `${fac.firstName} ${fac.lastName}`, value: `${fac.email}` })));
+  doc.occupants.forEach((occupant) => {
+    occupantsList.push(facList.find(fac => fac.value === occupant));
+    return occupantsList;
+  });
 
-  console.log(facList);
-  doc.occupants.forEach(e => console.log(e));
-  console.log(facList.find(e => e.value === 'scottpr@hawaii.edu'));
-
-  
-
-  console.log(occupantsList);
   useEffect(() => {
     if (ready) {
       document.title = `Room - ${roomNumber}`;
@@ -87,7 +81,7 @@ const RoomDetails = () => {
       <Row>
         <Col>
           <h2>Occupants</h2>
-          {occupantsList.map((o) => <p>{o}</p>)}
+          {occupantsList.map((occupant, index) => <p key={index}>{occupant.label}</p>)}
         </Col>
       </Row>
       <Row>

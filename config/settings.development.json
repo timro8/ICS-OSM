@@ -413,7 +413,7 @@
       "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "3",
       "roomSqFoot": "100",
       "roomClassification": "Main Office",
-      "occupants":  ["scottpr@hawaii.edu"],
+      "occupants":  ["scottpr@hawaii.edu", "koniges@hawaii.edu"],
       "picture": "https://c.pxhere.com/photos/fc/d9/office_sitting_room_executive_sitting_business_desk_workplace_corporate-735699.jpg!d"
     }
   ],
