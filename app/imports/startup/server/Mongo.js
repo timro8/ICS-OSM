@@ -20,7 +20,6 @@ function addRoomData(data) {
 
 function addFacultyData(data) {
   console.log(`  Adding: ${data.lastName} (${data.email})`);
-  console.log(data);
   FacultyProfiles.define(data);
 }
 
