@@ -140,11 +140,12 @@ const AddFacultyForm = props => {
     const time = `${currentDay} ${currentStartTime} - ${currentEndTime}`;
     if (!selectedOfficeHours.includes(time) && currentDay !== '--' && currentStartTime !== '--' && currentEndTime !== '--') {
       if (!(selectedOfficeHours.map((existOfficeHour) => { if (existOfficeHour.includes(`${currentDay} ${currentStartTime}`)) { return false; } return true; })).includes(false)) {
-        if (currentStartTime > currentEndTime) {
-          swal('Error', 'End Time cannot be earlier than start time.', 'error');
-        }
-        else{
-          setSelectedOfficeHours([...selectedOfficeHours, time]);
+        if (parseInt(currentStartTime.substring(0, 2), 10) >= parseInt(currentEndTime.substring(0, 2), 10)) {
+          if (parseInt(currentStartTime.substring(3, 5), 10) >= parseInt(currentEndTime.substring(3, 5), 10)) {
+            swal('Error', 'End Time cannot be earlier than start time.', 'error');
+          } else {
+            setSelectedOfficeHours([...selectedOfficeHours, time]);
+          }
         }
       } else if (currentDay !== '' && currentStartTime !== '' && currentEndTime !== '' && selectedOfficeHours.length < 1) {
         setSelectedOfficeHours([...selectedOfficeHours, time]);
@@ -158,11 +159,12 @@ const AddFacultyForm = props => {
         selectedOfficeHours.splice(i, 1);
       }
     }
-    if(selectedOfficeHours.length < 1){
+    if (selectedOfficeHours.length < 1) {
       setDay('--');
       setStartTime('--');
       setEndTime('--');
     }
+    setSelectedOfficeHours([...selectedOfficeHours]);
   }
 
   // pop up window: https://react-bootstrap.github.io/components/modal/
