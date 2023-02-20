@@ -63,12 +63,14 @@ const RoomDetails = () => {
   const occupantsList = [];
   const facList = [];
   facList.push({ label: '---', value: '---' });
-  docFaculty.map((fac) => facList.push(({ label: `${fac.firstName} ${fac.lastName}`, value: `${fac.email}` })));
+  docFaculty.map((fac) => facList.push(({ label: `${fac.firstName} ${fac.lastName}`, value: `${fac.email}`, pic: `${fac.image}` })));
+
   doc.occupants.forEach((occupant) => {
-    occupantsList.push(facList.find(fac => fac.value === occupant));
+    if (facList.find(fac => fac.value === occupant)) {
+      occupantsList.push(facList.find(fac => fac.value === occupant));
+    } else occupantsList.push({ label: `Occupant's email is: ${occupant}`, value: occupant });
     return occupantsList;
   });
-
   useEffect(() => {
     if (ready) {
       document.title = `Room - ${roomNumber}`;
@@ -81,7 +83,12 @@ const RoomDetails = () => {
       <Row>
         <Col>
           <h2>Occupants</h2>
-          {occupantsList.map((occupant, index) => <p key={index}>{occupant.label}</p>)}
+          {occupantsList.map((occupant, index) => (
+            <div key={index}>
+              <Image roundedCircle src={occupant.pic} alt={`${occupant.label}`} />
+              <h3>{occupant.label}</h3>
+            </div>
+          ))}
         </Col>
       </Row>
       <Row>
