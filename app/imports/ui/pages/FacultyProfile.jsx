@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Col, Row, Card, Container, Image, Button } from 'react-bootstrap';
+import React from 'react';
+import { Col, Row, Card, Container, Image } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { useTracker } from 'meteor/react-meteor-data';
 import { PAGE_IDS } from '../utilities/PageIDs';
@@ -19,7 +19,6 @@ const FacultyProfile = () => {
     };
   }, []);
 
-  console.log('_id', _id);
   return (ready ? (
     <Container id={PAGE_IDS.PROFILE} className="py-3" fluid>
       <Row>
