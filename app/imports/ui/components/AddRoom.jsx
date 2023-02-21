@@ -21,7 +21,7 @@ const AddRoom = () => {
   const handleShow = () => setShow(true);
 
   const { faculty, ready } = useTracker(() => {
-    const subscription = FacultyProfiles.subscribeFacultyProfile();
+    const subscription = FacultyProfiles.subscribeFacultyProfileAdmin();
     const rdy = subscription.ready();
     const facultyList = FacultyProfiles.find({}, { sort: { lastName: 1, firstName: 1 } }).fetch();
     return {
@@ -37,33 +37,35 @@ const AddRoom = () => {
   // data added to the Room collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional rooms.
   const submit = (data, formRef) => {
     const { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture } = data;
-    const collectionName = Rooms.getCollectionName();
-    const collectionFacultyName = FacultyProfiles.getCollectionName();
+    let collectionName = Rooms.getCollectionName();
     const definitionData = { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture };
+
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
-        let facultyId = '';
-        let updateFacultyData = {};
-        let rooms = [];
-        occupants.forEach((o) => {
-          updateFacultyData = FacultyProfiles.findByEmail(o);
-          facultyId = FacultyProfiles.findByEmail(o)._id;
-          rooms = FacultyProfiles.findByEmail(o).rooms;
-          rooms.push(roomNumber);
-          updateFacultyData.rooms.push(roomNumber);
-          console.log(updateFacultyData);
-          console.log(collectionFacultyName);
-          updateFacultyData = { id: facultyId, rooms };
-          updateMethod.callPromise({ collectionFacultyName, updateFacultyData })
-            .catch(error => swal('Error', error.message, 'error'))
-            .then(() => swal('Success', 'Faculty updated rooms successfully', 'success'));
-        });
         swal('Success', 'Room added successfully', 'success');
-        formRef.reset();
       });
 
+    collectionName = FacultyProfiles.getCollectionName();
+    occupants.forEach((o) => {
+      const facultyId = FacultyProfiles.findByEmail(o)._id;
+      const email = FacultyProfiles.findByEmail(o).email;
+      const password = FacultyProfiles.findByEmail(o).password;
+      const firstName = FacultyProfiles.findByEmail(o).firstName;
+      const lastName = FacultyProfiles.findByEmail(o).lastName;
+      const facRole = FacultyProfiles.findByEmail(o).facRole;
+      const image = FacultyProfiles.findByEmail(o).image;
+      const bio = FacultyProfiles.findByEmail(o).bio;
+      let rooms = [];
+      const phoneNumber = FacultyProfiles.findByEmail(o).phoneNumber;
+      const officeHours = FacultyProfiles.findByEmail(o).officeHours;
+      rooms = FacultyProfiles.findByEmail(o).rooms;
+      rooms.push(roomNumber);
 
+      const updateData = { id: facultyId, email, password, firstName, lastName, facRole, image, bio, rooms, phoneNumber, officeHours };
+      updateMethod.callPromise({ collectionName, updateData });
+    });
+    formRef.reset();
   };
   let fRef = null;
   return ready ? (
