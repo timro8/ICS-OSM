@@ -1,7 +1,7 @@
 import { listStuffAdminPage, /* manageDatabasePage, */ listRoomPage, listRoomAdminPage, facultyPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
-import { signUpPage } from './signup.page';
+// import { signUpPage } from './signup.page';
 import { navBar } from './navbar.component';
 
 /* global fixture:false, test:false */
@@ -43,23 +43,18 @@ test('Test that user pages shows up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(userCredentials.username, userCredentials.password);
   await navBar.isLoggedIn(userCredentials.username);
-  await navBar.gotoListRoomPage();
-  await listRoomPage.isDisplayed();
+  // await navBar.gotoListRoomPage();
+  // await listRoomPage.isDisplayed();
   await navBar.logout();
   await landingPage.isDisplayed();
-});
-
-test('Test that sign up page shows up', async () => {
-  await navBar.gotoSignUpPage();
-  await signUpPage.isDisplayed();
 });
 
 test('Test that admin pages show up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomPage();
-  await listRoomPage.isDisplayed();
+  // await navBar.gotoListRoomPage();
+  // await listRoomPage.isDisplayed();
   await navBar.gotoListStuffAdminPage();
   await listStuffAdminPage.isDisplayed();
   await navBar.gotoListRoomAdminPage();

@@ -42,10 +42,10 @@ const SignIn = () => {
   document.title = 'Sign In';
   // Otherwise return the Login form.
   return (
-    <div style={{ background: '#DED9C3' }}>
+    <div className="green-purple-gradient">
       <Container id={PAGE_IDS.SIGN_IN} className="py-3 d-flex min-vh-100 align-items-center justify-content-center">
         <AutoForm schema={bridge} onSubmit={data => submit(data)}>
-          <Card style={{ boxShadow: '0 2px 6px rgb(0 0 0 / 20%)', background: '#F7F7F7' }}>
+          <Card style={{ boxShadow: '0 2px 6px rgb(0 0 0 / 20%)' }}>
             <Card.Body className="w-100 d-flex align-items-center py-3" style={{ minHeight: '18rem', minWidth: '25rem', maxWidth: '35rem' }}>
               <Row>
                 <Col xs={3}>
