@@ -52,8 +52,18 @@ body {
   overflow-y: scroll;
   height: 560px;
   padding-right: 8px;
+}
+
+.text {
+  width: 90vh;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: normal;
+  padding-top: 10px;
 
 }
+
 
 /* Set the SignIn and SignUp alerts background. */
 #signin-page .alert-light, #signup-page .alert-light {
