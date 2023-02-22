@@ -4,6 +4,7 @@ import { signInPage } from './signin.page';
 // import { signUpPage } from './signup.page';
 import { navBar } from './navbar.component';
 import { facultyPage } from './faculty.page';
+import { facultyProfilePage } from './faculty-profile.page';
 
 /* global fixture:false, test:false */
 
@@ -73,4 +74,5 @@ test('Navigating to faculty profile', async () => {
   await navBar.gotoFacultyPage();
   await facultyPage.isDisplayed();
   await facultyPage.gotoFacultyProfile();
+  await facultyProfilePage.isDisplayed();
 });

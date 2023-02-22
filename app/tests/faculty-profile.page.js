@@ -1,9 +1,9 @@
 import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 
-class FacultyPage {
+class FacultyProfilePage {
   constructor() {
-    this.pageId = `#${PAGE_IDS.FACULTY}`;
+    this.pageId = `#${PAGE_IDS.PROFILE}`;
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -11,11 +11,6 @@ class FacultyPage {
     const waitTime = 1;
     await t.wait(waitTime * 1).expect(this.pageSelector.exists).ok();
   }
-
-  async gotoFacultyProfile() {
-    await t.click('a.faculty-card');
-    await t.expect(Selector(`#${PAGE_IDS.PROFILE}`).exists).ok();
-  }
 }
 
-export const facultyPage = new FacultyPage();
+export const facultyProfilePage = new FacultyProfilePage();
