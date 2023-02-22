@@ -108,31 +108,30 @@ const AddFacultyForm = props => {
     const formData = new FormData();
     formData.append('file', imageSubmit);
     formData.append('upload_preset', 'sasn8bgb');
-
     // Upload the image to Cloudinary
     axios.post('https://api.cloudinary.com/v1_1/dmbrfkjk3/image/upload', formData)
       .then((response) => {
         const imageUrl = response.data.secure_url;
+        Meteor.call(
+          'insertFaculty',
+          data,
+          selectedRoom,
+          selectedOfficeHours,
+          imageUrl,
+          (err) => {
+            if (err) {
+              console.log(err.message);
+              swal('Error', err.message, 'error');
+            } else {
+              swal('Success', 'Faculty added successfully', 'success');
+            }
+          },
+        );
         setSelectedImage(imageUrl);
       })
       .catch((error) => {
         console.error(error);
       });
-    Meteor.call(
-      'insertFaculty',
-      data,
-      selectedRoom,
-      selectedOfficeHours,
-      selectedImage,
-      (err) => {
-        if (err) {
-          console.log(err.message);
-          swal('Error', err.message, 'error');
-        } else {
-          swal('Success', 'Faculty added successfully', 'success');
-        }
-      },
-    );
 
     formRef.reset();
   };
