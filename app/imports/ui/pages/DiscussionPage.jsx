@@ -4,6 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Discussions } from '../../api/discussion/Discussion';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Discussion from '../components/discussionpage/Discussion';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /* Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 const DiscussionPage = () => {
@@ -24,7 +25,7 @@ const DiscussionPage = () => {
   }, []);
   /** <Card> <Discussion ...../> </Card> -discussion will be set in place and the card need to appear before .map function to print the information cards* */
   return (ready ? (
-    <Container className="py-3">
+    <Container className="py-3" id={PAGE_IDS.DISCUSS}>
       <h1 className="text-center">UH Manoa Discussions Board</h1>
       <Row>
         <Col>

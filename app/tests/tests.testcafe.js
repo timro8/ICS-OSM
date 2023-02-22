@@ -5,6 +5,7 @@ import { navBar } from './navbar.component';
 import { facultyPage } from './faculty.page';
 import { facultyProfilePage } from './faculty-profile.page';
 import { listRoomAdminPage } from './room-admin.page';
+import { discussPage } from './simple.page';
 
 /* global fixture:false, test:false */
 
@@ -16,6 +17,9 @@ const studentCredentials = { username: 'student@foo.com', password: 'changeme' }
 const officeCredentials = { username: 'office@foo.com', password: 'changeme' };
 const techCredentials = { username: 'tech@foo.com', password: 'changeme' };
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
+
+/** Room */
+// const fakeRoom = { roomKey: 'POST1337', roomNumber: '1337', capacity: 1, roomSqFt: '10', occupants: '10', picture: '#' };
 
 fixture('meteor-application-template-production localhost test with default db')
   .page('http://localhost:3000');
@@ -57,8 +61,9 @@ test('Test that admin pages show up', async () => {
   await listRoomAdminPage.isDisplayed();
   await navBar.gotoFacultyPage();
   await facultyPage.isDisplayed();
+  await navBar.gotoDiscussPage();
+  await discussPage.isDisplayed();
 });
-
 test('Room details shows up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -66,6 +71,14 @@ test('Room details shows up', async () => {
   await navBar.gotoListRoomAdminPage();
   await listRoomAdminPage.isDisplayed();
   await listRoomAdminPage.gotoRoomDetails();
+});
+
+test('Modal shows for Add Room', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListRoomAdminPage();
+  await listRoomAdminPage.addRoom();
 });
 
 test('Navigating to profile from faculty page', async () => {

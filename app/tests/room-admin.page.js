@@ -1,5 +1,6 @@
 import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
+import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
 class ListRoomAdmin {
   constructor() {
@@ -15,6 +16,10 @@ class ListRoomAdmin {
   async gotoRoomDetails() {
     await t.click('a.room-details');
     await t.expect(Selector(`#${PAGE_IDS.ROOM_DETAILS}`).exists).ok();
+  }
+
+  async addRoom() {
+    await t.click(`#${COMPONENT_IDS.ADD_ROOM}`);
   }
 }
 

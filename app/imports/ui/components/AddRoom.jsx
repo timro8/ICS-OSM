@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Rooms } from '../../api/room/RoomCollection';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 // form schema based on the Room collection
 const bridge = new SimpleSchema2Bridge(Rooms._schema);
@@ -32,7 +33,7 @@ const AddRoom = () => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button id={COMPONENT_IDS.ADD_ROOM} variant="primary" onClick={handleShow}>
         Add Room
       </Button>
 
