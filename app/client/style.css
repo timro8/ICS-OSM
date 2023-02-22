@@ -61,6 +61,12 @@ body {
   text-overflow: ellipsis;
   overflow-wrap: normal;
   padding-top: 10px;
+
+}
+
+.image {
+  height: 100px;
+  width: 100px;
 }
 
 /* Set the SignIn and SignUp alerts background. */
