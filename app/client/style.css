@@ -64,10 +64,6 @@ body {
 
 }
 
-.image {
-  height: 100px;
-  width: 100px;
-}
 
 /* Set the SignIn and SignUp alerts background. */
 #signin-page .alert-light, #signup-page .alert-light {

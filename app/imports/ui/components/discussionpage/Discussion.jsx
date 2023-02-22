@@ -7,7 +7,7 @@ const Discussions = ({ discussion }) => (
   <Card className="py-sm-3 px-2 mb-3">
     <Stack direction="horizontal" gap={3}>
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <div><Image className="image" src={discussion.image} /></div>
+      <div><Image className="image" src={discussion.image} height="150rem" width="200rem" /></div>
       <Stack direction="vertical">
         <Card.Subtitle> Posted by: {discussion.owner}</Card.Subtitle>
         <Card.Title>{discussion.title}</Card.Title>
