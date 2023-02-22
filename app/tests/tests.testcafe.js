@@ -1,10 +1,10 @@
-import { listRoomAdminPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 // import { signUpPage } from './signup.page';
 import { navBar } from './navbar.component';
 import { facultyPage } from './faculty.page';
 import { facultyProfilePage } from './faculty-profile.page';
+import { listRoomAdminPage } from './room-admin.page';
 
 /* global fixture:false, test:false */
 
@@ -59,15 +59,16 @@ test('Test that admin pages show up', async () => {
   await facultyPage.isDisplayed();
 });
 
-// test('Room details shows up', async () => {
-//   await navBar.gotoSignInPage();
-//   await signInPage.signin(adminCredentials.username, adminCredentials.password);
-//   await navBar.isLoggedIn(adminCredentials.username);
-//   await navBar.gotoListRoomAdminPage();
-//   await listRoomAdminPage.isDisplayed();
-// });
+test('Room details shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListRoomAdminPage();
+  await listRoomAdminPage.isDisplayed();
+  await listRoomAdminPage.gotoRoomDetails();
+});
 
-test('Navigating to faculty profile', async () => {
+test('Navigating to profile from faculty page', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
