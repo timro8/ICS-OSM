@@ -1040,7 +1040,7 @@
   ],
 
   "defaultClubsData": [
-    { "clubName":  "Institute of Electrical and Electronics Engineer Student Branch","image":  "image", "description":  "description", "website": "website",
+    { "clubName":  "ACM","image":  "image", "description":  "description", "website": "website",
       "joinLink": "joinLink",
       "meetingDay": "meetingDay", "meetingTime": "meetingTime", "meetingLocation": "meetingLocation", "officers": ["officers"], "advisor": "advisor"
     }
