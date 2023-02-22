@@ -9,7 +9,7 @@ const AdminPageFacultyComponent = ({ room }) => (
     <td>{room.roomNumber}</td>
     <td>{room.location}</td>
     <td>
-      <Link className={COMPONENT_IDS.LIST_STUFF_EDIT} to={`/roomdetails/${room._id}`}>Edit Room Details</Link>
+      <Link className={COMPONENT_IDS.LIST_STUFF_EDIT} to={`/roomdetails/${room.roomKey}`}>Edit Room Details</Link>
     </td>
   </tr>
 );
@@ -17,6 +17,7 @@ const AdminPageFacultyComponent = ({ room }) => (
 // Require a document to be passed to this component.
 AdminPageFacultyComponent.propTypes = {
   room: PropTypes.shape({
+    roomKey: PropTypes.string,
     roomNumber: PropTypes.string,
     location: PropTypes.string,
     _id: PropTypes.string,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, Badge, CloseButton, FormLabel } from 'react-bootstrap';
+import { Button, Modal, Badge, CloseButton, FormLabel, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema from 'simpl-schema';
@@ -7,6 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { AutoForm, ErrorsField, SelectField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
+import axios from 'axios';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
 
@@ -76,14 +77,17 @@ const AddFacultyForm = props => {
     day: {
       type: String,
       allowedValues: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', '--'],
+      defaultValue: '--',
     },
     startTime: {
       type: String,
       allowedValues: timeSelection,
+      defaultValue: '--',
     },
     endTime: {
       type: String,
       allowedValues: timeSelection,
+      defaultValue: '--',
     },
     userId: { type: String, optional: true },
   });
@@ -92,26 +96,42 @@ const AddFacultyForm = props => {
 
   const [selectedRoom, setSelectedRoom] = useState([roomNumbers[0]]);
   const [currentRoom, setCurrentRoom] = useState(roomNumbers[0]);
-  const [currentDay, setDay] = useState('Monday');
-  const [currentStartTime, setStartTime] = useState(getTime()[0]);
-  const [currentEndTime, setEndTime] = useState(getTime()[1]);
-  const [selectedOfficeHours, setSelectedOfficeHours] = useState(['Monday 1:00 - 1:05']);
+  const [currentDay, setDay] = useState('--');
+  const [currentStartTime, setStartTime] = useState('--');
+  const [currentEndTime, setEndTime] = useState('--');
+  const [selectedOfficeHours, setSelectedOfficeHours] = useState([]);
+  const [selectedImage, setSelectedImage] = useState('https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg');
+  const [imageSubmit, setImageSubmit] = useState(null);
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    Meteor.call(
-      'insertFaculty',
-      data,
-      selectedRoom,
-      selectedOfficeHours,
-      (err) => {
-        if (err) {
-          console.log(err.message);
-          swal('Error', err.message, 'error');
-        }
-        swal('Success', 'Faculty added successfully', 'success');
-      },
-    );
+    const formData = new FormData();
+    formData.append('file', imageSubmit);
+    formData.append('upload_preset', 'sasn8bgb');
+    // Upload the image to Cloudinary
+    axios.post('https://api.cloudinary.com/v1_1/dmbrfkjk3/image/upload', formData)
+      .then((response) => {
+        const imageUrl = response.data.secure_url;
+        Meteor.call(
+          'insertFaculty',
+          data,
+          selectedRoom,
+          selectedOfficeHours,
+          imageUrl,
+          (err) => {
+            if (err) {
+              console.log(err.message);
+              swal('Error', err.message, 'error');
+            } else {
+              swal('Success', 'Faculty added successfully', 'success');
+            }
+          },
+        );
+        setSelectedImage(imageUrl);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     formRef.reset();
   };
@@ -135,9 +155,42 @@ const AddFacultyForm = props => {
   function putOfficeHours() {
     const time = `${currentDay} ${currentStartTime} - ${currentEndTime}`;
     if (!selectedOfficeHours.includes(time) && currentDay !== '--' && currentStartTime !== '--' && currentEndTime !== '--') {
-      setSelectedOfficeHours([...selectedOfficeHours, time]);
+      if (!(selectedOfficeHours.map((existOfficeHour) => { if (existOfficeHour.includes(`${currentDay} ${currentStartTime}`)) { return false; } return true; })).includes(false)) {
+        if (currentStartTime > currentEndTime) {
+          swal('Error', 'End Time cannot be earlier than start time.', 'error');
+        } else {
+          setSelectedOfficeHours([...selectedOfficeHours, time]);
+          setDay('--');
+          setStartTime('--');
+          setEndTime('--');
+        }
+      } else if (currentDay !== '' && currentStartTime !== '' && currentEndTime !== '' && selectedOfficeHours.length < 1) {
+        setSelectedOfficeHours([...selectedOfficeHours, time]);
+      }
     }
   }
+
+  function removeOfficeHours(value) {
+    if (selectedOfficeHours.includes(value)) {
+      const updatedOfficeHours = selectedOfficeHours.filter((hour) => hour !== value);
+      setSelectedOfficeHours(updatedOfficeHours);
+    }
+    if (selectedOfficeHours.length < 1) {
+      setDay('--');
+      setStartTime('--');
+      setEndTime('--');
+    }
+  }
+
+  const handleImageClick = () => {
+    document.getElementById('imageUpload').click();
+  };
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    setImageSubmit(file);
+    setSelectedImage(URL.createObjectURL(file));
+  };
 
   // pop up window: https://react-bootstrap.github.io/components/modal/
   return ready ? (
@@ -146,6 +199,12 @@ const AddFacultyForm = props => {
         <Modal.Title>Add Faculty</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column' }}>
+          <Button style={{ background: 'white', borderColor: 'white' }} onClick={handleImageClick}>
+            <input id="imageUpload" type="file" onChange={handleImageUpload} style={{ display: 'none' }} />
+            <Image style={{ borderRadius: '100%', width: '13rem', height: '13rem' }} src={selectedImage} />
+          </Button>
+        </div>
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <TextField name="firstName" />
           <TextField name="lastName" />
@@ -159,11 +218,6 @@ const AddFacultyForm = props => {
                     style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
                     onClick={() => {
                       setSelectedRoom([...selectedRoom.filter(item => item !== value)]);
-                      if (selectedRoom.length <= 1) {
-                        setCurrentRoom('--');
-                      } else {
-                        setCurrentRoom(selectedRoom[selectedRoom.length - 2]);
-                      }
                     }}
                   />
                 </Badge>
@@ -186,12 +240,7 @@ const AddFacultyForm = props => {
                   <CloseButton
                     variant="white"
                     style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
-                    onClick={() => {
-                      setSelectedOfficeHours([...selectedOfficeHours.filter(item => item.trim() !== value.trim())]);
-                      setDay('--');
-                      setStartTime('--');
-                      setEndTime('--');
-                    }}
+                    onClick={() => { removeOfficeHours(value); }}
                   />
                 </Badge>
               ))}
