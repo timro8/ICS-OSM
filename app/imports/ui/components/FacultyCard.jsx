@@ -7,7 +7,7 @@ const FacultyCard = ({ faculty }) => (
     <Card className="w-100" border="info">
       <Card.Body>
         <Row>
-          <a style={{ color: 'black', textDecoration: 'none' }} href={`/profile/${faculty._id}`}>
+          <a style={{ color: 'black', textDecoration: 'none' }} className="faculty-card" href={`/profile/${faculty._id}`}>
             <Col className="d-flex justify-content-center">
               <Image roundedCircle src={faculty.image} width="100px" />
             </Col>

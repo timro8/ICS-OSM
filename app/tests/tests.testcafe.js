@@ -1,15 +1,16 @@
-import { listStuffAdminPage, /* manageDatabasePage, */ listRoomPage, listRoomAdminPage, facultyPage } from './simple.page';
+import { listRoomAdminPage } from './simple.page';
 import { landingPage } from './landing.page';
 import { signInPage } from './signin.page';
 // import { signUpPage } from './signup.page';
 import { navBar } from './navbar.component';
+import { facultyPage } from './faculty.page';
 
 /* global fixture:false, test:false */
 
 /** Credentials for one of the sample users defined in settings.development.json. */
 const userCredentials = { username: 'john@foo.com', password: 'changeme' };
 const adminCredentials = { username: 'admin@foo.com', password: 'changeme' };
-const facultyCredentials = { username: 'faculty@foo.com', password: 'changeme' };
+const facultyCredentials = { username: 'esb@hawaii.edu', password: 'changeme' };
 const studentCredentials = { username: 'student@foo.com', password: 'changeme' };
 const officeCredentials = { username: 'office@foo.com', password: 'changeme' };
 const techCredentials = { username: 'tech@foo.com', password: 'changeme' };
@@ -43,8 +44,6 @@ test('Test that user pages shows up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(userCredentials.username, userCredentials.password);
   await navBar.isLoggedIn(userCredentials.username);
-  // await navBar.gotoListRoomPage();
-  // await listRoomPage.isDisplayed();
   await navBar.logout();
   await landingPage.isDisplayed();
 });
@@ -53,12 +52,25 @@ test('Test that admin pages show up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
-  // await navBar.gotoListRoomPage();
-  // await listRoomPage.isDisplayed();
-  await navBar.gotoListStuffAdminPage();
-  await listStuffAdminPage.isDisplayed();
   await navBar.gotoListRoomAdminPage();
   await listRoomAdminPage.isDisplayed();
   await navBar.gotoFacultyPage();
   await facultyPage.isDisplayed();
+});
+
+// test('Room details shows up', async () => {
+//   await navBar.gotoSignInPage();
+//   await signInPage.signin(adminCredentials.username, adminCredentials.password);
+//   await navBar.isLoggedIn(adminCredentials.username);
+//   await navBar.gotoListRoomAdminPage();
+//   await listRoomAdminPage.isDisplayed();
+// });
+
+test('Navigating to faculty profile', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoFacultyPage();
+  await facultyPage.isDisplayed();
+  await facultyPage.gotoFacultyProfile();
 });
