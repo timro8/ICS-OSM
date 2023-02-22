@@ -5,6 +5,7 @@ import { Events302 } from '../../api/events/Events302Collection';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { FacultyRoom } from '../../api/faculty/FacultyRoomCollection';
 import { Discussions } from '../../api/discussion/Discussion';
+import { Clubs } from '../../api/club/Club';
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
@@ -36,6 +37,11 @@ function addFacultyRoomData(data) {
 function addDiscussionsData(data) {
   console.log(`  Adding: ${data.name} (${data.owner})`);
   Discussions.define(data);
+}
+
+function addClubData(data) {
+  console.log(`  Adding: ${data.clubName} `);
+  Clubs.define(data);
 }
 
 // Initialize the StuffsCollection if empty.
@@ -79,5 +85,12 @@ if (Discussions.count() === 0) {
   if (Meteor.settings.defaultDiscussion) {
     console.log('Creating default faculty room data.');
     Meteor.settings.defaultDiscussion.map(data => addDiscussionsData(data));
+  }
+}
+
+if (Clubs.count() === 0) {
+  if (Meteor.settings.defaultClubsData) {
+    console.log('Creating default faculty room data.');
+    Meteor.settings.defaultClubsData.map(data => addClubData(data));
   }
 }
