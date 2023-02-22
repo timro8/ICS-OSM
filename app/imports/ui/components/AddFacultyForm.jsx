@@ -76,14 +76,17 @@ const AddFacultyForm = props => {
     day: {
       type: String,
       allowedValues: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', '--'],
+      defaultValue: '--',
     },
     startTime: {
       type: String,
       allowedValues: timeSelection,
+      defaultValue: '--',
     },
     endTime: {
       type: String,
       allowedValues: timeSelection,
+      defaultValue: '--',
     },
     userId: { type: String, optional: true },
   });
@@ -92,10 +95,10 @@ const AddFacultyForm = props => {
 
   const [selectedRoom, setSelectedRoom] = useState([roomNumbers[0]]);
   const [currentRoom, setCurrentRoom] = useState(roomNumbers[0]);
-  const [currentDay, setDay] = useState('Monday');
-  const [currentStartTime, setStartTime] = useState(getTime()[0]);
-  const [currentEndTime, setEndTime] = useState(getTime()[1]);
-  const [selectedOfficeHours, setSelectedOfficeHours] = useState(['Monday 1:00 - 1:05']);
+  const [currentDay, setDay] = useState('--');
+  const [currentStartTime, setStartTime] = useState('--');
+  const [currentEndTime, setEndTime] = useState('--');
+  const [selectedOfficeHours, setSelectedOfficeHours] = useState([]);
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
@@ -108,8 +111,9 @@ const AddFacultyForm = props => {
         if (err) {
           console.log(err.message);
           swal('Error', err.message, 'error');
+        } else {
+          swal('Success', 'Faculty added successfully', 'success');
         }
-        swal('Success', 'Faculty added successfully', 'success');
       },
     );
 
@@ -135,8 +139,32 @@ const AddFacultyForm = props => {
   function putOfficeHours() {
     const time = `${currentDay} ${currentStartTime} - ${currentEndTime}`;
     if (!selectedOfficeHours.includes(time) && currentDay !== '--' && currentStartTime !== '--' && currentEndTime !== '--') {
-      setSelectedOfficeHours([...selectedOfficeHours, time]);
+      if (!(selectedOfficeHours.map((existOfficeHour) => { if (existOfficeHour.includes(`${currentDay} ${currentStartTime}`)) { return false; } return true; })).includes(false)) {
+        if (parseInt(currentStartTime.substring(0, 2), 10) >= parseInt(currentEndTime.substring(0, 2), 10)) {
+          if (parseInt(currentStartTime.substring(3, 5), 10) >= parseInt(currentEndTime.substring(3, 5), 10)) {
+            swal('Error', 'End Time cannot be earlier than start time.', 'error');
+          } else {
+            setSelectedOfficeHours([...selectedOfficeHours, time]);
+          }
+        }
+      } else if (currentDay !== '' && currentStartTime !== '' && currentEndTime !== '' && selectedOfficeHours.length < 1) {
+        setSelectedOfficeHours([...selectedOfficeHours, time]);
+      }
     }
+  }
+
+  function removeOfficeHours(value) {
+    for (let i = 0; i < selectedOfficeHours.length; i++) {
+      if (selectedOfficeHours.includes(value)) {
+        selectedOfficeHours.splice(i, 1);
+      }
+    }
+    if (selectedOfficeHours.length < 1) {
+      setDay('--');
+      setStartTime('--');
+      setEndTime('--');
+    }
+    setSelectedOfficeHours([...selectedOfficeHours]);
   }
 
   // pop up window: https://react-bootstrap.github.io/components/modal/
@@ -159,11 +187,6 @@ const AddFacultyForm = props => {
                     style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
                     onClick={() => {
                       setSelectedRoom([...selectedRoom.filter(item => item !== value)]);
-                      if (selectedRoom.length <= 1) {
-                        setCurrentRoom('--');
-                      } else {
-                        setCurrentRoom(selectedRoom[selectedRoom.length - 2]);
-                      }
                     }}
                   />
                 </Badge>
@@ -186,12 +209,7 @@ const AddFacultyForm = props => {
                   <CloseButton
                     variant="white"
                     style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
-                    onClick={() => {
-                      setSelectedOfficeHours([...selectedOfficeHours.filter(item => item.trim() !== value.trim())]);
-                      setDay('--');
-                      setStartTime('--');
-                      setEndTime('--');
-                    }}
+                    onClick={() => { removeOfficeHours(value); }}
                   />
                 </Badge>
               ))}

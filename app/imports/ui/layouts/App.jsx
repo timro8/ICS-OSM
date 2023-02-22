@@ -11,7 +11,6 @@ import ListStuff from '../pages/ListStuff';
 import AdminPage from '../pages/AdminPage';
 import ListRoom from '../pages/ListRoom';
 import ListRoomAdmin from '../pages/ListRoomAdmin';
-import AddStuff from '../pages/AddStuff';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
@@ -28,6 +27,8 @@ import RoomDetails from '../pages/RoomDetails';
 import LoadingSpinner from '../components/LoadingSpinner';
 import DiscussionFaculty from '../pages/DiscussionFaculty';
 import Club from '../pages/Club';
+import DiscussionFaculty from '../pages/DiscussionPage';
+import AddDiscussion from '../pages/AddDiscussion';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -49,6 +50,8 @@ const App = () => {
           <Route path="/signuprequest" element={<SignUpRequest />} />
           <Route path="/profile/:_id" element={<FacultyProfile />} />
           <Route path="/faculty" element={<Faculty />} />
+          <Route path="/addDis" element={<AddDiscussion />} />
+          <Route path="/discus" element={<DiscussionFaculty />} />
           <Route path="/editfacultyprofile/:_id" element={<EditFacultyProfile />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
