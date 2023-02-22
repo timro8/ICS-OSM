@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
+import { Roles } from 'meteor/alanning:roles';
+import { Meteor } from 'meteor/meteor';
 import AddFacultyForm from '../components/AddFacultyForm';
 import SearchBar from '../components/SearchBar';
 import FacultyCard from '../components/FacultyCard';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
+import { ROLE } from '../../api/role/Role';
 
 const Faculty = () => {
   // show pop up to add faculty
@@ -35,12 +38,9 @@ const Faculty = () => {
         <SearchBar handleSearch={handleSearch} />
 
         { /* Add Faculty button */ }
-        <Button
-          style={{ marginLeft: '1vw', marginBottom: '20px' }}
-          variant="primary"
-          onClick={() => setShow(true)}
-        >Add Faculty
-        </Button>
+        {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
+          [<Button key={Math.random()} style={{ marginLeft: '1vw', marginBottom: '20px' }} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>]
+        ) : ''}
 
         { /* pop up for add faculty */ }
         <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
