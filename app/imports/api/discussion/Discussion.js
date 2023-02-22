@@ -13,33 +13,37 @@ export const discussionPublications = {
 class DiscussionCollection extends BaseCollection {
   constructor() {
     super('Discussions', new SimpleSchema({
-      image: String,
-      name: String,
-      firstName: String,
-      lastName: String,
+      image: {
+        type: String,
+        optional: true,
+      },
+      title: String,
       owner: String,
-      description: String,
-      flair: String,
+      description: {
+        type: String,
+        optional: true,
+      },
+      flair: {
+        type: String,
+        optional: true,
+      },
     }));
   }
 
   /**
    * Defines a new Discussion item.
    * @param image the picture of user.
-   * @param firstName the first name of the user.
-   * @param lastName the last name of the user.
+   * @param title the picture of user.
    * @param owner the owner of the user.
    * @param bio the description of the user.
    * @param room the room location of the user.
    * @param flair the room location of the user.
    * @return {String} the facID of the new document.
    */
-  define({ image, name, firstName, lastName, owner, description, flair }) {
+  define({ image, title, owner, description, flair }) {
     const discID = this._collection.insert({
       image,
-      name,
-      firstName,
-      lastName,
+      title,
       owner,
       description,
       flair,
@@ -51,26 +55,18 @@ class DiscussionCollection extends BaseCollection {
    * Updates the given document.
    * @param discID the id of the document to update.
    * @param image the new image (optional).
-   * @param name the new image (optional).
-   * @param firstName the new first name (optional).
-   * @param lastName the new last name (optional).
+   * @param title the new image (optional).
    * @param owner the new owner (optional).
    * @param description the new owner (optional).
    * @param flair the new owner (optional).
    */
-  update(discID, { image, name, firstName, lastName, owner, description, flair }) {
+  update(discID, { image, title, owner, description, flair }) {
     const updateData = {};
     if (image) {
       updateData.image = image;
     }
-    if (name) {
-      updateData.name = name;
-    }
-    if (firstName) {
-      updateData.firstName = firstName;
-    }
-    if (lastName) {
-      updateData.lastName = lastName;
+    if (title) {
+      updateData.title = title;
     }
     if (owner) {
       updateData.owner = owner;
@@ -149,8 +145,8 @@ class DiscussionCollection extends BaseCollection {
    * @param userId The userId of the logged in user. Can be null or undefined
    * @throws { Meteor.Error } If there is no logged in user, or the user is not an Admin or User.
    */
-  assertValidRoleForMethod(userId) {
-    this.assertRole(userId, [ROLE.ADMIN, ROLE.FACULTY]);
+  assertValidRoleForMethod() {
+    // this.assertRole(userId, [ROLE.ADMIN, ROLE.FACULTY]);
   }
 
   /**
@@ -161,13 +157,11 @@ class DiscussionCollection extends BaseCollection {
   dumpOne(discID) {
     const doc = this.findDoc(discID);
     const image = doc.image;
-    const name = doc.name;
-    const firstName = doc.firstName;
-    const lastName = doc.lastName;
+    const title = doc.title;
     const owner = doc.owner;
     const description = doc.description;
     const flair = doc.flair;
-    return { image, name, firstName, lastName, owner, description, flair };
+    return { image, title, owner, description, flair };
   }
 }
 
