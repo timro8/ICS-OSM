@@ -44,6 +44,7 @@ class RoomCollection extends BaseCollection {
         allowedValues: roomClassifications,
         defaultValue: 'Office',
       },
+      occupants: [String],
       picture: {
         type: String,
         optional: true,
@@ -60,10 +61,11 @@ class RoomCollection extends BaseCollection {
    * @param capacity the capacity for the room.
    * @param roomSqFoot the square footage of the room.
    * @param roomClassification the classification of the room.
+   * @param occupants the occupants of the room.
    * @param picture the owner of the room.
    * @return {String} the docID of the new document.
    */
-  define({ roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, picture }) {
+  define({ roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture }) {
     const docID = this._collection.insert({
       roomKey,
       roomNumber,
@@ -72,6 +74,7 @@ class RoomCollection extends BaseCollection {
       capacity,
       roomSqFoot,
       roomClassification,
+      occupants,
       picture,
     });
     return docID;
@@ -86,7 +89,7 @@ class RoomCollection extends BaseCollection {
    * @param roomClassification the new room classification (optional).
    * @param picture the new picture of the room (optional).
    */
-  update(docID, { status, capacity, roomSqFoot, roomClassification, picture }) {
+  update(docID, { status, capacity, roomSqFoot, roomClassification, occupants, picture }) {
     const updateData = {};
     if (status) {
       updateData.status = status;
@@ -99,6 +102,9 @@ class RoomCollection extends BaseCollection {
     }
     if (roomClassification) {
       updateData.roomClassification = roomClassification;
+    }
+    if (occupants) {
+      updateData.occupants = occupants;
     }
     if (picture) {
       updateData.picture = picture;
@@ -178,7 +184,7 @@ class RoomCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{ roomKey: *, roomNumber: *, location: *, status: *, capacity: *, roomSqFoot: *, roomClassification: *, picture: * }}
+   * @return {{occupants: (*|number), roomKey: *, roomNumber: *, location: *, status: *, capacity: *, roomSqFoot: *, roomClassification: *, picture: * }}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
@@ -189,8 +195,9 @@ class RoomCollection extends BaseCollection {
     const capacity = doc.capacity;
     const roomSqFoot = doc.roomSqFoot;
     const roomClassification = doc.roomClassification;
+    const occupants = doc.occupants;
     const picture = doc.picture;
-    return { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, picture };
+    return { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture };
   }
 }
 
