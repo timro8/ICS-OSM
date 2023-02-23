@@ -21,7 +21,7 @@ Meteor.methods({
     if (userImg === undefined) {
       userImg = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
     }
-    const facultyDefinitionData = { image: userImg, firstName, lastName, email, rooms: rooms, bio, phoneNumber, officeHours: officeHours.toString(), owner: Meteor.user().emails[0].address, role, password: password };
+    const facultyDefinitionData = { image: userImg, firstName, lastName, email, rooms: rooms, bio, phoneNumber, officeHours: officeHours.toString(), owner: Meteor.user().emails[0].address, facRole: role, password: password };
     FacultyProfiles.define(facultyDefinitionData);
   },
 });
