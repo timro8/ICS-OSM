@@ -59,13 +59,13 @@ const EditFacultyProfile = ({ id }) => {
             <TextField name="firstName" />
             <TextField name="lastName" />
             <LongTextField name="bio" />
-            <TextField name="rooms" />
             <TextField name="phoneNumber" />
             <LongTextField name="officeHours" />
             <Col className="d-flex justify-content-end">
               <SubmitField value="Submit" />
               <ErrorsField />
             </Col>
+            <HiddenField name="rooms" />
             <HiddenField name="email" />
           </Modal.Body>
         </AutoForm>
