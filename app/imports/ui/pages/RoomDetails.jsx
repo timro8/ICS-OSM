@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
+import { Link } from 'react-router-dom';
 import { Col, Row, Container, ListGroup, Image, Button, Table } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -59,18 +60,7 @@ const RoomDetails = () => {
       ready: rdy,
     };
   });
-  // for each occupant, return the first and last name in docFaulty
-  const occupantsList = [];
-  const facList = [];
-  facList.push({ label: '---', value: '---' });
-  docFaculty.map((fac) => facList.push(({ label: `${fac.firstName} ${fac.lastName}`, value: `${fac.email}`, pic: `${fac.image}` })));
 
-  doc.occupants.forEach((occupant) => {
-    if (facList.find(fac => fac.value === occupant)) {
-      occupantsList.push(facList.find(fac => fac.value === occupant));
-    } else occupantsList.push({ label: `Occupant's email is: ${occupant}`, value: occupant });
-    return occupantsList;
-  });
   useEffect(() => {
     if (ready) {
       document.title = `Room - ${roomNumber}`;
@@ -83,12 +73,7 @@ const RoomDetails = () => {
       <Row>
         <Col>
           <h2>Occupants</h2>
-          {occupantsList.map((occupant, index) => (
-            <div key={index}>
-              <Image roundedCircle src={occupant.pic} alt={`${occupant.label}`} />
-              <h3>{occupant.label}</h3>
-            </div>
-          ))}
+          List the Occupants connect RoomCollection to OccupantRoomCollection to FacultyProfileCollection
         </Col>
       </Row>
       <Row>
@@ -97,7 +82,10 @@ const RoomDetails = () => {
           <p><strong>Capacity:</strong> {capacity}</p>
           <p><strong>Room Sq Ft:</strong> {roomSqFoot}</p>
           <p><strong>Room Classification:</strong> {roomClassification}</p>
+        </Col>
+        <Col>
           <Image src={picture} alt={`${roomNumber} picture`} width={100} />
+          <Link to={`/editroom/${doc._id}`}>Edit Room</Link>
         </Col>
       </Row>
       <Row>

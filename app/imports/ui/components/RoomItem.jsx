@@ -14,7 +14,7 @@ const RoomItem = ({ room }) => (
           <hr />
           <Card.Title>{room.location} {room.roomNumber}</Card.Title>
           <Card.Subtitle>
-            {room.occupants.map((o, index) => <p key={index}>{o}</p>)}
+            Occupants
           </Card.Subtitle>
           <Card.Text>
             <strong>Status:</strong> {room.status}
@@ -27,6 +27,9 @@ const RoomItem = ({ room }) => (
           </Card.Text>
         </Card.Body>
       </Link>
+      <Card.Footer>
+        <Link to={`/editroom/${room._id}`}>Edit Room</Link>
+      </Card.Footer>
     </Card>
   </Col>
 );
