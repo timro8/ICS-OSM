@@ -44,6 +44,7 @@ class FacultyProfileCollection extends BaseProfileCollection {
       },
       'rooms.$': {
         type: String,
+        optional: true,
       },
       phoneNumber: {
         type: String,

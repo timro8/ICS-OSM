@@ -11,7 +11,6 @@ import axios from 'axios';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
 
-// TODO: Implement upload image
 const AddFacultyForm = props => {
 
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -67,6 +66,7 @@ const AddFacultyForm = props => {
     room: {
       type: String,
       allowedValues: roomNumbers,
+      optional: true,
     },
     phoneNumber: { type: String, optional: true },
     role: {

@@ -72,6 +72,7 @@ class MATPClass {
   getCollection(collectionName) {
     // console.log('MATPCollections', collectionName, this.collectionAssociation);
     const collection = this.collectionAssociation[collectionName];
+    console.log(collection);
     if (!collection) {
       throw new Meteor.Error(`Called MARTPCollections.getCollection with unknown collection name: ${collectionName}`);
     }
