@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, Badge, CloseButton, FormLabel } from 'react-bootstrap';
+import { Button, Modal, Badge, CloseButton, FormLabel, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema from 'simpl-schema';
@@ -7,10 +7,10 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { AutoForm, ErrorsField, SelectField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
+import axios from 'axios';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
 
-// TODO: Implement upload image
 const AddFacultyForm = props => {
 
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -66,6 +66,7 @@ const AddFacultyForm = props => {
     room: {
       type: String,
       allowedValues: roomNumbers,
+      optional: true,
     },
     phoneNumber: { type: String, optional: true },
     role: {
@@ -99,23 +100,38 @@ const AddFacultyForm = props => {
   const [currentStartTime, setStartTime] = useState('--');
   const [currentEndTime, setEndTime] = useState('--');
   const [selectedOfficeHours, setSelectedOfficeHours] = useState([]);
+  const [selectedImage, setSelectedImage] = useState('https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg');
+  const [imageSubmit, setImageSubmit] = useState(null);
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    Meteor.call(
-      'insertFaculty',
-      data,
-      selectedRoom,
-      selectedOfficeHours,
-      (err) => {
-        if (err) {
-          console.log(err.message);
-          swal('Error', err.message, 'error');
-        } else {
-          swal('Success', 'Faculty added successfully', 'success');
-        }
-      },
-    );
+    const formData = new FormData();
+    formData.append('file', imageSubmit);
+    formData.append('upload_preset', 'sasn8bgb');
+    // Upload the image to Cloudinary
+    axios.post('https://api.cloudinary.com/v1_1/dmbrfkjk3/image/upload', formData)
+      .then((response) => {
+        const imageUrl = response.data.secure_url;
+        Meteor.call(
+          'insertFaculty',
+          data,
+          selectedRoom,
+          selectedOfficeHours,
+          imageUrl,
+          (err) => {
+            if (err) {
+              console.log(err.message);
+              swal('Error', err.message, 'error');
+            } else {
+              swal('Success', 'Faculty added successfully', 'success');
+            }
+          },
+        );
+        setSelectedImage(imageUrl);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     formRef.reset();
   };
@@ -140,12 +156,13 @@ const AddFacultyForm = props => {
     const time = `${currentDay} ${currentStartTime} - ${currentEndTime}`;
     if (!selectedOfficeHours.includes(time) && currentDay !== '--' && currentStartTime !== '--' && currentEndTime !== '--') {
       if (!(selectedOfficeHours.map((existOfficeHour) => { if (existOfficeHour.includes(`${currentDay} ${currentStartTime}`)) { return false; } return true; })).includes(false)) {
-        if (parseInt(currentStartTime.substring(0, 2), 10) >= parseInt(currentEndTime.substring(0, 2), 10)) {
-          if (parseInt(currentStartTime.substring(3, 5), 10) >= parseInt(currentEndTime.substring(3, 5), 10)) {
-            swal('Error', 'End Time cannot be earlier than start time.', 'error');
-          } else {
-            setSelectedOfficeHours([...selectedOfficeHours, time]);
-          }
+        if (currentStartTime > currentEndTime) {
+          swal('Error', 'End Time cannot be earlier than start time.', 'error');
+        } else {
+          setSelectedOfficeHours([...selectedOfficeHours, time]);
+          setDay('--');
+          setStartTime('--');
+          setEndTime('--');
         }
       } else if (currentDay !== '' && currentStartTime !== '' && currentEndTime !== '' && selectedOfficeHours.length < 1) {
         setSelectedOfficeHours([...selectedOfficeHours, time]);
@@ -154,18 +171,26 @@ const AddFacultyForm = props => {
   }
 
   function removeOfficeHours(value) {
-    for (let i = 0; i < selectedOfficeHours.length; i++) {
-      if (selectedOfficeHours.includes(value)) {
-        selectedOfficeHours.splice(i, 1);
-      }
+    if (selectedOfficeHours.includes(value)) {
+      const updatedOfficeHours = selectedOfficeHours.filter((hour) => hour !== value);
+      setSelectedOfficeHours(updatedOfficeHours);
     }
     if (selectedOfficeHours.length < 1) {
       setDay('--');
       setStartTime('--');
       setEndTime('--');
     }
-    setSelectedOfficeHours([...selectedOfficeHours]);
   }
+
+  const handleImageClick = () => {
+    document.getElementById('imageUpload').click();
+  };
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    setImageSubmit(file);
+    setSelectedImage(URL.createObjectURL(file));
+  };
 
   // pop up window: https://react-bootstrap.github.io/components/modal/
   return ready ? (
@@ -174,6 +199,12 @@ const AddFacultyForm = props => {
         <Modal.Title>Add Faculty</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column' }}>
+          <Button style={{ background: 'white', borderColor: 'white' }} onClick={handleImageClick}>
+            <input id="imageUpload" type="file" onChange={handleImageUpload} style={{ display: 'none' }} />
+            <Image style={{ borderRadius: '100%', width: '13rem', height: '13rem' }} src={selectedImage} />
+          </Button>
+        </div>
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
           <TextField name="firstName" />
           <TextField name="lastName" />

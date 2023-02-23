@@ -5,6 +5,7 @@ import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, NumField } 
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Rooms } from '../../api/room/RoomCollection';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from './LoadingSpinner';
@@ -70,7 +71,7 @@ const AddRoom = () => {
   let fRef = null;
   return ready ? (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button id={COMPONENT_IDS.ADD_ROOM} variant="primary" onClick={handleShow}>
         Add Room
       </Button>
 

@@ -23,5 +23,5 @@ export const listStuffAdminPage = new SimplePage(PAGE_IDS.LIST_STUFF_ADMIN);
 export const manageDatabasePage = new SimplePage(PAGE_IDS.MANAGE_DATABASE);
 export const signOutPage = new SimplePage(PAGE_IDS.SIGN_OUT);
 export const listRoomPage = new SimplePage(PAGE_IDS.LIST_ROOM);
-export const listRoomAdminPage = new SimplePage(PAGE_IDS.LIST_ROOM_ADMIN);
-export const facultyPage = new SimplePage(PAGE_IDS.FACULTY);
+
+export const discussPage = new SimplePage(PAGE_IDS.DISCUSS);
