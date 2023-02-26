@@ -71,7 +71,7 @@ const AddFacultyForm = props => {
     phoneNumber: { type: String, optional: true },
     role: {
       type: String,
-      allowedValues: ['PROFESSOR', 'ASSOCIATE PROFESSOR', 'TA', 'RA', 'GA', 'N/A'],
+      allowedValues: ['PROFESSOR', 'ASSISTANT PROFESSOR', 'ASSOCIATE PROFESSOR', 'PROFESSOR EMERITUS', 'TA', 'RA', 'N/A'],
       defaultValue: 'N/A',
     },
     day: {
