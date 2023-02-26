@@ -3,7 +3,7 @@ import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Rooms } from '../../api/room/RoomCollection';
 import { Events302 } from '../../api/events/Events302Collection';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
-import { FacultyRoom } from '../../api/faculty/FacultyRoomCollection';
+import { OccupantRoom } from '../../api/user/OccupantRoomCollection';
 import { Discussions } from '../../api/discussion/Discussion';
 import { ClubOfficers } from '../../api/clubofficers/ClubOfficersCollection';
 /* eslint-disable no-console */
@@ -29,9 +29,9 @@ function addEvents302Data(data) {
   Events302.define(data);
 }
 
-function addFacultyRoomData(data) {
-  console.log(`Adding faculty room: ${data.email} (${data.roomKey})`);
-  FacultyRoom.define(data);
+function addOccupantRoomData(data) {
+  console.log(`Adding occupant room: ${data.email} (${data.roomKey})`);
+  OccupantRoom.define(data);
 }
 
 function addDiscussionsData(data) {
@@ -73,10 +73,10 @@ if (Events302.count() === 0) {
   }
 }
 
-if (FacultyRoom.count() === 0) {
-  if (Meteor.settings.defaultFacultyRoomData) {
-    console.log('Creating default faculty room data.');
-    Meteor.settings.defaultFacultyRoomData.map(data => addFacultyRoomData(data));
+if (OccupantRoom.count() === 0) {
+  if (Meteor.settings.defaultOccupantRoomData) {
+    console.log('Creating default occupant room data.');
+    Meteor.settings.defaultOccupantRoomData.map(data => addOccupantRoomData(data));
   }
 }
 

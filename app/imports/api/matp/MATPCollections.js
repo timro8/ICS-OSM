@@ -9,7 +9,7 @@ import { RoomNotes } from '../room/RoomNotes';
 import { RoomJacks } from '../room/RoomJacks';
 import { RoomEquipments } from '../room/RoomEquipments';
 import { FacultyProfiles } from '../user/FacultyProfileCollection';
-import { FacultyRoom } from '../faculty/FacultyRoomCollection';
+import { OccupantRoom } from '../user/OccupantRoomCollection';
 import { Discussions } from '../discussion/Discussion';
 
 class MATPClass {
@@ -32,7 +32,7 @@ class MATPClass {
       RoomNotes,
       RoomJacks,
       RoomEquipments,
-      FacultyRoom,
+      OccupantRoom,
       Discussions,
     ];
     /*
@@ -49,7 +49,7 @@ class MATPClass {
       RoomNotes,
       RoomJacks,
       RoomEquipments,
-      FacultyRoom,
+      OccupantRoom,
       Discussions,
     ];
 
