@@ -1016,6 +1016,15 @@
       "owner":  "admin@foo.com"
     }
   ],
+
+  "defaultClubOfficers": [
+    {
+      "studentId": "student@foo.com",
+      "clubId": "PANDA",
+      "isPresident": true,
+      "position": "PANDA President"
+    }
+  ],
   
   "public": {
     "development": true
