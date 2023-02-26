@@ -9,7 +9,6 @@ import { Rooms } from '../../api/room/RoomCollection';
 import { RoomNotes } from '../../api/room/RoomNotes';
 import { RoomJacks } from '../../api/room/RoomJacks';
 import { RoomEquipments } from '../../api/room/RoomEquipments';
-import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import RoomNote from '../components/RoomNote';
 import AddNote from '../components/AddNote';
 import RoomJack from '../components/RoomJack';
@@ -30,7 +29,6 @@ const RoomDetails = () => {
     docNotes,
     docJacks,
     docEquipment,
-    docFaculty,
     ready,
     loggedInOwner,
   } = useTracker(() => {
@@ -40,14 +38,12 @@ const RoomDetails = () => {
     const subNotes = RoomNotes.subscribeRoomNotesAdmin();
     const subJacks = RoomJacks.subscribeRoomJacksAdmin();
     const subEquipment = RoomEquipments.subscribeRoomEquipmentAdmin();
-    const subFaculty = FacultyProfiles.subscribeFacultyProfileAdmin();
     const owner = Meteor.user().username;
-    const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready() && subFaculty.ready();
+    const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready();
     const document = Rooms.findDoc({ roomKey: _id });
     const documentNotes = RoomNotes.find({ roomId: _id }).fetch();
     const documentJacks = RoomJacks.find({ roomId: _id }).fetch();
     const documentEquipment = RoomEquipments.find({ roomId: _id }).fetch();
-    const documentFaculty = FacultyProfiles.find({}).fetch();
 
     // ready when subscriptions are completed
     return {
@@ -55,7 +51,6 @@ const RoomDetails = () => {
       docNotes: documentNotes,
       docJacks: documentJacks,
       docEquipment: documentEquipment,
-      docFaculty: documentFaculty,
       loggedInOwner: owner,
       ready: rdy,
     };
