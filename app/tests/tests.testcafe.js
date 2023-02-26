@@ -90,3 +90,11 @@ test('Navigating to profile from faculty page', async () => {
   await facultyPage.gotoFacultyProfile();
   await facultyProfilePage.isDisplayed();
 });
+
+test('Modal shows for Edit Room', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListRoomAdminPage();
+  await listRoomAdminPage.addRoom();
+});

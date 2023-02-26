@@ -21,6 +21,10 @@ class ListRoomAdmin {
   async addRoom() {
     await t.click(`#${COMPONENT_IDS.ADD_ROOM}`);
   }
+
+  async editRoom() {
+    await t.click(`#${PAGE_IDS.EDIT_ROOM}`);
+  }
 }
 
 export const listRoomAdminPage = new ListRoomAdmin();
