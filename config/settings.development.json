@@ -996,24 +996,18 @@
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     }
   ],
-  "defaultFacultyRoomData": [
+  "defaultOccupantRoomData": [
     {
       "email": "cmoore@hawaii.edu",
-      "roomKey": "POST307B",
-      "dateAssigned": "2010-01-10",
-      "owner":  "admin@foo.com"
+      "roomKey": "POST307B"
     },
     {
       "email": "johnson@hawaii.edu",
-      "roomKey": "POST307A",
-      "dateAssigned": "2000-01-10",
-      "owner":  "admin@foo.com"
+      "roomKey": "POST307A"
     },
     {
       "email": "cmoore@hawaii.edu",
-      "roomKey": "POST311",
-      "dateAssigned": "2019-05-31",
-      "owner":  "admin@foo.com"
+      "roomKey": "POST311"
     }
   ],
 

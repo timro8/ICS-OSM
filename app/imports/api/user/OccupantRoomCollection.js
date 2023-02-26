@@ -5,58 +5,52 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
 
-export const facultyRoomPublications = {
-  faculty: 'facultyRoom',
-  facultyAdmin: 'FacultyRoomAdmin',
+export const occupantRoomPublications = {
+  occupantRoom: 'OccupantRoom',
+  occupantRoomAdmin: 'OccupantRoomAdmin',
 };
 
-class FacultyRoomCollection extends BaseCollection {
+class OccupantRoomCollection extends BaseCollection {
   constructor() {
-    super('FacultyRoom', new SimpleSchema({
+    super('OccupantRoom', new SimpleSchema({
       email: String,
       roomKey: String,
-      dateAssigned: {
-        type: Date,
-        optional: true,
-      },
-      owner: String,
     }));
   }
 
   /**
-   * Defines a new Faculty item.
+   * Defines a new room occupant item.
    * @param email address of the occupant.
    * @param roomKey the roomKey of the room.
-   * @param dateAssigned the date the room was assigned to the occupant.
-   * @param owner the owner of the faculty room assignment.
-   * @return {String} the facID of the new document.
+   * @return {String} the occupantID of the new document.
    */
-  define({ email, roomKey, dateAssigned, owner }) {
-    const facID = this._collection.insert({
+  define({ email, roomKey }) {
+    const occupantID = this._collection.insert({
       email,
       roomKey,
-      dateAssigned,
-      owner,
     });
-    return facID;
+    return occupantID;
   }
 
   /**
    * Updates the given document.
-   * @param facRoomID the id of the document to update.
+   * @param occupantRoomID the id of the document to update.
    * @param email the new occupant's email (optional).
    */
-  update(facRoomID, { email }) {
+  update(occupantRoomID, { email, roomKey }) {
     const updateData = {};
     if (email) {
       updateData.email = email;
     }
-    this._collection.update(facRoomID, { $set: updateData });
+    if (roomKey) {
+      updateData.roomKey = roomKey;
+    }
+    this._collection.update(occupantRoomID, { $set: updateData });
   }
 
   /**
-   * A stricter form of remove that throws an error if the document or facID could not be found in this collection.
-   * @param { String | Object } name A document or facID in this collection.
+   * A stricter form of remove that throws an error if the document or occupantID could not be found in this collection.
+   * @param { String | Object } name A document occupantID in this collection.
    * @returns true
    */
   removeIt(name) {
@@ -68,23 +62,22 @@ class FacultyRoomCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the faculty associated to an owner.
+   * It publishes the entire collection for admin and occupant.
    */
   publish() {
     if (Meteor.isServer) {
-      // get the FacultyRoomCollection instance.
+      // get the OccupantRoomCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(facultyRoomPublications.faculty, function publish() {
+      Meteor.publish(occupantRoomPublications.occupant, function publish() {
         if (this.userId) {
-          const username = Meteor.users.findOne(this.userId).username;
-          return instance._collection.find({ owner: username });
+          return instance._collection.find();
         }
         return this.ready();
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(facultyRoomPublications.facultyRoomAdmin, function publish() {
+      Meteor.publish(occupantRoomPublications.occupantAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }
@@ -94,11 +87,11 @@ class FacultyRoomCollection extends BaseCollection {
   }
 
   /**
-   * Subscription method for facultyRoom owned by the current user.
+   * Subscription method for OccupantRoom owned by the current user.
    */
-  subscribeFaculty() {
+  subscribeOccupantRoom() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(facultyRoomPublications.facultyRoom);
+      return Meteor.subscribe(occupantRoomPublications.occupantRoom);
     }
     return null;
   }
@@ -107,9 +100,9 @@ class FacultyRoomCollection extends BaseCollection {
    * Subscription method for admin users.
    * It subscribes to the entire collection.
    */
-  subscribeFacultyAdmin() {
+  subscribeOccupantRoomAdmin() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(facultyRoomPublications.facultyRoomAdmin);
+      return Meteor.subscribe(occupantRoomPublications.occupantRoomAdmin);
     }
     return null;
   }
@@ -125,21 +118,19 @@ class FacultyRoomCollection extends BaseCollection {
   }
 
   /**
-   * Returns an object representing the definition of facID in a format appropriate to the restoreOne or define function.
-   * @param facID
-   * @return {{owner: *, email: *, roomKey: *, dateAssigned: * }}
+   * Returns an object representing the definition of occupantID in a format appropriate to the restoreOne or define function.
+   * @param occupantID
+   * @return {{ email: *, roomKey: * }}
    */
-  dumpOne(facID) {
-    const doc = this.findDoc(facID);
-    const owner = doc.owner;
+  dumpOne(occupantID) {
+    const doc = this.findDoc(occupantID);
     const email = doc.email;
     const roomKey = doc.roomKey;
-    const dateAssigned = doc.dateAssigned;
-    return { email, roomKey, dateAssigned, owner };
+    return { email, roomKey };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const FacultyRoom = new FacultyRoomCollection();
+export const OccupantRoom = new OccupantRoomCollection();
