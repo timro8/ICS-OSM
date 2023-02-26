@@ -146,7 +146,7 @@ const AddFacultyForm = props => {
   }
 
   const handleRoom = (value) => {
-    if (!selectedRoom.includes(value)) {
+    if (!selectedRoom.includes(value) && value !== undefined && value !== '--') {
       setSelectedRoom([...selectedRoom, value]);
       setCurrentRoom(value);
     }
@@ -157,7 +157,7 @@ const AddFacultyForm = props => {
     if (!selectedOfficeHours.includes(time) && currentDay !== '--' && currentStartTime !== '--' && currentEndTime !== '--') {
       if (!(selectedOfficeHours.map((existOfficeHour) => { if (existOfficeHour.includes(`${currentDay} ${currentStartTime}`)) { return false; } return true; })).includes(false)) {
         if (currentStartTime > currentEndTime) {
-          swal('Error', 'End Time cannot be earlier than start time.', 'error');
+          swal('Error', 'End time cannot be earlier than start time.', 'error');
         } else {
           setSelectedOfficeHours([...selectedOfficeHours, time]);
           setDay('--');
