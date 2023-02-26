@@ -85,7 +85,7 @@ const Home = () => {
                 transformOrigin: 'top left',
               }}
             >
-              {rooms.map(room => {
+              { /* {rooms.map(room => {
                 const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                 if (roomPosition) {
                   const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
@@ -103,7 +103,7 @@ const Home = () => {
                   ));
                 }
                 return null;
-              })}{
+              })} */ }{
                 rooms.map(room => {
                   const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                   if (roomPosition) {
