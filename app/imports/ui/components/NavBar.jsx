@@ -7,12 +7,22 @@ import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { currentUser } = useTracker(() => ({
-    currentUser: Meteor.user() ? Meteor.user().username : '',
-  }), []);
+  const { facultyId, ready, currentUser } = useTracker(() => {
+    const user = Meteor.user() ? Meteor.user().username : '';
+    const subscription = FacultyProfiles.subscribeFacultyProfile();
+    const rdy = subscription.ready();
+    const facultyItems = FacultyProfiles.find({ email: user }).fetch();
+
+    return ({
+      currentUser: Meteor.user() ? Meteor.user().username : '',
+      facultyId: facultyItems.length > 0 ? facultyItems[0]._id : '',
+      ready: rdy,
+    });
+  }, []);
 
   const menuStyle = {
     boxShadow: '0px 0px 10px rgb(0 0 0 /20%)',
@@ -62,7 +72,15 @@ const NavBar = () => {
                 </Nav.Link>
               ) : (
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} title={currentUser}>
-                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_PROFILE} as={NavLink} to="/profile/:_id  "><PersonFill />Profile</NavDropdown.Item>
+                  {ready && facultyId ? (
+                    <NavDropdown.Item
+                      id={COMPONENT_IDS.NAVBAR_PROFILE}
+                      as={NavLink}
+                      to={`/profile/${facultyId}`}
+                    >
+                      <PersonFill />Profile
+                    </NavDropdown.Item>
+                  ) : ''}
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} onClick={handleSignout}><BoxArrowRight />Sign out</NavDropdown.Item>
                 </NavDropdown>
               )}
