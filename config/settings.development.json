@@ -8,6 +8,19 @@
     { "email":  "tech@foo.com", "password":  "changeme", "role":  "TECH", "firstName":  "Tech", "lastName":  "TECH" }
   ],
 
+  "defaultStudents": [
+    { "email":  "acm@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
+    { "email":  "gamedev@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
+    { "email":  "greyhats@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
+    { "email":  "icspark@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
+    { "email":  "panda@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
+    { "email":  "jenny@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Jenny", "lastName":  "Doe" },
+    { "email":  "mike@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Mike", "lastName":  "Doe" },
+    { "email":  "lisa@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Lisa", "lastName":  "Doe" },
+    { "email":  "ken@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Ken", "lastName":  "Doe" }
+
+  ],
+
   "defaultData": [
     { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
     { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
@@ -1013,10 +1026,40 @@
 
   "defaultClubOfficers": [
     {
-      "studentId": "student@foo.com",
+      "studentId": "acm@foo.com",
+      "clubId": "ACManoa",
+      "isPresident": true,
+      "position": "Chair"
+    },
+    {
+      "studentId": "panda@foo.com",
       "clubId": "PANDA",
       "isPresident": true,
       "position": "PANDA President"
+    },
+    {
+      "studentId": "gamedev@foo.com",
+      "clubId": "Game Developers",
+      "isPresident": true,
+      "position": "President"
+    },
+    {
+      "studentId": "greyhats@foo.com",
+      "clubId": "Grey Hats",
+      "isPresident": true,
+      "position": "President"
+    },
+    {
+      "studentId": "icspark@foo.com",
+      "clubId": "ICSpark",
+      "isPresident": true,
+      "position": "PANDA President"
+    },
+    {
+      "studentId": "switch@foo.com",
+      "clubId": "SWITCH",
+      "isPresident": true,
+      "position": "SWITCH President"
     }
   ],
 
