@@ -27,6 +27,7 @@ import RoomDetails from '../pages/RoomDetails';
 import LoadingSpinner from '../components/LoadingSpinner';
 import DiscussionFaculty from '../pages/DiscussionPage';
 import AddDiscussion from '../pages/AddDiscussion';
+import Club from '../pages/Club';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/faculty" element={<Faculty />} />
           <Route path="/addDis" element={<AddDiscussion />} />
           <Route path="/discus" element={<DiscussionFaculty />} />
+          <Route path="/clubs/:_id" element={<Club />} />
           <Route path="/editfacultyprofile/:_id" element={<EditFacultyProfile />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />

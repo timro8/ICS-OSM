@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -7,12 +7,24 @@ import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { BoxArrowRight, PersonFill } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { Clubs } from '../../api/club/Club';
+import LoadingSpinner from './LoadingSpinner';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  const { currentUser } = useTracker(() => ({
-    currentUser: Meteor.user() ? Meteor.user().username : '',
-  }), []);
+  // const { _id } = useParams();
+  const [clubList, setList] = useState([]);
+  const { clubs, ready, currentUser } = useTracker(() => {
+    const subscription = Clubs.subscribeClub();
+    const rdy = subscription.ready();
+    const clubItems = Clubs.find({}).fetch();
+    setList(clubItems);
+    return ({
+      currentUser: Meteor.user() ? Meteor.user().username : '',
+      clubs: clubItems.length > 0 ? clubItems[0].clubName : '',
+      ready: rdy,
+    });
+  }, []);
 
   const menuStyle = {
     boxShadow: '0px 0px 10px rgb(0 0 0 /20%)',
@@ -44,6 +56,11 @@ const NavBar = () => {
               {currentUser ? ([
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FACULTY} as={NavLink} to="/faculty" key="faculty">Faculty</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
+                <NavDropdown id={COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB} title="Clubs">
+                  {ready && clubs ? (
+                    clubList.map((club) => (<Nav.Link as={NavLink} to={`/clubs/${club._id}`} onClick={() => location.reload()} key="clubs"> {club.clubName} </Nav.Link>))
+                  ) : <LoadingSpinner message="Loading Club" /> }
+                </NavDropdown>,
               ]) : ''}
               {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
                 [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin</Nav.Link>,
