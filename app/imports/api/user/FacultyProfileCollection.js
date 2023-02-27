@@ -75,7 +75,7 @@ class FacultyProfileCollection extends BaseProfileCollection {
       const username = email;
       const user = this.findOne({ email, firstName, lastName });
       if (!user) {
-        const role = ROLE.USER;
+        const role = ROLE.FACULTY;
         const userID = Users.define({ username, role, password });
         const profileID = this._collection.insert({ email, password, firstName, lastName, userID, role, facRole, image, bio, rooms, phoneNumber, officeHours });
         this._collection.update(profileID, { $set: { userID } });
