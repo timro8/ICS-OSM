@@ -9,20 +9,25 @@ import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { Clubs } from '../../api/club/Club';
 import LoadingSpinner from './LoadingSpinner';
+import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-  // const { _id } = useParams();
   const [clubList, setList] = useState([]);
-  const { clubs, ready, currentUser } = useTracker(() => {
-    const subscription = Clubs.subscribeClub();
+  const { facultyId, clubs, ready, currentUser } = useTracker(() => {
+    const user = Meteor.user() ? Meteor.user().username : '';
+    const subscription = FacultyProfiles.subscribeFacultyProfile();
+    const subscription2 = Clubs.subscribeClub();
     const rdy = subscription.ready();
+    const rdy2 = subscription2.ready();
+    const facultyItems = FacultyProfiles.find({ email: user }).fetch();
     const clubItems = Clubs.find({}).fetch();
     setList(clubItems);
     return ({
       currentUser: Meteor.user() ? Meteor.user().username : '',
+      facultyId: facultyItems.length > 0 ? facultyItems[0]._id : '',
       clubs: clubItems.length > 0 ? clubItems[0].clubName : '',
-      ready: rdy,
+      ready: rdy, rdy2,
     });
   }, []);
 
@@ -79,7 +84,15 @@ const NavBar = () => {
                 </Nav.Link>
               ) : (
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_CURRENT_USER} title={currentUser}>
-                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_PROFILE} as={NavLink} to="/profile/:_id  "><PersonFill />Profile</NavDropdown.Item>
+                  {ready && facultyId ? (
+                    <NavDropdown.Item
+                      id={COMPONENT_IDS.NAVBAR_PROFILE}
+                      as={NavLink}
+                      to={`/profile/${facultyId}`}
+                    >
+                      <PersonFill />Profile
+                    </NavDropdown.Item>
+                  ) : ''}
                   <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} onClick={handleSignout}><BoxArrowRight />Sign out</NavDropdown.Item>
                 </NavDropdown>
               )}

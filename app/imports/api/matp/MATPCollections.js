@@ -9,7 +9,7 @@ import { RoomNotes } from '../room/RoomNotes';
 import { RoomJacks } from '../room/RoomJacks';
 import { RoomEquipments } from '../room/RoomEquipments';
 import { FacultyProfiles } from '../user/FacultyProfileCollection';
-import { FacultyRoom } from '../faculty/FacultyRoomCollection';
+import { OccupantRoom } from '../user/OccupantRoomCollection';
 import { Discussions } from '../discussion/Discussion';
 import { Clubs } from '../club/Club';
 
@@ -33,7 +33,7 @@ class MATPClass {
       RoomNotes,
       RoomJacks,
       RoomEquipments,
-      FacultyRoom,
+      OccupantRoom,
       Discussions,
       Clubs,
     ];
@@ -51,7 +51,7 @@ class MATPClass {
       RoomNotes,
       RoomJacks,
       RoomEquipments,
-      FacultyRoom,
+      OccupantRoom,
       Discussions,
       Clubs,
     ];
@@ -75,6 +75,7 @@ class MATPClass {
   getCollection(collectionName) {
     // console.log('MATPCollections', collectionName, this.collectionAssociation);
     const collection = this.collectionAssociation[collectionName];
+    console.log(collection);
     if (!collection) {
       throw new Meteor.Error(`Called MARTPCollections.getCollection with unknown collection name: ${collectionName}`);
     }

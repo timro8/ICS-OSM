@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Col, Row, Card, Container, Image } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { useTracker } from 'meteor/react-meteor-data';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
+import EditFacultyProfile from './EditFacultyProfile';
 
 const FacultyProfile = () => {
   const { _id } = useParams();
-  const [faculty, setFaculty] = useState([]);
-  const { ready } = useTracker(() => {
+  const { ready, faculty } = useTracker(() => {
     const subscription = FacultyProfiles.subscribeFacultyProfile();
     const rdy = subscription.ready();
-    setFaculty(FacultyProfiles.find({ _id: _id }, { sort: { lastName: 1 } }).fetch());
+    const allFaculty = FacultyProfiles.find({ _id: _id }, { sort: { lastName: 1 } }).fetch();
     return {
       ready: rdy,
+      faculty: allFaculty,
     };
   }, []);
+
   return (ready ? (
     <Container id={PAGE_IDS.PROFILE} className="py-3" fluid>
       <Row>
@@ -45,7 +47,7 @@ const FacultyProfile = () => {
           <p className="fw-bold">{faculty[0].officeHours}</p>
         </Col>
       </Card>
-      Edit Fac Pro
+      <EditFacultyProfile id={_id} />
     </Container>
   ) : <LoadingSpinner message="Loading Faculty Profile" />);
 };

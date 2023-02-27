@@ -11,7 +11,6 @@ import axios from 'axios';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
 
-// TODO: Implement upload image
 const AddFacultyForm = props => {
 
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -67,11 +66,12 @@ const AddFacultyForm = props => {
     room: {
       type: String,
       allowedValues: roomNumbers,
+      optional: true,
     },
     phoneNumber: { type: String, optional: true },
     role: {
       type: String,
-      allowedValues: ['PROFESSOR', 'ASSOCIATE PROFESSOR', 'TA', 'RA', 'GA', 'N/A'],
+      allowedValues: ['PROFESSOR', 'ASSISTANT PROFESSOR', 'ASSOCIATE PROFESSOR', 'PROFESSOR EMERITUS', 'TA', 'RA', 'N/A'],
       defaultValue: 'N/A',
     },
     day: {
@@ -146,7 +146,7 @@ const AddFacultyForm = props => {
   }
 
   const handleRoom = (value) => {
-    if (!selectedRoom.includes(value)) {
+    if (!selectedRoom.includes(value) && value !== undefined && value !== '--') {
       setSelectedRoom([...selectedRoom, value]);
       setCurrentRoom(value);
     }
@@ -157,7 +157,7 @@ const AddFacultyForm = props => {
     if (!selectedOfficeHours.includes(time) && currentDay !== '--' && currentStartTime !== '--' && currentEndTime !== '--') {
       if (!(selectedOfficeHours.map((existOfficeHour) => { if (existOfficeHour.includes(`${currentDay} ${currentStartTime}`)) { return false; } return true; })).includes(false)) {
         if (currentStartTime > currentEndTime) {
-          swal('Error', 'End Time cannot be earlier than start time.', 'error');
+          swal('Error', 'End time cannot be earlier than start time.', 'error');
         } else {
           setSelectedOfficeHours([...selectedOfficeHours, time]);
           setDay('--');

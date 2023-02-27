@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
+import { Link } from 'react-router-dom';
 import { Col, Row, Container, ListGroup, Image, Button, Table } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -24,7 +25,7 @@ const RoomDetails = () => {
   // constants for the page
   const {
     doc,
-    doc: { roomNumber, capacity, picture, status, occupants, roomSqFoot, roomClassification },
+    doc: { roomNumber, capacity, picture, status, roomSqFoot, roomClassification },
     docNotes,
     docJacks,
     docEquipment,
@@ -67,7 +68,7 @@ const RoomDetails = () => {
       <Row>
         <Col>
           <h2>Occupants</h2>
-          {occupants.map((o) => <p>{o}</p>)}
+          List the Occupants connect RoomCollection to OccupantRoomCollection to FacultyProfileCollection
         </Col>
       </Row>
       <Row>
@@ -76,7 +77,10 @@ const RoomDetails = () => {
           <p><strong>Capacity:</strong> {capacity}</p>
           <p><strong>Room Sq Ft:</strong> {roomSqFoot}</p>
           <p><strong>Room Classification:</strong> {roomClassification}</p>
+        </Col>
+        <Col>
           <Image src={picture} alt={`${roomNumber} picture`} width={100} />
+          <Link to={`/editroom/${doc._id}`}>Edit Room</Link>
         </Col>
       </Row>
       <Row>

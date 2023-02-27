@@ -28,6 +28,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import DiscussionFaculty from '../pages/DiscussionPage';
 import AddDiscussion from '../pages/AddDiscussion';
 import Club from '../pages/Club';
+import EditRoom from '../pages/EditRoom';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/cal" element={<ReserveRoom />} />
+          <Route path="/editroom/:_id" element={<AdminProtectedRoute ready={ready}><EditRoom /></AdminProtectedRoute>} />
         </Routes>
         <Footer />
       </div>

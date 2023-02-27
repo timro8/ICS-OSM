@@ -4,6 +4,7 @@ import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, NumField } 
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Rooms } from '../../api/room/RoomCollection';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 // form schema based on the Room collection
@@ -16,12 +17,12 @@ const AddRoom = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   // data added to the Room collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional rooms.
   const submit = (data, formRef) => {
-    const { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture } = data;
+    const { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, picture } = data;
     const collectionName = Rooms.getCollectionName();
-    const definitionData = { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, occupants, picture };
+    const definitionData = { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, picture };
+
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -32,7 +33,7 @@ const AddRoom = () => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button id={COMPONENT_IDS.ADD_ROOM} variant="primary" onClick={handleShow}>
         Add Room
       </Button>
 
@@ -43,7 +44,7 @@ const AddRoom = () => {
         <Modal.Body>
           Add Room
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="roomKey" />
+            <TextField name="roomKey" placeholder="location and room number" />
             <TextField name="roomNumber" />
             <SelectField
               name="location"
@@ -59,7 +60,6 @@ const AddRoom = () => {
               name="roomClassification"
               allowedValues={['Office', 'Sink', 'Conference', 'Cubicle', 'ICS Library', 'ASECOLAB', 'Mail', 'Main Office', 'Lab', 'ICSpace', 'Storage', 'ICS IT', 'OFCSVC', 'LNG']}
             />
-            <TextField name="occupants" />
             <TextField name="picture" />
             <SubmitField value="submit" />
             <ErrorsField />

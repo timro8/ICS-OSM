@@ -4,7 +4,6 @@ import { Card, Col, Container, ProgressBar, Row } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
-import LoadingSpinner from '../components/LoadingSpinner';
 
 const roomPositions = [
   { roomNumber: '305F', top: 4, left: 4, vertical: false },
@@ -20,7 +19,7 @@ const roomPositions = [
 ];
 
 const Home = () => {
-  const { ready, rooms } = useTracker(() => {
+  const { rooms } = useTracker(() => {
     const subscription = Rooms.subscribeRoom();
     return {
       ready: subscription.ready(),
@@ -86,7 +85,7 @@ const Home = () => {
                 transformOrigin: 'top left',
               }}
             >
-              {rooms.map(room => {
+              { /* {rooms.map(room => {
                 const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                 if (roomPosition) {
                   const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
@@ -104,7 +103,7 @@ const Home = () => {
                   ));
                 }
                 return null;
-              })}{
+              })} */ }{
                 rooms.map(room => {
                   const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                   if (roomPosition) {
