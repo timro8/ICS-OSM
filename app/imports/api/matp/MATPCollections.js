@@ -12,6 +12,7 @@ import { FacultyProfiles } from '../user/FacultyProfileCollection';
 import { OccupantRoom } from '../user/OccupantRoomCollection';
 import { Discussions } from '../discussion/Discussion';
 import { Clubs } from '../club/Club';
+import { ClubOfficers } from '../clubofficers/ClubOfficersCollection';
 
 class MATPClass {
   collections;
@@ -36,6 +37,7 @@ class MATPClass {
       OccupantRoom,
       Discussions,
       Clubs,
+      ClubOfficers,
     ];
     /*
      * A list of collection class instances in the order required for them to be sequentially loaded from a file.
@@ -54,6 +56,7 @@ class MATPClass {
       OccupantRoom,
       Discussions,
       Clubs,
+      ClubOfficers,
     ];
 
     /*

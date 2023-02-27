@@ -5,20 +5,29 @@ import { useParams } from 'react-router';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
+import { ClubOfficers } from '../../api/clubofficers/ClubOfficersCollection';
 
 const Club = () => {
   const { _id } = useParams();
-  const [club, setClub] = useState([]);
-  const { ready } = useTracker(() => {
-    const subscription = Clubs.subscribeClub();
-    const rdy = subscription.ready();
-    setClub(Clubs.find({ _id: _id }, { sort: { clubName: 1 } }).fetch());
+  const { ready, ready2, club, officers } = useTracker(() => {
+    const clubSubscription = Clubs.subscribeClub();
+    const officerSubscription = ClubOfficers.subscribeClubOfficers();
+    const rdy = clubSubscription.ready();
+    const rdy2 = officerSubscription.ready();
+    const oneClub = Clubs.find({ _id: _id }, { sort: { clubName: 1 } }).fetch();
+    const allOfficers = ClubOfficers.find().fetch();
+
     return {
       ready: rdy,
+      ready2: rdy2,
+      club: oneClub,
+      officers: allOfficers,
     };
   }, []);
-  return (ready ? (
+
+  return (ready && ready2 ? (
     <Container id={PAGE_IDS.CLUB} className="py-3 d-flex align-content-center" fluid>
+      {console.log('officers', officers)}
       <Col className="text-center">
         <Row>
           <h1 className="display-2 green-purple-gradient p-5">{club[0].clubName}</h1>
