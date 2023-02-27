@@ -5,10 +5,7 @@
     { "email":  "faculty@foo.com", "password":  "changeme", "role":  "FACULTY", "firstName": "Faculty", "lastName":  "FACULTY" },
     { "email":  "student@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
     { "email":  "office@foo.com", "password":  "changeme", "role":  "OFFICE", "firstName": "Office", "lastName":  "OFFICE" },
-    { "email":  "tech@foo.com", "password":  "changeme", "role":  "TECH", "firstName":  "Tech", "lastName":  "TECH" }
-  ],
-
-  "defaultStudents": [
+    { "email":  "tech@foo.com", "password":  "changeme", "role":  "TECH", "firstName":  "Tech", "lastName":  "TECH" },
     { "email":  "acm@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
     { "email":  "gamedev@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
     { "email":  "greyhats@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
@@ -18,7 +15,6 @@
     { "email":  "mike@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Mike", "lastName":  "Doe" },
     { "email":  "lisa@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Lisa", "lastName":  "Doe" },
     { "email":  "ken@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Ken", "lastName":  "Doe" }
-
   ],
 
   "defaultData": [
