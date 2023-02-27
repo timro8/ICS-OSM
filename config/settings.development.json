@@ -1002,8 +1002,16 @@
       "roomKey": "POST307B"
     },
     {
+      "email": "cmoore@hawaii.edu",
+      "roomKey": "POST307"
+    },
+    {
       "email": "johnson@hawaii.edu",
       "roomKey": "POST307A"
+    },
+    {
+      "email": "johnson@hawaii.edu",
+      "roomKey": "POST307"
     },
     {
       "email": "cmoore@hawaii.edu",

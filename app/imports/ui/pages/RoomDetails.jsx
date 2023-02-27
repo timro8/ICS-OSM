@@ -9,6 +9,8 @@ import { Rooms } from '../../api/room/RoomCollection';
 import { RoomNotes } from '../../api/room/RoomNotes';
 import { RoomJacks } from '../../api/room/RoomJacks';
 import { RoomEquipments } from '../../api/room/RoomEquipments';
+import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
+import { OccupantRoom } from '../../api/user/OccupantRoomCollection';
 import RoomNote from '../components/RoomNote';
 import AddNote from '../components/AddNote';
 import RoomJack from '../components/RoomJack';
@@ -18,6 +20,7 @@ import AddEquipment from '../components/AddEquipment';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 /* The RoomDetails page with equipment, jacks, and notes. */
+
 const RoomDetails = () => {
   // Get the documentID from the URL field.
   const { _id } = useParams();
@@ -29,21 +32,25 @@ const RoomDetails = () => {
     docNotes,
     docJacks,
     docEquipment,
+    docOccupants,
     ready,
     loggedInOwner,
   } = useTracker(() => {
-    // subscriptions (Admin) to Rooms, RoomNotes, RoomJacks, RoomEquipments collections
+    // subscriptions (Admin) to Rooms, RoomNotes, RoomJacks, RoomEquipments, FacultyProfiles, OccupantRoom collections
 
     const subRoom = Rooms.subscribeRoomAdmin();
     const subNotes = RoomNotes.subscribeRoomNotesAdmin();
     const subJacks = RoomJacks.subscribeRoomJacksAdmin();
     const subEquipment = RoomEquipments.subscribeRoomEquipmentAdmin();
+    const subFaculty = FacultyProfiles.subscribeFacultyProfileAdmin();
+    const subOccupant = OccupantRoom.subscribeOccupantRoomAdmin();
     const owner = Meteor.user().username;
-    const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready();
+    const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready() && subFaculty.ready() && subOccupant.ready();
     const document = Rooms.findDoc({ roomKey: _id });
     const documentNotes = RoomNotes.find({ roomId: _id }).fetch();
     const documentJacks = RoomJacks.find({ roomId: _id }).fetch();
     const documentEquipment = RoomEquipments.find({ roomId: _id }).fetch();
+    const documentOccupant = OccupantRoom.find({ roomKey: _id }).fetch();
 
     // ready when subscriptions are completed
     return {
@@ -51,11 +58,13 @@ const RoomDetails = () => {
       docNotes: documentNotes,
       docJacks: documentJacks,
       docEquipment: documentEquipment,
+      docOccupants: documentOccupant,
       loggedInOwner: owner,
       ready: rdy,
     };
   });
-
+  const occupants = docOccupants.map((o) => FacultyProfiles.find({ email: o.email }).fetch());
+  console.log(occupants);
   useEffect(() => {
     if (ready) {
       document.title = `Room - ${roomNumber}`;
@@ -68,7 +77,7 @@ const RoomDetails = () => {
       <Row>
         <Col>
           <h2>Occupants</h2>
-          List the Occupants connect RoomCollection to OccupantRoomCollection to FacultyProfileCollection
+          {occupants.map((o, index) => <p key={index}>{o.index.firstName}</p>) }
         </Col>
       </Row>
       <Row>
@@ -80,7 +89,7 @@ const RoomDetails = () => {
         </Col>
         <Col>
           <Image src={picture} alt={`${roomNumber} picture`} width={100} />
-          <Link to={`/editroom/${doc._id}`}>Edit Room</Link>
+
         </Col>
       </Row>
       <Row>
