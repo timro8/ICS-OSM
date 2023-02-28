@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, Row, Table, Card, Tab, Tabs } from 'react-bootstrap';
+import { Roles } from 'meteor/alanning:roles';
+import { Meteor } from 'meteor/meteor';
+import { Col, Container, Row, Table, Card, Tab, Tabs, Button } from 'react-bootstrap';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import AddFacultyForm from '../components/AddFacultyForm';
 import AdminPageFacultyComponent from '../components/AdminPage/AdminPageFacultyComponent';
 import AdminPageRoomsComponent from '../components/AdminPage/AdminPageRoomsComponent';
 import AdminPageReservationComponent from '../components/AdminPage/AdminPageReservationComponent';
 import { Rooms } from '../../api/room/RoomCollection';
 import { Events302 } from '../../api/events/Events302Collection';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
+import { ROLE } from '../../api/role/Role';
 
 /* Renders a table containing all of the Faculty documents. Use <AdminPage> to render each row in each tabs. */
 const AdminPage = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
+  const [show, setShow] = useState(false);
   const { facultys, rooms, events, ready } = useTracker(() => {
     // Get access to Faculty documents.
     const subscription1 = FacultyProfiles.subscribeFacultyProfileAdmin();
@@ -57,7 +62,14 @@ const AdminPage = () => {
                     <Table striped bordered hover>
                       <thead>
                         <tr>
-                          <th>Name</th>
+                          <th>Name { /* Add Faculty button */ }
+                            {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
+                              [<Button key={Math.random()} style={{ marginLeft: '1vw' }} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>]
+                            ) : ''}
+
+                            { /* pop up for add faculty */ }
+                            <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
+                          </th>
                           <th>Email</th>
                           <th>Role</th>
                           <th>Room</th>
