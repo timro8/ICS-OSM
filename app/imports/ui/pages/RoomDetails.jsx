@@ -64,7 +64,6 @@ const RoomDetails = () => {
     };
   });
   const occupants = docOccupants.map((o) => FacultyProfiles.find({ email: o.email }).fetch());
-  console.log(occupants);
   useEffect(() => {
     if (ready) {
       document.title = `Room - ${roomNumber}`;
@@ -74,10 +73,11 @@ const RoomDetails = () => {
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
       <Button variant="success" href="/adminroom">Back to List Room (Admin)</Button>
       <h1>Room {roomNumber} Details</h1>
+      <Link to={`/editroom/${doc._id}`}>Edit room</Link>
       <Row>
         <Col>
           <h2>Occupants</h2>
-          {occupants.map((o, index) => <p key={index}>{o.index.firstName}</p>) }
+          {occupants.map((occupant, index) => <div key={index}>{occupant[0].firstName} {occupant[0].lastName}</div>)}
         </Col>
       </Row>
       <Row>
@@ -89,7 +89,6 @@ const RoomDetails = () => {
         </Col>
         <Col>
           <Image src={picture} alt={`${roomNumber} picture`} width={100} />
-
         </Col>
       </Row>
       <Row>

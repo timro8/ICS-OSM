@@ -14,7 +14,7 @@ const RoomItem = ({ room }) => (
           <hr />
           <Card.Title>{room.location} {room.roomNumber}</Card.Title>
           <Card.Subtitle>
-            Occupants
+            {room.occupants.map((o, index) => <p key={index}>{o.firstName} {o.lastName}</p>)}
           </Card.Subtitle>
           <Card.Text>
             <strong>Status:</strong> {room.status}
@@ -43,7 +43,7 @@ RoomItem.propTypes = {
     status: PropTypes.string,
     capacity: PropTypes.number,
     _id: PropTypes.string,
-    occupants: PropTypes.arrayOf(PropTypes.string),
+    occupants: PropTypes.instanceOf(Array),
     roomClassification: PropTypes.string,
     picture: PropTypes.string,
   }).isRequired,
