@@ -63,7 +63,7 @@ const AdminPage = () => {
                     <Table striped bordered hover>
                       <thead>
                         <tr>
-                          <th>Name { /* Add Faculty button */ }
+                          <th style={{ width: '75mm' }}>Name { /* Add Faculty button */ }
                             {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
                               [<Button key={Math.random()} style={{ marginLeft: '1vw' }} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>]
                             ) : ''}
@@ -71,9 +71,10 @@ const AdminPage = () => {
                             { /* pop up for add faculty */ }
                             <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
                           </th>
-                          <th>Email</th>
-                          <th>Role</th>
-                          <th>Room</th>
+                          <th style={{ width: '65mm' }}>Email</th>
+                          <th style={{ width: '55mm' }}>Role</th>
+                          <th style={{ width: '30mm' }}>Room</th>
+                          <th style={{ width: '30mm' }}>Edit</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -87,8 +88,8 @@ const AdminPage = () => {
                     <Table striped bordered hover>
                       <thead>
                         <tr>
-                          <th>Room Number</th>
-                          <th>Location</th>
+                          <th style={{ width: '10mm' }}>Room Number</th>
+                          <th style={{ width: '20mm' }}>Location</th>
                           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                           <th><AddRoom /></th>
                         </tr>

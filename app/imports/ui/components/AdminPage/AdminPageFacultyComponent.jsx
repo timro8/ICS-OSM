@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
-
+import EditFacultyProfile from '../../pages/EditFacultyProfile';
 /** Renders a single row of Faculty members in a (Admin) table. See pages/AdminPageFacultyComponent.jsx. */
 const AdminPageFacultyComponent = ({ facultyProfile }) => (
   <tr>
@@ -14,6 +14,7 @@ const AdminPageFacultyComponent = ({ facultyProfile }) => (
     <td>{facultyProfile.email}</td>
     <td>{facultyProfile.facRole}</td>
     <td>{facultyProfile.rooms}</td>
+    <td><EditFacultyProfile id={facultyProfile._id}> Edit</EditFacultyProfile></td>
   </tr>
 );
 
