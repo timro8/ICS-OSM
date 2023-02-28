@@ -6,6 +6,7 @@ import { Col, Container, Row, Table, Card, Tab, Tabs, Button } from 'react-boots
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import AddFacultyForm from '../components/AddFacultyForm';
+import AddRoom from '../components/AddRoom';
 import AdminPageFacultyComponent from '../components/AdminPage/AdminPageFacultyComponent';
 import AdminPageRoomsComponent from '../components/AdminPage/AdminPageRoomsComponent';
 import AdminPageReservationComponent from '../components/AdminPage/AdminPageReservationComponent';
@@ -88,6 +89,8 @@ const AdminPage = () => {
                         <tr>
                           <th>Room Number</th>
                           <th>Location</th>
+                          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                          <th><AddRoom /></th>
                         </tr>
                       </thead>
                       <tbody>
