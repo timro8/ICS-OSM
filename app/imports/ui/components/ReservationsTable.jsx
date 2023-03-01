@@ -29,7 +29,7 @@ const ReservationsTable = () => {
     };
   }, []);
   return (ready ? (
-    <div className="scroll" style={{ width: '80rem', height: '37rem' }}>
+    <div className="scroll" style={{ width: '80rem', height: '10rem' }}>
       <Table striped bordered hover>
         <thead>
           <tr>
