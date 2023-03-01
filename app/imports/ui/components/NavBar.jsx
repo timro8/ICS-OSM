@@ -59,6 +59,7 @@ const NavBar = () => {
           <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
             <Nav className="me-auto justify-content-start">
               {currentUser ? ([
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_HOME} as={NavLink} to="/home" key="faculty">Home</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FACULTY} as={NavLink} to="/faculty" key="faculty">Faculty</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB} title="Clubs">
@@ -68,7 +69,7 @@ const NavBar = () => {
                 </NavDropdown>,
               ]) : ''}
               {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
-                [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin</Nav.Link>,
+                [
                   <Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_ROOM_ADMIN} as={NavLink} to="/adminroom" key="adminroom">Room Admin</Nav.Link>,
                 ]
               ) : ''}

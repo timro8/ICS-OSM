@@ -6,8 +6,8 @@ import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 /** Renders a single row of Faculty members in a (Admin) table. See pages/AdminPageRoomsComponent.jsx. */
 const AdminPageFacultyComponent = ({ room }) => (
   <tr>
-    <td>{room.roomNumber}</td>
     <td>{room.location}</td>
+    <td>{room.roomNumber}</td>
     <td>
       <Link className={COMPONENT_IDS.LIST_STUFF_EDIT} to={`/roomdetails/${room.roomKey}`}>Edit Room Details</Link>
     </td>
