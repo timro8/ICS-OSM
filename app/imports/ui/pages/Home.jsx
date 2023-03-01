@@ -6,6 +6,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import Admin from '../components/Admin';
 import FacultyTable from '../components/FacultyTable';
+import ReservationsTable from '../components/ReservationsTable';
 
 const roomPositions = [
   { roomNumber: '305F', top: 4, left: 4, vertical: false },
@@ -145,7 +146,7 @@ const Home = () => {
       </Row>
       <Row>
         <h2>Reservations</h2>
-
+        <ReservationsTable />
       </Row>
     </Container>
   );
