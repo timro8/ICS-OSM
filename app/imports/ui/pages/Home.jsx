@@ -5,6 +5,7 @@ import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import Admin from '../components/Admin';
+import FacultyTable from '../components/FacultyTable';
 
 const roomPositions = [
   { roomNumber: '305F', top: 4, left: 4, vertical: false },
@@ -137,6 +138,14 @@ const Home = () => {
       </Row>
       <Row>
         <Admin />
+      </Row>
+      <Row>
+        <h2>Faculty Information</h2>
+        <FacultyTable />
+      </Row>
+      <Row>
+        <h2>Reservations</h2>
+
       </Row>
     </Container>
   );
