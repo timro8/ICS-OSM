@@ -40,7 +40,7 @@ const Admin = () => {
   document.title = 'Admin';
 
   return (ready ? (
-    <Card style={{ width: '80rem', height: '37rem' }}>
+    <Card style={{ width: '80rem', height: '37rem', overflow: 'hidden' }}>
       <Card.Header>
         <Col className="text-center"><h2>Admin</h2></Col>
       </Card.Header>
