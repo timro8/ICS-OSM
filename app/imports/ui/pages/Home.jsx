@@ -4,7 +4,7 @@ import { Card, Col, Container, ProgressBar, Row } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
-import Admin from '../components/Admin';
+import Admin from '../components/AdminPage/Admin';
 
 const roomPositions = [
   { roomNumber: '305F', top: 4, left: 4, vertical: false },
