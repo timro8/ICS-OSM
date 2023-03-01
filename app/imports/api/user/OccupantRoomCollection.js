@@ -13,8 +13,8 @@ export const occupantRoomPublications = {
 class OccupantRoomCollection extends BaseCollection {
   constructor() {
     super('OccupantRoom', new SimpleSchema({
-      email: String,
-      roomKey: String,
+      facultyId: String,
+      roomId: String,
     }));
   }
 
