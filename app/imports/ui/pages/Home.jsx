@@ -52,9 +52,9 @@ const Home = () => {
   }, []);
 
   return (
-    <Container id={PAGE_IDS.HOME} className="py-3">
+    <Container id={PAGE_IDS.HOME} className="py-3" style={{ borderLeft: '0.1px solid lightgray', borderRight: '0.1px solid lightgray' }}>
       <Row>
-        <Col style={{ borderLeft: '0.1px solid lightgray', borderRight: '0.1px solid lightgray', padding: '0 2rem' }}>
+        <Col style={{ padding: '0 2rem' }}>
           <h2>Good Morning James!</h2>
           <Row className="d-flex row-cols-3">
             <Card>
@@ -76,7 +76,11 @@ const Home = () => {
               </Card.Body>
             </Card>
           </Row>
-          <h2>Pacific Ocean Science and Technology</h2>
+        </Col>
+      </Row>
+      <Row>
+        <h2>Pacific Ocean Science and Technology</h2>
+        <Col>
           <div className="map-container" style={{ overflow: 'hidden', width: MAP_WIDTH, height: MAP_HEIGHT }}>
             <div
               className="map"
