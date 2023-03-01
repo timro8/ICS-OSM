@@ -68,7 +68,7 @@ const NavBar = () => {
                 </NavDropdown>,
               ]) : ''}
               {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
-                [<Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} to="/admin" key="admin">Admin</Nav.Link>,
+                [
                   <Nav.Link id={COMPONENT_IDS.NAVBAR_LIST_ROOM_ADMIN} as={NavLink} to="/adminroom" key="adminroom">Room Admin</Nav.Link>,
                 ]
               ) : ''}
