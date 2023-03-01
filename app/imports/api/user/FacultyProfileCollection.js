@@ -164,7 +164,7 @@ class FacultyProfileCollection extends BaseProfileCollection {
   checkIntegrity() {
     const problems = [];
     this.find().forEach((doc) => {
-      if (doc.role !== ROLE.USER) {
+      if (doc.role !== ROLE.FACULTY) {
         problems.push(`FacultyProfile instance does not have ROLE.FACULTY: ${doc}`);
       }
     });

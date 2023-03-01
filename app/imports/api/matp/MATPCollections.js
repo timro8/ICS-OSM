@@ -13,6 +13,9 @@ import { OccupantRoom } from '../user/OccupantRoomCollection';
 import { Discussions } from '../discussion/Discussion';
 import { Clubs } from '../club/Club';
 import { ClubOfficers } from '../clubofficers/ClubOfficersCollection';
+import { StudentProfiles } from '../user/StudentProfileCollection';
+import { OfficeProfiles } from '../user/OfficeProfileCollection';
+import { TechProfiles } from '../user/TechProfileCollection';
 
 class MATPClass {
   collections;
@@ -28,6 +31,9 @@ class MATPClass {
       Stuffs,
       UserProfiles,
       FacultyProfiles,
+      StudentProfiles,
+      OfficeProfiles,
+      TechProfiles,
       Rooms,
       Faculties,
       Events302,
@@ -46,6 +52,9 @@ class MATPClass {
       AdminProfiles,
       UserProfiles,
       FacultyProfiles,
+      StudentProfiles,
+      OfficeProfiles,
+      TechProfiles,
       Stuffs,
       Rooms,
       Faculties,
