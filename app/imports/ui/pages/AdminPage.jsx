@@ -19,7 +19,7 @@ import { ROLE } from '../../api/role/Role';
 const AdminPage = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const [show, setShow] = useState(false);
-  const { facultys, rooms, events, ready } = useTracker(() => {
+  const { faculties, rooms, events, ready } = useTracker(() => {
     // Get access to Faculty documents.
     const subscription1 = FacultyProfiles.subscribeFacultyProfileAdmin();
     const subscription2 = Rooms.subscribeRoomAdmin();
@@ -31,7 +31,7 @@ const AdminPage = () => {
     const items2 = Rooms.find({}).fetch();
     const items3 = Events302.find({}).fetch();
     return {
-      facultys: items1,
+      faculties: items1,
       rooms: items2,
       events: items3,
       ready: rdy,
@@ -73,11 +73,12 @@ const AdminPage = () => {
                             ) : ''}
 
                             { /* pop up for add faculty */ }
-                            <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} /></th>
+                            <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
-                        {facultys.map((faculty) => <AdminPageFacultyComponent key={faculty._id} faculty={faculty} facultyProfile={faculty} />)}
+                        {faculties.map((faculty) => <AdminPageFacultyComponent key={faculty._id} faculty={faculty} facultyProfile={faculty} />)}
                       </tbody>
                     </Table>
                   </div>
