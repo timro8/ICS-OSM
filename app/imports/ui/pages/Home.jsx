@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Card, Col, Container, ProgressBar, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, ProgressBar, Row } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -51,9 +51,9 @@ const Home = () => {
   }, []);
 
   return (
-    <Container id={PAGE_IDS.HOME} className="py-3" style={{ borderLeft: '0.1px solid lightgray', borderRight: '0.1px solid lightgray' }}>
+    <Container id={PAGE_IDS.HOME} className="py-3">
       <Row>
-        <Col style={{ padding: '0 2rem' }}>
+        <div className="col-8" style={{ padding: '0 2rem' }}>
           <h2>Good Morning James!</h2>
           <Row className="d-flex row-cols-3">
             <Card>
@@ -75,11 +75,15 @@ const Home = () => {
               </Card.Body>
             </Card>
           </Row>
-        </Col>
+        </div>
+        <div className="col-4 flex" style={{ alignContent: 'bottom' }}>
+          <Button style={{ width: '20rem', margin: '5px' }}>Add faculty</Button>
+          <Button style={{ width: '20rem', margin: '5px' }}>Reserve room</Button>
+        </div>
       </Row>
       <Row>
-        <h2>Pacific Ocean Science and Technology</h2>
         <Col>
+          <h2>Pacific Ocean Science and Technology</h2>
           <div className="map-container" style={{ overflow: 'hidden', width: MAP_WIDTH, height: MAP_HEIGHT }}>
             <div
               className="map"
@@ -141,7 +145,7 @@ const Home = () => {
         </Col>
       </Row>
       <Row>
-        <h2>Faculty Information</h2>
+        <h2>Faculties</h2>
         <FacultyTable />
       </Row>
       <Row>
