@@ -83,8 +83,6 @@ const Admin = () => {
                   <tr>
                     <th style={{ width: '10mm' }}>Room Number</th>
                     <th style={{ width: '20mm' }}>Location</th>
-                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                    <th><AddRoom /></th>
                   </tr>
                 </thead>
                 <tbody>
