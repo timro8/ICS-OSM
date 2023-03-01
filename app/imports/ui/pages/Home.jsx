@@ -138,9 +138,6 @@ const Home = () => {
         </Col>
       </Row>
       <Row>
-        <Admin />
-      </Row>
-      <Row>
         <h2>Faculty Information</h2>
         <FacultyTable />
       </Row>
