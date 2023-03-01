@@ -117,5 +117,4 @@ const Admin = () => {
 
 export default Admin;
 
-// TODO: remove as a page
 // TODO: Update associated components
