@@ -4,7 +4,6 @@ import { Card, Col, Container, ProgressBar, Row } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
-import Admin from '../components/Admin';
 import FacultyTable from '../components/FacultyTable';
 import ReservationsTable from '../components/ReservationsTable';
 
