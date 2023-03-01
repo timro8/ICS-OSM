@@ -14,7 +14,7 @@ import { Events302 } from '../../api/events/Events302Collection';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { ROLE } from '../../api/role/Role';
 
-/* Renders a table containing all of the Faculty documents. Use <AdminPage> to render each row in each tabs. */
+/* Renders a table containing all of the Faculty documents. Use <Admin> to render each row in each tabs. */
 const Admin = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const [show, setShow] = useState(false);
@@ -118,3 +118,4 @@ const Admin = () => {
 export default Admin;
 
 // TODO: remove as a page
+// TODO: Update associated components
