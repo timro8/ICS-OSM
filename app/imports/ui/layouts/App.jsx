@@ -8,7 +8,6 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Home from '../pages/Home';
 import ListStuff from '../pages/ListStuff';
-import AdminPage from '../pages/AdminPage';
 import ListRoom from '../pages/ListRoom';
 import ListRoomAdmin from '../pages/ListRoomAdmin';
 import EditStuff from '../pages/EditStuff';
@@ -58,7 +57,6 @@ const App = () => {
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/listroom" element={<ProtectedRoute><ListRoom /></ProtectedRoute>} />
           <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
-          <Route path="/admin" element={<AdminProtectedRoute ready={ready}><AdminPage /></AdminProtectedRoute>} />
           <Route path="/adminroom" element={<AdminProtectedRoute ready={ready}><ListRoomAdmin /></AdminProtectedRoute>} />
           <Route path="/roomdetails/:_id" element={<ProtectedRoute><RoomDetails /></ProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />

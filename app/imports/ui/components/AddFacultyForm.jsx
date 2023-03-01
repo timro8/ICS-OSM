@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button, Modal, Badge, CloseButton, FormLabel, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -7,9 +7,9 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { AutoForm, ErrorsField, SelectField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
-import axios from 'axios';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
+import { uploadImgUrl } from '../../startup/client/uploadImg.js';
 
 const AddFacultyForm = props => {
 
@@ -101,37 +101,26 @@ const AddFacultyForm = props => {
   const [currentEndTime, setEndTime] = useState('--');
   const [selectedOfficeHours, setSelectedOfficeHours] = useState([]);
   const [selectedImage, setSelectedImage] = useState('https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg');
-  const [imageSubmit, setImageSubmit] = useState(null);
+  const imageSubmit = useRef(null);
 
   // On submit, insert the data.
-  const submit = (data, formRef) => {
-    const formData = new FormData();
-    formData.append('file', imageSubmit);
-    formData.append('upload_preset', 'sasn8bgb');
-    // Upload the image to Cloudinary
-    axios.post('https://api.cloudinary.com/v1_1/dmbrfkjk3/image/upload', formData)
-      .then((response) => {
-        const imageUrl = response.data.secure_url;
-        Meteor.call(
-          'insertFaculty',
-          data,
-          selectedRoom,
-          selectedOfficeHours,
-          imageUrl,
-          (err) => {
-            if (err) {
-              console.log(err.message);
-              swal('Error', err.message, 'error');
-            } else {
-              swal('Success', 'Faculty added successfully', 'success');
-            }
-          },
-        );
-        setSelectedImage(imageUrl);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const submit = async (data, formRef) => {
+    const imageUrl = await uploadImgUrl(imageSubmit.current);
+    Meteor.call(
+      'insertFaculty',
+      data,
+      selectedRoom,
+      selectedOfficeHours,
+      imageUrl,
+      (err) => {
+        if (err) {
+          console.log(err.message);
+          swal('Error', err.message, 'error');
+        } else {
+          swal('Success', 'Faculty added successfully', 'success');
+        }
+      },
+    );
 
     formRef.reset();
   };
@@ -188,7 +177,7 @@ const AddFacultyForm = props => {
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    setImageSubmit(file);
+    imageSubmit.current = file;
     setSelectedImage(URL.createObjectURL(file));
   };
 
