@@ -5,7 +5,6 @@ import { Meteor } from 'meteor/meteor';
 import { Col, Container, Table, Card, Tab, Tabs, Button } from 'react-bootstrap';
 import LoadingSpinner from './LoadingSpinner';
 import AddFacultyForm from './AddFacultyForm';
-import AddRoom from './AddRoom';
 import AdminPageFacultyComponent from './AdminPage/AdminPageFacultyComponent';
 import AdminPageRoomsComponent from './AdminPage/AdminPageRoomsComponent';
 import AdminPageReservationComponent from './AdminPage/AdminPageReservationComponent';
