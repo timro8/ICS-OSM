@@ -38,14 +38,6 @@ class FacultyProfileCollection extends BaseProfileCollection {
         type: String,
         optional: true,
       },
-      rooms: {
-        type: Array,
-        optional: true,
-      },
-      'rooms.$': {
-        type: String,
-        optional: true,
-      },
       phoneNumber: {
         type: String,
         optional: true,
@@ -66,18 +58,17 @@ class FacultyProfileCollection extends BaseProfileCollection {
    * @param facRole
    * @param image
    * @param bio
-   * @param rooms
    * @param phoneNumber
    * @param officeHours
    */
-  define({ email, firstName, lastName, password, facRole, image, bio, rooms, phoneNumber, officeHours }) {
+  define({ email, firstName, lastName, password, facRole, image, bio, phoneNumber, officeHours }) {
     if (Meteor.isServer) {
       const username = email;
       const user = this.findOne({ email, firstName, lastName });
       if (!user) {
         const role = ROLE.USER;
         const userID = Users.define({ username, role, password });
-        const profileID = this._collection.insert({ email, password, firstName, lastName, userID, role, facRole, image, bio, rooms, phoneNumber, officeHours });
+        const profileID = this._collection.insert({ email, password, firstName, lastName, userID, role, facRole, image, bio, phoneNumber, officeHours });
         this._collection.update(profileID, { $set: { userID } });
         return profileID;
       }
@@ -95,11 +86,10 @@ class FacultyProfileCollection extends BaseProfileCollection {
    * @param facRole
    * @param image
    * @param bio
-   * @param rooms
    * @param phoneNumber
    * @param officeHours
    */
-  update(profileID, { password, firstName, lastName, facRole, image, bio, rooms, phoneNumber, officeHours }) {
+  update(profileID, { password, firstName, lastName, facRole, image, bio, phoneNumber, officeHours }) {
     this.assertDefined(profileID);
     const updateData = {};
     if (password) {
@@ -119,9 +109,6 @@ class FacultyProfileCollection extends BaseProfileCollection {
     }
     if (bio) {
       updateData.bio = bio;
-    }
-    if (rooms) {
-      updateData.rooms = rooms;
     }
     if (phoneNumber) {
       updateData.phoneNumber = phoneNumber;
@@ -217,7 +204,7 @@ class FacultyProfileCollection extends BaseProfileCollection {
   /**
    * Returns an object representing the StudentProfile profileID in a format acceptable to define().
    * @param profileID The profileID of a StudentProfile
-   * @returns {{firstName: *, lastName: *, image: *, password: *, rooms: *, phoneNumber: (*|number), facRole: *, bio: *, officeHours: *, email: *}} An object representing the definition of docID.
+   * @returns {{firstName: *, lastName: *, image: *, password: *, phoneNumber: (*|number), facRole: *, bio: *, officeHours: *, email: *}} An object representing the definition of docID.
    */
   dumpOne(profileID) {
     const doc = this.findDoc(profileID);
@@ -228,10 +215,9 @@ class FacultyProfileCollection extends BaseProfileCollection {
     const facRole = doc.facRole;
     const image = doc.role;
     const bio = doc.bio;
-    const rooms = doc.rooms;
     const phoneNumber = doc.roomNumber;
     const officeHours = doc.officeHours;
-    return { email, password, firstName, lastName, facRole, image, bio, rooms, phoneNumber, officeHours }; // CAM this is not enough for the define method. We lose the password.
+    return { email, password, firstName, lastName, facRole, image, bio, phoneNumber, officeHours }; // CAM this is not enough for the define method. We lose the password.
   }
 }
 
