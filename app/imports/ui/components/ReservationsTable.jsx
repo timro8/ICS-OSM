@@ -29,8 +29,8 @@ const ReservationsTable = () => {
     };
   }, []);
   return (ready ? (
-    <div className="scroll" style={{ height: '10rem' }}>
-      <Table striped hover>
+    <div className="scroll" style={{ height: '15rem' }}>
+      <Table hover>
         <thead>
           <tr>
             <th>Name</th>

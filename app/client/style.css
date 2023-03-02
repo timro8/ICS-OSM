@@ -164,8 +164,8 @@ body {
 }
 
 .simple-card {
-  box-shadow: 0 5px 20px 1px #e1e1e1;
-  border-radius: 5px;
+  box-shadow: 0 7px 20px 1px #e1e1e1;
+  border-radius: 15px;
   padding: 10px;
 }
 

@@ -36,7 +36,7 @@ const FacultyTable = () => {
 
   return (ready ? (
     <div className="scroll" style={{ height: '30rem' }}>
-      <Table striped hover className="scroll">
+      <Table hover className="scroll">
         <thead>
           <tr>
             <th>Name</th>

@@ -68,7 +68,7 @@ const Home = () => {
       </Row>
       <Row className="simple-card">
         <Col>
-          <h2>Pacific Ocean Science and Technology</h2>
+          <h2 style={{ margin: '15px 0' }}>Pacific Ocean Science and Technology</h2>
           <div className="map-container" style={{ overflow: 'hidden', width: MAP_WIDTH, height: MAP_HEIGHT }}>
             <div
               className="map"
@@ -123,7 +123,7 @@ const Home = () => {
           </div>
         </Col>
         <Col>
-          <h2>List View</h2>
+          <h2 style={{ margin: '15px 0' }}>List View</h2>
           <h3 style={{ fontSize: '1.1rem', paddingBottom: '1rem' }}>Occupied Rooms</h3>
           <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Vacant Rooms</h3>
           <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Rooms Out of Commission</h3>
