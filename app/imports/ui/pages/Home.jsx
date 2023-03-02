@@ -52,22 +52,19 @@ const Home = () => {
 
   return (
     <Container id={PAGE_IDS.HOME} className="py-3">
-      <Row>
-        <h2>Good Morning James!</h2>
-        <Row className="d-flex justify-content-between">
-          <div style={{ width: '25rem' }}>
-            Rooms Occupied
-            <ProgressBar now={45} />
-          </div>
-          <div style={{ width: '25rem' }}>
-            Rooms Vacant
-            <ProgressBar variant="info" now={9} />
-          </div>
-          <div style={{ width: '25rem' }}>
-            Rooms Out of Commission
-            <ProgressBar variant="danger" now={2} />
-          </div>
-        </Row>
+      <Row className="d-flex justify-content-between">
+        <div style={{ width: '25rem' }}>
+          Rooms Occupied
+          <ProgressBar now={45} />
+        </div>
+        <div style={{ width: '25rem' }}>
+          Rooms Vacant
+          <ProgressBar variant="info" now={9} />
+        </div>
+        <div style={{ width: '25rem' }}>
+          Rooms Out of Commission
+          <ProgressBar variant="danger" now={2} />
+        </div>
       </Row>
       <Row className="simple-card">
         <Col>
