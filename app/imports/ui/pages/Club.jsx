@@ -7,6 +7,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
 import { ClubOfficers } from '../../api/clubofficers/ClubOfficersCollection';
 import { StudentProfiles } from '../../api/user/StudentProfileCollection';
+import EditClub from '../components/EditClub';
 
 const Club = () => {
   const { _id } = useParams();
@@ -68,6 +69,9 @@ const Club = () => {
         <Row className="pt-2">
           <h3>JOIN US</h3>
           <p>{club[0].joinLink}</p>
+        </Row>
+        <Row>
+          <EditClub id={_id} />
         </Row>
       </Col>
     </Container>
