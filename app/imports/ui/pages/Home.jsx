@@ -53,33 +53,27 @@ const Home = () => {
   return (
     <Container id={PAGE_IDS.HOME} className="py-3">
       <Row>
-        <div className="col-8" style={{ padding: '0 2rem' }}>
-          <h2>Good Morning James!</h2>
-          <Row className="d-flex row-cols-3">
-            <Card>
-              <Card.Body>
-                <Card.Title>Rooms Occupied</Card.Title>
-                <ProgressBar now={45} />
-              </Card.Body>
-            </Card>
-            <Card>
-              <Card.Body>
-                <Card.Title>Rooms Vacant</Card.Title>
-                <ProgressBar variant="info" now={9} />
-              </Card.Body>
-            </Card>
-            <Card>
-              <Card.Body>
-                <Card.Title>Rooms Out of Commission</Card.Title>
-                <ProgressBar variant="danger" now={2} />
-              </Card.Body>
-            </Card>
-          </Row>
-        </div>
-        <div className="col-4 flex" style={{ alignContent: 'bottom' }}>
-          <Button style={{ width: '20rem', margin: '5px' }}>Add faculty</Button>
-          <Button style={{ width: '20rem', margin: '5px' }}>Reserve room</Button>
-        </div>
+        <h2>Good Morning James!</h2>
+        <Row className="d-flex row-cols-3">
+          <Card>
+            <Card.Body>
+              <Card.Title>Rooms Occupied</Card.Title>
+              <ProgressBar now={45} />
+            </Card.Body>
+          </Card>
+          <Card>
+            <Card.Body>
+              <Card.Title>Rooms Vacant</Card.Title>
+              <ProgressBar variant="info" now={9} />
+            </Card.Body>
+          </Card>
+          <Card>
+            <Card.Body>
+              <Card.Title>Rooms Out of Commission</Card.Title>
+              <ProgressBar variant="danger" now={2} />
+            </Card.Body>
+          </Card>
+        </Row>
       </Row>
       <Row>
         <Col>
@@ -146,10 +140,12 @@ const Home = () => {
       </Row>
       <Row>
         <h2>Faculties</h2>
+        <Button style={{ width: '20rem', margin: '5px' }}>Add faculty</Button>
         <FacultyTable />
       </Row>
       <Row>
         <h2>Reservations</h2>
+        <Button style={{ width: '20rem', margin: '5px' }}>Reserve room</Button>
         <ReservationsTable />
       </Row>
     </Container>
