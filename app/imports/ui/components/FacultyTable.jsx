@@ -51,6 +51,7 @@ const FacultyTable = () => {
               <th>Email</th>
               <th>Role</th>
               <th>Room</th>
+              <th> </th>
             </tr>
           </thead>
           <tbody>
