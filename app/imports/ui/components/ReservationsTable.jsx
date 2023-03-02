@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Table } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import LoadingSpinner from './LoadingSpinner';
 import AdminPageReservationComponent from './AdminPage/AdminPageReservationComponent';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -29,19 +29,25 @@ const ReservationsTable = () => {
     };
   }, []);
   return (ready ? (
-    <div className="scroll" style={{ height: '15rem' }}>
-      <Table hover>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Duration</th>
-            <th>Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          {events.map((event) => <AdminPageReservationComponent key={event._id} event={event} Events302={event} />)}
-        </tbody>
-      </Table>
+    <div>
+      <div className="d-flex justify-content-between align-items-center" style={{ margin: '15px 0' }}>
+        <h2>Reservations</h2>
+        <Button style={{ width: '15rem', margin: '5px' }}>Reserve room</Button>
+      </div>
+      <div className="scroll" style={{ height: '15rem' }}>
+        <Table hover>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Duration</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {events.map((event) => <AdminPageReservationComponent key={event._id} event={event} Events302={event} />)}
+          </tbody>
+        </Table>
+      </div>
     </div>
   ) : <LoadingSpinner />);
 };

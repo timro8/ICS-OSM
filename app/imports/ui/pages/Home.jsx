@@ -134,10 +134,6 @@ const Home = () => {
       </Row>
       <Row>
         <div className="simple-card">
-          <div className="d-flex justify-content-between align-items-center" style={{ margin: '15px 0' }}>
-            <h2>Reservations</h2>
-            <Button style={{ width: '15rem', margin: '5px' }}>Reserve room</Button>
-          </div>
           <ReservationsTable />
         </div>
       </Row>
