@@ -38,8 +38,8 @@ const FacultyTable = () => {
     <div>
       <div className="d-flex justify-content-between align-items-center" style={{ margin: '15px 0' }}>
         <h2>Faculties</h2>
-        {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
-          [<Button key={Math.random()} style={{ width: '15rem' }} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>]
+        {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
+          [<Button key={Math.random()} style={{ width: '15rem' }} variant="primary" onClick={() => setShow(true)}>Add Faculty</Button>]
         ) : ''}
         <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
       </div>
