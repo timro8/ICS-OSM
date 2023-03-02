@@ -6,30 +6,40 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
 import { ClubOfficers } from '../../api/clubofficers/ClubOfficersCollection';
-import { UserProfiles } from '../../api/user/UserProfileCollection';
 import { StudentProfiles } from '../../api/user/StudentProfileCollection';
 
 const Club = () => {
   const { _id } = useParams();
-  const { ready, club, officers } = useTracker(() => {
+  const { ready, club, officers, students } = useTracker(() => {
     const clubSubscription = Clubs.subscribeClub();
     const officerSubscription = ClubOfficers.subscribeClubOfficers();
     const studentSubscription = StudentProfiles.subscribeStudentProfile();
-    console.log('student sub', studentSubscription.ready());
-    const rdy = clubSubscription.ready() && officerSubscription.ready();
+    const rdy = clubSubscription.ready() && officerSubscription.ready() && studentSubscription.ready();
     const oneClub = Clubs.find({ _id: _id }, { sort: { clubName: 1 } }).fetch();
     const allOfficers = ClubOfficers.find().fetch();
+    const allStudents = StudentProfiles.find().fetch();
 
     return {
       ready: rdy,
       club: oneClub,
       officers: allOfficers,
+      students: allStudents,
     };
   }, []);
 
+  const getEmails = (officerData, studentData) => {
+    const filteredOfficerEmails = officerData
+      .filter((o) => o.clubId === club[0].clubName)
+      .map((member) => member.studentId);
+
+    return studentData.filter((student) => filteredOfficerEmails.includes(student.email));
+  };
+
   return (ready ? (
     <Container id={PAGE_IDS.CLUB} className="py-3 d-flex align-content-center" fluid>
+      {console.log('students', students)}
       {console.log('officers', officers.filter((o) => o.clubId === club[0].clubName))}
+      {console.log('getEmails', getEmails(officers, students))};
       <Col className="text-center">
         <Row>
           <h1 className="display-2 green-purple-gradient p-5">{club[0].clubName}</h1>
