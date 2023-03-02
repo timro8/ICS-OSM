@@ -5,6 +5,7 @@ import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { FacultyProfiles } from './FacultyProfileCollection';
 import { OfficeProfiles } from './OfficeProfileCollection';
+import { TechProfiles } from './TechProfileCollection';
 import { Rooms } from '../room/RoomCollection';
 import { ROLE } from '../role/Role';
 
@@ -29,8 +30,11 @@ class OccupantRoomCollection extends BaseCollection {
    */
   define({ email, roomKey }) {
     let user = FacultyProfiles.findOne({ email: email });
-    if (!user) {
+    if (user === undefined) {
       user = OfficeProfiles.findOne({ email: email });
+    }
+    if (user === undefined) {
+      user = TechProfiles.findOne({ email: email });
     }
     const userId = user._id;
     const room = Rooms.findOne({ roomKey: roomKey });

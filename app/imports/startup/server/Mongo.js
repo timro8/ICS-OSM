@@ -8,6 +8,7 @@ import { Discussions } from '../../api/discussion/Discussion';
 import { Clubs } from '../../api/club/Club';
 import { ClubOfficers } from '../../api/clubofficers/ClubOfficersCollection';
 import { OfficeProfiles } from '../../api/user/OfficeProfileCollection';
+import { TechProfiles } from '../../api/user/TechProfileCollection';
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
@@ -17,7 +18,7 @@ function addData(data) {
 }
 
 function addRoomData(data) {
-  console.log(`  Adding: ${data.roomNumber} (${data.occupants})`);
+  console.log(`  Adding: ${data.roomNumber}`);
   Rooms.define(data);
 }
 
@@ -56,6 +57,11 @@ function addOfficeData(data) {
   OfficeProfiles.define(data);
 }
 
+function addTechData(data) {
+  console.log(`  Adding: ${data.firstName} ${data.lastName}`);
+  TechProfiles.define(data);
+}
+
 // Initialize the StuffsCollection if empty.
 if (Stuffs.count() === 0) {
   if (Meteor.settings.defaultData) {
@@ -86,10 +92,17 @@ if (Events302.count() === 0) {
   }
 }
 
-if (OfficeProfiles.count() === 0) {
+if (OfficeProfiles.count() === 1) {
   if (Meteor.settings.defaultOfficeData) {
     console.log('Creating default office data.');
     Meteor.settings.defaultOfficeData.map(data => addOfficeData(data));
+  }
+}
+
+if (TechProfiles.count() === 1) {
+  if (Meteor.settings.defaultTechData) {
+    console.log('Creating default tech data.');
+    Meteor.settings.defaultTechData.map(data => addTechData(data));
   }
 }
 
