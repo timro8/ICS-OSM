@@ -35,22 +35,15 @@ const FacultyTable = () => {
   }, []);
 
   return (ready ? (
-    <div className="scroll" style={{ width: '80rem', height: '30rem' }}>
-      <Table striped bordered hover className="scroll">
+    <div className="scroll" style={{ height: '20rem' }}>
+      <Table striped hover className="scroll">
         <thead>
           <tr>
-            <th style={{ width: '75mm' }}>Name</th>
-            <th style={{ width: '65mm' }}>Email</th>
-            <th style={{ width: '55mm' }}>Role</th>
-            <th style={{ width: '30mm' }}>Room</th>
-            <th style={{ width: '30mm' }}>{ /* Add Faculty button */ }
-              {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
-                [<Button key={Math.random()} style={{ marginLeft: '1vw' }} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>]
-              ) : ''}
-
-              { /* pop up for add faculty */ }
-              <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
-            </th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Room</th>
+            <th />
           </tr>
         </thead>
         <tbody>

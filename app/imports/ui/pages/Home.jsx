@@ -54,28 +54,22 @@ const Home = () => {
     <Container id={PAGE_IDS.HOME} className="py-3">
       <Row>
         <h2>Good Morning James!</h2>
-        <Row className="d-flex row-cols-3">
-          <Card>
-            <Card.Body>
-              <Card.Title>Rooms Occupied</Card.Title>
-              <ProgressBar now={45} />
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Body>
-              <Card.Title>Rooms Vacant</Card.Title>
-              <ProgressBar variant="info" now={9} />
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Body>
-              <Card.Title>Rooms Out of Commission</Card.Title>
-              <ProgressBar variant="danger" now={2} />
-            </Card.Body>
-          </Card>
+        <Row className="d-flex justify-content-between">
+          <div style={{ width: '25rem' }}>
+            Rooms Occupied
+            <ProgressBar now={45} />
+          </div>
+          <div style={{ width: '25rem' }}>
+            Rooms Vacant
+            <ProgressBar variant="info" now={9} />
+          </div>
+          <div style={{ width: '25rem' }}>
+            Rooms Out of Commission
+            <ProgressBar variant="danger" now={2} />
+          </div>
         </Row>
       </Row>
-      <Row>
+      <Row className="simple-card">
         <Col>
           <h2>Pacific Ocean Science and Technology</h2>
           <div className="map-container" style={{ overflow: 'hidden', width: MAP_WIDTH, height: MAP_HEIGHT }}>
@@ -138,15 +132,21 @@ const Home = () => {
           <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Rooms Out of Commission</h3>
         </Col>
       </Row>
-      <Row>
-        <h2>Faculties</h2>
-        <Button style={{ width: '20rem', margin: '5px' }}>Add faculty</Button>
+      <Row className="simple-card">
+        <div className="d-flex justify-content-between align-items-center" style={{ margin: '15px 0' }}>
+          <h2>Faculties</h2>
+          <Button style={{ width: '15rem', margin: '5px' }}>Add faculty</Button>
+        </div>
         <FacultyTable />
       </Row>
       <Row>
-        <h2>Reservations</h2>
-        <Button style={{ width: '20rem', margin: '5px' }}>Reserve room</Button>
-        <ReservationsTable />
+        <div className="simple-card">
+          <div className="d-flex justify-content-between align-items-center" style={{ margin: '15px 0' }}>
+            <h2>Reservations</h2>
+            <Button style={{ width: '15rem', margin: '5px' }}>Reserve room</Button>
+          </div>
+          <ReservationsTable />
+        </div>
       </Row>
     </Container>
   );
