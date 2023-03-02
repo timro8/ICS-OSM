@@ -130,10 +130,6 @@ const Home = () => {
         </Col>
       </Row>
       <Row className="simple-card">
-        <div className="d-flex justify-content-between align-items-center" style={{ margin: '15px 0' }}>
-          <h2>Faculties</h2>
-          <Button style={{ width: '15rem', margin: '5px' }}>Add faculty</Button>
-        </div>
         <FacultyTable />
       </Row>
       <Row>

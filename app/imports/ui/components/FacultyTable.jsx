@@ -35,21 +35,25 @@ const FacultyTable = () => {
   }, []);
 
   return (ready ? (
-    <div className="scroll" style={{ height: '30rem' }}>
-      <Table hover className="scroll">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Room</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
-          {faculties.map((faculty) => <AdminPageFacultyComponent key={faculty._id} faculty={faculty} facultyProfile={faculty} />)}
-        </tbody>
-      </Table>
+    <div>
+      <div className="d-flex justify-content-between align-items-center" style={{ margin: '15px 0' }}>
+        <h2>Faculties</h2>
+      </div>
+      <div className="scroll" style={{ height: '30rem' }}>
+        <Table hover className="scroll">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Room</th>
+            </tr>
+          </thead>
+          <tbody>
+            {faculties.map((faculty) => <AdminPageFacultyComponent key={faculty._id} faculty={faculty} facultyProfile={faculty} />)}
+          </tbody>
+        </Table>
+      </div>
     </div>
   ) : <LoadingSpinner />);
 };
