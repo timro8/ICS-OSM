@@ -1008,6 +1008,10 @@
     {
       "email": "cmoore@hawaii.edu",
       "roomKey": "POST311"
+    },
+    {
+      "email": "wesleysu@hawaii.edu",
+      "roomKey": "POST303B"
     }
   ],
 
@@ -1044,6 +1048,13 @@
     { "clubKey":"clubSWITCH", "clubName":  "SWITCH","image":  "https://acmanoa.github.io/assets/img/logos/switchlogo.png", "description":  "SWITCH (Supporting Women in Technology Computing Hawaii) is the culmination of efforts of the awesome students, faculty, and working professionals supporting social change in the ICS department. Established in Fall 2019, we are officially a UH Manoa RIO, ACM-W Chapter, and Girls Who Code College Loops Chapter. We strive to provide useful resources from these organizations to improve your professional, technical, and personal development.",
       "joinLink": "https://discord.com/invite/ksxdKeZBxP",
       "meetingDay": "", "meetingTime": "", "meetingLocation": "", "officers": ["officers"], "advisor": "advisor"
+    }
+  ],
+  "defaultOfficeData": [
+    {
+      "email": "wesleysu@hawaii.edu",
+      "firstName": "Wesley",
+      "lastName": "Sugimoto"
     }
   ],
   

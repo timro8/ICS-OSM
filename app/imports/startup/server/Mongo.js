@@ -7,6 +7,7 @@ import { OccupantRoom } from '../../api/user/OccupantRoomCollection';
 import { Discussions } from '../../api/discussion/Discussion';
 import { Clubs } from '../../api/club/Club';
 import { ClubOfficers } from '../../api/clubofficers/ClubOfficersCollection';
+import { OfficeProfiles } from '../../api/user/OfficeProfileCollection';
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
@@ -50,6 +51,11 @@ function addClubOfficersData(data) {
   ClubOfficers.define(data);
 }
 
+function addOfficeData(data) {
+  console.log(`  Adding: ${data.firstName} ${data.lastName}`);
+  OfficeProfiles.define(data);
+}
+
 // Initialize the StuffsCollection if empty.
 if (Stuffs.count() === 0) {
   if (Meteor.settings.defaultData) {
@@ -77,6 +83,13 @@ if (Events302.count() === 0) {
   if (Meteor.settings.defaultEvents302Data) {
     console.log('Creating default event data for room 302.');
     Meteor.settings.defaultEvents302Data.map(data => addEvents302Data(data));
+  }
+}
+
+if (OfficeProfiles.count() === 0) {
+  if (Meteor.settings.defaultOfficeData) {
+    console.log('Creating default office data.');
+    Meteor.settings.defaultOfficeData.map(data => addOfficeData(data));
   }
 }
 
