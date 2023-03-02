@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Button, Card, Col, Container, ProgressBar, Row } from 'react-bootstrap';
+import { Col, Container, ProgressBar, Row } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
