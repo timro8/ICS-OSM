@@ -132,10 +132,8 @@ const Home = () => {
       <Row className="simple-card">
         <FacultyTable />
       </Row>
-      <Row>
-        <div className="simple-card">
-          <ReservationsTable />
-        </div>
+      <Row className="simple-card">
+        <ReservationsTable />
       </Row>
     </Container>
   );
