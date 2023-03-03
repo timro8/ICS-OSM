@@ -32,7 +32,7 @@ const ReservationsTable = () => {
     <div>
       <div className="d-flex justify-content-between align-items-center" style={{ margin: '15px 0' }}>
         <h2>Reservations</h2>
-        <Button style={{ width: '15rem', margin: '5px' }}>Reserve room</Button>
+        <Button href="cal" style={{ width: '15rem', margin: '5px' }}>Reserve room</Button>
       </div>
       <div className="scroll" style={{ height: '15rem' }}>
         <Table hover>
