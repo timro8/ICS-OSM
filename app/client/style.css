@@ -135,14 +135,13 @@ body {
 }
 
 .map-container {
-  box-shadow: 0 0 20px 1px #ececec;
+  border: 1px solid #c8c8c8;
   border-radius: 15px;
 }
 
 #home h2 {
   font-size: 1.4rem;
   font-weight: 600;
-  padding: 3rem 0 1rem 0;
 }
 
 #landing-login-btn {
@@ -162,4 +161,15 @@ body {
 
 .green-purple-gradient {
   background: radial-gradient(circle at 10% 80%, rgb(200, 194, 252) 10%, rgb(140, 222, 211) 89.8%);
+}
+
+.simple-card {
+  box-shadow: 0 7px 20px 1px #e1e1e1;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+#home > .row {
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
