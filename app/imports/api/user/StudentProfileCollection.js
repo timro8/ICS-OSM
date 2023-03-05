@@ -23,7 +23,7 @@ class StudentProfileCollection extends BaseProfileCollection {
       firstName: String,
       lastName: String,
       isClubPresident: {
-        type: String,
+        type: Boolean,
         optional: true,
         defaultValue: false,
       },

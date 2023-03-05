@@ -38,9 +38,7 @@ const Club = () => {
 
   return (ready ? (
     <Container id={PAGE_IDS.CLUB} className="py-3 d-flex align-content-center" fluid>
-      {console.log('students', students)}
-      {console.log('officers', officers.filter((o) => o.clubId === club[0].clubName))}
-      {console.log('getEmails', getEmails(officers, students))};
+      { console.log(getEmails(officers, students)) }
       <Col className="text-center">
         <Row>
           <h1 className="display-2 green-purple-gradient p-5">{club[0].clubName}</h1>
@@ -58,7 +56,16 @@ const Club = () => {
           <h3>OFFICERS</h3>
           <Col>
             <Row className="d-flex justify-content-center">
-              {club[0].officers}
+              {getEmails(officers, students).map((o, i) => (
+                <div key={`${i}`}>
+                  <div>
+                    {o.firstName} {o.lastName}
+                  </div>
+                  <div>
+                    {o.clubPosition}
+                  </div>
+                </div>
+              ))}
             </Row>
           </Col>
         </Row>
@@ -68,7 +75,7 @@ const Club = () => {
         </Row>
         <Row className="pt-2">
           <h3>JOIN US</h3>
-          <p>{club[0].joinLink}</p>
+          <a href={club[0].joinLink}>{club[0].joinLink}</a>
         </Row>
         <Row>
           <EditClub id={_id} />
