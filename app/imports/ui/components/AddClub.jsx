@@ -7,17 +7,17 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { Clubs } from '../../api/club/Club';
 
-// form schema based on the Room collection
+// form schema based on the Club collection
 const bridge = new SimpleSchema2Bridge(Clubs._schema);
 
-/* Renders the AddRoom component for adding a new room. */
+/* Renders the AddClub component for adding a new club. */
 const AddClub = () => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // data added to the Room collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional rooms.
+  // data added to Club collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional clubs.
   const submit = (data, formRef) => {
     const { clubKey, clubName, image, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
     const collectionName = Clubs.getCollectionName();
