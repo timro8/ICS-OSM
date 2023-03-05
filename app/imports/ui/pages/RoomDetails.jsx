@@ -71,7 +71,7 @@ const RoomDetails = () => {
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
       <Button variant="success" href="/adminroom">Back to List Room (Admin)</Button>
       <h1>Room {roomNumber} Details</h1>
-      <Link to={`/editroom/${doc._id}`}>Edit room</Link>
+      <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${doc._id}`}>Edit room</Link>
       <Row>
         <Col>
           <h2>Occupants</h2>

@@ -5,6 +5,7 @@ import { Rooms } from '../../api/room/RoomCollection';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { OccupantRoom } from '../../api/user/OccupantRoomCollection';
 import RoomItem from '../components/RoomItem';
+import AddRoom from '../components/AddRoom';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { getRoomData } from '../../api/utilities/getRoomData';
@@ -38,6 +39,7 @@ const ListRoomAdmin = () => {
       <Row xs={1} md={2} lg={4} className="g-2">
         {roomData.map((room) => <RoomItem key={room._id} room={room} />)}
       </Row>
+      <AddRoom />
     </Container>
   ) : <LoadingSpinner />;
 };

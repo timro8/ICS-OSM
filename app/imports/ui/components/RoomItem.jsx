@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, Col, Image } from 'react-bootstrap';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders a single card in the List Room Admin card. See pages/ListRoomAdmin.jsx. */
 const RoomItem = ({ room }) => (
@@ -28,7 +29,7 @@ const RoomItem = ({ room }) => (
         </Card.Body>
       </Link>
       <Card.Footer>
-        <Link to={`/editroom/${room._id}`}>Edit Room</Link>
+        <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${room._id}`}>Edit Room</Link>
       </Card.Footer>
     </Card>
   </Col>
