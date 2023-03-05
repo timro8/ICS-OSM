@@ -252,19 +252,19 @@
       "officeHours": "Monday"
     },
     {
-      "email": "psadow@hawaii.edu",
+      "email": "pseidel@hawaii.edu",
       "password": "changeme",
-      "firstName": "Peter",
-      "lastName": "Sadowski",
-      "facRole": "ASSISTANT PROFESSOR",
-      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/07/dusko-e1656997097828-300x300.jpg",
-      "bio": "I like Machine learning, artificial intelligence, neural networks, learning in biological systems.",
+      "firstName": "Peter-Michael",
+      "lastName": "Seidel",
+      "facRole": "ASSOCIATE PROFESSOR",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Peter-Michael_Seidel.jpg",
+      "bio": "I like Computer arithmetic, Computer architecture, Formal methods and Hardware security..",
       "rooms": ["306C"],
-      "phoneNumber": "8089562023",
+      "phoneNumber": "8089566068",
       "officeHours": "Monday"
     },
     {
-      "email": "pseidel@hawaii.edu",
+      "email": "nodari@hawaii.edu",
       "password": "changeme",
       "firstName": "Nodari",
       "lastName": "Sitchinava",
@@ -413,7 +413,6 @@
       "roomNumber": "301", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Sink",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/3022/2814793353_54966edfd3_b.jpg"
     },
     {
@@ -421,7 +420,6 @@
       "roomNumber": "302", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Conference",
-      "occupants":  [""],
       "picture": "https://i0.hippopx.com/photos/669/176/967/chairs-empty-office-room-preview.jpg"
     },
     {
@@ -429,7 +427,6 @@
       "roomNumber": "303A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["kennydq@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -437,7 +434,6 @@
       "roomNumber": "303B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["wesleysu@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ2sGgWwehw6Zr5gqp5cqEV1e_oQI981Y_9g&usqp=CAU"
     },
     {
@@ -445,7 +441,6 @@
       "roomNumber": "303C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["guylaine@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -453,7 +448,6 @@
       "roomNumber": "303D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["binsted@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -461,7 +455,6 @@
       "roomNumber": "303E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["Faculty FACULTY"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -469,7 +462,6 @@
       "roomNumber": "303F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["kyungim@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -477,7 +469,6 @@
       "roomNumber": "303G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["chin@hawaii.edu", "itoga@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -485,7 +476,6 @@
       "roomNumber": "303-1", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -493,7 +483,6 @@
       "roomNumber": "303-2", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -501,7 +490,6 @@
       "roomNumber": "303-3", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -509,7 +497,6 @@
       "roomNumber": "303-4", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -517,7 +504,6 @@
       "roomNumber": "303-5", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -525,7 +511,6 @@
       "roomNumber": "303.0", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "ICS Library",
-      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -533,7 +518,6 @@
       "roomNumber": "305", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "311",
       "roomClassification": "OFCSVC",
-      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -541,7 +525,6 @@
       "roomNumber": "305A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -549,7 +532,6 @@
       "roomNumber": "305B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -557,7 +539,6 @@
       "roomNumber": "305C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -565,7 +546,6 @@
       "roomNumber": "305D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "occupants":  ["crosby@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -573,7 +553,6 @@
       "roomNumber": "305E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -581,7 +560,6 @@
       "roomNumber": "305F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["esb@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
 
@@ -590,7 +568,6 @@
       "roomNumber": "305G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "186",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -598,7 +575,6 @@
       "roomNumber": "306", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "124",
       "roomClassification": "LNG",
-      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -606,7 +582,6 @@
       "roomNumber": "306A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "141",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -614,7 +589,6 @@
       "roomNumber": "306B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "168",
       "roomClassification": "Office",
-      "occupants":  ["mahdi@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -622,7 +596,6 @@
       "roomNumber": "306C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "168",
       "roomClassification": "Office",
-      "occupants":  ["psadow@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -630,7 +603,6 @@
       "roomNumber": "306D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "156",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -638,7 +610,6 @@
       "roomNumber": "307", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "214",
       "roomClassification": "Lab",
-      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -646,7 +617,6 @@
       "roomNumber": "307A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "occupants":  ["johnson@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -654,7 +624,6 @@
       "roomNumber": "307B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "245",
       "roomClassification": "Office",
-      "occupants":  ["cmoore@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -662,7 +631,6 @@
       "roomNumber": "307C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "139",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -670,7 +638,6 @@
       "roomNumber": "309", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -678,7 +645,6 @@
       "roomNumber": "309A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "212",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -686,7 +652,6 @@
       "roomNumber": "309B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "224",
       "roomClassification": "Office",
-      "occupants":  ["suthers@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -694,7 +659,6 @@
       "roomNumber": "309C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["nodari@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -702,7 +666,6 @@
       "roomNumber": "310A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -710,7 +673,6 @@
       "roomNumber": "310B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["peruma@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -718,7 +680,6 @@
       "roomNumber": "310C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["henric@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -726,7 +687,6 @@
       "roomNumber": "311", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "ASECOLAB",
-      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -734,7 +694,6 @@
       "roomNumber": "311A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["pseidel@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -742,7 +701,6 @@
       "roomNumber": "311B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["dusko@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -750,7 +708,6 @@
       "roomNumber": "312A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -758,7 +715,6 @@
       "roomNumber": "312B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["pyw@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -766,7 +722,6 @@
       "roomNumber": "312C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -774,7 +729,6 @@
       "roomNumber": "314A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["rnarayan@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -782,7 +736,6 @@
       "roomNumber": "314B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["ogawam@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -790,7 +743,6 @@
       "roomNumber": "314C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -798,7 +750,6 @@
       "roomNumber": "314D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  ["depengli@hawaii.edu"],
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
     },
     {
@@ -806,7 +757,6 @@
       "roomNumber": "314E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -814,7 +764,6 @@
       "roomNumber": "314F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -822,7 +771,6 @@
       "roomNumber": "314G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -830,7 +778,6 @@
       "roomNumber": "314H", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -838,7 +785,6 @@
       "roomNumber": "314I", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
 
@@ -847,7 +793,6 @@
       "roomNumber": "314-1", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -855,7 +800,6 @@
       "roomNumber": "314-2", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -863,7 +807,6 @@
       "roomNumber": "314-3", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -871,7 +814,6 @@
       "roomNumber": "314-4", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -879,7 +821,6 @@
       "roomNumber": "314-5", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -887,7 +828,6 @@
       "roomNumber": "314-6", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -895,7 +835,6 @@
       "roomNumber": "314-7", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -903,7 +842,6 @@
       "roomNumber": "314-9", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -911,7 +849,6 @@
       "roomNumber": "314-9", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -919,7 +856,6 @@
       "roomNumber": "314-10", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "occupants":  [""],
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
     },
     {
@@ -927,7 +863,6 @@
       "roomNumber": "315", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "occupants":  [""],
       "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
     },
     {
@@ -935,7 +870,6 @@
       "roomNumber": "316", "location":  "POST", "status": "Other", "capacity": "0",
       "roomSqFoot": "100",
       "roomClassification": "Mail",
-      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -943,7 +877,6 @@
       "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "3",
       "roomSqFoot": "100",
       "roomClassification": "Main Office",
-      "occupants":  ["scottpr@hawaii.edu"],
       "picture": "https://c.pxhere.com/photos/fc/d9/office_sitting_room_executive_sitting_business_desk_workplace_corporate-735699.jpg!d"
     },
     {
@@ -951,7 +884,6 @@
       "roomNumber": "318", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Lab",
-      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
 
@@ -960,7 +892,6 @@
       "roomNumber": "318B", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "ICSpace",
-      "occupants":  [""],
       "picture": "http://dev.ics.hawaii.edu/wp-content/uploads/2015/09/post318b.jpg"
     },
     {
@@ -968,7 +899,6 @@
       "roomNumber": "319", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Lab",
-      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -976,7 +906,6 @@
       "roomNumber": "326", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "279",
       "roomClassification": "Storage",
-      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -984,7 +913,6 @@
       "roomNumber": "327", "location":  "POST", "status": "Occupied", "capacity": "2",
       "roomSqFoot": "200",
       "roomClassification": "Office",
-      "occupants":  ["toddtt@hawaii.edu", "shackfor@hawaii.edu"],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
@@ -992,7 +920,6 @@
       "roomNumber": "328", "location":  "POST", "status": "Other", "capacity": "",
       "roomSqFoot": "279",
       "roomClassification": "ICS IT",
-      "occupants":  [""],
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     }
   ],
@@ -1008,6 +935,103 @@
     {
       "email": "cmoore@hawaii.edu",
       "roomKey": "POST311"
+    },
+    {
+      "email": "wesleysu@hawaii.edu",
+      "roomKey": "POST303B"
+    },
+    {
+      "email": "toddtt@hawaii.edu",
+      "roomKey": "POST327"
+    },
+    {
+      "email": "shackfor@hawaii.edu",
+      "roomKey": "POST327"
+    },
+    {
+      "email": "kyungim@hawaii.edu",
+      "roomKey": "POST303F"
+    },
+    {
+      "email": "mahdi@hawaii.edu",
+      "roomKey": "POST306B"
+    },
+    {
+      "email": "esb@hawaii.edu",
+      "roomKey": "POST305F"
+    },
+    {
+      "email": "binsted@hawaii.edu",
+      "roomKey": "POST303D"
+    },
+    {
+      "email": "henric@hawaii.edu",
+      "roomKey": "POST310C"
+    },
+    {
+      "email": "crosby@hawaii.edu",
+      "roomKey": "POST305D"
+    },
+    {
+      "email": "depengli@hawaii.edu",
+      "roomKey": "POST314D"
+    },
+    {
+      "email": "rnarayan@hawaii.edu",
+      "roomKey": "POST314A"
+    },
+    {
+      "email": "ogawam@hawaii.edu",
+      "roomKey": "POST314B"
+    },
+    {
+      "email": "dusko@hawaii.edu",
+      "roomKey": "POST311B"
+    },
+    {
+      "email": "peruma@hawaii.edu",
+      "roomKey": "POST310B"
+    },
+    {
+      "email": "guylaine@hawaii.edu",
+      "roomKey": "POST303C"
+    },
+    {
+      "email": "scottpr@hawaii.edu",
+      "roomKey": "POST317"
+    },
+    {
+      "email": "psadow@hawaii.edu",
+      "roomKey": "POST306C"
+    },
+    {
+      "email": "pseidel@hawaii.edu",
+      "roomKey": "POST311A"
+    },
+    {
+      "email": "nodari@hawaii.edu",
+      "roomKey": "POST309C"
+    },
+    {
+      "email": "suthers@hawaii.edu",
+      "roomKey": "POST309B"
+    },
+    {
+      "email": "pyw@hawaii.edu",
+      "roomKey": "POST312B"
+    },
+    {
+      "email": "chin@hawaii.edu",
+      "roomKey": "POST303G"
+    },
+
+    {
+      "email": "itoga@hawaii.edu",
+      "roomKey": "POST303G"
+    },
+    {
+      "email": "kennydq@hawaii.edu",
+      "roomKey": "POST303A"
     }
   ],
 
@@ -1044,6 +1068,34 @@
     { "clubKey":"clubSWITCH", "clubName":  "SWITCH","image":  "https://acmanoa.github.io/assets/img/logos/switchlogo.png", "description":  "SWITCH (Supporting Women in Technology Computing Hawaii) is the culmination of efforts of the awesome students, faculty, and working professionals supporting social change in the ICS department. Established in Fall 2019, we are officially a UH Manoa RIO, ACM-W Chapter, and Girls Who Code College Loops Chapter. We strive to provide useful resources from these organizations to improve your professional, technical, and personal development.",
       "joinLink": "https://discord.com/invite/ksxdKeZBxP",
       "meetingDay": "", "meetingTime": "", "meetingLocation": "", "officers": ["officers"], "advisor": "advisor"
+    }
+  ],
+  "defaultOfficeData": [
+    {
+      "email": "wesleysu@hawaii.edu",
+      "firstName": "Wesley",
+      "lastName": "Sugimoto",
+      "role": "OFFICE"
+    },
+    {
+      "email": "kennydq@hawaii.edu",
+      "firstName": "Kenny",
+      "lastName": "Ka‘aiakamanu-Quibilan",
+      "role": "OFFICE"
+    }
+  ],
+  "defaultTechData": [
+    {
+      "email": "toddtt@hawaii.edu",
+      "firstName": "Todd",
+      "lastName": "Tomita",
+      "role": "TECH"
+    },
+    {
+      "email": "shackfor@hawaii.edu",
+      "firstName": "Charles",
+      "lastName": "Shackford",
+      "role": "TECH"
     }
   ],
   

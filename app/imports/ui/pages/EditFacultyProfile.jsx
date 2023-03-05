@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import swal from 'sweetalert';
 import { Button, Col, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import PropTypes from 'prop-types';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
+import { ROLE } from '../../api/role/Role';
 
 const bridge = new SimpleSchema2Bridge(FacultyProfiles._schema);
 
@@ -43,10 +46,12 @@ const EditFacultyProfile = ({ id }) => {
 
   return ready ? (
     <>
-      <Col className="pt-3 d-flex justify-content-center">
-        <Button variant="primary" onClick={handleShow}>
-          Edit Profile
-        </Button>
+      <Col className="d-flex justify-content-center">
+        {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
+          <Button key={Math.random()} style={{ width: '7rem' }} variant="primary" onClick={handleShow}>
+            Edit Profile
+          </Button>
+        ) : ''}
       </Col>
 
       <Modal show={show} onHide={handleClose}>
