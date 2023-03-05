@@ -10,6 +10,7 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { Clubs } from '../../api/club/Club';
 import LoadingSpinner from './LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
+import AddClub from './AddClub';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -61,11 +62,14 @@ const NavBar = () => {
               {currentUser ? ([
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_HOME} as={NavLink} to="/home" key="faculty">Home</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FACULTY} as={NavLink} to="/faculty" key="faculty">Faculty</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_DISCUSS} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB} title="Clubs">
                   {ready && clubs ? (
-                    clubList.map((club) => (<Nav.Link as={NavLink} to={`/clubs/${club._id}`} onClick={() => location.reload()} key="clubs"> {club.clubName} </Nav.Link>))
+                    clubList.map((club) => (<Nav.Link className="d-flex justify-content-center" as={NavLink} to={`/clubs/${club._id}`} onClick={() => location.reload()} key="clubs"> {club.clubName} </Nav.Link>))
                   ) : <LoadingSpinner message="Loading Club" /> }
+                  <Nav.Item className="d-flex justify-content-center">
+                    <AddClub />
+                  </Nav.Item>
                 </NavDropdown>,
               ]) : ''}
               {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (

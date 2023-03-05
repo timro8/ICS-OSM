@@ -64,6 +64,7 @@ test('Test that admin pages show up', async () => {
   await navBar.gotoDiscussPage();
   await discussPage.isDisplayed();
 });
+
 test('Room details shows up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
