@@ -18,6 +18,7 @@ import AddJack from '../components/AddJack';
 import RoomEquipment from '../components/RoomEquipment';
 import AddEquipment from '../components/AddEquipment';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { getRoomData } from '../../api/utilities/getRoomData';
 
 /* The RoomDetails page with equipment, jacks, and notes. */
 
@@ -32,7 +33,6 @@ const RoomDetails = () => {
     docNotes,
     docJacks,
     docEquipment,
-    docOccupants,
     ready,
     loggedInOwner,
   } = useTracker(() => {
@@ -46,11 +46,10 @@ const RoomDetails = () => {
     const subOccupant = OccupantRoom.subscribeOccupantRoomAdmin();
     const owner = Meteor.user().username;
     const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready() && subFaculty.ready() && subOccupant.ready();
-    const document = Rooms.findDoc({ roomKey: _id });
+    const document = Rooms.findDoc({ _id: _id });
     const documentNotes = RoomNotes.find({ roomId: _id }).fetch();
     const documentJacks = RoomJacks.find({ roomId: _id }).fetch();
     const documentEquipment = RoomEquipments.find({ roomId: _id }).fetch();
-    const documentOccupant = OccupantRoom.find({ roomKey: _id }).fetch();
 
     // ready when subscriptions are completed
     return {
@@ -58,12 +57,11 @@ const RoomDetails = () => {
       docNotes: documentNotes,
       docJacks: documentJacks,
       docEquipment: documentEquipment,
-      docOccupants: documentOccupant,
       loggedInOwner: owner,
       ready: rdy,
     };
   });
-  const occupants = docOccupants.map((o) => FacultyProfiles.find({ email: o.email }).fetch());
+  const roomOccupants = getRoomData(doc._id);
   useEffect(() => {
     if (ready) {
       document.title = `Room - ${roomNumber}`;
@@ -77,7 +75,7 @@ const RoomDetails = () => {
       <Row>
         <Col>
           <h2>Occupants</h2>
-          {occupants.map((occupant, index) => <div key={index}>{occupant[0].firstName} {occupant[0].lastName}</div>)}
+          {roomOccupants.occupants.map((o) => <div key={o._id}>{o.firstName} {o.lastName}</div>)}
         </Col>
       </Row>
       <Row>

@@ -8,13 +8,13 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 const RoomItem = ({ room }) => (
   <Col className="p-2">
     <Card border="info" className="h-100">
-      <Link className={COMPONENT_IDS.ROOM_DETAILS} to={`/roomdetails/${room.roomKey}`} style={{ color: 'black', textDecoration: 'none' }}>
+      <Link className={COMPONENT_IDS.ROOM_DETAILS} to={`/roomdetails/${room._id}`} style={{ color: 'black', textDecoration: 'none' }}>
         <Card.Body>
           <Image src={room.picture} alt={`${room.roomNumber} picture`} fluid rounded />
           <hr />
           <Card.Title>{room.location} {room.roomNumber}</Card.Title>
           <Card.Subtitle>
-            {room.occupants.map((o, index) => <p key={index}>{o.firstName} {o.lastName}</p>)}
+            {room.occupants.map((o) => <p key={o._id}>{o.firstName} {o.lastName}</p>)}
           </Card.Subtitle>
           <Card.Text>
             <strong>Status:</strong> {room.status}
