@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Card, Col, Container, ProgressBar, Row } from 'react-bootstrap';
+import { Col, Container, ProgressBar, Row } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
-import Admin from '../components/Admin';
+import FacultyTable from '../components/FacultyTable';
+import ReservationsTable from '../components/ReservationsTable';
 
 const roomPositions = [
   { roomNumber: '305F', top: 4, left: 4, vertical: false },
@@ -51,30 +52,23 @@ const Home = () => {
 
   return (
     <Container id={PAGE_IDS.HOME} className="py-3">
-      <Row>
-        <Col style={{ borderLeft: '0.1px solid lightgray', borderRight: '0.1px solid lightgray', padding: '0 2rem' }}>
-          <h2>Good Morning James!</h2>
-          <Row className="d-flex row-cols-3">
-            <Card>
-              <Card.Body>
-                <Card.Title>Rooms Occupied</Card.Title>
-                <ProgressBar now={45} />
-              </Card.Body>
-            </Card>
-            <Card>
-              <Card.Body>
-                <Card.Title>Rooms Vacant</Card.Title>
-                <ProgressBar variant="info" now={9} />
-              </Card.Body>
-            </Card>
-            <Card>
-              <Card.Body>
-                <Card.Title>Rooms Out of Commission</Card.Title>
-                <ProgressBar variant="danger" now={2} />
-              </Card.Body>
-            </Card>
-          </Row>
-          <h2>Pacific Ocean Science and Technology</h2>
+      <Row className="d-flex justify-content-between">
+        <div style={{ width: '25rem' }}>
+          Rooms Occupied
+          <ProgressBar now={45} />
+        </div>
+        <div style={{ width: '25rem' }}>
+          Rooms Vacant
+          <ProgressBar variant="info" now={9} />
+        </div>
+        <div style={{ width: '25rem' }}>
+          Rooms Out of Commission
+          <ProgressBar variant="danger" now={2} />
+        </div>
+      </Row>
+      <Row className="simple-card">
+        <Col>
+          <h2 style={{ margin: '15px 0' }}>Pacific Ocean Science and Technology</h2>
           <div className="map-container" style={{ overflow: 'hidden', width: MAP_WIDTH, height: MAP_HEIGHT }}>
             <div
               className="map"
@@ -129,14 +123,17 @@ const Home = () => {
           </div>
         </Col>
         <Col>
-          <h2>List View</h2>
+          <h2 style={{ margin: '15px 0' }}>List View</h2>
           <h3 style={{ fontSize: '1.1rem', paddingBottom: '1rem' }}>Occupied Rooms</h3>
           <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Vacant Rooms</h3>
           <h3 style={{ fontSize: '1.1rem', paddingTop: '3rem', paddingBottom: '1rem' }}>Rooms Out of Commission</h3>
         </Col>
       </Row>
-      <Row>
-        <Admin />
+      <Row className="simple-card">
+        <FacultyTable />
+      </Row>
+      <Row className="simple-card">
+        <ReservationsTable />
       </Row>
     </Container>
   );

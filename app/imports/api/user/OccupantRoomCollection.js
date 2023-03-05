@@ -3,6 +3,10 @@ import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
+import { FacultyProfiles } from './FacultyProfileCollection';
+import { OfficeProfiles } from './OfficeProfileCollection';
+import { TechProfiles } from './TechProfileCollection';
+import { Rooms } from '../room/RoomCollection';
 import { ROLE } from '../role/Role';
 
 export const occupantRoomPublications = {
@@ -13,8 +17,8 @@ export const occupantRoomPublications = {
 class OccupantRoomCollection extends BaseCollection {
   constructor() {
     super('OccupantRoom', new SimpleSchema({
-      email: String,
-      roomKey: String,
+      userId: String,
+      roomId: String,
     }));
   }
 
@@ -25,10 +29,21 @@ class OccupantRoomCollection extends BaseCollection {
    * @return {String} the occupantID of the new document.
    */
   define({ email, roomKey }) {
+    let user = FacultyProfiles.findOne({ email: email });
+    if (user === undefined) {
+      user = OfficeProfiles.findOne({ email: email });
+    }
+    if (user === undefined) {
+      user = TechProfiles.findOne({ email: email });
+    }
+    const userId = user._id;
+    const room = Rooms.findOne({ roomKey: roomKey });
+    const roomId = room._id;
     const occupantID = this._collection.insert({
-      email,
-      roomKey,
+      userId,
+      roomId,
     });
+
     return occupantID;
   }
 
