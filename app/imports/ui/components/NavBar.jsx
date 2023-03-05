@@ -61,7 +61,7 @@ const NavBar = () => {
               {currentUser ? ([
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_HOME} as={NavLink} to="/home" key="faculty">Home</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FACULTY} as={NavLink} to="/faculty" key="faculty">Faculty</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_DISCUSS} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB} title="Clubs">
                   {ready && clubs ? (
                     clubList.map((club) => (<Nav.Link as={NavLink} to={`/clubs/${club._id}`} onClick={() => location.reload()} key="clubs"> {club.clubName} </Nav.Link>))
