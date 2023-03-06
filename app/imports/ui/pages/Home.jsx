@@ -114,8 +114,8 @@ const Home = () => {
                     <div
                       className="map-icon map-icon-occupant"
                       style={{
-                        top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1))}px` : `${roomPositionTop}px`,
-                        left: roomPosition.vertical ? `${roomPositionLeft}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1))}px`,
+                        top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
+                        left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
                         background: occupantBackground(occupant),
                       }}
                     />
@@ -132,8 +132,8 @@ const Home = () => {
                       <div
                         className="map-icon map-icon-room"
                         style={{
-                          top: `${roomPositionTop}px`,
-                          left: `${roomPositionLeft}px`,
+                          top: roomPosition.vertical ? `${roomPositionTop + 25}px` : `${roomPositionTop + 12}px`,
+                          left: `${roomPositionLeft - 4}px`,
                         }}
                       >
                         {room.roomNumber}

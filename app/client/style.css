@@ -111,16 +111,18 @@ body {
 
 .map-icon-occupant {
   border-radius: 50%;
-  height: 32px;
-  width: 32px;
+  height: 20px;
+  width: 20px;
 }
 
 .map-icon-room {
+  width: 32px;
   height: min-content;
   color: white;
-  background: rgba(200, 200, 200, 0.9) center;
+  background: rgba(200, 200, 200, 0.99) center;
   font-size: 0.5rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .map-icon:hover {
