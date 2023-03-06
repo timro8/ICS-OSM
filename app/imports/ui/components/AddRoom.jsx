@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import {Button, Image, Modal} from 'react-bootstrap';
+import { Button, Image, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, NumField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -21,7 +21,7 @@ const AddRoom = () => {
 
   const imageSubmit = useRef(null);
 
-  const [selectedImage, setSelectedImage] = useState('https://www.cis.hawaii.edu/wp-content/uploads/2019/07/post127_a-470x140.jpg');
+  const [selectedImage, setSelectedImage] = useState('https://res.cloudinary.com/dmbrfkjk3/image/upload/v1678099354/No-Image-Found-400x264_kyy6b4.png');
 
   // data added to the Room collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional rooms.
   const submit = async (data, formRef) => {
