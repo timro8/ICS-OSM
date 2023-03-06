@@ -104,24 +104,23 @@ body {
 
 .map-icon {
   position: absolute;
-  height: 25px;
-  width: 25px;
-  border-radius: 50%;
   box-shadow: 0 3px 7px #808080FF;
   transition: transform 200ms;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border: 1px solid white;
 }
 
 .map-icon-occupant {
-  background: rgba(77, 145, 89) center;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
 }
 
 .map-icon-room {
-  border: 1px solid white;
-  color: rgba(255, 255, 255, 0.98);
+  height: min-content;
+  color: white;
+  background: rgba(200, 200, 200, 0.9) center;
   font-size: 0.5rem;
+  font-weight: 600;
 }
 
 .map-icon:hover {
