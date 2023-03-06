@@ -13,12 +13,26 @@ const roomPositions = [
   { roomNumber: '306B', top: 4, left: 13, vertical: false },
   { roomNumber: '306C', top: 4, left: 21, vertical: false },
   { roomNumber: '307A', top: 4, left: 28, vertical: false },
+  { roomNumber: '307B', top: 5, left: 37, vertical: true },
   { roomNumber: '305E', top: 12, left: 3, vertical: false },
   { roomNumber: '306A', top: 12, left: 11.4, vertical: true },
   { roomNumber: '306D', top: 12, left: 22, vertical: false },
   { roomNumber: '307C', top: 14, left: 37, vertical: false },
   { roomNumber: '305D', top: 22, left: 3, vertical: true },
   { roomNumber: '305G', top: 27, left: 11.5, vertical: true },
+  { roomNumber: '309B', top: 4, left: 56.5, vertical: false },
+  { roomNumber: '309C', top: 4, left: 66, vertical: false },
+  { roomNumber: '310B', top: 4, left: 74, vertical: false },
+  { roomNumber: '310C', top: 4, left: 82, vertical: false },
+  { roomNumber: '311A', top: 5, left: 88.5, vertical: true },
+  { roomNumber: '311B', top: 5, left: 94.5, vertical: true },
+  { roomNumber: '309A', top: 12, left: 55.5, vertical: false },
+  { roomNumber: '310A', top: 12, left: 72.5, vertical: true },
+  { roomNumber: '311', top: 16, left: 92, vertical: true },
+  { roomNumber: '311C', top: 16, left: 90, vertical: true },
+  { roomNumber: '328', top: 35, left: 30, vertical: true },
+  { roomNumber: '327', top: 35, left: 40, vertical: true },
+  { roomNumber: '326', top: 30, left: 52, vertical: false },
 ];
 
 const Home = () => {
@@ -53,6 +67,12 @@ const Home = () => {
 
     d3.select('.map-container').call(zoom);
   }, []);
+
+  const occupantBackground = (occupant) => {
+    const occupantWithImageBackground = `center / contain url(${occupant.image})`;
+    const noImageBackground = 'rgba(200, 200, 200) center';
+    return occupant.image ? occupantWithImageBackground : noImageBackground;
+  };
 
   return (
     <Container id={PAGE_IDS.HOME} className="py-3">
@@ -96,7 +116,7 @@ const Home = () => {
                       style={{
                         top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1))}px` : `${roomPositionTop}px`,
                         left: roomPosition.vertical ? `${roomPositionLeft}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1))}px`,
-                        background: `center / contain url(${occupant.image})`,
+                        background: occupantBackground(occupant),
                       }}
                     />
                   ));
