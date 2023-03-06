@@ -1,6 +1,6 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import swal from 'sweetalert';
-import {Button, Col, Image, Modal} from 'react-bootstrap';
+import { Button, Col, Image, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';

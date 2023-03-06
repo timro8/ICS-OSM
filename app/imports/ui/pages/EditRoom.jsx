@@ -1,10 +1,10 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import { AutoForm, ErrorsField, SubmitField, TextField, NumField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useTracker } from 'meteor/react-meteor-data';
-import {Container, Col, Row, Button, Image} from 'react-bootstrap';
+import { Container, Col, Row, Button, Image } from 'react-bootstrap';
 import { Rooms } from '../../api/room/RoomCollection';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
