@@ -46,7 +46,10 @@ const EditRoom = () => {
 
   // data submitted to edit a room. If there are errors, an error message will pop up. If the data is successfully updated, a success message will appear.
   const submit = async (data) => {
-    const imageUrl = await uploadImgUrl(imageSubmit.current);
+    let imageUrl = initialImage;
+    if (imageSubmit.current !== initialImage) {
+      imageUrl = await uploadImgUrl(imageSubmit.current);
+    }
     const { status, capacity, roomSqFoot, roomClassification } = data;
     const collectionName = Rooms.getCollectionName();
     const updateData = { id: _id, status, capacity, roomSqFoot, roomClassification, picture: imageUrl };

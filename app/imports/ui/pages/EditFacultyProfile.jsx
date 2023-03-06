@@ -45,7 +45,10 @@ const EditFacultyProfile = ({ id }) => {
 
   // On successful submit, insert the data.
   const submit = async (data) => {
-    const imageUrl = await uploadImgUrl(imageSubmit.current);
+    let imageUrl = initialImage;
+    if (imageSubmit.current !== initialImage) {
+      imageUrl = await uploadImgUrl(imageSubmit.current);
+    }
     const { firstName, lastName, bio, rooms, phoneNumber, officeHours } = data;
     const collectionName = FacultyProfiles.getCollectionName();
     const updateData = { id: id, image: imageUrl, firstName, lastName, bio, rooms, phoneNumber, officeHours };
