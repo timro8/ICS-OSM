@@ -97,5 +97,6 @@ test('Modal shows for Edit Room', async () => {
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.addRoom();
+  await listRoomAdminPage.isDisplayed();
+  await listRoomAdminPage.editRoom();
 });

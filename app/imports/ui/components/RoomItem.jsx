@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, Col, Image } from 'react-bootstrap';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders a single card in the List Room Admin card. See pages/ListRoomAdmin.jsx. */
 const RoomItem = ({ room }) => (
   <Col className="p-2">
     <Card border="info" className="h-100">
-      <Link className={COMPONENT_IDS.ROOM_DETAILS} to={`/roomdetails/${room.roomKey}`} style={{ color: 'black', textDecoration: 'none' }}>
+      <Link className={COMPONENT_IDS.ROOM_DETAILS} to={`/roomdetails/${room._id}`} style={{ color: 'black', textDecoration: 'none' }}>
         <Card.Body>
           <Image src={room.picture} alt={`${room.roomNumber} picture`} fluid rounded />
           <hr />
           <Card.Title>{room.location} {room.roomNumber}</Card.Title>
           <Card.Subtitle>
-            Occupants
+            {room.occupants.map((o) => <p key={o._id}>{o.firstName} {o.lastName}</p>)}
           </Card.Subtitle>
           <Card.Text>
             <strong>Status:</strong> {room.status}
@@ -28,7 +29,7 @@ const RoomItem = ({ room }) => (
         </Card.Body>
       </Link>
       <Card.Footer>
-        <Link to={`/editroom/${room._id}`}>Edit Room</Link>
+        <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${room._id}`}>Edit Room</Link>
       </Card.Footer>
     </Card>
   </Col>
@@ -43,7 +44,7 @@ RoomItem.propTypes = {
     status: PropTypes.string,
     capacity: PropTypes.number,
     _id: PropTypes.string,
-    occupants: PropTypes.arrayOf(PropTypes.string),
+    occupants: PropTypes.instanceOf(Array),
     roomClassification: PropTypes.string,
     picture: PropTypes.string,
   }).isRequired,

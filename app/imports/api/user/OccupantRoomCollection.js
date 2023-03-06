@@ -92,7 +92,7 @@ class OccupantRoomCollection extends BaseCollection {
       });
 
       /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
-      Meteor.publish(occupantRoomPublications.occupantAdmin, function publish() {
+      Meteor.publish(occupantRoomPublications.occupantRoomAdmin, function publish() {
         if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
           return instance._collection.find();
         }

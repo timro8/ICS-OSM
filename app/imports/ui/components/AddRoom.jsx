@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import React, { useRef, useState } from 'react';
+import { Button, Image, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, NumField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Rooms } from '../../api/room/RoomCollection';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { uploadImgUrl } from '../../startup/client/uploadImg';
 
 // form schema based on the Room collection
 const bridge = new SimpleSchema2Bridge(Rooms._schema);
@@ -17,11 +18,17 @@ const AddRoom = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const imageSubmit = useRef(null);
+
+  const [selectedImage, setSelectedImage] = useState('https://res.cloudinary.com/dmbrfkjk3/image/upload/v1678099354/No-Image-Found-400x264_kyy6b4.png');
+
   // data added to the Room collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional rooms.
-  const submit = (data, formRef) => {
-    const { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, picture } = data;
+  const submit = async (data, formRef) => {
+    const imageUrl = await uploadImgUrl(imageSubmit.current);
+    const { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification } = data;
     const collectionName = Rooms.getCollectionName();
-    const definitionData = { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, picture };
+    const definitionData = { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, picture: imageUrl };
 
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -31,6 +38,16 @@ const AddRoom = () => {
       });
   };
   let fRef = null;
+
+  const handleImageClick = () => {
+    document.getElementById('imageUpload').click();
+  };
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    imageSubmit.current = file;
+    setSelectedImage(URL.createObjectURL(file));
+  };
+
   return (
     <>
       <Button id={COMPONENT_IDS.ADD_ROOM} variant="primary" onClick={handleShow}>
@@ -42,7 +59,12 @@ const AddRoom = () => {
           <Modal.Title>Add Room</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Add Room
+          <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column' }}>
+            <Button style={{ background: 'white', borderColor: 'white' }} onClick={handleImageClick}>
+              <input id="imageUpload" type="file" onChange={handleImageUpload} style={{ display: 'none' }} />
+              <Image style={{ width: '100%', height: '13rem' }} src={selectedImage} />
+            </Button>
+          </div>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <TextField name="roomKey" placeholder="location and room number" />
             <TextField name="roomNumber" />
@@ -60,7 +82,6 @@ const AddRoom = () => {
               name="roomClassification"
               allowedValues={['Office', 'Sink', 'Conference', 'Cubicle', 'ICS Library', 'ASECOLAB', 'Mail', 'Main Office', 'Lab', 'ICSpace', 'Storage', 'ICS IT', 'OFCSVC', 'LNG']}
             />
-            <TextField name="picture" />
             <SubmitField value="submit" />
             <ErrorsField />
           </AutoForm>

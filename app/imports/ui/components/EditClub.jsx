@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import swal from 'sweetalert';
-import { Button, Col, Modal } from 'react-bootstrap';
+import { Button, Col, Image, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from './LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
+import { uploadImgUrl } from '../../startup/client/uploadImg';
 
 const bridge = new SimpleSchema2Bridge(Clubs._schema);
 
@@ -31,14 +32,36 @@ const EditClub = ({ id }) => {
     };
   }, [id]);
 
+  const imageSubmit = useRef(null);
+
+  let initialImage = 'https://res.cloudinary.com/dmbrfkjk3/image/upload/v1678099354/No-Image-Found-400x264_kyy6b4.png';
+
+  if (doc.image.length > 0) {
+    initialImage = doc.image;
+  }
+  const [selectedImage, setSelectedImage] = useState(initialImage);
+
   // On successful submit, insert the data.
-  const submit = (data) => {
-    const { clubKey, clubName, image, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
+  const submit = async (data) => {
+    let imageUrl = initialImage;
+    if (imageSubmit.current !== initialImage) {
+      imageUrl = await uploadImgUrl(imageSubmit.current);
+    }
+    const { clubKey, clubName, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
     const collectionName = Clubs.getCollectionName();
-    const updateData = { id: id, clubKey, clubName, image, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
+    const updateData = { id: id, clubKey, clubName, image: imageUrl, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => swal('Success', 'Clubs updated successfully', 'success'));
+  };
+
+  const handleImageClick = () => {
+    document.getElementById('imageUpload').click();
+  };
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    imageSubmit.current = file;
+    setSelectedImage(URL.createObjectURL(file));
   };
 
   return ready ? (
@@ -53,10 +76,15 @@ const EditClub = ({ id }) => {
         <Modal.Header closeButton onClick={handleClose}>
           <Modal.Title className="d-flex justify-content-center">Edit Club</Modal.Title>
         </Modal.Header>
+        <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column' }}>
+          <Button style={{ background: 'white', borderColor: 'white' }} onClick={handleImageClick}>
+            <input id="imageUpload" type="file" onChange={handleImageUpload} style={{ display: 'none' }} />
+            <Image style={{ width: '100%', height: '13rem' }} src={selectedImage} />
+          </Button>
+        </div>
         <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
           <Modal.Body>
             <TextField name="clubName" />
-            <TextField name="image" />
             <LongTextField name="description" />
             <TextField name="joinLink" />
             <TextField name="meetingDay" />
