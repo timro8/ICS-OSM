@@ -1,6 +1,6 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import swal from 'sweetalert';
-import {Button, Col, Image, Modal} from 'react-bootstrap';
+import { Button, Col, Image, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
@@ -45,7 +45,10 @@ const EditFacultyProfile = ({ id }) => {
 
   // On successful submit, insert the data.
   const submit = async (data) => {
-    const imageUrl = await uploadImgUrl(imageSubmit.current);
+    let imageUrl = initialImage;
+    if (imageSubmit.current !== initialImage) {
+      imageUrl = await uploadImgUrl(imageSubmit.current);
+    }
     const { firstName, lastName, bio, rooms, phoneNumber, officeHours } = data;
     const collectionName = FacultyProfiles.getCollectionName();
     const updateData = { id: id, image: imageUrl, firstName, lastName, bio, rooms, phoneNumber, officeHours };

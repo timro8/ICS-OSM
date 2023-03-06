@@ -1,10 +1,10 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import { AutoForm, ErrorsField, SubmitField, TextField, NumField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useTracker } from 'meteor/react-meteor-data';
-import {Container, Col, Row, Button, Image} from 'react-bootstrap';
+import { Container, Col, Row, Button, Image } from 'react-bootstrap';
 import { Rooms } from '../../api/room/RoomCollection';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -46,7 +46,10 @@ const EditRoom = () => {
 
   // data submitted to edit a room. If there are errors, an error message will pop up. If the data is successfully updated, a success message will appear.
   const submit = async (data) => {
-    const imageUrl = await uploadImgUrl(imageSubmit.current);
+    let imageUrl = initialImage;
+    if (imageSubmit.current !== initialImage) {
+      imageUrl = await uploadImgUrl(imageSubmit.current);
+    }
     const { status, capacity, roomSqFoot, roomClassification } = data;
     const collectionName = Rooms.getCollectionName();
     const updateData = { id: _id, status, capacity, roomSqFoot, roomClassification, picture: imageUrl };

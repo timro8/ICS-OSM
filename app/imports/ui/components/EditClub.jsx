@@ -43,7 +43,10 @@ const EditClub = ({ id }) => {
 
   // On successful submit, insert the data.
   const submit = async (data) => {
-    const imageUrl = await uploadImgUrl(imageSubmit.current);
+    let imageUrl = initialImage;
+    if (imageSubmit.current !== initialImage) {
+      imageUrl = await uploadImgUrl(imageSubmit.current);
+    }
     const { clubName, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
     const collectionName = Clubs.getCollectionName();
     const updateData = { id: id, clubName, image: imageUrl, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
