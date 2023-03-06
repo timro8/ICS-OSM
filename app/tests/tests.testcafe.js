@@ -64,6 +64,7 @@ test('Test that admin pages show up', async () => {
   await navBar.gotoDiscussPage();
   await discussPage.isDisplayed();
 });
+
 test('Room details shows up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -96,5 +97,6 @@ test('Modal shows for Edit Room', async () => {
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.addRoom();
+  await listRoomAdminPage.isDisplayed();
+  await listRoomAdminPage.editRoom();
 });

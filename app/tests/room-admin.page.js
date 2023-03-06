@@ -23,7 +23,8 @@ class ListRoomAdmin {
   }
 
   async editRoom() {
-    await t.click(`#${PAGE_IDS.EDIT_ROOM}`);
+    await t.click('a.edit-room');
+    await t.expect(Selector(`#${PAGE_IDS.EDIT_ROOM}`).exists).ok();
   }
 }
 

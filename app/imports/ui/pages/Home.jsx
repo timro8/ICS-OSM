@@ -6,6 +6,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import FacultyTable from '../components/FacultyTable';
 import ReservationsTable from '../components/ReservationsTable';
+import { getRoomData } from '../../api/utilities/getRoomData';
 
 const roomPositions = [
   { roomNumber: '305F', top: 4, left: 4, vertical: false },
@@ -29,6 +30,9 @@ const Home = () => {
     };
   });
 
+  // Get roomData
+  const roomIds = rooms.map(room => room._id);
+  const roomData = roomIds.map(room => getRoomData(room));
   // The aspect ratio is to make sure that the map container and map size is always the same
   // This preserves (for the most part) the position of the icons if width is changed
   const MAP_ASPECT_RATIO = 1.2704;
@@ -80,7 +84,7 @@ const Home = () => {
                 transformOrigin: 'top left',
               }}
             >
-              { /* {rooms.map(room => {
+              {roomData.map(room => {
                 const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                 if (roomPosition) {
                   const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
@@ -92,13 +96,13 @@ const Home = () => {
                       style={{
                         top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1))}px` : `${roomPositionTop}px`,
                         left: roomPosition.vertical ? `${roomPositionLeft}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1))}px`,
-                        background: 'center / contain url(https://www.ics.hawaii.edu/wp-content/uploads/2013/08/cam-moore.jpg)',
+                        background: `center / contain url(${occupant.image})`,
                       }}
                     />
                   ));
                 }
                 return null;
-              })} */ }{
+              })} {
                 rooms.map(room => {
                   const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                   if (roomPosition) {

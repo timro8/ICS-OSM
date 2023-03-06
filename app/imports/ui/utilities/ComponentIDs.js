@@ -2,6 +2,7 @@ export const COMPONENT_IDS = {
   ADD_ROOM: 'add-room',
   DISCUSS: 'discuss',
   LIST_STUFF_EDIT: 'list-stuff-edit',
+  NAVBAR_DISCUSS: 'navbar-discuss',
   NAVBAR_ADD_STUFF: 'navbar-add-stuff',
   NAVBAR_LIST_STUFF: 'navbar-list-stuff',
   NAVBAR_LIST_STUFF_ADMIN: 'navbar-list-stuff-admin',
@@ -40,4 +41,5 @@ export const COMPONENT_IDS = {
   ROOM_DETAILS: 'room-details',
   NAVBAR_DROPDOWN_CLUB: 'navbar-dropdown-club',
   NAVBAR_CLUB: 'navabar-club',
+  ADD_CLUB: 'add-club',
 };

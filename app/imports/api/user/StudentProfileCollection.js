@@ -1,11 +1,38 @@
 import SimpleSchema from 'simpl-schema';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import BaseProfileCollection from './BaseProfileCollection';
 import { ROLE } from '../role/Role';
 import { Users } from './UserCollection';
 
+export const studentProfilePublications = {
+  studentProfile: 'studentProfile',
+  studentProfileAdmin: 'studentProfileAdmin',
+};
 class StudentProfileCollection extends BaseProfileCollection {
   constructor() {
-    super('StudentProfile', new SimpleSchema({}));
+    super('StudentProfile', new SimpleSchema({
+      email: {
+        type: String,
+        optional: false,
+      },
+      password: {
+        type: String,
+        optional: true,
+      },
+      firstName: String,
+      lastName: String,
+      isClubPresident: {
+        type: Boolean,
+        optional: true,
+        defaultValue: false,
+      },
+      clubPosition: {
+        type: String,
+        optional: true,
+        defaultValue: '',
+      },
+    }));
   }
 
   /**
@@ -15,20 +42,20 @@ class StudentProfileCollection extends BaseProfileCollection {
    * @param firstName The first name.
    * @param lastName The last name.
    */
-  define({ email, firstName, lastName, password }) {
-    // if (Meteor.isServer) {
-    const username = email;
-    const user = this.findOne({ email, firstName, lastName });
-    if (!user) {
-      const role = ROLE.STUDENT;
-      const userID = Users.define({ username, role, password });
-      const profileID = this._collection.insert({ email, firstName, lastName, userID, role });
-      // this._collection.update(profileID, { $set: { userID } });
-      return profileID;
+  define({ email, firstName, lastName, password, isClubPresident, clubPosition }) {
+    if (Meteor.isServer) {
+      const username = email;
+      const user = this.findOne({ email, firstName, lastName });
+      if (!user) {
+        const role = ROLE.STUDENT;
+        const userID = Users.define({ username, role, password });
+        const profileID = this._collection.insert({ email, firstName, lastName, isClubPresident, clubPosition, userID, role });
+        this._collection.update(profileID, { $set: { userID } });
+        return profileID;
+      }
+      return user._id;
     }
-    return user._id;
-    // }
-    // return undefined;
+    return undefined;
   }
 
   /**
@@ -37,15 +64,13 @@ class StudentProfileCollection extends BaseProfileCollection {
    * @param firstName new first name (optional).
    * @param lastName new last name (optional).
    */
-  update(docID, { firstName, lastName }) {
+  update(docID, { firstName, lastName, isClubPresident, clubPosition }) {
     this.assertDefined(docID);
     const updateData = {};
-    if (firstName) {
-      updateData.firstName = firstName;
-    }
-    if (lastName) {
-      updateData.lastName = lastName;
-    }
+    if (firstName) updateData.firstName = firstName;
+    if (lastName) updateData.lastName = lastName;
+    if (isClubPresident) updateData.isClubPresident = isClubPresident;
+    if (clubPosition) updateData.clubPosition = clubPosition;
     this._collection.update(docID, { $set: updateData });
   }
 
@@ -72,12 +97,44 @@ class StudentProfileCollection extends BaseProfileCollection {
     return true;
   }
 
+  publish() {
+    if (Meteor.isServer) {
+      // get the StudentCollection instance.
+      const instance = this;
+      /** This subscription publishes only the documents associated with the logged in user */
+      Meteor.publish(studentProfilePublications.studentProfile, function publish() {
+        if (this.userId) {
+          return instance._collection.find();
+        }
+        return this.ready();
+      });
+
+      /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
+      Meteor.publish(studentProfilePublications.studentProfileAdmin, function publish() {
+        if (this.userId && Roles.userIsInRole(this.userId, ROLE.ADMIN)) {
+          return instance._collection.find();
+        }
+        return this.ready();
+      });
+    }
+  }
+
+  /**
+   * Subscription method for student owned by the current user.
+   */
+  subscribeStudentProfile() {
+    if (Meteor.isClient) {
+      return Meteor.subscribe(studentProfilePublications.studentProfile);
+    }
+    return null;
+  }
   /**
    * Returns an array of strings, each one representing an integrity problem with this collection.
    * Returns an empty array if no problems were found.
    * Checks the profile common fields and the role..
    * @returns {Array} A (possibly empty) array of strings indicating integrity issues.
    */
+
   checkIntegrity() {
     const problems = [];
     this.find().forEach((doc) => {
@@ -98,7 +155,9 @@ class StudentProfileCollection extends BaseProfileCollection {
     const email = doc.email;
     const firstName = doc.firstName;
     const lastName = doc.lastName;
-    return { email, firstName, lastName }; // CAM this is not enough for the define method. We lose the password.
+    const isClubPresident = doc.isClubPresident;
+    const clubPosition = doc.clubPosition;
+    return { email, firstName, lastName, isClubPresident, clubPosition }; // CAM this is not enough for the define method. We lose the password.
   }
 }
 

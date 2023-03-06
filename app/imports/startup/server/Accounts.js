@@ -8,11 +8,11 @@ import { TechProfiles } from '../../api/user/TechProfileCollection';
 
 /* eslint-disable no-console */
 
-function createUser(email, role, firstName, lastName, password) {
+function createUser(email, role, firstName, lastName, password, isClubPresident, clubPosition) {
   if (role === ROLE.ADMIN) AdminProfiles.define({ email, firstName, lastName, password });
   if (role === ROLE.FACULTY) UserProfiles.define({ email, firstName, lastName, password });
   if (role === ROLE.OFFICE) OfficeProfiles.define({ email, firstName, lastName, password });
-  if (role === ROLE.STUDENT) StudentProfiles.define({ email, firstName, lastName, password });
+  if (role === ROLE.STUDENT) StudentProfiles.define({ email, firstName, lastName, password, isClubPresident, clubPosition });
   if (role === ROLE.TECH) TechProfiles.define({ email, firstName, lastName, password });
   if (role === ROLE.USER) UserProfiles.define({ email, firstName, lastName, password });
 }
@@ -21,7 +21,9 @@ function createUser(email, role, firstName, lastName, password) {
 if (Meteor.users.find().count() === 0) {
   if (Meteor.settings.defaultAccounts) {
     console.log('Creating the default user(s)');
-    Meteor.settings.defaultAccounts.map(({ email, password, role, firstName, lastName }) => createUser(email, role, firstName, lastName, password));
+    Meteor.settings.defaultAccounts.map(({ email, password, role, firstName, lastName, isClubPresident, clubPosition }) => (
+      createUser(email, role, firstName, lastName, password, isClubPresident, clubPosition)
+    ));
   } else {
     console.log('Cannot initialize the database!  Please invoke meteor with a settings file.');
   }
