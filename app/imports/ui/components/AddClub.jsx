@@ -1,5 +1,5 @@
-import React, {useRef, useState} from 'react';
-import {Button, Image, Modal} from 'react-bootstrap';
+import React, { useRef, useState } from 'react';
+import { Button, Image, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
