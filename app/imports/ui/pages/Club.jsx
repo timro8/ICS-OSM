@@ -11,6 +11,7 @@ import EditClub from '../components/EditClub';
 
 const Club = () => {
   const { _id } = useParams();
+  console.log(_id);
   const { ready, club, officers, students } = useTracker(() => {
     const clubSubscription = Clubs.subscribeClub();
     const officerSubscription = ClubOfficers.subscribeClubOfficers();
@@ -26,7 +27,7 @@ const Club = () => {
       officers: allOfficers,
       students: allStudents,
     };
-  }, []);
+  }, [_id]);
 
   const getEmails = (officerData, studentData) => {
     const filteredOfficerEmails = officerData

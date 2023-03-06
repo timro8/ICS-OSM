@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -16,17 +16,16 @@ const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { facultyId, clubs, ready, currentUser } = useTracker(() => {
     const user = Meteor.user() ? Meteor.user().username : '';
-    const subscription = FacultyProfiles.subscribeFacultyProfile();
-    const subscription2 = Clubs.subscribeClub();
-    const rdy = subscription.ready();
-    const rdy2 = subscription2.ready();
+    const facultySubscription = FacultyProfiles.subscribeFacultyProfile();
+    const clubsSubscription = Clubs.subscribeClub();
+    const rdy = facultySubscription.ready() && clubsSubscription.ready();
     const facultyItems = FacultyProfiles.find({ email: user }).fetch();
     const clubItems = Clubs.find({}).fetch();
     return ({
       currentUser: Meteor.user() ? Meteor.user().username : '',
       facultyId: facultyItems.length > 0 ? facultyItems[0]._id : '',
       clubs: clubItems,
-      ready: rdy, rdy2,
+      ready: rdy,
     });
   }, []);
 
@@ -63,7 +62,7 @@ const NavBar = () => {
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_DISCUSS} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB} title="Clubs">
                   {ready && clubs ? (
-                    clubs.map((club) => (<Nav.Link className="d-flex justify-content-center" as={NavLink} to={`/clubs/${club._id}`} onClick={() => location.reload()} key="clubs"> {club.clubName} </Nav.Link>))
+                    clubs.map((club) => (<Nav.Link className="d-flex justify-content-center" as={NavLink} to={`/clubs/${club._id}`} key={`${club._id}`}> {club.clubName} </Nav.Link>))
                   ) : <LoadingSpinner message="Loading Club" /> }
                   <Nav.Item className="d-flex justify-content-center">
                     <AddClub />
