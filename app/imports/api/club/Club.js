@@ -13,11 +13,6 @@ export const clubPublications = {
 class ClubCollection extends BaseCollection {
   constructor() {
     super('Clubs', new SimpleSchema({
-      clubKey: {
-        type: String,
-        index: true,
-        unique: true,
-      },
       clubName: String,
       image: {
         type: String,
