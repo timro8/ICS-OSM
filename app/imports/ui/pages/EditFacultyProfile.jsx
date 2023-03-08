@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import swal from 'sweetalert';
-import { Button, Col, Modal } from 'react-bootstrap';
+import { Button, Col, Image, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
@@ -11,6 +11,7 @@ import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { ROLE } from '../../api/role/Role';
+import { uploadImgUrl } from '../../startup/client/uploadImg.js';
 
 const bridge = new SimpleSchema2Bridge(FacultyProfiles._schema);
 
@@ -34,14 +35,36 @@ const EditFacultyProfile = ({ id }) => {
     };
   }, [id]);
 
+  let initialImage = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
+
+  if (doc.image.length > 0) {
+    initialImage = doc.image;
+  }
+  const [selectedImage, setSelectedImage] = useState(initialImage);
+  const imageSubmit = useRef(null);
+
   // On successful submit, insert the data.
-  const submit = (data) => {
-    const { image, firstName, lastName, bio, rooms, phoneNumber, officeHours } = data;
+  const submit = async (data) => {
+    let imageUrl = initialImage;
+    if (imageSubmit.current !== initialImage) {
+      imageUrl = await uploadImgUrl(imageSubmit.current);
+    }
+    const { firstName, lastName, bio, rooms, phoneNumber, officeHours } = data;
     const collectionName = FacultyProfiles.getCollectionName();
-    const updateData = { id: id, image, firstName, lastName, bio, rooms, phoneNumber, officeHours };
+    const updateData = { id: id, image: imageUrl, firstName, lastName, bio, rooms, phoneNumber, officeHours };
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => swal('Success', 'Faculty Profile updated successfully', 'success'));
+  };
+
+  const handleImageClick = () => {
+    document.getElementById('imageUpload').click();
+  };
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    imageSubmit.current = file;
+    setSelectedImage(URL.createObjectURL(file));
   };
 
   return ready ? (
@@ -58,9 +81,14 @@ const EditFacultyProfile = ({ id }) => {
         <Modal.Header closeButton onClick={handleClose}>
           <Modal.Title className="d-flex justify-content-center">Edit Faculty Profile</Modal.Title>
         </Modal.Header>
+        <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column' }}>
+          <Button style={{ background: 'white', borderColor: 'white' }} onClick={handleImageClick}>
+            <input id="imageUpload" type="file" onChange={handleImageUpload} style={{ display: 'none' }} />
+            <Image style={{ borderRadius: '100%', width: '13rem', height: '13rem' }} src={selectedImage} />
+          </Button>
+        </div>
         <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
           <Modal.Body>
-            <TextField name="image" />
             <TextField name="firstName" />
             <TextField name="lastName" />
             <LongTextField name="bio" />
