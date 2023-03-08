@@ -114,7 +114,7 @@ const Home = () => {
       </Row>
       <Row className="simple-card">
         <Col>
-          <h2 style={{ margin: '15px 0' }}>Pacific Ocean Science and Technology</h2>
+          <h2 style={{ margin: '15px 0' }}>Pacific Ocean Science and Technology - 300 Level</h2>
           <div className="map-container" style={{ overflow: 'hidden', width: MAP_WIDTH, height: MAP_HEIGHT }}>
             <div
               className="map"
