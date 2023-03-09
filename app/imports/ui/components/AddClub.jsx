@@ -3,10 +3,13 @@ import { Button, Image, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { Clubs } from '../../api/club/Club';
 import { uploadImgUrl } from '../../startup/client/uploadImg';
+import { ROLE } from '../../api/role/Role';
 
 // form schema based on the Club collection
 const bridge = new SimpleSchema2Bridge(Clubs._schema);
@@ -49,9 +52,11 @@ const AddClub = () => {
 
   return (
     <>
-      <Button id={COMPONENT_IDS.ADD_CLUB} variant="primary" onClick={handleShow}>
-        Add Club
-      </Button>
+      {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
+        <Button key={Math.random()} style={{ width: '7rem' }} id={COMPONENT_IDS.ADD_CLUB} variant="primary" onClick={handleShow}>
+          Add Club
+        </Button>
+      ) : ''}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
