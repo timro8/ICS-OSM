@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import swal from 'sweetalert';
-import { Button, Col, Image, Modal } from 'react-bootstrap';
+import { Button, Col, Image, Modal, Stack } from 'react-bootstrap';
 import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
@@ -70,6 +70,7 @@ const EditFacultyProfile = ({ id }) => {
   return ready ? (
     <>
       <Col className="d-flex justify-content-center">
+        {/** Only used for office and admin users and show this button to those users */}
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
           <Button key={Math.random()} style={{ width: '7rem' }} variant="primary" onClick={handleShow}>
             Edit Profile
@@ -89,11 +90,15 @@ const EditFacultyProfile = ({ id }) => {
         </div>
         <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
           <Modal.Body>
-            <TextField name="firstName" />
-            <TextField name="lastName" />
-            <LongTextField name="bio" />
+            {/** firstname and lastname will appear in horizontal manner */}
+            <Stack direction="horizontal" gap={3}>
+              <TextField style={{ width: '25rem' }} name="firstName" />
+              <TextField style={{ width: '30rem' }} name="lastName" />
+            </Stack>
+            {/** End of stack */}
             <TextField name="phoneNumber" />
             <LongTextField name="officeHours" />
+            <LongTextField name="bio" />
             <Col className="d-flex justify-content-end">
               <SubmitField value="Submit" />
               <ErrorsField />
