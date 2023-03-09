@@ -19,8 +19,7 @@ const NavBar = () => {
     const user = Meteor.user() ? Meteor.user().username : '';
     const subscription = FacultyProfiles.subscribeFacultyProfile();
     const subscription2 = Clubs.subscribeClub();
-    const rdy = subscription.ready();
-    const rdy2 = subscription2.ready();
+    const rdy = subscription.ready() && subscription2.ready();
     const facultyItems = FacultyProfiles.find({ email: user }).fetch();
     const clubItems = Clubs.find({}).fetch();
     setList(clubItems);
@@ -28,7 +27,7 @@ const NavBar = () => {
       currentUser: Meteor.user() ? Meteor.user().username : '',
       facultyId: facultyItems.length > 0 ? facultyItems[0]._id : '',
       clubs: clubItems.length > 0 ? clubItems[0].clubName : '',
-      ready: rdy, rdy2,
+      ready: rdy,
     });
   }, []);
 

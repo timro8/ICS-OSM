@@ -72,13 +72,15 @@ const AddClub = () => {
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <TextField name="clubName" />
             <LongTextField name="description" />
-            <TextField name="joinLink" />
+            <TextField name="officers" />
+            <TextField name="advisor" />
             <TextField name="meetingDay" />
             <TextField name="meetingTime" />
             <TextField name="meetingLocation" />
-            <TextField name="officers" />
-            <TextField name="advisor" />
-            <SubmitField value="Submit" />
+            <TextField name="joinLink" />
+            <div className="d-flex justify-content-end">
+              <SubmitField value="Submit" />
+            </div>
             <ErrorsField />
           </AutoForm>
         </Modal.Body>

@@ -56,9 +56,8 @@ class ClubCollection extends BaseCollection {
    * Defines a new Club item.
    * @return {String} the clubID of the new document.
    */
-  define({ clubKey, clubName, image, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor }) {
+  define({ clubName, image, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor }) {
     const clubID = this._collection.insert({
-      clubKey,
       clubName,
       image,
       description,
@@ -80,11 +79,8 @@ class ClubCollection extends BaseCollection {
    * @param description
    * @param officers
    */
-  update(clubID, { clubKey, clubName, image, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor }) {
+  update(clubID, { clubName, image, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor }) {
     const updateData = {};
-    if (clubKey) {
-      updateData.clubKey = clubKey;
-    }
     if (clubName) {
       updateData.clubName = clubName;
     }
@@ -190,7 +186,6 @@ class ClubCollection extends BaseCollection {
    */
   dumpOne(clubID) {
     const doc = this.findDoc(clubID);
-    const clubKey = doc.clubKey;
     const clubName = doc.clubName;
     const image = doc.image;
     const description = doc.description;
@@ -200,7 +195,7 @@ class ClubCollection extends BaseCollection {
     const meetingLocation = doc.meetingLocation;
     const officers = doc.officers;
     const advisor = doc.advisor;
-    return { clubKey, clubName, image, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
+    return { clubName, image, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
   }
 }
 
