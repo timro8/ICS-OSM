@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { Button, Modal, Badge, CloseButton, FormLabel, Image } from 'react-bootstrap';
+import { Button, Modal, Badge, CloseButton, FormLabel, Image, Stack } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, SelectField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SelectField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
@@ -183,64 +183,68 @@ const AddFacultyForm = props => {
 
   // pop up window: https://react-bootstrap.github.io/components/modal/
   return ready ? (
-    <Modal show={show}>
+    <Modal show={show} className="modal-lg">
       <Modal.Header closeButton onClick={onClose}>
         <Modal.Title>Add Faculty</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column' }}>
+      <Modal.Body id="profileRow">
+        <div id="addProfileImg">
           <Button style={{ background: 'white', borderColor: 'white' }} onClick={handleImageClick}>
             <input id="imageUpload" type="file" onChange={handleImageUpload} style={{ display: 'none' }} />
-            <Image style={{ borderRadius: '100%', width: '13rem', height: '13rem' }} src={selectedImage} />
+            <Image style={{ borderRadius: '100%', width: '15rem', height: '15rem' }} src={selectedImage} />
           </Button>
         </div>
         <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-          <TextField name="firstName" />
-          <TextField name="lastName" />
-          {selectedRoom.length > 0 && (
-            <div style={{ marginTop: '0px' }}>
-              {selectedRoom.map((value, index) => (
-                <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
-                  {value}
-                  <CloseButton
-                    variant="white"
-                    style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
-                    onClick={() => {
-                      setSelectedRoom([...selectedRoom.filter(item => item !== value)]);
-                    }}
-                  />
-                </Badge>
-              ))}
+          <div id="addProfileFields">
+            <Stack direction="horizontal" gap={3}>
+              <TextField style={{ width: '14rem' }} name="firstName" />
+              <TextField style={{ width: '14rem' }} name="lastName" />
+            </Stack>
+            <SelectField name="room" value={currentRoom} onChange={(value) => handleRoom(value)} />
+            {selectedRoom.length > 0 && (
+              <div style={{ marginTop: '0px' }}>
+                {selectedRoom.map((value, index) => (
+                  <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                    {value}
+                    <CloseButton
+                      variant="white"
+                      style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
+                      onClick={() => {
+                        setSelectedRoom([...selectedRoom.filter(item => item !== value)]);
+                      }}
+                    />
+                  </Badge>
+                ))}
+              </div>
+            )}
+            <SelectField name="role" />
+            <TextField name="email" />
+            <TextField name="password" type="password" />
+            <LongTextField name="bio" />
+            <TextField name="phoneNumber" label="Phone Number (optional)" />
+            <FormLabel style={{ color: 'forestgreen' }}>Office Hours:</FormLabel>
+            {putOfficeHours()}
+            {selectedOfficeHours.length > 0 && (
+              <div>
+                {selectedOfficeHours.map((value, index) => (
+                  <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                    {value}
+                    <CloseButton
+                      variant="white"
+                      style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
+                      onClick={() => { removeOfficeHours(value); }}
+                    />
+                  </Badge>
+                ))}
+              </div>
+            )}
+            <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+              <SelectField style={{ marginRight: '5px' }} name="day" value={currentDay} onChange={(value) => setDay(value)} />
+              <SelectField style={{ marginRight: '5px' }} name="startTime" value={currentStartTime} onChange={(value) => setStartTime(value)} />
+              <SelectField name="endTime" value={currentEndTime} onChange={(value) => setEndTime(value)} />
             </div>
-          )}
-          <SelectField name="room" value={currentRoom} onChange={(value) => handleRoom(value)} />
-          <SelectField name="role" />
-          <TextField name="email" />
-          <TextField name="password" type="password" />
-          <TextField name="bio" />
-          <TextField name="phoneNumber" label="Phone Number (optional)" />
-          <FormLabel style={{ color: 'forestgreen' }}>Office Hours:</FormLabel>
-          {putOfficeHours()}
-          {selectedOfficeHours.length > 0 && (
-            <div>
-              {selectedOfficeHours.map((value, index) => (
-                <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
-                  {value}
-                  <CloseButton
-                    variant="white"
-                    style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
-                    onClick={() => { removeOfficeHours(value); }}
-                  />
-                </Badge>
-              ))}
-            </div>
-          )}
-          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <SelectField style={{ marginRight: '5px' }} name="day" value={currentDay} onChange={(value) => setDay(value)} />
-            <SelectField style={{ marginRight: '5px' }} name="startTime" value={currentStartTime} onChange={(value) => setStartTime(value)} />
-            <SelectField name="endTime" value={currentEndTime} onChange={(value) => setEndTime(value)} />
           </div>
-          <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column', gridColumnGap: '10px' }}>
+          <div style={{ display: 'grid', justifyContent: 'end', gridAutoFlow: 'column', gridColumnGap: '10px' }}>
             <Button onClick={onClose} variant="danger">Cancel</Button>
             <Button type="submit" variant="success">Add</Button>
           </div>

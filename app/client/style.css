@@ -174,3 +174,22 @@ body {
   margin-bottom: 50px;
   margin-top: 20px;
 }
+/* Add Faculty Form */
+#addProfileImg{
+  display: flex;
+  justify-content: start;
+  padding-right: 20px;
+  padding-bottom: 65%;
+}
+
+#addProfileFields{
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+}
+
+#profileRow{
+  display: flex;
+  flex-direction: row;
+}
+/* End Faculty Form */
