@@ -25,7 +25,10 @@ const AddRoom = () => {
 
   // data added to the Room collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional rooms.
   const submit = async (data, formRef) => {
-    const imageUrl = await uploadImgUrl(imageSubmit.current);
+    let imageUrl = 'https://res.cloudinary.com/dmbrfkjk3/image/upload/v1678099354/No-Image-Found-400x264_kyy6b4.png';
+    if (selectedImage !== imageUrl) {
+      imageUrl = await uploadImgUrl(imageSubmit.current);
+    }
     const { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification } = data;
     const collectionName = Rooms.getCollectionName();
     const definitionData = { roomKey, roomNumber, location, status, capacity, roomSqFoot, roomClassification, picture: imageUrl };
