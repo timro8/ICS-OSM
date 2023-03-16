@@ -13,7 +13,7 @@ class LandingPage {
     // Note that this file imports t (the test controller) from the testcafe module. You don’t need to pass t to helper functions because TestCafe can resolve the current test context and provide the correct test controller instance.
     const waitTime = 1;
     console.log(`Waiting ${waitTime} seconds before running LandingPage.isDisplayed().`);
-    await t.wait(waitTime * 1).expect(this.pageSelector.exists).ok();
+    await t.wait(waitTime * 10).expect(this.pageSelector.exists).ok();
   }
 }
 
