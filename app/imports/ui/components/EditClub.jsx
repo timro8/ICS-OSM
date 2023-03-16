@@ -47,9 +47,9 @@ const EditClub = ({ id }) => {
     if (imageSubmit.current !== initialImage) {
       imageUrl = await uploadImgUrl(imageSubmit.current);
     }
-    const { clubKey, clubName, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
+    const { clubName, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
     const collectionName = Clubs.getCollectionName();
-    const updateData = { id: id, clubKey, clubName, image: imageUrl, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
+    const updateData = { id: id, clubName, image: imageUrl, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => swal('Success', 'Clubs updated successfully', 'success'));
@@ -95,7 +95,6 @@ const EditClub = ({ id }) => {
               <SubmitField value="Submit" />
               <ErrorsField />
             </Col>
-            <HiddenField name="clubKey" />
             <HiddenField name="officers" />
           </Modal.Body>
         </AutoForm>

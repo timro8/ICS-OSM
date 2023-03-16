@@ -70,7 +70,11 @@ const Club = () => {
             </Row>
           </Col>
         </Row>
-        <Row className="pt-3">
+        <Row className="pt-2">
+          <h3>ADVISOR</h3>
+          <p>{club[0].advisor}</p>
+        </Row>
+        <Row className="pt-2">
           <h3>MEETING</h3>
           <p> {club[0].meetingDay} {club[0].meetingTime} {club[0].meetingLocation}</p>
         </Row>

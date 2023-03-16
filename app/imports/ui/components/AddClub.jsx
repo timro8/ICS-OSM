@@ -3,10 +3,13 @@ import { Button, Image, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { Clubs } from '../../api/club/Club';
 import { uploadImgUrl } from '../../startup/client/uploadImg';
+import { ROLE } from '../../api/role/Role';
 
 // form schema based on the Club collection
 const bridge = new SimpleSchema2Bridge(Clubs._schema);
@@ -25,9 +28,9 @@ const AddClub = () => {
   // data added to Club collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional clubs.
   const submit = async (data, formRef) => {
     const imageUrl = await uploadImgUrl(imageSubmit.current);
-    const { clubKey, clubName, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
+    const { clubName, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
     const collectionName = Clubs.getCollectionName();
-    const definitionData = { clubKey, clubName, image: imageUrl, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
+    const definitionData = { clubName, image: imageUrl, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
 
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -49,9 +52,11 @@ const AddClub = () => {
 
   return (
     <>
-      <Button id={COMPONENT_IDS.ADD_CLUB} variant="primary" onClick={handleShow}>
-        Add Club
-      </Button>
+      {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
+        <Button key={Math.random()} style={{ width: '7rem' }} id={COMPONENT_IDS.ADD_CLUB} variant="primary" onClick={handleShow}>
+          Add Club
+        </Button>
+      ) : ''}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -65,16 +70,17 @@ const AddClub = () => {
             </Button>
           </div>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="clubKey" placeholder="club(Name:ABBR)" />
             <TextField name="clubName" />
             <LongTextField name="description" />
-            <TextField name="joinLink" />
+            <TextField name="officers" />
+            <TextField name="advisor" />
             <TextField name="meetingDay" />
             <TextField name="meetingTime" />
             <TextField name="meetingLocation" />
-            <TextField name="officers" />
-            <TextField name="advisor" />
-            <SubmitField value="Submit" />
+            <TextField name="joinLink" />
+            <div className="d-flex justify-content-end">
+              <SubmitField value="Submit" />
+            </div>
             <ErrorsField />
           </AutoForm>
         </Modal.Body>

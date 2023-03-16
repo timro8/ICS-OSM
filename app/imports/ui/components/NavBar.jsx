@@ -16,9 +16,9 @@ const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { facultyId, clubs, ready, currentUser } = useTracker(() => {
     const user = Meteor.user() ? Meteor.user().username : '';
-    const facultySubscription = FacultyProfiles.subscribeFacultyProfile();
-    const clubsSubscription = Clubs.subscribeClub();
-    const rdy = facultySubscription.ready() && clubsSubscription.ready();
+    const subscription = FacultyProfiles.subscribeFacultyProfile();
+    const subscription2 = Clubs.subscribeClub();
+    const rdy = subscription.ready() && subscription2.ready();
     const facultyItems = FacultyProfiles.find({ email: user }).fetch();
     const clubItems = Clubs.find({}).fetch();
     return ({
