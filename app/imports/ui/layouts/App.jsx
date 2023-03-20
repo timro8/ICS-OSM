@@ -28,6 +28,7 @@ import DiscussionFaculty from '../pages/DiscussionPage';
 import AddDiscussion from '../pages/AddDiscussion';
 import Club from '../pages/Club';
 import EditRoom from '../pages/EditRoom';
+import Tech from '../pages/Tech';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
           <Route path="/cal" element={<ReserveRoom />} />
           <Route path="/editroom/:_id" element={<AdminProtectedRoute ready={ready}><EditRoom /></AdminProtectedRoute>} />
+          <Route path="/tech/" element={<TechProtectedRoute ready={ready}><Tech /></TechProtectedRoute>} />
         </Routes>
         <Footer />
       </div>
@@ -109,6 +111,18 @@ const OfficeProtectedRoute = ({ ready, children }) => {
   return (isLogged && isOffice) ? children : <Navigate to="/notauthorized" />;
 };
 
+const TechProtectedRoute = ({ ready, children }) => {
+  const isLogged = Meteor.userId() !== null;
+  if (!isLogged) {
+    return <Navigate to="/signin" />;
+  }
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
+  const isOffice = Roles.userIsInRole(Meteor.userId(), [ROLE.TECH]);
+  return (isLogged && isOffice) ? children : <Navigate to="/notauthorized" />;
+};
+
 // Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
@@ -136,6 +150,17 @@ OfficeProtectedRoute.propTypes = {
 };
 
 OfficeProtectedRoute.defaultProps = {
+  ready: false,
+  children: <Landing />,
+};
+
+// Require a component and location to be passed to each OfficeProtectedRoute.
+TechProtectedRoute.propTypes = {
+  ready: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+TechProtectedRoute.defaultProps = {
   ready: false,
   children: <Landing />,
 };
