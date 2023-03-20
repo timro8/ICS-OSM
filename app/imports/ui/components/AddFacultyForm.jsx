@@ -102,10 +102,12 @@ const AddFacultyForm = props => {
   const [selectedOfficeHours, setSelectedOfficeHours] = useState([]);
   const [selectedImage, setSelectedImage] = useState('https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg');
   const imageSubmit = useRef(null);
-
   // On submit, insert the data.
   const submit = async (data, formRef) => {
-    const imageUrl = await uploadImgUrl(imageSubmit.current);
+    let imageUrl = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
+    if (selectedImage !== imageUrl) {
+      imageUrl = await uploadImgUrl(imageSubmit.current);
+    }
     Meteor.call(
       'insertFaculty',
       data,

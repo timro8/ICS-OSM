@@ -27,7 +27,10 @@ const AddClub = () => {
   const [selectedImage, setSelectedImage] = useState('https://res.cloudinary.com/dmbrfkjk3/image/upload/v1678099354/No-Image-Found-400x264_kyy6b4.png');
   // data added to Club collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional clubs.
   const submit = async (data, formRef) => {
-    const imageUrl = await uploadImgUrl(imageSubmit.current);
+    let imageUrl = 'https://res.cloudinary.com/dmbrfkjk3/image/upload/v1678099354/No-Image-Found-400x264_kyy6b4.png';
+    if (selectedImage !== imageUrl) {
+      imageUrl = await uploadImgUrl(imageSubmit.current);
+    }
     const { clubName, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
     const collectionName = Clubs.getCollectionName();
     const definitionData = { clubName, image: imageUrl, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor };
