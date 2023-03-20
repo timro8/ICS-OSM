@@ -9,11 +9,11 @@
     { "email":  "acm@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "acm", "lastName":  "acm",
       "isClubPresident": true, "clubPosition": "Chair"
     },
-    { "email":  "gamedev@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "gamedev", "lastName":  "gamedev", "isClubPresident": true, "clubPosition": "Chair" },
-    { "email":  "greyhats@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "greyhats", "lastName":  "greyhats", "isClubPresident": false, "clubPosition": "VP"},
-    { "email":  "icspark@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "icspark", "lastName":  "icspark", "isClubPresident": false, "clubPosition": "Officer" },
-    { "email":  "panda@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "panda", "lastName":  "panda", "isClubPresident": true, "clubPosition": "President" },
-    { "email":  "switch@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "switch", "lastName":  "switch", "isClubPresident": false, "clubPosition": "Secretary" },
+    { "email":  "gamedev@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "gamedev", "lastName":  "gamedev"},
+    { "email":  "greyhats@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "greyhats", "lastName":  "greyhats"},
+    { "email":  "icspark@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "icspark", "lastName":  "icspark"},
+    { "email":  "panda@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "panda", "lastName":  "panda"},
+    { "email":  "switch@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "switch", "lastName":  "switch"},
     { "email":  "jenny@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Jenny", "lastName":  "Doe" },
     { "email":  "mike@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Mike", "lastName":  "Doe" },
     { "email":  "lisa@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Lisa", "lastName":  "Doe" },
@@ -23,27 +23,39 @@
   "defaultClubOfficers": [
     {
       "studentId": "acm@foo.com",
-      "clubId": "ACManoa"
+      "clubId": "ACManoa",
+      "isPresident": true,
+      "position": "President"
     },
     {
       "studentId": "panda@foo.com",
-      "clubId": "PANDA"
+      "clubId": "PANDA",
+      "isPresident": false,
+      "position": "Secretary"
     },
     {
       "studentId": "gamedev@foo.com",
-      "clubId": "Game Developers"
+      "clubId": "Game Developers",
+      "isPresident": false,
+      "position": "Vice President"
     },
     {
       "studentId": "greyhats@foo.com",
-      "clubId": "Grey Hats"
+      "clubId": "Grey Hats",
+      "isPresident": true,
+      "position": "Chief"
     },
     {
       "studentId": "icspark@foo.com",
-      "clubId": "ICSpark"
+      "clubId": "ICSpark",
+      "isPresident": true,
+      "position": "President"
     },
     {
       "studentId": "switch@foo.com",
-      "clubId": "SWITCH"
+      "clubId": "SWITCH",
+      "isPresident": false,
+      "position": "Treasurer"
     }
   ],
 
