@@ -6,6 +6,8 @@ import { Rooms } from '../../api/room/RoomCollection';
 import { RoomEquipments } from '../../api/room/RoomEquipments';
 import { RoomJacks } from '../../api/room/RoomJacks';
 import { PAGE_IDS } from '../utilities/PageIDs';
+import RoomEquipment from '../components/RoomEquipment';
+import RoomJack from '../components/RoomJack';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 function getEquipmentData(equipment) {
@@ -57,18 +59,16 @@ const Tech = () => {
             <Table responsive bordered hover size="sm">
               <thead>
                 <tr>
-                  <th>Qty</th>
-                  <th>Room Number</th>
+                  <th>Quantity</th>
                   <th>Description</th>
+                  <th>Serial Number</th>
+                  <th>Asset Tag</th>
+                  <th>Edit</th>
                 </tr>
               </thead>
               <tbody>
                 {equipmentData.map((e, index) => (
-                  <tr key={index}>
-                    <td>{e.quantity}</td>
-                    <td>{e[0].roomNumber}</td>
-                    <td>{e.description}</td>
-                  </tr>
+                  <RoomEquipment key={index} equipment={e} />
                 ))}
               </tbody>
             </Table>
@@ -83,15 +83,13 @@ const Tech = () => {
                   <th>Room Number</th>
                   <th>Jack Number</th>
                   <th>Location</th>
+                  <th>Description</th>
+                  <th>Edit Jack</th>
                 </tr>
               </thead>
               <tbody>
                 {jackData.map((j, index) => (
-                  <tr key={index}>
-                    <td>{j[0].roomNumber}</td>
-                    <td>{j.jackNumber}</td>
-                    <td>{j.wallLocation}</td>
-                  </tr>
+                  <RoomJack key={index} jack={j} />
                 ))}
               </tbody>
             </Table>
