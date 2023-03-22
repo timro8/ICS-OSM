@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Col, Row, Container, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
@@ -11,6 +11,7 @@ import EditClub from '../components/EditClub';
 
 const Club = () => {
   const { _id } = useParams();
+  console.log(_id);
   const { ready, club, officers, students } = useTracker(() => {
     const clubSubscription = Clubs.subscribeClub();
     const officerSubscription = ClubOfficers.subscribeClubOfficers();
@@ -26,19 +27,27 @@ const Club = () => {
       officers: allOfficers,
       students: allStudents,
     };
-  }, []);
+  }, [_id]);
 
   const getEmails = (officerData, studentData) => {
-    const filteredOfficerEmails = officerData
-      .filter((o) => o.clubId === club[0].clubName)
-      .map((member) => member.studentId);
-
-    return studentData.filter((student) => filteredOfficerEmails.includes(student.email));
+    const filteredOfficers = officerData.filter((o) => o.clubId === club[0].clubName);
+    const arr = [];
+    // iterates through officers and looks for student, when found combine position and name
+    filteredOfficers.forEach(officer => {
+      const foundStudent = studentData.find(student => student.email === officer.studentId);
+      if (foundStudent) {
+        arr.push({ name: `${foundStudent.firstName} ${foundStudent.lastName}`, position: officer.position });
+      }
+    });
+    // return list of students
+    return arr;
   };
+
+  // useMemo caches the expensive calculation
+  const officersInClub = useMemo(() => getEmails(officers, students), [officers, students]);
 
   return (ready ? (
     <Container id={PAGE_IDS.CLUB} className="py-3 d-flex align-content-center" fluid>
-      { console.log(getEmails(officers, students)) }
       <Col className="text-center">
         <Row>
           <h1 className="display-2 green-purple-gradient p-5">{club[0].clubName}</h1>
@@ -56,13 +65,13 @@ const Club = () => {
           <h3>OFFICERS</h3>
           <Col>
             <Row className="d-flex justify-content-center">
-              {getEmails(officers, students).map((o, i) => (
-                <div key={`${i}`}>
+              {officersInClub.map(officer => (
+                <div key={`${officer.name}${officer.position}`}>
                   <div>
-                    {o.firstName} {o.lastName}
+                    {officer.name}
                   </div>
                   <div>
-                    {o.clubPosition}
+                    {officer.position}
                   </div>
                 </div>
               ))}

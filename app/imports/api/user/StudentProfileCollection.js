@@ -22,16 +22,6 @@ class StudentProfileCollection extends BaseProfileCollection {
       },
       firstName: String,
       lastName: String,
-      isClubPresident: {
-        type: Boolean,
-        optional: true,
-        defaultValue: false,
-      },
-      clubPosition: {
-        type: String,
-        optional: true,
-        defaultValue: '',
-      },
     }));
   }
 
@@ -42,14 +32,14 @@ class StudentProfileCollection extends BaseProfileCollection {
    * @param firstName The first name.
    * @param lastName The last name.
    */
-  define({ email, firstName, lastName, password, isClubPresident, clubPosition }) {
+  define({ email, firstName, lastName, password }) {
     if (Meteor.isServer) {
       const username = email;
       const user = this.findOne({ email, firstName, lastName });
       if (!user) {
         const role = ROLE.STUDENT;
         const userID = Users.define({ username, role, password });
-        const profileID = this._collection.insert({ email, firstName, lastName, isClubPresident, clubPosition, userID, role });
+        const profileID = this._collection.insert({ email, firstName, lastName, userID, role });
         this._collection.update(profileID, { $set: { userID } });
         return profileID;
       }
@@ -64,13 +54,11 @@ class StudentProfileCollection extends BaseProfileCollection {
    * @param firstName new first name (optional).
    * @param lastName new last name (optional).
    */
-  update(docID, { firstName, lastName, isClubPresident, clubPosition }) {
+  update(docID, { firstName, lastName }) {
     this.assertDefined(docID);
     const updateData = {};
     if (firstName) updateData.firstName = firstName;
     if (lastName) updateData.lastName = lastName;
-    if (isClubPresident) updateData.isClubPresident = isClubPresident;
-    if (clubPosition) updateData.clubPosition = clubPosition;
     this._collection.update(docID, { $set: updateData });
   }
 
@@ -155,9 +143,7 @@ class StudentProfileCollection extends BaseProfileCollection {
     const email = doc.email;
     const firstName = doc.firstName;
     const lastName = doc.lastName;
-    const isClubPresident = doc.isClubPresident;
-    const clubPosition = doc.clubPosition;
-    return { email, firstName, lastName, isClubPresident, clubPosition }; // CAM this is not enough for the define method. We lose the password.
+    return { email, firstName, lastName }; // CAM this is not enough for the define method. We lose the password.
   }
 }
 
