@@ -12,7 +12,11 @@ import { defineMethod } from '../../api/base/BaseCollection.methods';
 const formSchema = new SimpleSchema({
   roomId: String,
   jackNumber: String,
-  description: String,
+  wallLocation: String,
+  description: {
+    type: String,
+    optional: true,
+  },
   owner: String,
 });
 
@@ -28,9 +32,9 @@ const AddJack = ({ roomId, owner }) => {
 
   // data submitted to add a new jack. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional jacks.
   const submit = (data, formRef) => {
-    const { jackNumber, description } = data;
+    const { jackNumber, wallLocation, description } = data;
     const collectionName = RoomJacks.getCollectionName();
-    const definitionData = { roomId, jackNumber, description, owner };
+    const definitionData = { roomId, jackNumber, wallLocation, description, owner };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -53,6 +57,7 @@ const AddJack = ({ roomId, owner }) => {
           Add Jacks
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <TextField name="jackNumber" />
+            <TextField name="wallLocation" />
             <TextField name="description" />
             <SubmitField value="submit" />
             <ErrorsField />

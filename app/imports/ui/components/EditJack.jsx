@@ -36,9 +36,9 @@ const EditJack = ({ jackId }) => {
 
   // data submitted to update a jack. If there are errors, an error message will appear. If the data successfully updates, a success message appears.
   const submit = (data) => {
-    const { jackNumber, description } = data;
+    const { jackNumber, wallLocation, description } = data;
     const collectionName = RoomJacks.getCollectionName();
-    const updateData = { id: jackId, jackNumber, description };
+    const updateData = { id: jackId, jackNumber, wallLocation, description };
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => swal('Success', 'Jack updated successfully', 'success'));
@@ -57,6 +57,7 @@ const EditJack = ({ jackId }) => {
         <Modal.Body>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
             <TextField name="jackNumber" />
+            <TextField name="wallLocation" />
             <TextField name="description" />
             <SubmitField value="Submit" />
             <ErrorsField />

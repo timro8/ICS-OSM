@@ -117,6 +117,7 @@ const RoomDetails = () => {
             <thead>
               <tr>
                 <th>Jack Number</th>
+                <th>Wall Location</th>
                 <th>Description</th>
                 <th>Edit</th>
               </tr>

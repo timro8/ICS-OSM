@@ -15,7 +15,14 @@ class RoomJacksCollection extends BaseCollection {
     super('RoomJacks', new SimpleSchema({
       roomId: String,
       jackNumber: String,
-      description: String,
+      wallLocation: {
+        type: String,
+        optional: true,
+      },
+      description: {
+        type: String,
+        optional: true,
+      },
       owner: String,
     }));
   }
@@ -24,14 +31,16 @@ class RoomJacksCollection extends BaseCollection {
    * Defines a new Room item.
    * @param roomId the Id of the room
    * @param jackNumber the number of the jack.
+   * @param wallLocation the wall location of the jack.
    * @param description the description of the jack number.
    * @param owner the owner of the room.
    * @return {String} the docID of the new document.
    */
-  define({ roomId, jackNumber, description, owner }) {
+  define({ roomId, jackNumber, wallLocation, description, owner }) {
     const docID = this._collection.insert({
       roomId,
       jackNumber,
+      wallLocation,
       description,
       owner,
     });
@@ -44,10 +53,13 @@ class RoomJacksCollection extends BaseCollection {
    * @param jackNumber the number of the jack (optional).
    * @param description the new status (optional).
    */
-  update(docID, { jackNumber, description }) {
+  update(docID, { jackNumber, wallLocation, description }) {
     const updateData = {};
     if (jackNumber) {
       updateData.jackNumber = jackNumber;
+    }
+    if (wallLocation) {
+      updateData.wallLocation = wallLocation;
     }
     if (description) {
       updateData.description = description;
@@ -127,15 +139,16 @@ class RoomJacksCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{owner: (*|number), roomId: *, description: *, quantity: *, serialNumber: *, assetTag: *}}
+   * @return {{owner: (*|number), roomId: *, wallLocation: *, description: *, quantity: *, serialNumber: *, assetTag: *}}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
     const roomId = doc.roomId;
     const jackNumber = doc.jackNumber;
+    const wallLocation = doc.wallLocation;
     const description = doc.description;
     const owner = doc.owner;
-    return { roomId, jackNumber, description, owner };
+    return { roomId, jackNumber, wallLocation, description, owner };
   }
 }
 

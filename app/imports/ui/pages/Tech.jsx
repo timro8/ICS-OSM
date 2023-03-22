@@ -90,7 +90,7 @@ const Tech = () => {
                   <tr key={index}>
                     <td>{j[0].roomNumber}</td>
                     <td>{j.jackNumber}</td>
-                    <td>{j.description}</td>
+                    <td>{j.wallLocation}</td>
                   </tr>
                 ))}
               </tbody>
