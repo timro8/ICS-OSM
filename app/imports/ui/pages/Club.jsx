@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import { Col, Row, Container, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
-import { _ } from 'meteor/underscore';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Clubs } from '../../api/club/Club';

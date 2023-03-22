@@ -21,7 +21,6 @@ import ReserveRoom from '../pages/ReserveRoom';
 import SignUpRequest from '../pages/SignUpRequest';
 import Faculty from '../pages/Faculty';
 import FacultyProfile from '../pages/FacultyProfile';
-import EditFacultyProfile from '../pages/EditFacultyProfile';
 import RoomDetails from '../pages/RoomDetails';
 import LoadingSpinner from '../components/LoadingSpinner';
 import DiscussionFaculty from '../pages/DiscussionPage';
