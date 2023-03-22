@@ -15,6 +15,8 @@ class ClubOfficersCollection extends BaseCollection {
     super('ClubOfficers', new SimpleSchema({
       studentId: String,
       clubId: String,
+      isPresident: Boolean,
+      position: String,
     }));
   }
 
@@ -24,10 +26,12 @@ class ClubOfficersCollection extends BaseCollection {
    * @param clubId name of club
    * @return {String} the docID of the new document.
    */
-  define({ studentId, clubId }) {
+  define({ studentId, clubId, isPresident, position }) {
     const docID = this._collection.insert({
       studentId,
       clubId,
+      isPresident,
+      position,
     });
     return docID;
   }
@@ -39,10 +43,12 @@ class ClubOfficersCollection extends BaseCollection {
    * @param isPresident determines if president
    * @param position title of position
    */
-  update(docID, { studentId, clubId }) {
+  update(docID, { studentId, clubId, isPresident, position }) {
     const updateData = {};
     if (studentId) updateData.studentId = studentId;
     if (clubId) updateData.clubId = clubId;
+    if (isPresident) updateData.isPresident = isPresident;
+    if (position) updateData.position = position;
     this._collection.update(docID, { $set: updateData });
   }
 
@@ -124,7 +130,9 @@ class ClubOfficersCollection extends BaseCollection {
     const doc = this.findDoc(docID);
     const studentId = doc.studentId;
     const clubId = doc.clubId;
-    return { studentId, clubId };
+    const isPresident = doc.isPresident;
+    const position = doc.position;
+    return { studentId, clubId, isPresident, position };
   }
 }
 

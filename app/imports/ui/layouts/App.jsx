@@ -21,7 +21,6 @@ import ReserveRoom from '../pages/ReserveRoom';
 import SignUpRequest from '../pages/SignUpRequest';
 import Faculty from '../pages/Faculty';
 import FacultyProfile from '../pages/FacultyProfile';
-import EditFacultyProfile from '../pages/EditFacultyProfile';
 import RoomDetails from '../pages/RoomDetails';
 import LoadingSpinner from '../components/LoadingSpinner';
 import DiscussionFaculty from '../pages/DiscussionPage';
@@ -52,7 +51,6 @@ const App = () => {
           <Route path="/addDis" element={<AddDiscussion />} />
           <Route path="/discus" element={<DiscussionFaculty />} />
           <Route path="/clubs/:_id" element={<Club />} />
-          <Route path="/editfacultyprofile/:_id" element={<EditFacultyProfile />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/listroom" element={<ProtectedRoute><ListRoom /></ProtectedRoute>} />
