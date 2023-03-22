@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Col, Row, Container, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
+import { _ } from 'meteor/underscore';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
@@ -29,13 +30,22 @@ const Club = () => {
     };
   }, [_id]);
 
-  // const getEmails = (officerData, studentData) => {
-  //   const filteredOfficerEmails = officerData
-  //     .filter((o) => o.clubId === club[0].clubName)
-  //     .map((member) => member.studentId);
-  //
-  //   return studentData.filter((student) => filteredOfficerEmails.includes(student.email));
-  // };
+  const getEmails = (officerData, studentData) => {
+    const filteredOfficers = officerData.filter((o) => o.clubId === club[0].clubName);
+    const arr = [];
+    // iterates through officers and looks for student, when found combine position and name
+    filteredOfficers.forEach(officer => {
+      const foundStudent = studentData.find(student => student.email === officer.studentId);
+      if (foundStudent) {
+        arr.push({ name: `${foundStudent.firstName} ${foundStudent.lastName}`, position: officer.position });
+      }
+    });
+    // return list of students
+    return arr;
+  };
+
+  // useMemo caches the expensive calculation
+  const officersInClub = useMemo(() => getEmails(officers, students), [officers, students]);
 
   return (ready ? (
     <Container id={PAGE_IDS.CLUB} className="py-3 d-flex align-content-center" fluid>
@@ -56,7 +66,16 @@ const Club = () => {
           <h3>OFFICERS</h3>
           <Col>
             <Row className="d-flex justify-content-center">
-              officers go here
+              {officersInClub.map(officer => (
+                <div key={`${officer.name}${officer.position}`}>
+                  <div>
+                    {officer.name}
+                  </div>
+                  <div>
+                    {officer.position}
+                  </div>
+                </div>
+              ))}
             </Row>
           </Col>
         </Row>

@@ -28,6 +28,12 @@
       "position": "President"
     },
     {
+      "studentId": "jenny@foo.com",
+      "clubId": "ACManoa",
+      "isPresident": false,
+      "position": "Vice President"
+    },
+    {
       "studentId": "panda@foo.com",
       "clubId": "PANDA",
       "isPresident": false,
