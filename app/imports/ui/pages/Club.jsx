@@ -79,12 +79,12 @@ const Club = () => {
             </Row>
           </Col>
         </Row>
-        <Row>
+        <Row className="pt-2">
           <Col>
             <AddClubOfficer />
           </Col>
         </Row>
-        <Row className="pt-2">
+        <Row className="pt-3">
           <h3>ADVISOR</h3>
           <p>{club[0].advisor}</p>
         </Row>

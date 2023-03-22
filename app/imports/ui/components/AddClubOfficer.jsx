@@ -23,9 +23,9 @@ const AddClubOfficer = () => {
 
   // data added to Club collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional clubs.
   const submit = async (data, formRef) => {
-    const { studentId, clubId } = data;
+    const { studentId, clubId, isPresident, position } = data;
     const collectionName = ClubOfficers.getCollectionName();
-    const definitionData = { studentId, clubId };
+    const definitionData = { studentId, clubId, isPresident, position };
 
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -52,6 +52,8 @@ const AddClubOfficer = () => {
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <TextField name="studentId" placeholder="Student Email" />
             <TextField name="clubId" placeholder="Club Name" />
+            <TextField name="isPresident" placeholder="true or false" />
+            <TextField name="position" />
             <div className="d-flex justify-content-end">
               <SubmitField value="Submit" />
             </div>
