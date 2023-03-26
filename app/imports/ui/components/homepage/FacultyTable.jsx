@@ -3,13 +3,13 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
 import { Table, Button } from 'react-bootstrap';
-import LoadingSpinner from './LoadingSpinner';
-import AddFacultyForm from './AddFacultyForm';
-import AdminPageFacultyComponent from './AdminPage/AdminPageFacultyComponent';
-import { Rooms } from '../../api/room/RoomCollection';
-import { Events302 } from '../../api/events/Events302Collection';
-import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
-import { ROLE } from '../../api/role/Role';
+import LoadingSpinner from '../LoadingSpinner';
+import AddFacultyForm from '../AddFacultyForm';
+import AdminPageFacultyComponent from '../AdminPage/AdminPageFacultyComponent';
+import { Rooms } from '../../../api/room/RoomCollection';
+import { Events302 } from '../../../api/events/Events302Collection';
+import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
+import { ROLE } from '../../../api/role/Role';
 
 /* Renders a table containing all of the Faculty documents. Use <Admin> to render each row in each tabs. */
 const FacultyTable = () => {

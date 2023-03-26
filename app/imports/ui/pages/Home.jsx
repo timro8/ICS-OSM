@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, ProgressBar, Row } from 'react-bootstrap';
 import * as d3 from 'd3';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
-import FacultyTable from '../components/FacultyTable';
-import ReservationsTable from '../components/ReservationsTable';
+import FacultyTable from '../components/homepage/FacultyTable';
+import ReservationsTable from '../components/homepage/ReservationsTable';
 import { getRoomData } from '../../api/utilities/getRoomData';
+import { ROLE } from '../../api/role/Role';
 
 const roomPositions = [
   { roomNumber: '305F', top: 4, left: 4, vertical: false },
@@ -179,9 +182,11 @@ const Home = () => {
       <Row className="simple-card">
         <FacultyTable />
       </Row>
-      <Row className="simple-card">
-        <ReservationsTable />
-      </Row>
+      {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE, ROLE.FACULTY, ROLE.TECH]) ? (
+        <Row className="simple-card">
+          <ReservationsTable />
+        </Row>
+      ) : ''}
     </Container>
   );
 };

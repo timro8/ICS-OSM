@@ -59,7 +59,6 @@ const NavBar = () => {
               {currentUser ? ([
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_HOME} as={NavLink} to="/home" key="faculty">Home</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FACULTY} as={NavLink} to="/faculty" key="faculty">Faculty</Nav.Link>,
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_DISCUSS} as={NavLink} to="/discus" key="discus">Discuss</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB} title="Clubs">
                   {ready && clubs ? (
                     clubs.map((club) => (<Nav.Link className="d-flex justify-content-center" as={NavLink} to={`/clubs/${club._id}`} key={`${club._id}`}> {club.clubName} </Nav.Link>))

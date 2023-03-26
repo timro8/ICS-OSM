@@ -1,11 +1,11 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Table } from 'react-bootstrap';
-import LoadingSpinner from './LoadingSpinner';
-import AdminPageReservationComponent from './AdminPage/AdminPageReservationComponent';
-import { Rooms } from '../../api/room/RoomCollection';
-import { Events302 } from '../../api/events/Events302Collection';
-import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
+import LoadingSpinner from '../LoadingSpinner';
+import AdminPageReservationComponent from '../AdminPage/AdminPageReservationComponent';
+import { Rooms } from '../../../api/room/RoomCollection';
+import { Events302 } from '../../../api/events/Events302Collection';
+import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 
 /* Renders a table containing all of the Faculty documents. Use <Admin> to render each row in each tabs. */
 const ReservationsTable = () => {
