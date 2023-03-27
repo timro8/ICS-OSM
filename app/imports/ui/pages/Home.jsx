@@ -147,7 +147,7 @@ const Home = () => {
                       >
                         {hoveredIconId === iconId && (
                           <div>
-                            Show this when hovering the occupants icon
+                            {`${occupant.firstName} ${occupant.lastName}`}
                           </div>
                         )}
                       </div>
