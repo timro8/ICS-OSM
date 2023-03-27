@@ -65,8 +65,6 @@ const Home = () => {
       rooms: Rooms.find().fetch(),
     };
   });
-
-  // Get roomData
   const roomIds = rooms.map(room => room._id);
   const roomData = roomIds.map(room => getRoomData(room));
   // The aspect ratio is to make sure that the map container and map size is always the same
@@ -90,10 +88,10 @@ const Home = () => {
     d3.select('.map-container').call(zoom);
   }, []);
 
-  const occupantBackground = (occupant) => {
-    const occupantWithImageBackground = `center / contain url(${occupant.image})`;
-    const noImageBackground = 'rgba(200, 200, 200) center';
-    return occupant.image ? occupantWithImageBackground : noImageBackground;
+  const occupantIconImage = (occupant) => {
+    const occupantWithImage = `center / contain url(${occupant.image})`;
+    const noImage = 'rgba(200, 200, 200) center';
+    return occupant.image ? occupantWithImage : noImage;
   };
 
   return (
@@ -138,7 +136,7 @@ const Home = () => {
                       style={{
                         top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
                         left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
-                        background: occupantBackground(occupant),
+                        background: occupantIconImage(occupant),
                       }}
                     />
                   ));
