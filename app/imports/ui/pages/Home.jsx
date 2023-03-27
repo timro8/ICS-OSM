@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, ProgressBar, Row } from 'react-bootstrap';
 import * as d3 from 'd3';
@@ -93,6 +93,7 @@ const Home = () => {
     const noImage = 'rgba(200, 200, 200) center';
     return occupant.image ? occupantWithImage : noImage;
   };
+  const [hoveredIconId, setHoveredIconId] = useState(null);
 
   return (
     <Container id={PAGE_IDS.HOME} className="py-3">
@@ -130,16 +131,28 @@ const Home = () => {
                   const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
                   const roomPositionLeft = (roomPosition.left / 100) * MAP_WIDTH;
                   const COLLISION_SPACING = 6;
-                  return room.occupants.map((occupant, index) => (
-                    <div
-                      className="map-icon map-icon-occupant"
-                      style={{
-                        top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
-                        left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
-                        background: occupantIconImage(occupant),
-                      }}
-                    />
-                  ));
+                  return room.occupants.map((occupant, index) => {
+                    const iconId = `${room.roomNumber}-${index}`;
+                    return (
+                      <div
+                        className="map-icon map-icon-occupant"
+                        id={iconId}
+                        onMouseEnter={() => setHoveredIconId(iconId)}
+                        onMouseLeave={() => setHoveredIconId(null)}
+                        style={{
+                          top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
+                          left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
+                          background: occupantIconImage(occupant),
+                        }}
+                      >
+                        {hoveredIconId === iconId && (
+                          <div>
+                            Show this when hovering the occupants icon
+                          </div>
+                        )}
+                      </div>
+                    );
+                  });
                 }
                 return null;
               })} {
