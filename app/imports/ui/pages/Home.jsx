@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, ProgressBar, Row } from 'react-bootstrap';
+import { Col, Container, OverlayTrigger, ProgressBar, Row, Tooltip } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -93,7 +93,6 @@ const Home = () => {
     const noImage = 'rgba(200, 200, 200) center';
     return occupant.image ? occupantWithImage : noImage;
   };
-  const [hoveredIconId, setHoveredIconId] = useState(null);
 
   return (
     <Container id={PAGE_IDS.HOME} className="py-3">
@@ -134,23 +133,17 @@ const Home = () => {
                   return room.occupants.map((occupant, index) => {
                     const iconId = `${room.roomNumber}-${index}`;
                     return (
-                      <div
-                        className="map-icon map-icon-occupant"
-                        id={iconId}
-                        onMouseEnter={() => setHoveredIconId(iconId)}
-                        onMouseLeave={() => setHoveredIconId(null)}
-                        style={{
-                          top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
-                          left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
-                          background: occupantIconImage(occupant),
-                        }}
-                      >
-                        {hoveredIconId === iconId && (
-                          <div>
-                            {`${occupant.firstName} ${occupant.lastName}`}
-                          </div>
-                        )}
-                      </div>
+                      <OverlayTrigger trigger="hover" defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
+                        <div
+                          className="map-icon map-icon-occupant"
+                          id={iconId}
+                          style={{
+                            top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
+                            left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
+                            background: occupantIconImage(occupant),
+                          }}
+                        />
+                      </OverlayTrigger>
                     );
                   });
                 }
