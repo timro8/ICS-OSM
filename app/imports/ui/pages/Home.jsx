@@ -130,22 +130,18 @@ const Home = () => {
                   const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
                   const roomPositionLeft = (roomPosition.left / 100) * MAP_WIDTH;
                   const COLLISION_SPACING = 6;
-                  return room.occupants.map((occupant, index) => {
-                    const iconId = `${room.roomNumber}-${index}`;
-                    return (
-                      <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
-                        <div
-                          className="map-icon map-icon-occupant"
-                          id={iconId}
-                          style={{
-                            top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
-                            left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
-                            background: occupantIconImage(occupant),
-                          }}
-                        />
-                      </OverlayTrigger>
-                    );
-                  });
+                  return room.occupants.map((occupant, index) => (
+                    <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
+                      <div
+                        className="map-icon map-icon-occupant"
+                        style={{
+                          top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
+                          left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
+                          background: occupantIconImage(occupant),
+                        }}
+                      />
+                    </OverlayTrigger>
+                  ));
                 }
                 return null;
               })} {
