@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, OverlayTrigger, ProgressBar, Row, Tooltip } from 'react-bootstrap';
+import { Col, Container, OverlayTrigger, ProgressBar, Row, Tooltip, Modal, Button } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -94,6 +94,10 @@ const Home = () => {
     return occupant.image ? occupantWithImage : noImage;
   };
 
+  const [show, setShow] = useState(false);
+  const [roomIndex, setRoomIndex] = useState(null);
+
+  const handleClose = () => { setRoomIndex(null); setShow(false); };
   return (
     <Container id={PAGE_IDS.HOME} className="py-3">
       <Row className="d-flex justify-content-between">
@@ -145,21 +149,41 @@ const Home = () => {
                 }
                 return null;
               })} {
-                rooms.map(room => {
+                rooms.map((room, index) => {
                   const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                   if (roomPosition) {
                     const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
                     const roomPositionLeft = (roomPosition.left / 100) * MAP_WIDTH;
                     return (
-                      <div
-                        className="map-icon map-icon-room"
-                        style={{
-                          top: roomPosition.vertical ? `${roomPositionTop + 25}px` : `${roomPositionTop + 12}px`,
-                          left: `${roomPositionLeft - 4}px`,
-                        }}
-                      >
-                        {room.roomNumber}
-                      </div>
+                      <>
+                        <button
+                          type="button"
+                          className="map-icon map-icon-room"
+                          onClick={() => {
+                            setRoomIndex(index);
+                            setShow(true);
+                          }}
+                          style={{
+                            top: roomPosition.vertical ? `${roomPositionTop + 25}px` : `${roomPositionTop + 12}px`,
+                            left: `${roomPositionLeft - 4}px`,
+                          }}
+                        >
+                          {room.roomNumber}
+                        </button>
+                        {roomIndex === index && (
+                          <Modal show={show} onHide={handleClose} id={index}>
+                            <Modal.Header closeButton>
+                              <Modal.Title>Room {room.roomNumber} Details</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>Room info!</Modal.Body>
+                            <Modal.Footer>
+                              <Button variant="secondary" onClick={handleClose}>
+                                Close
+                              </Button>
+                            </Modal.Footer>
+                          </Modal>
+                        )}
+                      </>
                     );
                   }
                   return null;
