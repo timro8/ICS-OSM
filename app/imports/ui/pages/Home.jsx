@@ -10,6 +10,11 @@ import { getRoomData } from '../../api/utilities/getRoomData';
 import roomPositions from '../../api/room/RoomPositions';
 
 const Home = () => {
+  const MAP_ASPECT_RATIO = 1.2704;
+  const MAP_WIDTH = 900;
+  const MAP_HEIGHT = MAP_WIDTH / MAP_ASPECT_RATIO;
+  const COLLISION_SPACING = 6;
+
   const { rooms } = useTracker(() => {
     const subscription = Rooms.subscribeRoom();
     return {
@@ -19,11 +24,6 @@ const Home = () => {
   });
   const roomIds = rooms.map(room => room._id);
   const roomData = roomIds.map(room => getRoomData(room));
-  // The aspect ratio is to make sure that the map container and map size is always the same
-  // This preserves (for the most part) the position of the icons if width is changed
-  const MAP_ASPECT_RATIO = 1.2704;
-  const MAP_WIDTH = 900;
-  const MAP_HEIGHT = MAP_WIDTH / MAP_ASPECT_RATIO;
 
   // Handle the zooming and panning of the map
   useEffect(() => {
@@ -40,7 +40,7 @@ const Home = () => {
     d3.select('.map-container').call(zoom);
   }, []);
 
-  const occupantIconImage = (occupant) => {
+  const getOccupantIconImage = (occupant) => {
     const occupantWithImage = `center / contain url(${occupant.image})`;
     const noImage = 'rgba(200, 200, 200) center';
     return occupant.image ? occupantWithImage : noImage;
@@ -48,8 +48,8 @@ const Home = () => {
 
   const [show, setShow] = useState(false);
   const [roomIndex, setRoomIndex] = useState(null);
-
   const handleClose = () => { setRoomIndex(null); setShow(false); };
+
   return (
     <Container id={PAGE_IDS.HOME} className="py-3">
       <Row className="d-flex justify-content-between">
@@ -85,7 +85,6 @@ const Home = () => {
                 if (roomPosition) {
                   const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
                   const roomPositionLeft = (roomPosition.left / 100) * MAP_WIDTH;
-                  const COLLISION_SPACING = 6;
                   return room.occupants.map((occupant, index) => (
                     <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
                       <div
@@ -93,7 +92,7 @@ const Home = () => {
                         style={{
                           top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
                           left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
-                          background: occupantIconImage(occupant),
+                          background: getOccupantIconImage(occupant),
                         }}
                       />
                     </OverlayTrigger>
