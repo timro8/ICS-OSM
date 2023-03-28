@@ -133,7 +133,7 @@ const Home = () => {
                   return room.occupants.map((occupant, index) => {
                     const iconId = `${room.roomNumber}-${index}`;
                     return (
-                      <OverlayTrigger trigger="hover" defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
+                      <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
                         <div
                           className="map-icon map-icon-occupant"
                           id={iconId}
