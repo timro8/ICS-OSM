@@ -50,6 +50,19 @@ const Home = () => {
   const [roomIndex, setRoomIndex] = useState(null);
   const handleClose = () => { setRoomIndex(null); setShow(false); };
 
+  const getRoomColor = (status) => {
+    if (status === 'Out of commission') {
+      return 'red';
+    }
+    if (status === 'Occupied') {
+      return 'blue';
+    }
+    if (status === 'Vacant') {
+      return 'yellow';
+    }
+    return 'gray';
+  };
+
   return (
     <Container id={PAGE_IDS.HOME} className="py-3">
       <Row className="d-flex justify-content-between">
@@ -117,6 +130,8 @@ const Home = () => {
                           style={{
                             top: roomPosition.vertical ? `${roomPositionTop + 25}px` : `${roomPositionTop + 12}px`,
                             left: `${roomPositionLeft - 4}px`,
+                            borderColor: getRoomColor(room.status),
+                            color: getRoomColor(room.status),
                           }}
                         >
                           {room.roomNumber}
