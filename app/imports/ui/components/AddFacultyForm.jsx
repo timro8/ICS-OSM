@@ -62,7 +62,10 @@ const AddFacultyForm = props => {
     lastName: String,
     email: String,
     password: String,
-    bio: String,
+    bio: {
+      type: String,
+      optional: true,
+    },
     room: {
       type: String,
       allowedValues: roomNumbers,
@@ -95,7 +98,9 @@ const AddFacultyForm = props => {
   const bridge = new SimpleSchema2Bridge(formSchema);
 
   const [selectedRoom, setSelectedRoom] = useState([roomNumbers[0]]);
+  const [phoneNumber, setPhoneNumber] = useState([]);
   const [currentRoom, setCurrentRoom] = useState(roomNumbers[0]);
+  const [currentPhoneNumber, setCurrentPhoneNumber] = useState('');
   const [currentDay, setDay] = useState('--');
   const [currentStartTime, setStartTime] = useState('--');
   const [currentEndTime, setEndTime] = useState('--');
@@ -143,10 +148,17 @@ const AddFacultyForm = props => {
     }
   };
 
+  const handlePhoneNumber = (value) => {
+    if (!phoneNumber.includes(value) && value !== undefined && value.length >= 10) {
+      setPhoneNumber([...phoneNumber, value]);
+    }
+    setCurrentPhoneNumber('');
+  };
+
   function putOfficeHours() {
     const time = `${currentDay} ${currentStartTime} - ${currentEndTime}`;
     if (!selectedOfficeHours.includes(time) && currentDay !== '--' && currentStartTime !== '--' && currentEndTime !== '--') {
-      if (!(selectedOfficeHours.map((existOfficeHour) => { if (existOfficeHour.includes(`${currentDay} ${currentStartTime}`)) { return false; } return true; })).includes(false)) {
+      if (!(selectedOfficeHours.map((existOfficeHour) => !existOfficeHour.includes(`${currentDay} ${currentStartTime}`))).includes(false)) {
         if (currentStartTime > currentEndTime) {
           swal('Error', 'End time cannot be earlier than start time.', 'error');
         } else {
@@ -219,9 +231,19 @@ const AddFacultyForm = props => {
           <SelectField name="role" />
           <TextField name="email" />
           <TextField name="password" type="password" />
-          <TextField name="bio" />
-          <TextField name="phoneNumber" label="Phone Number (optional)" />
-          <FormLabel style={{ color: 'forestgreen' }}>Office Hours:</FormLabel>
+          <TextField name="bio" label="Bio (optional)" />
+          {phoneNumber.length > 0 && (
+            <div>
+              {phoneNumber.map((value, index) => (
+                <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                  {value}
+                  <CloseButton variant="white" style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }} onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
+                </Badge>
+              ))}
+            </div>
+          )}
+          <TextField name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); setCurrentPhoneNumber(value); }} />
+          <FormLabel>Office Hours (optional) :</FormLabel>
           {putOfficeHours()}
           {selectedOfficeHours.length > 0 && (
             <div>
