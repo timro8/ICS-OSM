@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { Col, Row, Container, Image } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
+import { Meteor } from 'meteor/meteor';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
@@ -29,6 +30,16 @@ const Club = () => {
       students: allStudents,
     };
   }, [_id]);
+
+  const isOfficer = (officerData) => {
+    const filteredOfficers = officerData
+      .filter((o) => o.clubId === club[0].clubName)
+      .map(officer => officer.studentId);
+    console.log(filteredOfficers);
+    console.log(Meteor.user().username);
+
+    return filteredOfficers.includes(Meteor.user().username);
+  };
 
   const getEmails = (officerData, studentData) => {
     const filteredOfficers = officerData.filter((o) => o.clubId === club[0].clubName);
@@ -96,9 +107,11 @@ const Club = () => {
           <h3>JOIN US</h3>
           <a href={club[0].joinLink}>{club[0].joinLink}</a>
         </Row>
-        <Row>
-          <EditClub id={_id} />
-        </Row>
+        {isOfficer(officers) ? (
+          <Row>
+            <EditClub id={_id} />
+          </Row>
+        ) : ''}
       </Col>
     </Container>
   ) : <LoadingSpinner message="Loading Club" />);

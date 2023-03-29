@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { Col, Container, ProgressBar, Row } from 'react-bootstrap';
+import { Col, Container, OverlayTrigger, ProgressBar, Row, Tooltip } from 'react-bootstrap';
 import * as d3 from 'd3';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
@@ -65,8 +65,6 @@ const Home = () => {
       rooms: Rooms.find().fetch(),
     };
   });
-
-  // Get roomData
   const roomIds = rooms.map(room => room._id);
   const roomData = roomIds.map(room => getRoomData(room));
   // The aspect ratio is to make sure that the map container and map size is always the same
@@ -90,10 +88,10 @@ const Home = () => {
     d3.select('.map-container').call(zoom);
   }, []);
 
-  const occupantBackground = (occupant) => {
-    const occupantWithImageBackground = `center / contain url(${occupant.image})`;
-    const noImageBackground = 'rgba(200, 200, 200) center';
-    return occupant.image ? occupantWithImageBackground : noImageBackground;
+  const occupantIconImage = (occupant) => {
+    const occupantWithImage = `center / contain url(${occupant.image})`;
+    const noImage = 'rgba(200, 200, 200) center';
+    return occupant.image ? occupantWithImage : noImage;
   };
 
   return (
@@ -132,16 +130,22 @@ const Home = () => {
                   const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
                   const roomPositionLeft = (roomPosition.left / 100) * MAP_WIDTH;
                   const COLLISION_SPACING = 6;
-                  return room.occupants.map((occupant, index) => (
-                    <div
-                      className="map-icon map-icon-occupant"
-                      style={{
-                        top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
-                        left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
-                        background: occupantBackground(occupant),
-                      }}
-                    />
-                  ));
+                  return room.occupants.map((occupant, index) => {
+                    const iconId = `${room.roomNumber}-${index}`;
+                    return (
+                      <OverlayTrigger trigger="hover" defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
+                        <div
+                          className="map-icon map-icon-occupant"
+                          id={iconId}
+                          style={{
+                            top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
+                            left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
+                            background: occupantIconImage(occupant),
+                          }}
+                        />
+                      </OverlayTrigger>
+                    );
+                  });
                 }
                 return null;
               })} {
