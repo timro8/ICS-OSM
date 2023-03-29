@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Rooms } from '../../api/room/RoomCollection';
 import { Events302 } from '../../api/events/Events302Collection';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
@@ -12,10 +11,6 @@ import { TechProfiles } from '../../api/user/TechProfileCollection';
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
-function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.define(data);
-}
 
 function addRoomData(data) {
   console.log(`  Adding: ${data.roomNumber}`);
@@ -60,14 +55,6 @@ function addOfficeData(data) {
 function addTechData(data) {
   console.log(`  Adding: ${data.firstName} ${data.lastName}`);
   TechProfiles.define(data);
-}
-
-// Initialize the StuffsCollection if empty.
-if (Stuffs.count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.map(data => addData(data));
-  }
 }
 
 // Initialize the RoomsCollection if empty.
