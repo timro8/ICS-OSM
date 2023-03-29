@@ -17,7 +17,7 @@ const FacultyProfile = () => {
       ready: rdy,
       faculty: allFaculty,
     };
-  }, []);
+  }, [_id]);
 
   return (ready ? (
     <Container id={PAGE_IDS.PROFILE} className="py-3" fluid>

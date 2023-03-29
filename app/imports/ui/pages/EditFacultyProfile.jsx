@@ -70,7 +70,7 @@ const EditFacultyProfile = ({ id }) => {
   return ready ? (
     <>
       <Col className="d-flex justify-content-center">
-        {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
+        {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) || doc.email === Meteor.user().username ? (
           <Button key={Math.random()} style={{ width: '7rem' }} variant="primary" onClick={handleShow}>
             Edit Profile
           </Button>
