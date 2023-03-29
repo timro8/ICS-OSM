@@ -150,12 +150,23 @@ const AddFacultyForm = props => {
   };
 
   const handlePhoneNumber = (value) => {
-    if (!phoneNumber.includes(value) && value !== undefined && value.length === 10) {
-      setPhoneNumber([...phoneNumber, value]);
+    if (value !== undefined && value.length === 12) {
+      if (!phoneNumber.includes(value)) {
+        setPhoneNumber([...phoneNumber, value]);
+      }
       setCurrentPhoneNumber('');
-    }
-    else {
-      setCurrentPhoneNumber(value);
+    } else if (value !== undefined) {
+      const numericValue = value.replace(/\D/g, '');
+      let formattedValue = '';
+
+      for (let i = 0; i < numericValue.length; i++) {
+        if (i > 0 && i % 3 === 0) {
+          formattedValue += '-';
+        }
+        formattedValue += numericValue[i];
+      }
+
+      setCurrentPhoneNumber(formattedValue);
     }
   };
 
