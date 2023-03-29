@@ -118,6 +118,7 @@ const AddFacultyForm = props => {
       data,
       selectedRoom,
       selectedOfficeHours,
+      phoneNumber,
       imageUrl,
       (err) => {
         if (err) {
@@ -149,10 +150,13 @@ const AddFacultyForm = props => {
   };
 
   const handlePhoneNumber = (value) => {
-    if (!phoneNumber.includes(value) && value !== undefined && value.length >= 10) {
+    if (!phoneNumber.includes(value) && value !== undefined && value.length === 10) {
       setPhoneNumber([...phoneNumber, value]);
+      setCurrentPhoneNumber('');
     }
-    setCurrentPhoneNumber('');
+    else {
+      setCurrentPhoneNumber(value);
+    }
   };
 
   function putOfficeHours() {
@@ -227,7 +231,7 @@ const AddFacultyForm = props => {
               ))}
             </div>
           )}
-          <SelectField name="room" value={currentRoom} onChange={(value) => handleRoom(value)} />
+          <SelectField name="room" label="Room (optional)" value={currentRoom} onChange={(value) => handleRoom(value)} />
           <SelectField name="role" />
           <TextField name="email" />
           <TextField name="password" type="password" />
@@ -242,7 +246,7 @@ const AddFacultyForm = props => {
               ))}
             </div>
           )}
-          <TextField name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); setCurrentPhoneNumber(value); }} />
+          <TextField name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); }} />
           <FormLabel>Office Hours (optional) :</FormLabel>
           {putOfficeHours()}
           {selectedOfficeHours.length > 0 && (
