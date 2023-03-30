@@ -467,14 +467,14 @@
   "defaultRoomData": [
     {
       "roomKey": "POST301",
-      "roomNumber": "301", "location":  "POST", "status": "Other", "capacity": "",
+      "roomNumber": "301", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Sink",
       "picture": "https://live.staticflickr.com/3022/2814793353_54966edfd3_b.jpg"
     },
     {
       "roomKey": "POST302",
-      "roomNumber": "302", "location":  "POST", "status": "Other", "capacity": "",
+      "roomNumber": "302", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Conference",
       "picture": "https://i0.hippopx.com/photos/669/176/967/chairs-empty-office-room-preview.jpg"
@@ -565,14 +565,14 @@
     },
     {
       "roomKey": "POST303.0",
-      "roomNumber": "303.0", "location":  "POST", "status": "Other", "capacity": "",
+      "roomNumber": "303.0", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "ICS Library",
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
       "roomKey": "POST305",
-      "roomNumber": "305", "location":  "POST", "status": "Other", "capacity": "",
+      "roomNumber": "305", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "311",
       "roomClassification": "OFCSVC",
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
@@ -629,7 +629,7 @@
     },
     {
       "roomKey": "POST306",
-      "roomNumber": "306", "location":  "POST", "status": "Other", "capacity": "",
+      "roomNumber": "306", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "124",
       "roomClassification": "LNG",
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
@@ -924,7 +924,7 @@
     },
     {
       "roomKey": "POST316",
-      "roomNumber": "316", "location":  "POST", "status": "Other", "capacity": "0",
+      "roomNumber": "316", "location":  "POST", "status": "", "capacity": "0",
       "roomSqFoot": "100",
       "roomClassification": "Mail",
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
@@ -938,7 +938,7 @@
     },
     {
       "roomKey": "POST318",
-      "roomNumber": "318", "location":  "POST", "status": "Other", "capacity": "",
+      "roomNumber": "318", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Lab",
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
@@ -946,21 +946,21 @@
 
     {
       "roomKey": "POST318B",
-      "roomNumber": "318B", "location":  "POST", "status": "Other", "capacity": "",
+      "roomNumber": "318B", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "ICSpace",
       "picture": "http://dev.ics.hawaii.edu/wp-content/uploads/2015/09/post318b.jpg"
     },
     {
       "roomKey": "POST319",
-      "roomNumber": "319", "location":  "POST", "status": "Other", "capacity": "",
+      "roomNumber": "319", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Lab",
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
     },
     {
       "roomKey": "POST326",
-      "roomNumber": "326", "location":  "POST", "status": "Other", "capacity": "",
+      "roomNumber": "326", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "279",
       "roomClassification": "Storage",
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
@@ -974,7 +974,7 @@
     },
     {
       "roomKey": "POST328",
-      "roomNumber": "328", "location":  "POST", "status": "Other", "capacity": "",
+      "roomNumber": "328", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "279",
       "roomClassification": "ICS IT",
       "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
@@ -1152,6 +1152,22 @@
       "firstName": "Charles",
       "lastName": "Shackford",
       "role": "TECH"
+    }
+  ],
+  "defaultJackData": [
+    {
+      "roomKey": "",
+      "jackNumber": "16561",
+      "wallLocation": "",
+      "IDFRoom": "POST 320",
+      "description": ""
+    },
+    {
+      "roomKey": "POST309",
+      "jackNumber": "16563",
+      "wallLocation": "Makai",
+      "IDFRoom": "POST 320",
+      "description": ""
     }
   ],
   

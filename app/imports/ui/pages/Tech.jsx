@@ -7,8 +7,8 @@ import { RoomEquipments } from '../../api/room/RoomEquipments';
 import { RoomJacks } from '../../api/room/RoomJacks';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import RoomEquipment from '../components/RoomEquipment';
-import RoomJack from '../components/RoomJack';
 import LoadingSpinner from '../components/LoadingSpinner';
+import TechRoomJack from '../components/TechRoomJack';
 
 function getEquipmentData(equipment) {
   // get the room number, location from Rooms Collection and extend the equipment data
@@ -19,8 +19,8 @@ function getEquipmentData(equipment) {
 
 function getJackData(jack) {
   // get the room number, location from Rooms Collection and extend the jacks data
-  const room = Rooms.find({ _id: jack.roomId }).fetch();
-  return _.extend({}, jack, room);
+  const rooms = _.pluck(Rooms.find({ _id: jack.roomId }).fetch(), 'roomNumber');
+  return _.extend({}, jack, { roomNumber: rooms });
 }
 
 const Tech = () => {
@@ -84,12 +84,13 @@ const Tech = () => {
                   <th>Jack Number</th>
                   <th>Location</th>
                   <th>Description</th>
+                  <th>IDF Room</th>
                   <th>Edit Jack</th>
                 </tr>
               </thead>
               <tbody>
                 {jackData.map((j, index) => (
-                  <RoomJack key={index} jack={j} />
+                  <TechRoomJack key={index} jack={j} />
                 ))}
               </tbody>
             </Table>

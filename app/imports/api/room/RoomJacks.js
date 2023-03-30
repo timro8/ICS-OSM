@@ -4,6 +4,7 @@ import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
+import { Rooms } from './RoomCollection';
 
 export const roomJacksPublications = {
   roomJacks: 'RoomJacks',
@@ -13,9 +14,16 @@ export const roomJacksPublications = {
 class RoomJacksCollection extends BaseCollection {
   constructor() {
     super('RoomJacks', new SimpleSchema({
-      roomId: String,
+      roomId: {
+        type: String,
+        optional: true,
+      },
       jackNumber: String,
       wallLocation: {
+        type: String,
+        optional: true,
+      },
+      IDFRoom: {
         type: String,
         optional: true,
       },
@@ -23,7 +31,6 @@ class RoomJacksCollection extends BaseCollection {
         type: String,
         optional: true,
       },
-      owner: String,
     }));
   }
 
@@ -32,17 +39,24 @@ class RoomJacksCollection extends BaseCollection {
    * @param roomId the Id of the room
    * @param jackNumber the number of the jack.
    * @param wallLocation the wall location of the jack.
+   * @param IDFRoom the IDF room of the jack
    * @param description the description of the jack number.
-   * @param owner the owner of the room.
    * @return {String} the docID of the new document.
    */
-  define({ roomId, jackNumber, wallLocation, description, owner }) {
+  define({ roomKey, jackNumber, wallLocation, IDFRoom, description }) {
+    let roomId = '';
+    if (roomKey !== '') {
+      const room = Rooms.findOne({ roomKey: roomKey });
+      roomId = room._id;
+    } else {
+      roomId = '';
+    }
     const docID = this._collection.insert({
       roomId,
       jackNumber,
       wallLocation,
+      IDFRoom,
       description,
-      owner,
     });
     return docID;
   }
@@ -50,16 +64,25 @@ class RoomJacksCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
+   * @param roomId the ID of the room (optional).
    * @param jackNumber the number of the jack (optional).
+   * @param wallLocation the location of the jack (optional).
+   * @param IDFRoom the IDFRoom of the jack (optional).
    * @param description the new status (optional).
    */
-  update(docID, { jackNumber, wallLocation, description }) {
+  update(docID, { jackNumber, roomId, wallLocation, description, IDFRoom }) {
     const updateData = {};
     if (jackNumber) {
       updateData.jackNumber = jackNumber;
     }
+    if (roomId) {
+      updateData.roomId = roomId;
+    }
     if (wallLocation) {
       updateData.wallLocation = wallLocation;
+    }
+    if (IDFRoom) {
+      updateData.IDFRoom = IDFRoom;
     }
     if (description) {
       updateData.description = description;
@@ -81,7 +104,7 @@ class RoomJacksCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the room associated to an owner.
+   * It publishes the entire collection for all users.
    */
   publish() {
     if (Meteor.isServer) {
@@ -139,7 +162,7 @@ class RoomJacksCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{owner: (*|number), roomId: *, wallLocation: *, description: *, quantity: *, serialNumber: *, assetTag: *}}
+   * @return {{ roomId: *, wallLocation: *, description: *, IDFRoom: *, jackNumber: *}}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
@@ -147,8 +170,8 @@ class RoomJacksCollection extends BaseCollection {
     const jackNumber = doc.jackNumber;
     const wallLocation = doc.wallLocation;
     const description = doc.description;
-    const owner = doc.owner;
-    return { roomId, jackNumber, wallLocation, description, owner };
+    const IDFRoom = doc.IDFRoom;
+    return { roomId, jackNumber, wallLocation, IDFRoom, description };
   }
 }
 

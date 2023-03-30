@@ -10,20 +10,29 @@ import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 // form schema based on the RoomJacks collection.
 const formSchema = new SimpleSchema({
-  roomId: String,
+  roomId: {
+    type: String,
+    optional: true,
+  },
   jackNumber: String,
-  wallLocation: String,
+  wallLocation: {
+    type: String,
+    optional: true,
+  },
+  IDFRoom: {
+    type: String,
+    optional: true,
+  },
   description: {
     type: String,
     optional: true,
   },
-  owner: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddJac component for adding a new jack. */
-const AddJack = ({ roomId, owner }) => {
+const AddJack = ({ roomId }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
 
@@ -32,9 +41,9 @@ const AddJack = ({ roomId, owner }) => {
 
   // data submitted to add a new jack. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional jacks.
   const submit = (data, formRef) => {
-    const { jackNumber, wallLocation, description } = data;
+    const { jackNumber, wallLocation, IDFRoom, description } = data;
     const collectionName = RoomJacks.getCollectionName();
-    const definitionData = { roomId, jackNumber, wallLocation, description, owner };
+    const definitionData = { roomId, jackNumber, wallLocation, IDFRoom, description };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -58,10 +67,10 @@ const AddJack = ({ roomId, owner }) => {
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
             <TextField name="jackNumber" />
             <TextField name="wallLocation" />
+            <TextField name="IDFRoom" label="IDF Room" />
             <TextField name="description" />
             <SubmitField value="submit" />
             <ErrorsField />
-            <HiddenField name="owner" value={owner} />
             <HiddenField name="roomId" value={roomId} />
           </AutoForm>
         </Modal.Body>
@@ -77,7 +86,6 @@ const AddJack = ({ roomId, owner }) => {
 
 AddJack.propTypes = {
   roomId: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired,
 };
 
 export default AddJack;
