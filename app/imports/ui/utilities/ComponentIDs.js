@@ -42,5 +42,6 @@ export const COMPONENT_IDS = {
   NAVBAR_DROPDOWN_CLUB: 'navbar-dropdown-club',
   NAVBAR_CLUB: 'navabar-club',
   ADD_CLUB: 'add-club',
+  ADD_CLUB_OFFICER: 'add-club-officer',
   NAVBAR_DROPDOWN_TECH: 'navbar-dropdown-tech',
 };

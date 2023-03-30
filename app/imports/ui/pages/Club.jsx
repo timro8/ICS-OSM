@@ -9,6 +9,7 @@ import { Clubs } from '../../api/club/Club';
 import { ClubOfficers } from '../../api/clubofficers/ClubOfficersCollection';
 import { StudentProfiles } from '../../api/user/StudentProfileCollection';
 import EditClub from '../components/EditClub';
+import AddClubOfficer from '../components/AddClubOfficer';
 
 const Club = () => {
   const { _id } = useParams();
@@ -90,6 +91,11 @@ const Club = () => {
           </Col>
         </Row>
         <Row className="pt-2">
+          <Col>
+            <AddClubOfficer />
+          </Col>
+        </Row>
+        <Row className="pt-3">
           <h3>ADVISOR</h3>
           <p>{club[0].advisor}</p>
         </Row>
