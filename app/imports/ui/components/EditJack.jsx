@@ -13,7 +13,7 @@ import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from './LoadingSpinner';
 
 // form schema based on RoomJacks collection schema
-const makeSchema = (roomList) => new SimpleSchema({
+const makeSchema = new SimpleSchema({
   roomId: {
     type: String,
     optional: true,
@@ -22,7 +22,6 @@ const makeSchema = (roomList) => new SimpleSchema({
     type: String,
     optional: true,
     label: 'Room',
-    allowedValues: roomList,
   },
   jackNumber: String,
   wallLocation: {
@@ -46,7 +45,7 @@ const EditJack = ({ jackId }) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   // subscription to RoomJacks (Admin)
   const { doc, docRooms, ready } = useTracker(() => {
     // Get access to RoomJacks documents.
@@ -64,8 +63,13 @@ const EditJack = ({ jackId }) => {
     };
   }, [jackId]);
 
-  const roomList = _.pluck(docRooms, 'roomNumber');
-  const formSchema = makeSchema(roomList);
+  //const roomList = _.pluck(docRooms, 'roomNumber');
+  const roomList = docRooms.map((room) => {
+    return { label: room.roomNumber, value: room._id };
+  });
+  console.log(roomList);
+
+  const formSchema = makeSchema;
   const bridge = new SimpleSchema2Bridge(formSchema);
   // data submitted to update a jack. If there are errors, an error message will appear. If the data successfully updates, a success message appears.
   const submit = (data) => {
@@ -90,7 +94,7 @@ const EditJack = ({ jackId }) => {
         <Modal.Body>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
             <TextField name="jackNumber" />
-            <SelectField name="rooms" />
+            <SelectField name="rooms" options={roomList}  />
             <TextField name="wallLocation" />
             <TextField name="IDFRoom" label="IDF Room" />
             <TextField name="description" />
