@@ -4,7 +4,7 @@ import { PAGE_IDS } from '../../utilities/PageIDs';
 import FacultySection from './section/faculty/FacultySection';
 import ReservationsSection from './section/reservation/ReservationsSection';
 import { OccupiedProgressBar, VacantProgressBar, OutOfCommissionProgressBar } from './progress-bar/ProgressBar';
-import PostThirdFloorSection from './section/map/POST-third-floor/postThirdFloor';
+import PostThirdFloorSection from './section/map/POST-third-floor/PostThirdFloor';
 
 const Home = () => (
   <Container id={PAGE_IDS.HOME} className="py-3">
