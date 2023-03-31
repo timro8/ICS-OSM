@@ -5,7 +5,7 @@ import * as d3 from 'd3';
 import roomPositions from '../../../../../../api/room/RoomPositions';
 import { Rooms } from '../../../../../../api/room/RoomCollection';
 import { getRoomData } from '../../../../../../api/utilities/getRoomData';
-import ListView from './list-view/listView';
+import ListView from './list-view/ListView';
 
 const PostThirdFloor = () => {
 
