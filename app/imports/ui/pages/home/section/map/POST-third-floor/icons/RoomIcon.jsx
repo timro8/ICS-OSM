@@ -11,11 +11,11 @@ const RoomIcon = (props) => {
   const getRoomColor = (status) => {
     switch (status) {
     case 'Out of commission':
-      return 'red';
+      return '#dc3545';
     case 'Occupied':
-      return 'blue';
+      return '#007bff';
     case 'Vacant':
-      return 'yellow';
+      return '#ffc107';
     default:
       return 'gray';
     }
