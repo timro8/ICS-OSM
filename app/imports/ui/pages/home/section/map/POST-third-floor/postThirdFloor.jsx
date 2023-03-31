@@ -5,6 +5,7 @@ import * as d3 from 'd3';
 import roomPositions from '../../../../../../api/room/RoomPositions';
 import { Rooms } from '../../../../../../api/room/RoomCollection';
 import { getRoomData } from '../../../../../../api/utilities/getRoomData';
+import ListView from './list-view/listView';
 
 const PostThirdFloor = () => {
 
@@ -149,11 +150,7 @@ const PostThirdFloor = () => {
         </div>
       </Col>
       <Col>
-        <h2 style={{ margin: '15px 0' }}>List View</h2>
-        <h3 style={{ fontSize: '1.1rem' }}>Unassigned Faculties</h3>
-        <h3 style={{ fontSize: '1.1rem' }}>Rooms Vacant</h3>
-        <h3 style={{ fontSize: '1.1rem' }}>Rooms Out of Commission</h3>
-        <h3 style={{ fontSize: '1.1rem' }}>Rooms Occupied</h3>
+        <ListView />
       </Col>
     </Row>
   );
