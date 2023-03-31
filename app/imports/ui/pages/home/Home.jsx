@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Col, Container, OverlayTrigger, ProgressBar, Row, Tooltip, Modal, Button } from 'react-bootstrap';
 import * as d3 from 'd3';
-import { PAGE_IDS } from '../utilities/PageIDs';
-import { Rooms } from '../../api/room/RoomCollection';
-import FacultyTable from '../components/FacultyTable';
-import ReservationsTable from '../components/ReservationsTable';
-import { getRoomData } from '../../api/utilities/getRoomData';
-import roomPositions from '../../api/room/RoomPositions';
+import { PAGE_IDS } from '../../utilities/PageIDs';
+import { Rooms } from '../../../api/room/RoomCollection';
+import FacultyTable from '../../components/FacultyTable';
+import ReservationsTable from '../../components/ReservationsTable';
+import { getRoomData } from '../../../api/utilities/getRoomData';
+import roomPositions from '../../../api/room/RoomPositions';
+import { OccupiedProgressBar, VacantProgressBar, OutOfCommissionProgressBar } from './progress-bar/ProgressBar';
 
 const Home = () => {
   const MAP_ASPECT_RATIO = 1.2704;
@@ -66,18 +67,9 @@ const Home = () => {
   return (
     <Container id={PAGE_IDS.HOME} className="py-3">
       <Row className="d-flex justify-content-between">
-        <div style={{ width: '25rem' }}>
-          Rooms Occupied
-          <ProgressBar now={45} />
-        </div>
-        <div style={{ width: '25rem' }}>
-          Rooms Vacant
-          <ProgressBar variant="info" now={9} />
-        </div>
-        <div style={{ width: '25rem' }}>
-          Rooms Out of Commission
-          <ProgressBar variant="danger" now={2} />
-        </div>
+        <OccupiedProgressBar />
+        <VacantProgressBar />
+        <OutOfCommissionProgressBar />
       </Row>
       <Row className="simple-card">
         <Col>
