@@ -12,7 +12,7 @@ import { FacultyProfiles } from '../../../../../api/user/FacultyProfileCollectio
 import { ROLE } from '../../../../../api/role/Role';
 
 /* Renders a table containing all of the Faculty documents. Use <Admin> to render each row in each tabs. */
-const Faculty = () => {
+const FacultySection = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const [show, setShow] = useState(false);
   const { faculties, ready } = useTracker(() => {
@@ -63,4 +63,4 @@ const Faculty = () => {
   ) : <LoadingSpinner />);
 };
 
-export default Faculty;
+export default FacultySection;
