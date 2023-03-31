@@ -15,9 +15,7 @@ const Home = () => (
     </Row>
     <PostThirdFloor />
     <FacultySection />
-    <Row className="simple-card">
-      <ReservationsSection />
-    </Row>
+    <ReservationsSection />
   </Container>
 );
 
