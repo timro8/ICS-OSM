@@ -1,4 +1,4 @@
-import { Button, Col, Modal, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
+import { Button, Col, Modal, Row } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import * as d3 from 'd3';
@@ -6,13 +6,13 @@ import roomPositions from '../../../../../../api/room/RoomPositions';
 import { Rooms } from '../../../../../../api/room/RoomCollection';
 import { getRoomData } from '../../../../../../api/utilities/getRoomData';
 import ListView from './list-view/ListView';
+import OccupantIcon from './icons/OccupantIcon';
 
 const PostThirdFloor = () => {
 
   const MAP_ASPECT_RATIO = 1.2704;
   const MAP_WIDTH = 900;
   const MAP_HEIGHT = MAP_WIDTH / MAP_ASPECT_RATIO;
-  const COLLISION_SPACING = 6;
 
   const { rooms } = useTracker(() => {
     const subscription = Rooms.subscribeRoom();
@@ -38,12 +38,6 @@ const PostThirdFloor = () => {
 
     d3.select('.map-container').call(zoom);
   }, []);
-
-  const getOccupantIconImage = (occupant) => {
-    const occupantWithImage = `center / contain url(${occupant.image})`;
-    const noImage = 'rgba(200, 200, 200) center';
-    return occupant.image ? occupantWithImage : noImage;
-  };
 
   const [show, setShow] = useState(false);
   const [roomIndex, setRoomIndex] = useState(null);
@@ -77,26 +71,7 @@ const PostThirdFloor = () => {
               transformOrigin: 'top left',
             }}
           >
-            {roomData.map(room => {
-              const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
-              if (roomPosition) {
-                const roomPositionTop = (roomPosition.top / 100) * MAP_HEIGHT;
-                const roomPositionLeft = (roomPosition.left / 100) * MAP_WIDTH;
-                return room.occupants.map((occupant, index) => (
-                  <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
-                    <div
-                      className="map-icon map-icon-occupant"
-                      style={{
-                        top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
-                        left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
-                        background: getOccupantIconImage(occupant),
-                      }}
-                    />
-                  </OverlayTrigger>
-                ));
-              }
-              return null;
-            })} {
+            <OccupantIcon roomData={roomData} mapHeight={MAP_HEIGHT} mapWidth={MAP_WIDTH} /> {
               rooms.map((room, index) => {
                 const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
                 if (roomPosition) {
