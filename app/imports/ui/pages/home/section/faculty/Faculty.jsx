@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
-import { Table, Button } from 'react-bootstrap';
-import LoadingSpinner from './LoadingSpinner';
-import AddFacultyForm from './AddFacultyForm';
-import AdminPageFacultyComponent from './AdminPage/AdminPageFacultyComponent';
-import { Rooms } from '../../api/room/RoomCollection';
-import { Events302 } from '../../api/events/Events302Collection';
-import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
-import { ROLE } from '../../api/role/Role';
+import { Table, Button, Row } from 'react-bootstrap';
+import LoadingSpinner from '../../../../components/LoadingSpinner';
+import AddFacultyForm from '../../../../components/AddFacultyForm';
+import AdminPageFacultyComponent from '../../../../components/AdminPage/AdminPageFacultyComponent';
+import { Rooms } from '../../../../../api/room/RoomCollection';
+import { Events302 } from '../../../../../api/events/Events302Collection';
+import { FacultyProfiles } from '../../../../../api/user/FacultyProfileCollection';
+import { ROLE } from '../../../../../api/role/Role';
 
 /* Renders a table containing all of the Faculty documents. Use <Admin> to render each row in each tabs. */
-const FacultyTable = () => {
+const Faculty = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const [show, setShow] = useState(false);
   const { faculties, ready } = useTracker(() => {
@@ -35,7 +35,7 @@ const FacultyTable = () => {
   }, []);
 
   return (ready ? (
-    <div>
+    <Row className="simple-card">
       <div className="d-flex justify-content-between align-items-center" style={{ margin: '15px 0' }}>
         <h2>Faculties</h2>
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
@@ -59,8 +59,8 @@ const FacultyTable = () => {
           </tbody>
         </Table>
       </div>
-    </div>
+    </Row>
   ) : <LoadingSpinner />);
 };
 
-export default FacultyTable;
+export default Faculty;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { PAGE_IDS } from '../../utilities/PageIDs';
-import FacultyTable from '../../components/FacultyTable';
+import Faculty from './section/faculty/Faculty';
 import ReservationsTable from '../../components/ReservationsTable';
 import { OccupiedProgressBar, VacantProgressBar, OutOfCommissionProgressBar } from './progress-bar/ProgressBar';
 import PostThirdFloor from './section/map/POST-third-floor/postThirdFloor';
@@ -14,9 +14,7 @@ const Home = () => (
       <OutOfCommissionProgressBar />
     </Row>
     <PostThirdFloor />
-    <Row className="simple-card">
-      <FacultyTable />
-    </Row>
+    <Faculty />
     <Row className="simple-card">
       <ReservationsTable />
     </Row>
