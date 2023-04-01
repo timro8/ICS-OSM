@@ -175,7 +175,7 @@ body {
 }
 
 .list-view {
-  overflow: scroll;
+  overflow: auto;
   height: 100%;
 }
 
