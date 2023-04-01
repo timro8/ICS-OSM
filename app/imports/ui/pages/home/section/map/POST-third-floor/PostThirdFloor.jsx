@@ -60,7 +60,7 @@ const PostThirdFloor = () => {
         </div>
       </Col>
       <Col>
-        <ListView />
+        <ListView rooms={rooms} />
       </Col>
     </Row>
   );
