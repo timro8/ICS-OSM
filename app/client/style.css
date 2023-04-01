@@ -173,3 +173,12 @@ body {
   margin-bottom: 50px;
   margin-top: 20px;
 }
+
+.list-view {
+  overflow: auto;
+  height: 100%;
+}
+
+.map-section {
+  height: 50rem;
+}

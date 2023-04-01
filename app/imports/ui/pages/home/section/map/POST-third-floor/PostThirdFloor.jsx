@@ -40,7 +40,7 @@ const PostThirdFloor = () => {
   }, []);
 
   return (
-    <Row className="simple-card">
+    <Row className="simple-card map-section">
       <Col>
         <h2 style={{ margin: '15px 0' }}>Pacific Ocean Science and Technology - 300 Level</h2>
         <div className="map-container" style={{ overflow: 'hidden', width: MAP_WIDTH, height: MAP_HEIGHT }}>
@@ -59,8 +59,8 @@ const PostThirdFloor = () => {
           </div>
         </div>
       </Col>
-      <Col>
-        <ListView />
+      <Col className="list-view">
+        <ListView rooms={rooms} />
       </Col>
     </Row>
   );
