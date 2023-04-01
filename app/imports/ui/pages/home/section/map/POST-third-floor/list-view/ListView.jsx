@@ -13,53 +13,56 @@ const RoomsList = ({ rooms, status }) => {
   return roomsByStatus().map(room => <ul><li key={rooms._id}>{room.roomNumber}</li></ul>);
 };
 
-const ListView = ({ rooms }) => (
-  <>
-    <h2 style={{ margin: '15px 0' }}>List View</h2>
-    <Accordion flush>
-      <AccordionItem eventKey="0">
-        <AccordionHeader>Rooms</AccordionHeader>
-        <AccordionBody>
-          <Accordion flush>
-            <AccordionItem eventKey="0">
-              <AccordionHeader>Vacant</AccordionHeader>
-              <AccordionBody>
-                <RoomsList rooms={rooms} status="Vacant" />
-              </AccordionBody>
-            </AccordionItem>
-            <AccordionItem eventKey="1">
-              <AccordionHeader>Occupied</AccordionHeader>
-              <AccordionBody>
-                <RoomsList rooms={rooms} status="Occupied" />
-              </AccordionBody>
-            </AccordionItem>
-            <AccordionItem eventKey="2">
-              <AccordionHeader>Out of Commission</AccordionHeader>
-              <AccordionBody>
-                <RoomsList rooms={rooms} status="Out of Commission" />
-              </AccordionBody>
-            </AccordionItem>
-          </Accordion>
-        </AccordionBody>
-      </AccordionItem>
-      <AccordionItem eventKey="1">
-        <AccordionHeader>Faculties</AccordionHeader>
-        <AccordionBody>
-          <Accordion flush>
-            <AccordionItem eventKey="0">
-              <AccordionHeader>Assigned</AccordionHeader>
-              <AccordionBody>Body</AccordionBody>
-            </AccordionItem>
-            <AccordionItem eventKey="1">
-              <AccordionHeader>Unassigned</AccordionHeader>
-              <AccordionBody>Body</AccordionBody>
-            </AccordionItem>
-          </Accordion>
-        </AccordionBody>
-      </AccordionItem>
-    </Accordion>
-  </>
-);
+const ListView = ({ rooms }) => {
+  const getAmt = (status) => rooms.filter(room => room.status === status).length;
+  return (
+    <>
+      <h2 style={{ margin: '15px 0' }}>List View</h2>
+      <Accordion flush>
+        <AccordionItem eventKey="0">
+          <AccordionHeader>Rooms</AccordionHeader>
+          <AccordionBody>
+            <Accordion flush>
+              <AccordionItem eventKey="0">
+                <AccordionHeader>Vacant ({getAmt('Vacant')})</AccordionHeader>
+                <AccordionBody>
+                  <RoomsList rooms={rooms} status="Vacant" />
+                </AccordionBody>
+              </AccordionItem>
+              <AccordionItem eventKey="1">
+                <AccordionHeader>Occupied ({getAmt('Occupied')})</AccordionHeader>
+                <AccordionBody>
+                  <RoomsList rooms={rooms} status="Occupied" />
+                </AccordionBody>
+              </AccordionItem>
+              <AccordionItem eventKey="2">
+                <AccordionHeader>Out of Commission ({getAmt('Out of Commission')})</AccordionHeader>
+                <AccordionBody>
+                  <RoomsList rooms={rooms} status="Out of Commission" />
+                </AccordionBody>
+              </AccordionItem>
+            </Accordion>
+          </AccordionBody>
+        </AccordionItem>
+        <AccordionItem eventKey="1">
+          <AccordionHeader>Faculties</AccordionHeader>
+          <AccordionBody>
+            <Accordion flush>
+              <AccordionItem eventKey="0">
+                <AccordionHeader>Assigned</AccordionHeader>
+                <AccordionBody>Body</AccordionBody>
+              </AccordionItem>
+              <AccordionItem eventKey="1">
+                <AccordionHeader>Unassigned</AccordionHeader>
+                <AccordionBody>Body</AccordionBody>
+              </AccordionItem>
+            </Accordion>
+          </AccordionBody>
+        </AccordionItem>
+      </Accordion>
+    </>
+  );
+};
 
 RoomsList.propTypes = {
   rooms: PropTypes.arrayOf(
