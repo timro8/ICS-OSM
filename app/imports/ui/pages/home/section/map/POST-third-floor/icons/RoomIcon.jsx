@@ -36,8 +36,8 @@ const RoomIcon = (props) => {
               setShow(true);
             }}
             style={{
-              top: roomPosition.vertical ? `${roomPositionTop + 25}px` : `${roomPositionTop + 12}px`,
-              left: `${roomPositionLeft - 4}px`,
+              top: room.status === 'Occupied' ? `${roomPositionTop + 12}px` : `${roomPositionTop}px`,
+              left: `${roomPositionLeft}px`,
               borderColor: getRoomColor(room.status),
               color: getRoomColor(room.status),
             }}
