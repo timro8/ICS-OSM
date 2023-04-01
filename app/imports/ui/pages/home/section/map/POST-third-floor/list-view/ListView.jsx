@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 const RoomsList = ({ rooms, status }) => {
   const roomsByStatus = () => rooms.filter(room => room.status === status);
   if (!roomsByStatus().length) {
-    return (<div style={{ color: 'darkgray' }}>There are no rooms {status.toLowerCase()}</div>);
+    return (<div style={{ color: '#444' }}>There are no rooms {status.toLowerCase()}</div>);
   }
   return roomsByStatus().map(room => <ul><li key={rooms._id}>{room.roomNumber}</li></ul>);
 };
