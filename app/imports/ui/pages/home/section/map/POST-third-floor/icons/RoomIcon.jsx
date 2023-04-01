@@ -9,16 +9,10 @@ const RoomIcon = (props) => {
   const handleClose = () => { setRoomIndex(null); setShow(false); };
 
   const getRoomColor = (status) => {
-    if (status === 'Out of commission') {
-      return 'red';
+    if (status === 'Out of Commission') {
+      return '#dc3545';
     }
-    if (status === 'Occupied') {
-      return 'blue';
-    }
-    if (status === 'Vacant') {
-      return 'yellow';
-    }
-    return 'gray';
+    return '#fff';
   };
 
   return props.rooms.map((room, index) => {
@@ -38,7 +32,6 @@ const RoomIcon = (props) => {
             style={{
               top: room.status === 'Occupied' ? `${roomPositionTop + 12}px` : `${roomPositionTop}px`,
               left: `${roomPositionLeft}px`,
-              borderColor: getRoomColor(room.status),
               color: getRoomColor(room.status),
             }}
           >
