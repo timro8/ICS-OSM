@@ -104,7 +104,6 @@ body {
 
 .map-icon {
   position: absolute;
-  box-shadow: 0 3px 7px #808080FF;
   transition: transform 200ms;
   border: 1px solid white;
 }
@@ -113,15 +112,17 @@ body {
   border-radius: 50%;
   height: 20px;
   width: 20px;
+  box-shadow: 0 10px 7px #808080FF;
 }
 
 .map-icon-room {
   width: 38px;
   height: min-content;
   color: white;
-  background: rgba(200, 200, 200, 0.99) center;
+  background: rgba(200, 200, 200, 0.70) center;
   font-size: 0.5rem;
   font-weight: 600;
+  box-shadow: 0 3px 7px rgba(128, 128, 128, 0.50);
 }
 
 .map-icon:hover {
