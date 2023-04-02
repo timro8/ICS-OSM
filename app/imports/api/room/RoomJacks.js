@@ -44,13 +44,10 @@ class RoomJacksCollection extends BaseCollection {
    * @return {String} the docID of the new document.
    */
   define({ roomKey, jackNumber, wallLocation, IDFRoom, description }) {
-    let roomId = '';
-    if (roomKey !== '') {
-      const room = Rooms.findOne({ roomKey: roomKey });
-      roomId = room._id;
-    } else {
-      roomId = '';
-    }
+
+    const room = Rooms.findOne({ roomKey: roomKey });
+    const roomId = room._id;
+
     const docID = this._collection.insert({
       roomId,
       jackNumber,

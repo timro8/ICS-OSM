@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { _ } from 'meteor/underscore';
 import { Container, Row, Col, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -7,6 +7,7 @@ import { RoomEquipments } from '../../api/room/RoomEquipments';
 import { RoomJacks } from '../../api/room/RoomJacks';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import RoomEquipment from '../components/RoomEquipment';
+import SearchBar from '../components/SearchBar';
 import LoadingSpinner from '../components/LoadingSpinner';
 import TechRoomJack from '../components/TechRoomJack';
 
@@ -24,6 +25,9 @@ function getJackData(jack) {
 }
 
 const Tech = () => {
+
+  const [jackList, setList] = useState([]);
+
   const { equipment, jacks, ready } = useTracker(() => {
     // Get room subscription
     const subRoom = Rooms.subscribeRoom();
@@ -39,6 +43,7 @@ const Tech = () => {
 
     const documentEquipment = RoomEquipments.find({}).fetch();
     const documentJack = RoomJacks.find({}).fetch();
+
     // return when subscriptions are completed
     return {
       equipment: documentEquipment,
@@ -53,6 +58,8 @@ const Tech = () => {
   return (ready ? (
     <Container className="py-3">
       <Container id={PAGE_IDS.TECH}>
+        { /* Search Bar */}
+
         <Row>
           <Col>
             <h1>Equipment</h1>

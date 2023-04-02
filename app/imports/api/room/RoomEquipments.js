@@ -4,6 +4,7 @@ import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { ROLE } from '../role/Role';
+import { Rooms } from './RoomCollection';
 
 export const roomEquipmentPublications = {
   roomEquipment: 'RoomEquipments',
@@ -13,7 +14,10 @@ export const roomEquipmentPublications = {
 class RoomEquipmentCollection extends BaseCollection {
   constructor() {
     super('RoomEquipments', new SimpleSchema({
-      roomId: String,
+      roomId: {
+        type: String,
+        optional: true,
+      },
       description: String,
       quantity: Number,
       serialNumber: {
@@ -24,7 +28,6 @@ class RoomEquipmentCollection extends BaseCollection {
         type: String,
         optional: true,
       },
-      owner: String,
     }));
   }
 
@@ -35,17 +38,17 @@ class RoomEquipmentCollection extends BaseCollection {
    * @param quantity the quantity of the equipment.
    * @param serialNumber the serial number of the equipment.
    * @param assetTag the asset tag of the equipment.
-   * @param owner the owner of the room.
    * @return {String} the docID of the new document.
    */
-  define({ roomId, description, quantity, serialNumber, assetTag, owner }) {
+  define({ roomKey, description, quantity, serialNumber, assetTag }) {
+    const room = Rooms.findOne({ roomKey: roomKey });
+    const roomId = room._id;
     const docID = this._collection.insert({
       roomId,
       description,
       quantity,
       serialNumber,
       assetTag,
-      owner,
     });
     return docID;
   }
@@ -53,15 +56,19 @@ class RoomEquipmentCollection extends BaseCollection {
   /**
    * Updates the given document.
    * @param docID the id of the document to update.
+   * @param roomId the id of the room (optional);
    * @param description the new status (optional).
    * @param quantity the new room capacity (optional).
    * @param serialNumber the new picture of the room (optional).
    * @param assetTag the new picture of the room (optional).
    */
-  update(docID, { description, quantity, serialNumber, assetTag }) {
+  update(docID, { roomId, description, quantity, serialNumber, assetTag }) {
     const updateData = {};
     if (description) {
       updateData.description = description;
+    }
+    if (roomId) {
+      updateData.roomId = roomId;
     }
     if (quantity) {
       updateData.quantity = quantity;
@@ -89,7 +96,7 @@ class RoomEquipmentCollection extends BaseCollection {
 
   /**
    * Default publication method for entities.
-   * It publishes the entire collection for admin and just the room associated to an owner.
+   * It publishes the entire collection for admin.
    */
   publish() {
     if (Meteor.isServer) {
@@ -141,13 +148,13 @@ class RoomEquipmentCollection extends BaseCollection {
    * @throws { Meteor.Error } If there is no logged in user, or the user is not an Admin or User.
    */
   assertValidRoleForMethod(userId) {
-    this.assertRole(userId, [ROLE.ADMIN, ROLE.USER]);
+    this.assertRole(userId, [ROLE.ADMIN, ROLE.TECH, ROLE.USER]);
   }
 
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{owner: (*|number), roomId: *, description: *, quantity: *, serialNumber: *, assetTag: *}}
+   * @return {{, roomId: *, description: *, quantity: *, serialNumber: *, assetTag: *}}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
@@ -156,8 +163,7 @@ class RoomEquipmentCollection extends BaseCollection {
     const quantity = doc.quantity;
     const serialNumber = doc.serialNumber;
     const assetTag = doc.assetTag;
-    const owner = doc.owner;
-    return { roomId, description, quantity, serialNumber, assetTag, owner };
+    return { roomId, description, quantity, serialNumber, assetTag };
   }
 }
 

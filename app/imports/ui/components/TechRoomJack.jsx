@@ -22,7 +22,7 @@ TechRoomJack.propTypes = {
     description: PropTypes.string,
     owner: PropTypes.string,
     _id: PropTypes.string,
-    roomNumber: PropTypes.string,
+    roomNumber: PropTypes.arrayOf(PropTypes.string),
     IDFRoom: PropTypes.string,
   }).isRequired,
 };

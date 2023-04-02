@@ -46,7 +46,7 @@ const EditEquipment = ({ equipmentId }) => {
 
   return ready ? (
     <>
-      <Button onClick={handleShow}>
+      <Button variant="outline-secondary" size="sm" onClick={handleShow}>
         Edit {doc.description}
       </Button>
 
@@ -62,7 +62,6 @@ const EditEquipment = ({ equipmentId }) => {
             <TextField name="assetTag" />
             <SubmitField value="Submit" />
             <ErrorsField />
-            <HiddenField name="owner" value={doc.owner} />
             <HiddenField name="roomId" value={doc.roomId} />
           </AutoForm>
         </Modal.Body>

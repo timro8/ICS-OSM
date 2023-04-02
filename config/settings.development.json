@@ -466,6 +466,15 @@
 
   "defaultRoomData": [
     {
+      "roomKey": "empty",
+      "roomNumber": "n/a",
+      "location": "POST",
+      "status": "", "capacity": "",
+      "roomSqFoot": "",
+      "roomClassification": "",
+      "picture": "https://live.staticflickr.com/3022/2814793353_54966edfd3_b.jpg"
+    },
+    {
       "roomKey": "POST301",
       "roomNumber": "301", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
@@ -1156,7 +1165,7 @@
   ],
   "defaultJackData": [
     {
-      "roomKey": "",
+      "roomKey": "empty",
       "jackNumber": "16561",
       "wallLocation": "",
       "IDFRoom": "POST 320",
@@ -1168,6 +1177,57 @@
       "wallLocation": "Makai",
       "IDFRoom": "POST 320",
       "description": ""
+    }
+  ],
+  "defaultEquipmentData": [
+    {
+      "roomKey": "POST319",
+      "description": "TV 1",
+      "quantity": 1,
+      "serialNumber": "abc123",
+      "assetTag": "POST31901"
+    },
+    {
+      "roomKey": "POST319",
+      "description": "TV 2",
+      "quantity": 1,
+      "serialNumber": "abc124",
+      "assetTag": "POST31902"
+    },
+    {
+      "roomKey": "POST319",
+      "description": "TV 3",
+      "quantity": 1,
+      "serialNumber": "abc125",
+      "assetTag": "POST31903"
+    },
+    {
+      "roomKey": "POST319",
+      "description": "TV 4",
+      "quantity": 1,
+      "serialNumber": "abc126",
+      "assetTag": "POST31904"
+    },
+    {
+      "roomKey": "POST319",
+      "description": "TV 5",
+      "quantity": 1,
+      "serialNumber": "abc127",
+      "assetTag": "POST31905"
+    },
+    {
+      "roomKey": "POST319",
+      "description": "TV 6",
+      "quantity": 1,
+      "serialNumber": "abc128",
+      "assetTag": "POST31906"
+    },
+    {
+      "roomKey": "POST319",
+      "description": "chairs",
+      "quantity": 24,
+      "serialNumber": "chair1-24",
+      "assetTag": "POST319chair1-24 "
     }
   ],
   
