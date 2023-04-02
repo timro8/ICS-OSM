@@ -41,7 +41,7 @@ const EditFacultyProfile = ({ id }) => {
     initialImage = doc.image;
   }
   const [selectedImage, setSelectedImage] = useState(initialImage);
-  const imageSubmit = useRef(null);
+  const imageSubmit = useRef(doc.image);
 
   // On successful submit, insert the data.
   const submit = async (data) => {
