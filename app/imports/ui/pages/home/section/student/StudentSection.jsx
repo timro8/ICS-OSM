@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
-import { Table, Button, Row } from 'react-bootstrap';
+import { Table, Row } from 'react-bootstrap';
 import LoadingSpinner from '../../../../components/LoadingSpinner';
 import { ROLE } from '../../../../../api/role/Role';
 import { StudentProfiles } from '../../../../../api/user/StudentProfileCollection';

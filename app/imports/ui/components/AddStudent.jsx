@@ -60,8 +60,7 @@ const AddStudent = () => {
             <ErrorsField />
           </AutoForm>
         </Modal.Body>
-        <Modal.Footer>
-        </Modal.Footer>
+        <Modal.Footer />
       </Modal>
     </>
   );
