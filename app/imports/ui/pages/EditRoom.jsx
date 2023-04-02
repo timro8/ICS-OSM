@@ -10,6 +10,7 @@ import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { uploadImgUrl } from '../../startup/client/uploadImg';
+import { Meteor } from 'meteor/meteor';
 
 // form based on Rooms collection
 const bridge = new SimpleSchema2Bridge(Rooms._schema);
@@ -49,6 +50,9 @@ const EditRoom = () => {
     let imageUrl = initialImage;
     if (imageSubmit.current !== initialImage) {
       imageUrl = await uploadImgUrl(imageSubmit.current);
+      if (doc.picture.includes('cloudinary')) {
+        Meteor.call('deleteImage', doc.picture);
+      }
     }
     const { status, capacity, roomSqFoot, roomClassification } = data;
     const collectionName = Rooms.getCollectionName();
