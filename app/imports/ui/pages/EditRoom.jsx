@@ -35,7 +35,7 @@ const EditRoom = () => {
     };
   }, [_id]);
 
-  const imageSubmit = useRef(null);
+  const imageSubmit = useRef(doc.picture);
 
   let initialImage = 'https://res.cloudinary.com/dmbrfkjk3/image/upload/v1678099354/No-Image-Found-400x264_kyy6b4.png';
 
