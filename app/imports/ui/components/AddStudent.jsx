@@ -40,7 +40,7 @@ const AddStudent = () => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" onClick={handleShow} style={{ width: '15rem' }}>
         Add Student
       </Button>
 
