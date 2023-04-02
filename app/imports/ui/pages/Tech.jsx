@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { _ } from 'meteor/underscore';
-import { Container, Row, Col, Table } from 'react-bootstrap';
+import { Container, Table, Tab, Tabs } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Rooms } from '../../api/room/RoomCollection';
 import { RoomEquipments } from '../../api/room/RoomEquipments';
@@ -10,6 +10,7 @@ import RoomEquipment from '../components/RoomEquipment';
 import SearchBar from '../components/SearchBar';
 import LoadingSpinner from '../components/LoadingSpinner';
 import TechRoomJack from '../components/TechRoomJack';
+import TechAddJack from '../components/TechAddJack';
 
 function getEquipmentData(equipment) {
   // get the room number, location from Rooms Collection and extend the equipment data
@@ -26,7 +27,7 @@ function getJackData(jack) {
 
 const Tech = () => {
 
-  const [jackList, setList] = useState([]);
+  let [jackData, setList] = useState([]);
 
   const { equipment, jacks, ready } = useTracker(() => {
     // Get room subscription
@@ -42,7 +43,8 @@ const Tech = () => {
     const rdy = subRoom.ready() && subEquipment.ready() && subJack.ready();
 
     const documentEquipment = RoomEquipments.find({}).fetch();
-    const documentJack = RoomJacks.find({}).fetch();
+    const documentJack = RoomJacks.find({}, { sort: { jackNumber: 1 } }).fetch();
+    setList(documentJack);
 
     // return when subscriptions are completed
     return {
@@ -50,40 +52,27 @@ const Tech = () => {
       jacks: documentJack,
       ready: rdy,
     };
-  });
+  }, []);
   document.title = 'Tech';
   const equipmentData = equipment.map(e => getEquipmentData(e));
-  const jackData = jacks.map(j => getJackData(j));
+  jackData = jacks.map(j => getJackData(j));
+  console.log(jackData);
+  const handleJackSearch = (jack) => {
+    const searchInput = jack.trim();
+    setList(jackData.filter(j => (`${j.location}`).toLowerCase().includes(searchInput.toLowerCase())));
+  };
 
   return (ready ? (
     <Container className="py-3">
       <Container id={PAGE_IDS.TECH}>
-        { /* Search Bar */}
-
-        <Row>
-          <Col>
-            <h1>Equipment</h1>
-            <Table responsive bordered hover size="sm">
-              <thead>
-                <tr>
-                  <th>Quantity</th>
-                  <th>Description</th>
-                  <th>Serial Number</th>
-                  <th>Asset Tag</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {equipmentData.map((e, index) => (
-                  <RoomEquipment key={index} equipment={e} />
-                ))}
-              </tbody>
-            </Table>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+        <Tabs
+          defaultActiveKey="jacks"
+        >
+          <Tab eventKey="jacks" title="Jacks">
             <h1>Data Jacks</h1>
+            <TechAddJack />
+            {/* Search Bar */}
+            <SearchBar handleSearch={handleJackSearch} />
             <Table responsive bordered hover>
               <thead>
                 <tr>
@@ -101,8 +90,28 @@ const Tech = () => {
                 ))}
               </tbody>
             </Table>
-          </Col>
-        </Row>
+          </Tab>
+          <Tab eventKey="equipment" title="Equipment">
+            <h1>Equipment</h1>
+            <Table responsive bordered hover size="sm">
+              <thead>
+                <tr>
+                  <th>Quantity</th>
+                  <th>Description</th>
+                  <th>Serial Number</th>
+                  <th>Asset Tag</th>
+                  <th>Edit</th>
+                </tr>
+              </thead>
+              <tbody>
+                {equipmentData.map((e, index) => (
+                  <RoomEquipment key={index} equipment={e} />
+                ))}
+              </tbody>
+            </Table>
+          </Tab>
+
+        </Tabs>
       </Container>
     </Container>
   ) : <LoadingSpinner message="Loading tech data" />);

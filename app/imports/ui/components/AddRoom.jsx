@@ -77,7 +77,7 @@ const AddRoom = () => {
             />
             <SelectField
               name="status"
-              allowedValues={['Occupied', 'Vacant', 'Ouf of Commission', 'Other']}
+              allowedValues={['Occupied', 'Vacant', 'Ouf of Commission']}
             />
             <NumField name="capacity" />
             <TextField name="roomSqFoot" />
