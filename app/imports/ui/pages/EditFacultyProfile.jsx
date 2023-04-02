@@ -48,7 +48,9 @@ const EditFacultyProfile = ({ id }) => {
     let imageUrl = initialImage;
     if (imageSubmit.current !== initialImage) {
       imageUrl = await uploadImgUrl(imageSubmit.current);
-      Meteor.call('deleteImage', doc.image);
+      if (doc.image.includes('cloudinary')) {
+        Meteor.call('deleteImage', doc.image);
+      }
     }
     const { firstName, lastName, bio, rooms, phoneNumber, officeHours } = data;
     const collectionName = FacultyProfiles.getCollectionName();
