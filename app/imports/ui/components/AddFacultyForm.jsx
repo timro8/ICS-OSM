@@ -5,7 +5,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, SelectField, TextField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, LongTextField, SelectField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from './LoadingSpinner';
@@ -172,20 +172,50 @@ const AddFacultyForm = props => {
 
   function putOfficeHours() {
     const time = `${currentDay} ${currentStartTime} - ${currentEndTime}`;
-    if (!selectedOfficeHours.includes(time) && currentDay !== '--' && currentStartTime !== '--' && currentEndTime !== '--') {
-      if (!(selectedOfficeHours.map((existOfficeHour) => !existOfficeHour.includes(`${currentDay} ${currentStartTime}`))).includes(false)) {
-        if (currentStartTime > currentEndTime) {
-          swal('Error', 'End time cannot be earlier than start time.', 'error');
-        } else {
-          setSelectedOfficeHours([...selectedOfficeHours, time]);
-          setDay('--');
-          setStartTime('--');
-          setEndTime('--');
+
+    if (currentDay === '--' || currentStartTime === '--' || currentEndTime === '--') {
+      return;
+    }
+
+    let error = false;
+    const error_message = [];
+    if (selectedOfficeHours.includes(time)) {
+      error = true;
+      error_message.push('You cannot have multiple office hours with the same start time and same day. Please select a different start time.');
+    }
+
+    const start = currentStartTime.split(':');
+    const end = currentEndTime.split(':');
+
+    for (let i = 0; i < selectedOfficeHours.length; i++) {
+      if (selectedOfficeHours.length > 0) {
+        let selectedTime = selectedOfficeHours[i].split(' ');
+        selectedTime = selectedTime[1].split('-');
+        const selected_start = selectedTime[0].split(':');
+        const selected_end = selectedTime[1].split(':');
+
+        if (selected_start[0] >= (start[0] && end[0]) <= selected_end[0]) {
+          error_message.push('Two office hour cannot happen in the same period of time');
         }
-      } else if (currentDay !== '' && currentStartTime !== '' && currentEndTime !== '' && selectedOfficeHours.length < 1) {
-        setSelectedOfficeHours([...selectedOfficeHours, time]);
       }
     }
+
+    if (start[0] >= end[0]) {
+      if (start[1] >= end[1]) {
+        error = true;
+        error_message.push('End time cannot be same or earlier than start time.');
+      }
+    }
+
+    if (error) {
+      swal('Warning', error_message.toString());
+      return;
+    }
+
+    setSelectedOfficeHours([...selectedOfficeHours, time]);
+    setDay('--');
+    setStartTime('--');
+    setEndTime('--');
   }
 
   function removeOfficeHours(value) {
@@ -246,7 +276,7 @@ const AddFacultyForm = props => {
           <SelectField name="role" />
           <TextField name="email" />
           <TextField name="password" type="password" />
-          <TextField name="bio" label="Bio (optional)" />
+          <LongTextField name="bio" label="Bio (optional)" />
           {phoneNumber.length > 0 && (
             <div>
               {phoneNumber.map((value, index) => (

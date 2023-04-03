@@ -10,7 +10,6 @@ import { RoomJacks } from '../room/RoomJacks';
 import { RoomEquipments } from '../room/RoomEquipments';
 import { FacultyProfiles } from '../user/FacultyProfileCollection';
 import { OccupantRoom } from '../user/OccupantRoomCollection';
-import { Discussions } from '../discussion/Discussion';
 import { Clubs } from '../club/Club';
 import { ClubOfficers } from '../clubofficers/ClubOfficersCollection';
 import { StudentProfiles } from '../user/StudentProfileCollection';
@@ -41,7 +40,6 @@ class MATPClass {
       RoomJacks,
       RoomEquipments,
       OccupantRoom,
-      Discussions,
       Clubs,
       ClubOfficers,
       OfficeProfiles,
@@ -64,7 +62,6 @@ class MATPClass {
       RoomJacks,
       RoomEquipments,
       OccupantRoom,
-      Discussions,
       Clubs,
       ClubOfficers,
       OfficeProfiles,

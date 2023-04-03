@@ -10,6 +10,7 @@ import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { uploadImgUrl } from '../../startup/client/uploadImg';
+import { Meteor } from 'meteor/meteor';
 
 // form based on Rooms collection
 const bridge = new SimpleSchema2Bridge(Rooms._schema);
@@ -35,7 +36,7 @@ const EditRoom = () => {
     };
   }, [_id]);
 
-  const imageSubmit = useRef(null);
+  const imageSubmit = useRef(doc.picture);
 
   let initialImage = 'https://res.cloudinary.com/dmbrfkjk3/image/upload/v1678099354/No-Image-Found-400x264_kyy6b4.png';
 
@@ -49,6 +50,9 @@ const EditRoom = () => {
     let imageUrl = initialImage;
     if (imageSubmit.current !== initialImage) {
       imageUrl = await uploadImgUrl(imageSubmit.current);
+      if (doc.picture.includes('cloudinary')) {
+        Meteor.call('deleteImage', doc.picture);
+      }
     }
     const { status, capacity, roomSqFoot, roomClassification } = data;
     const collectionName = Rooms.getCollectionName();
