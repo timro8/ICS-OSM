@@ -112,13 +112,14 @@ const RoomDetails = () => {
       <Row>
         <Col>
           <h2>Room Data Jacks</h2>
-          <AddJack owner={loggedInOwner} roomId={_id} />
+          <AddJack owner={loggedInOwner} roomKey={roomKey} />
           <Table>
             <thead>
               <tr>
                 <th>Jack Number</th>
                 <th>Wall Location</th>
                 <th>Description</th>
+                <th>IDF Room</th>
                 <th>Edit</th>
               </tr>
             </thead>

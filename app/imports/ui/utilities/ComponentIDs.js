@@ -43,4 +43,5 @@ export const COMPONENT_IDS = {
   ADD_CLUB_OFFICER: 'add-club-officer',
   NAVBAR_DROPDOWN_TECH: 'navbar-dropdown-tech',
   ADD_TECH_JACK: 'add-tech-jack',
+  ADD_TECH_EQUIPMENT: 'add-tech-equipment',
 };

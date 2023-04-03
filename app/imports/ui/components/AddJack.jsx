@@ -10,7 +10,7 @@ import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 // form schema based on the RoomJacks collection.
 const formSchema = new SimpleSchema({
-  roomId: {
+  roomKey: {
     type: String,
     optional: true,
   },
@@ -32,7 +32,7 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddJac component for adding a new jack. */
-const AddJack = ({ roomId }) => {
+const AddJack = ({ roomKey }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
 
@@ -43,7 +43,7 @@ const AddJack = ({ roomId }) => {
   const submit = (data, formRef) => {
     const { jackNumber, wallLocation, IDFRoom, description } = data;
     const collectionName = RoomJacks.getCollectionName();
-    const definitionData = { roomId, jackNumber, wallLocation, IDFRoom, description };
+    const definitionData = { roomKey, jackNumber, wallLocation, IDFRoom, description };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -71,7 +71,7 @@ const AddJack = ({ roomId }) => {
             <TextField name="description" />
             <SubmitField value="submit" />
             <ErrorsField />
-            <HiddenField name="roomId" value={roomId} />
+            <TextField name="roomKey" value={roomKey} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
@@ -85,7 +85,7 @@ const AddJack = ({ roomId }) => {
 };
 
 AddJack.propTypes = {
-  roomId: PropTypes.string.isRequired,
+  roomKey: PropTypes.string.isRequired,
 };
 
 export default AddJack;

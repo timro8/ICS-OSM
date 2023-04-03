@@ -38,7 +38,7 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddJac component for adding a new jack. */
+/* Renders the AddJack component for adding a new jack. */
 const TechAddJack = () => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);

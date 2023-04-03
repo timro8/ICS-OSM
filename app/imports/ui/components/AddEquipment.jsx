@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -21,6 +21,11 @@ const formSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
+  equipmentType: {
+    type: String,
+    optional: true,
+    allowedValues: ['furniture', 'tech'],
+  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -35,9 +40,9 @@ const AddEquipment = ({ roomKey }) => {
 
   // data added to the RoomEquipments collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional equipment.
   const submit = (data, formRef) => {
-    const { description, quantity, serialNumber, assetTag } = data;
+    const { description, quantity, serialNumber, assetTag, equipmentType } = data;
     const collectionName = RoomEquipments.getCollectionName();
-    const definitionData = { roomKey, description, quantity, serialNumber, assetTag };
+    const definitionData = { roomKey, description, quantity, serialNumber, assetTag, equipmentType };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -63,6 +68,7 @@ const AddEquipment = ({ roomKey }) => {
             <TextField name="quantity" />
             <TextField name="serialNumber" />
             <TextField name="assetTag" />
+            <SelectField name="equipmentType" />
             <SubmitField value="submit" />
             <ErrorsField />
             <TextField name="roomKey" value={roomKey} />

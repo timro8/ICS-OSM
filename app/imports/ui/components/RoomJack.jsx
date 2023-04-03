@@ -8,6 +8,7 @@ const RoomJack = ({ jack }) => (
     <td>{jack.jackNumber}</td>
     <td>{jack.wallLocation}</td>
     <td>{jack.description}</td>
+    <td>{jack.IDFRoom}</td>
     <td><EditJack jackId={jack._id} /></td>
   </tr>
 );
@@ -19,7 +20,7 @@ RoomJack.propTypes = {
     jackNumber: PropTypes.string,
     wallLocation: PropTypes.string,
     description: PropTypes.string,
-    owner: PropTypes.string,
+    IDFRoom: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

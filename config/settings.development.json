@@ -1177,49 +1177,56 @@
       "description": "TV 1",
       "quantity": 1,
       "serialNumber": "abc123",
-      "assetTag": "POST31901"
+      "assetTag": "POST31901",
+      "equipmentType": "tech"
     },
     {
       "roomKey": "POST319",
       "description": "TV 2",
       "quantity": 1,
       "serialNumber": "abc124",
-      "assetTag": "POST31902"
+      "assetTag": "POST31902",
+      "equipmentType": "tech"
     },
     {
       "roomKey": "POST319",
       "description": "TV 3",
       "quantity": 1,
       "serialNumber": "abc125",
-      "assetTag": "POST31903"
+      "assetTag": "POST31903",
+      "equipmentType": "tech"
     },
     {
       "roomKey": "POST319",
       "description": "TV 4",
       "quantity": 1,
       "serialNumber": "abc126",
-      "assetTag": "POST31904"
+      "assetTag": "POST31904",
+      "equipmentType": "tech"
     },
     {
       "roomKey": "POST319",
       "description": "TV 5",
       "quantity": 1,
       "serialNumber": "abc127",
-      "assetTag": "POST31905"
+      "assetTag": "POST31905",
+      "equipmentType": "tech"
     },
     {
       "roomKey": "POST319",
       "description": "TV 6",
       "quantity": 1,
       "serialNumber": "abc128",
-      "assetTag": "POST31906"
+      "assetTag": "POST31906",
+      "equipmentType": "tech"
     },
     {
       "roomKey": "POST319",
       "description": "chairs",
       "quantity": 24,
       "serialNumber": "chair1-24",
-      "assetTag": "POST319chair1-24 "
+      "assetTag": "POST319chair1-24 ",
+      "equipmentType": "furniture"
     }
   ],
   

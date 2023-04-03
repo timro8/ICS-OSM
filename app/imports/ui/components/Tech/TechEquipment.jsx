@@ -24,7 +24,7 @@ const TechEquipment = () => {
     // Get jack subscription
     const subEquipment = RoomEquipments.subscribeRoomEquipment();
 
-    const documentEquipment = RoomEquipments.find({}).fetch();
+    const documentEquipment = RoomEquipments.find({ equipmentType: 'tech' }).fetch();
 
     // Determine if the subscriptions are ready
     const rdy = subRoom.ready() && subEquipment.ready();
@@ -39,13 +39,13 @@ const TechEquipment = () => {
 
   return (ready ? (
     <Container className="py-3">
-      <h1 className="text-center py-2">Equipment</h1>
+      <h2 className="text-center py-2">Equipment</h2>
       <TechAddEquipment />
 
       {/* Search Bar */}
       <SearchBar />
 
-      <Table responsive bordered hover size="sm">
+      <Table responsive hover>
         <thead>
           <tr>
             <th>Room Number</th>

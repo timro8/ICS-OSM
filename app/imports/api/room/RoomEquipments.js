@@ -28,19 +28,24 @@ class RoomEquipmentCollection extends BaseCollection {
         type: String,
         optional: true,
       },
+      equipmentType: {
+        type: String,
+        optional: true,
+      },
     }));
   }
 
   /**
-   * Defines a new Room item.
+   * Defines a new Room equipment item.
    * @param roomId the Id of the room
    * @param description the description of the equipment.
    * @param quantity the quantity of the equipment.
    * @param serialNumber the serial number of the equipment.
    * @param assetTag the asset tag of the equipment.
+   * @param equipmentType the type of the equipment.
    * @return {String} the docID of the new document.
    */
-  define({ roomKey, description, quantity, serialNumber, assetTag }) {
+  define({ roomKey, description, quantity, serialNumber, assetTag, equipmentType }) {
     const room = Rooms.findOne({ roomKey: roomKey });
     const roomId = room._id;
     const docID = this._collection.insert({
@@ -49,6 +54,7 @@ class RoomEquipmentCollection extends BaseCollection {
       quantity,
       serialNumber,
       assetTag,
+      equipmentType,
     });
     return docID;
   }
@@ -57,12 +63,13 @@ class RoomEquipmentCollection extends BaseCollection {
    * Updates the given document.
    * @param docID the id of the document to update.
    * @param roomId the id of the room (optional);
-   * @param description the new status (optional).
-   * @param quantity the new room capacity (optional).
-   * @param serialNumber the new picture of the room (optional).
-   * @param assetTag the new picture of the room (optional).
+   * @param description the description of the equipment (optional).
+   * @param quantity the quantity of the equipment(optional).
+   * @param serialNumber the serial number of the equipment (optional).
+   * @param assetTag the asset tag of the equipment (optional).
+   * @param equipmentType the type of the equipment (optional)
    */
-  update(docID, { roomId, description, quantity, serialNumber, assetTag }) {
+  update(docID, { roomId, description, quantity, serialNumber, assetTag, equipmentType }) {
     const updateData = {};
     if (description) {
       updateData.description = description;
@@ -78,6 +85,9 @@ class RoomEquipmentCollection extends BaseCollection {
     }
     if (assetTag) {
       updateData.assetTag = assetTag;
+    }
+    if (equipmentType) {
+      updateData.equipmentType = equipmentType;
     }
     this._collection.update(docID, { $set: updateData });
   }
@@ -163,7 +173,8 @@ class RoomEquipmentCollection extends BaseCollection {
     const quantity = doc.quantity;
     const serialNumber = doc.serialNumber;
     const assetTag = doc.assetTag;
-    return { roomId, description, quantity, serialNumber, assetTag };
+    const equipmentType = doc.equipmentType;
+    return { roomId, description, quantity, serialNumber, assetTag, equipmentType };
   }
 }
 

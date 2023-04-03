@@ -46,11 +46,11 @@ const TechJack = () => {
 
   return (ready ? (
     <Container className="py-3">
-      <h1 className="text-center p-2">Data Jacks</h1>
+      <h2 className="text-center p-2">Data Jacks</h2>
       <TechAddJack />
       {/* Search Bar */}
       <SearchBar handleSearch={handleJackSearch} />
-      <Table responsive bordered hover>
+      <Table responsive hover>
         <thead>
           <tr>
             <th>Room Number</th>
