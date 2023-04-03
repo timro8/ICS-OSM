@@ -106,3 +106,10 @@ test('Navigating to club page', async () => {
   await navBar.gotoClubPage();
   await clubPage.isDisplayed();
 });
+
+// TODO: implement test for adding faculty
+// TODO: implement test for editing faculty
+// TODO: implement test for adding room
+// TODO: implement test for editing room
+// TODO: implement test for adding club
+// TODO: implement test for editing club
