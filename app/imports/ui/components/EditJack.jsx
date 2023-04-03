@@ -70,7 +70,6 @@ const EditJack = ({ jackId }) => {
   const submit = (data) => {
     const { jackNumber, wallLocation, IDFRoom, description } = data;
     const roomId = data.rooms;
-    console.log(roomId);
     const collectionName = RoomJacks.getCollectionName();
     const updateData = { id: jackId, roomId, jackNumber, wallLocation, IDFRoom, description };
     updateMethod.callPromise({ collectionName, updateData })

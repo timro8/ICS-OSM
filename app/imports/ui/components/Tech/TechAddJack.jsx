@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Modal } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, TextField, SelectField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, HiddenField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { Rooms } from '../../api/room/RoomCollection';
-import { RoomJacks } from '../../api/room/RoomJacks';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
-import LoadingSpinner from './LoadingSpinner';
+import { Rooms } from '../../../api/room/RoomCollection';
+import { RoomJacks } from '../../../api/room/RoomJacks';
+import { defineMethod } from '../../../api/base/BaseCollection.methods';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
+import LoadingSpinner from '../LoadingSpinner';
 
 // form schema based on the RoomJacks collection.
 const formSchema = new SimpleSchema({
@@ -61,7 +61,6 @@ const TechAddJack = () => {
   const submit = (data, formRef) => {
     const { jackNumber, wallLocation, IDFRoom, description } = data;
     const roomKey = data.rooms;
-    console.log(roomKey);
     const collectionName = RoomJacks.getCollectionName();
     const definitionData = { roomKey, jackNumber, wallLocation, IDFRoom, description };
     defineMethod.callPromise({ collectionName, definitionData })
@@ -95,7 +94,7 @@ const TechAddJack = () => {
             <TextField name="description" />
             <SubmitField value="submit" />
             <ErrorsField />
-            <TextField name="roomId" value={initRoom} />
+            <HiddenField name="roomId" value={initRoom} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>

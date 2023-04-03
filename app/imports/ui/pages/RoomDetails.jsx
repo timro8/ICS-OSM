@@ -29,7 +29,7 @@ const RoomDetails = () => {
   // constants for the page
   const {
     doc,
-    doc: { roomNumber, capacity, picture, status, roomSqFoot, roomClassification },
+    doc: { roomKey, roomNumber, capacity, picture, status, roomSqFoot, roomClassification },
     docNotes,
     docJacks,
     docEquipment,
@@ -92,7 +92,7 @@ const RoomDetails = () => {
       <Row>
         <Col>
           <h2>Room Equipment</h2>
-          <AddEquipment owner={loggedInOwner} roomId={_id} />
+          <AddEquipment owner={loggedInOwner} roomKey={roomKey} />
           <Table>
             <thead>
               <tr>

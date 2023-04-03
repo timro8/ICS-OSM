@@ -10,7 +10,7 @@ import { defineMethod } from '../../api/base/BaseCollection.methods';
 
 // form schema based on the Equipment collection
 const formSchema = new SimpleSchema({
-  roomId: String,
+  roomKey: String,
   description: String,
   quantity: Number,
   serialNumber: {
@@ -21,13 +21,12 @@ const formSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
-  owner: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddEquipment component for adding a new equipment. */
-const AddEquipment = ({ roomId, owner }) => {
+const AddEquipment = ({ roomKey }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
 
@@ -38,7 +37,7 @@ const AddEquipment = ({ roomId, owner }) => {
   const submit = (data, formRef) => {
     const { description, quantity, serialNumber, assetTag } = data;
     const collectionName = RoomEquipments.getCollectionName();
-    const definitionData = { roomId, description, quantity, serialNumber, assetTag, owner };
+    const definitionData = { roomKey, description, quantity, serialNumber, assetTag };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -66,8 +65,7 @@ const AddEquipment = ({ roomId, owner }) => {
             <TextField name="assetTag" />
             <SubmitField value="submit" />
             <ErrorsField />
-            <HiddenField name="owner" value={owner} />
-            <HiddenField name="roomId" value={roomId} />
+            <TextField name="roomKey" value={roomKey} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
@@ -81,8 +79,7 @@ const AddEquipment = ({ roomId, owner }) => {
 };
 
 AddEquipment.propTypes = {
-  roomId: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired,
+  roomKey: PropTypes.string.isRequired,
 };
 
 export default AddEquipment;

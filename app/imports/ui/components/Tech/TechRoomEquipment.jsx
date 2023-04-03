@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditEquipment from './EditEquipment';
+import EditEquipment from '../EditEquipment';
 
-// Renders the equipment for the room. See pages/RoomDetails.jsx. The EditEquipment component used for each equipment based on the equipment id
-const RoomEquipment = ({ equipment }) => (
+// Renders the jacks for the room. See pages/Tech.jsx. The EditJack component used for each jack based on jackId
+const TechRoomEquipment = ({ equipment }) => (
   <tr>
+    <td>{equipment.roomNumber}</td>
     <td>{equipment.quantity}</td>
     <td>{equipment.description}</td>
     <td>{equipment.serialNumber}</td>
@@ -14,15 +15,15 @@ const RoomEquipment = ({ equipment }) => (
 );
 
 // Requires a document to be passed to this component.
-RoomEquipment.propTypes = {
+TechRoomEquipment.propTypes = {
   equipment: PropTypes.shape({
-    roomId: PropTypes.string,
     description: PropTypes.string,
     quantity: PropTypes.number,
     serialNumber: PropTypes.string,
-    assetTag: PropTypes.string,
     _id: PropTypes.string,
+    roomNumber: PropTypes.arrayOf(PropTypes.string),
+    assetTag: PropTypes.string,
   }).isRequired,
 };
 
-export default RoomEquipment;
+export default TechRoomEquipment;

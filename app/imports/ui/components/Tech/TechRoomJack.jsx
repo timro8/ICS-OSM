@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditJack from './EditJack';
+import EditJack from '../EditJack';
 
 // Renders the jacks for the room. See pages/Tech.jsx. The EditJack component used for each jack based on jackId
 const TechRoomJack = ({ jack }) => (
@@ -20,7 +20,6 @@ TechRoomJack.propTypes = {
     jackNumber: PropTypes.string,
     wallLocation: PropTypes.string,
     description: PropTypes.string,
-    owner: PropTypes.string,
     _id: PropTypes.string,
     roomNumber: PropTypes.arrayOf(PropTypes.string),
     IDFRoom: PropTypes.string,
