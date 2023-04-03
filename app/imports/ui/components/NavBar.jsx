@@ -61,8 +61,8 @@ const NavBar = () => {
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FACULTY} as={NavLink} to="/faculty" key="faculty">Faculty</Nav.Link>,
                 <NavDropdown id={COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB} title="Clubs">
                   {ready && clubs ? (
-                    clubs.map((club) => (<Nav.Link className="d-flex justify-content-center" as={NavLink} to={`/clubs/${club._id}`} key={`${club._id}`}> {club.clubName} </Nav.Link>))
-                  ) : <LoadingSpinner message="Loading Club" /> }
+                    clubs.map((club) => (<Nav.Link className="d-flex justify-content-center" as={NavLink} id={COMPONENT_IDS.NAVBAR_CLUB} to={`/clubs/${club._id}`} key={`${club._id}`}> {club.clubName} </Nav.Link>))
+                  ) : '' }
                   <Nav.Item className="d-flex justify-content-center">
                     <AddClub />
                   </Nav.Item>

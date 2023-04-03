@@ -13,4 +13,4 @@ class ClubPage {
   }
 }
 
-export const facultyPage = new ClubPage();
+export const clubPage = new ClubPage();
