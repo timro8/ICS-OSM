@@ -113,3 +113,9 @@ test('Navigating to club page', async () => {
 // TODO: implement test for editing room
 // TODO: implement test for adding club
 // TODO: implement test for editing club
+// TODO: implement test for tech page
+// TODO: implement test for add jack
+// TODO: implement test for edit jack
+// TODO: implement test for add equipment
+// TODO: implement test for edit equipment
+// TODO: implement test for add note
