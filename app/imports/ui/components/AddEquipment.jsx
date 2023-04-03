@@ -53,7 +53,7 @@ const AddEquipment = ({ roomKey }) => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" size="sm" onClick={handleShow}>
         Add Equipment
       </Button>
 
@@ -71,7 +71,7 @@ const AddEquipment = ({ roomKey }) => {
             <SelectField name="equipmentType" />
             <SubmitField value="submit" />
             <ErrorsField />
-            <TextField name="roomKey" value={roomKey} />
+            <HiddenField name="roomKey" value={roomKey} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>

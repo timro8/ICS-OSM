@@ -1,31 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, Col, Image } from 'react-bootstrap';
+import { Card, Col, Image, Row } from 'react-bootstrap';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { PAGE_IDS } from '../utilities/PageIDs';
 
 /** Renders a single card in the List Room Admin card. See pages/ListRoomAdmin.jsx. */
 const RoomItem = ({ room }) => (
-  <Col className="p-2">
-    <Card border="info" className="h-100">
+  <Col style={{ marginBottom: '20px' }}>
+    <Card border="info" className="w-100">
       <Link className={COMPONENT_IDS.ROOM_DETAILS} to={`/roomdetails/${room._id}`} style={{ color: 'black', textDecoration: 'none' }}>
+        <Card.Header>
+          <h6>{room.location} {room.roomNumber}</h6>
+        </Card.Header>
         <Card.Body>
-          <Image src={room.picture} alt={`${room.roomNumber} picture`} fluid rounded />
-          <hr />
-          <Card.Title>{room.location} {room.roomNumber}</Card.Title>
-          <Card.Subtitle>
-            {room.occupants.map((o) => <p key={o._id}>{o.firstName} {o.lastName}</p>)}
-          </Card.Subtitle>
-          <Card.Text>
-            <strong>Status:</strong> {room.status}
-          </Card.Text>
-          <Card.Text>
-            <strong>Room capacity:</strong> {room.capacity}
-          </Card.Text>
-          <Card.Text>
-            <strong>Room classification:</strong> {room.roomClassification}
-          </Card.Text>
+          <Row>
+            <Col className="d-flex justify-content-center pb-3">
+              <Image src={room.picture} alt={`${room.roomNumber} picture`} width="100px" rounded />
+            </Col>
+            <hr />
+          </Row>
+          <Row>
+            <Col>
+              <Card.Text>
+                {room.occupants.map((o) => <p key={o._id}>{o.firstName} {o.lastName}</p>)}
+              </Card.Text>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card.Text>
+                <strong>Room capacity:</strong> {room.capacity}
+              </Card.Text>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card.Text>
+                <strong>Status:</strong> {room.status}
+              </Card.Text>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card.Text>
+                <strong>Room classification:</strong> {room.roomClassification}
+              </Card.Text>
+            </Col>
+          </Row>
         </Card.Body>
       </Link>
       <Card.Footer>

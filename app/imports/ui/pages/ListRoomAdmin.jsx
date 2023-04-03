@@ -46,7 +46,6 @@ const ListRoomAdmin = () => {
       <Row xs={1} md={2} lg={4} className="g-2">
         {roomList.map((room, index) => <RoomItem key={index} room={room} />)}
       </Row>
-      { /* {roomList.map((room, index) => <p key={index}>{room.roomNumber}</p>)} */ }
       <AddRoom />
     </Container>
   ) : <LoadingSpinner />;

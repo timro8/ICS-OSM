@@ -41,7 +41,7 @@ const AddNote = ({ roomId, owner }) => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" size="sm" onClick={handleShow}>
         Add Notes
       </Button>
 

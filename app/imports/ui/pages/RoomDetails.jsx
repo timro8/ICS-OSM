@@ -69,12 +69,12 @@ const RoomDetails = () => {
   }, [ready]);
   return ready ? (
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
-      <Button variant="success" href="/adminroom">Back to List Room (Admin)</Button>
-      <h1>Room {roomNumber} Details</h1>
+      <Button variant="success" size="sm" href="/adminroom">Back to List Room (Admin)</Button>
+      <h3>Room {roomNumber} Details</h3>
       <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${doc._id}`}>Edit room</Link>
       <Row>
         <Col>
-          <h2>Occupants</h2>
+          <h4>Occupants</h4>
           {roomOccupants.occupants.map((o) => <div key={o._id}>{o.firstName} {o.lastName}</div>)}
         </Col>
       </Row>
@@ -91,8 +91,8 @@ const RoomDetails = () => {
       </Row>
       <Row>
         <Col>
-          <h2>Room Equipment</h2>
-          <AddEquipment owner={loggedInOwner} roomKey={roomKey} />
+          <h4>Room Equipment</h4>
+          <AddEquipment roomKey={roomKey} />
           <Table>
             <thead>
               <tr>
@@ -111,8 +111,8 @@ const RoomDetails = () => {
       </Row>
       <Row>
         <Col>
-          <h2>Room Data Jacks</h2>
-          <AddJack owner={loggedInOwner} roomKey={roomKey} />
+          <h4>Room Data Jacks</h4>
+          <AddJack roomKey={roomKey} />
           <Table>
             <thead>
               <tr>
