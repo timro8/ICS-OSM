@@ -8,7 +8,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { Clubs } from '../../api/club/Club';
-import { uploadImgUrl } from '../../startup/client/uploadImg';
+import { uploadImgUrl } from '../../api/faculty/faculty_form_helper';
 import { ROLE } from '../../api/role/Role';
 
 // form schema based on the Club collection
