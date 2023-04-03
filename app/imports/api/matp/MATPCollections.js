@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../stuff/StuffCollection';
 import { Rooms } from '../room/RoomCollection';
 import { Faculties } from '../faculty/FacultyCollection';
 import { AdminProfiles } from '../user/AdminProfileCollection';
@@ -27,7 +26,6 @@ class MATPClass {
     // list of all the MATPCollections collections
     this.collections = [
       AdminProfiles,
-      Stuffs,
       UserProfiles,
       FacultyProfiles,
       StudentProfiles,
@@ -54,7 +52,6 @@ class MATPClass {
       StudentProfiles,
       OfficeProfiles,
       TechProfiles,
-      Stuffs,
       Rooms,
       Faculties,
       Events302,

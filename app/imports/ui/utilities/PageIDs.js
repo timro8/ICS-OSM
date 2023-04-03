@@ -1,12 +1,8 @@
 /** Define ids for each page. */
 export const PAGE_IDS = {
-  ADD_STUFF: 'add-stuff',
   DISCUSS: 'discuss',
-  EDIT_STUFF: 'edit-stuff',
   LANDING: 'landing',
   HOME: 'home',
-  LIST_STUFF: 'list-stuff',
-  LIST_STUFF_ADMIN: 'list-stuff-admin',
   LIST_FACULTY_ADMIN: 'list-faculty-admin',
   MANAGE_DATABASE: 'manage-database',
   NOT_AUTHORIZED: 'not-authorized',
