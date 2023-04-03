@@ -13,7 +13,6 @@ import AddClubOfficer from '../components/AddClubOfficer';
 
 const Club = () => {
   const { _id } = useParams();
-  console.log(_id);
   const { ready, club, officers, students } = useTracker(() => {
     const clubSubscription = Clubs.subscribeClub();
     const officerSubscription = ClubOfficers.subscribeClubOfficers();
@@ -35,8 +34,6 @@ const Club = () => {
     const filteredOfficers = officerData
       .filter((o) => o.clubId === club[0].clubName)
       .map(officer => officer.studentId);
-    console.log(filteredOfficers);
-    console.log(Meteor.user().username);
 
     return filteredOfficers.includes(Meteor.user().username);
   };
