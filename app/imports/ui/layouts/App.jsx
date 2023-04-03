@@ -6,7 +6,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import Home from '../pages/Home';
+import Home from '../pages/home/Home';
 import ListRoom from '../pages/ListRoom';
 import ListRoomAdmin from '../pages/ListRoomAdmin';
 import NotFound from '../pages/NotFound';
