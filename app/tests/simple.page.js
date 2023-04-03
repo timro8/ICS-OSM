@@ -17,5 +17,3 @@ class SimplePage {
 }
 export const signOutPage = new SimplePage(PAGE_IDS.SIGN_OUT);
 export const listRoomPage = new SimplePage(PAGE_IDS.LIST_ROOM);
-
-export const discussPage = new SimplePage(PAGE_IDS.DISCUSS);

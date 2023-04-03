@@ -5,7 +5,6 @@ import { navBar } from './navbar.component';
 import { facultyPage } from './faculty.page';
 import { facultyProfilePage } from './faculty-profile.page';
 import { listRoomAdminPage } from './room-admin.page';
-import { discussPage } from './simple.page';
 
 /* global fixture:false, test:false */
 
@@ -61,8 +60,6 @@ test('Test that admin pages show up', async () => {
   await listRoomAdminPage.isDisplayed();
   await navBar.gotoFacultyPage();
   await facultyPage.isDisplayed();
-  await navBar.gotoDiscussPage();
-  await discussPage.isDisplayed();
 });
 
 test('Room details shows up', async () => {

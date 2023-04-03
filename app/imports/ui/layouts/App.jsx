@@ -21,8 +21,6 @@ import Faculty from '../pages/Faculty';
 import FacultyProfile from '../pages/FacultyProfile';
 import RoomDetails from '../pages/RoomDetails';
 import LoadingSpinner from '../components/LoadingSpinner';
-import DiscussionFaculty from '../pages/DiscussionPage';
-import AddDiscussion from '../pages/AddDiscussion';
 import Club from '../pages/Club';
 import EditRoom from '../pages/EditRoom';
 
@@ -46,8 +44,6 @@ const App = () => {
           <Route path="/signuprequest" element={<SignUpRequest />} />
           <Route path="/profile/:_id" element={<FacultyProfile />} />
           <Route path="/faculty" element={<Faculty />} />
-          <Route path="/addDis" element={<AddDiscussion />} />
-          <Route path="/discus" element={<DiscussionFaculty />} />
           <Route path="/clubs/:_id" element={<Club />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/listroom" element={<ProtectedRoute><ListRoom /></ProtectedRoute>} />

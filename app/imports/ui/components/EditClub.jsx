@@ -9,6 +9,7 @@ import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from './LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
 import { uploadImgUrl } from '../../startup/client/uploadImg';
+import { Meteor } from 'meteor/meteor';
 
 const bridge = new SimpleSchema2Bridge(Clubs._schema);
 
@@ -46,6 +47,9 @@ const EditClub = ({ id }) => {
     let imageUrl = initialImage;
     if (imageSubmit.current !== initialImage) {
       imageUrl = await uploadImgUrl(imageSubmit.current);
+      if (doc.image.includes('cloudinary')) {
+        Meteor.call('deleteImage', doc.image);
+      }
     }
     const { clubName, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
     const collectionName = Clubs.getCollectionName();
