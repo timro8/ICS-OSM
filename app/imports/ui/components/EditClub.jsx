@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from './LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
-import { uploadImgUrl } from '../../startup/client/uploadImg';
+import { uploadImgUrl } from '../../api/faculty/faculty_form_helper';
 import { Meteor } from 'meteor/meteor';
 
 const bridge = new SimpleSchema2Bridge(Clubs._schema);

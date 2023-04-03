@@ -9,7 +9,7 @@ import { Rooms } from '../../api/room/RoomCollection';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import { uploadImgUrl } from '../../startup/client/uploadImg';
+import { uploadImgUrl } from '../../api/faculty/faculty_form_helper';
 import { Meteor } from 'meteor/meteor';
 
 // form based on Rooms collection

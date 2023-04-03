@@ -6,7 +6,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Rooms } from '../../api/room/RoomCollection';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
-import { uploadImgUrl } from '../../startup/client/uploadImg';
+import { uploadImgUrl } from '../../api/faculty/faculty_form_helper';
 
 // form schema based on the Room collection
 const bridge = new SimpleSchema2Bridge(Rooms._schema);
