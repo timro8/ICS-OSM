@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-import { Stuffs } from '../../api/stuff/StuffCollection';
 import { Rooms } from '../../api/room/RoomCollection';
 import { Events302 } from '../../api/events/Events302Collection';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
@@ -13,10 +12,6 @@ import { RoomEquipments } from '../../api/room/RoomEquipments';
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
-function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Stuffs.define(data);
-}
 
 function addRoomData(data) {
   console.log(`  Adding: ${data.roomNumber}`);
@@ -56,23 +51,6 @@ function addOfficeData(data) {
 function addTechData(data) {
   console.log(`  Adding: ${data.firstName} ${data.lastName}`);
   TechProfiles.define(data);
-}
-
-function addRoomJackData(data) {
-  console.log(`  Adding: ${data.jackNumber}`);
-  RoomJacks.define(data);
-}
-
-function addRoomEquipmentData(data) {
-  console.log(`  Adding: ${data.description}`);
-  RoomEquipments.define(data);
-}
-// Initialize the StuffsCollection if empty.
-if (Stuffs.count() === 0) {
-  if (Meteor.settings.defaultData) {
-    console.log('Creating default data.');
-    Meteor.settings.defaultData.map(data => addData(data));
-  }
 }
 
 // Initialize the RoomsCollection if empty.
@@ -129,19 +107,5 @@ if (ClubOfficers.count() === 0) {
   if (Meteor.settings.defaultClubOfficers) {
     console.log('Creating default club officer data.');
     Meteor.settings.defaultClubOfficers.map(data => addClubOfficersData(data));
-  }
-}
-
-if (RoomJacks.count() === 0) {
-  if (Meteor.settings.defaultJackData) {
-    console.log('Creating default room jack data.');
-    Meteor.settings.defaultJackData.map(data => addRoomJackData(data));
-  }
-}
-
-if (RoomEquipments.count() === 0) {
-  if (Meteor.settings.defaultEquipmentData) {
-    console.log('Creating default room equipment data.');
-    Meteor.settings.defaultEquipmentData.map(data => addRoomEquipmentData(data));
   }
 }
