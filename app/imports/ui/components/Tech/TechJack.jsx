@@ -17,7 +17,7 @@ function getJackData(jack) {
 
 const TechJack = () => {
 
-  let [jackData, setList] = useState([]);
+  const [jackList, setList] = useState([]);
 
   const { jacks, ready } = useTracker(() => {
     // Get room subscription
@@ -30,18 +30,17 @@ const TechJack = () => {
     const rdy = subRoom.ready() && subJack.ready();
 
     const documentJack = RoomJacks.find({}, { sort: { jackNumber: 1 } }).fetch();
-    setList(documentJack);
-
+    const jackData = documentJack.map(j => getJackData(j));
+    setList(jackData);
     // return when subscriptions are completed
     return {
-      jacks: documentJack,
+      jacks: jackData,
       ready: rdy,
     };
   }, []);
-  jackData = jacks.map(j => getJackData(j));
-  const handleJackSearch = (jack) => {
-    const searchInput = jack.trim();
-    setList(jackData.filter(j => (`${j.location}`).toLowerCase().includes(searchInput.toLowerCase())));
+  const handleSearch = (search) => {
+    const searchInput = search.trim();
+    setList(jacks.filter(jack => (`${jack.roomNumber} + ' ' + ${jack.jackNumber} + ' ' + ${jack.wallLocation} + ' ' + ${jack.IDFRoom}`).toLowerCase().includes(searchInput.toLowerCase())));
   };
 
   return (ready ? (
@@ -49,7 +48,7 @@ const TechJack = () => {
       <h2 className="text-center p-2">Data Jacks</h2>
       <TechAddJack />
       {/* Search Bar */}
-      <SearchBar handleSearch={handleJackSearch} />
+      <SearchBar handleSearch={handleSearch} />
       <Table responsive hover>
         <thead>
           <tr>
@@ -62,7 +61,7 @@ const TechJack = () => {
           </tr>
         </thead>
         <tbody>
-          {jackData.map((j, index) => (
+          {jackList.map((j, index) => (
             <TechRoomJack key={index} jack={j} />
           ))}
         </tbody>

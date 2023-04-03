@@ -16,6 +16,7 @@ function getEquipmentData(equipment) {
 }
 
 const TechEquipment = () => {
+  const [equipmentList, setList] = useState([]);
 
   const { equipment, ready } = useTracker(() => {
     // Get room subscription
@@ -26,24 +27,28 @@ const TechEquipment = () => {
 
     const documentEquipment = RoomEquipments.find({ equipmentType: 'tech' }).fetch();
 
+    const equipmentData = documentEquipment.map(e => getEquipmentData(e));
+    setList(equipmentData);
     // Determine if the subscriptions are ready
     const rdy = subRoom.ready() && subEquipment.ready();
 
     // return when subscriptions are completed
     return {
-      equipment: documentEquipment,
+      equipment: equipmentData,
       ready: rdy,
     };
   }, []);
-  const equipmentData = equipment.map(e => getEquipmentData(e));
-
+  const handleSearch = (search) => {
+    const searchInput = search.trim();
+    setList(equipment.filter(e => (`${e.roomNumber} + ' ' + ${e.description} + ' ' + ${e.serialNumber} + ' ' + ${e.assetTag}`).toLowerCase().includes(searchInput.toLowerCase())));
+  };
   return (ready ? (
     <Container className="py-3">
       <h2 className="text-center py-2">Equipment</h2>
       <TechAddEquipment />
 
       {/* Search Bar */}
-      <SearchBar />
+      <SearchBar handleSearch={handleSearch} />
 
       <Table responsive hover>
         <thead>
@@ -57,7 +62,7 @@ const TechEquipment = () => {
           </tr>
         </thead>
         <tbody>
-          {equipmentData.map((e, index) => (
+          {equipmentList.map((e, index) => (
             <TechRoomEquipment key={index} equipment={e} />
           ))}
         </tbody>

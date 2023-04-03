@@ -26,27 +26,25 @@ const ListRoomAdmin = () => {
     const rdy = subscription.ready() && subFaculty.ready() && subOccupant.ready();
     // Get the Room documents
     const items = Rooms.find({}).fetch();
-    setList(items);
+    const roomKeys = items.map(room => room._id);
+    const roomData = roomKeys.map(room => getRoomData(room));
+    setList(roomData);
     return {
-      rooms: items,
+      rooms: roomData,
       ready: rdy,
     };
   }, []);
 
-  const roomKeys = rooms.map(room => room._id);
-
-  const roomData = roomKeys.map(room => getRoomData(room));
-
   const handleSearch = (search) => {
     const searchInput = search.trim();
-    setList(roomData.filter(room => (`${room.roomNumber} + ' ' + ${room.location}`).toLowerCase().includes(searchInput.toLowerCase())));
+    setList(rooms.filter(room => (`${room.roomNumber} + ' ' + ${room.location}`).toLowerCase().includes(searchInput.toLowerCase())));
   };
   document.title = 'Rooms';
   return ready ? (
     <Container id={PAGE_IDS.LIST_ROOM_ADMIN} className="py-3">
       <SearchBar handleSearch={handleSearch} />
       <Row xs={1} md={2} lg={4} className="g-2">
-        {roomData.map((room, index) => <RoomItem key={index} room={room} />)}
+        {roomList.map((room, index) => <RoomItem key={index} room={room} />)}
       </Row>
       { /* {roomList.map((room, index) => <p key={index}>{room.roomNumber}</p>)} */ }
       <AddRoom />
