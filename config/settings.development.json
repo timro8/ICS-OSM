@@ -897,7 +897,7 @@
     },
     {
       "roomKey": "POST3148",
-      "roomNumber": "314-9", "location":  "POST", "status": "Occupied", "capacity": "1",
+      "roomNumber": "314-8", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
       "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
