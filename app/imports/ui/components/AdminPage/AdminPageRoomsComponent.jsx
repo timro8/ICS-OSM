@@ -9,7 +9,7 @@ const AdminPageFacultyComponent = ({ room }) => (
     <td>{room.location}</td>
     <td>{room.roomNumber}</td>
     <td>
-      <Link className={COMPONENT_IDS.LIST_STUFF_EDIT} to={`/roomdetails/${room.roomKey}`}>Edit Room Details</Link>
+      <Link className={COMPONENT_IDS.LIST_ROOM_EDIT} to={`/roomdetails/${room.roomKey}`}>Edit Room Details</Link>
     </td>
   </tr>
 );
