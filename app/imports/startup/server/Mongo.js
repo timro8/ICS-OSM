@@ -53,6 +53,16 @@ function addTechData(data) {
   TechProfiles.define(data);
 }
 
+function addRoomJackData(data) {
+  console.log(`  Adding: ${data.jackNumber}`);
+  RoomJacks.define(data);
+}
+
+function addRoomEquipmentData(data) {
+  console.log(`  Adding: ${data.description}`);
+  RoomEquipments.define(data);
+}
+
 // Initialize the RoomsCollection if empty.
 if (Rooms.count() === 0) {
   if (Meteor.settings.defaultRoomData) {
@@ -107,5 +117,19 @@ if (ClubOfficers.count() === 0) {
   if (Meteor.settings.defaultClubOfficers) {
     console.log('Creating default club officer data.');
     Meteor.settings.defaultClubOfficers.map(data => addClubOfficersData(data));
+  }
+}
+
+if (RoomJacks.count() === 0) {
+  if (Meteor.settings.defaultJackData) {
+    console.log('Creating default room jack data.');
+    Meteor.settings.defaultJackData.map(data => addRoomJackData(data));
+  }
+}
+
+if (RoomEquipments.count() === 0) {
+  if (Meteor.settings.defaultEquipmentData) {
+    console.log('Creating default room equipment data.');
+    Meteor.settings.defaultEquipmentData.map(data => addRoomEquipmentData(data));
   }
 }
