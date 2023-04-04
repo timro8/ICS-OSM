@@ -125,9 +125,13 @@ class FacultyProfileCollection extends BaseProfileCollection {
     }
     if (phoneNumber) {
       updateData.phoneNumber = phoneNumber;
+    } else {
+      updateData.phoneNumber = '';
     }
     if (officeHours) {
       updateData.officeHours = officeHours;
+    } else {
+      updateData.officeHours = '';
     }
     this._collection.update(profileID, { $set: updateData });
   }

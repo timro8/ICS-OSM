@@ -5,10 +5,11 @@ import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextFie
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import PropTypes from 'prop-types';
-import { updateMethod } from '../../api/base/BaseCollection.methods';
-import LoadingSpinner from './LoadingSpinner';
-import { Clubs } from '../../api/club/Club';
-import { uploadImgUrl } from '../../startup/client/uploadImg';
+import { Meteor } from 'meteor/meteor';
+import { updateMethod } from '../../../api/base/BaseCollection.methods';
+import LoadingSpinner from '../LoadingSpinner';
+import { Clubs } from '../../../api/club/Club';
+import { uploadImgUrl } from '../../../api/faculty/faculty_form_helper';
 
 const bridge = new SimpleSchema2Bridge(Clubs._schema);
 
@@ -46,6 +47,9 @@ const EditClub = ({ id }) => {
     let imageUrl = initialImage;
     if (imageSubmit.current !== initialImage) {
       imageUrl = await uploadImgUrl(imageSubmit.current);
+      if (doc.image.includes('cloudinary')) {
+        Meteor.call('deleteImage', doc.image);
+      }
     }
     const { clubName, description, joinLink, meetingDay, meetingTime, meetingLocation, officers, advisor } = data;
     const collectionName = Clubs.getCollectionName();

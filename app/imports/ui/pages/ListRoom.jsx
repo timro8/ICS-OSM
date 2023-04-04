@@ -4,7 +4,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Rooms } from '../../api/room/RoomCollection';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
-import ListRoomIndexPOSTComponent from '../components/ListRoomIndexPOSTComponent';
+import ListRoomIndexPOSTComponent from '../components/Roomthings/ListRoomIndexPOSTComponent';
 import SearchBar from '../components/SearchBar';
 
 /* Renders a table containing all of the Room documents. Use <RoomItem> to render each row. */

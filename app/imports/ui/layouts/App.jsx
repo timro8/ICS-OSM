@@ -7,10 +7,8 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import Home from '../pages/home/Home';
-import ListStuff from '../pages/ListStuff';
 import ListRoom from '../pages/ListRoom';
 import ListRoomAdmin from '../pages/ListRoomAdmin';
-import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import SignUp from '../pages/SignUp';
 import NavBar from '../components/NavBar';
@@ -25,6 +23,7 @@ import RoomDetails from '../pages/RoomDetails';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Club from '../pages/Club';
 import EditRoom from '../pages/EditRoom';
+import Tech from '../pages/Tech';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -48,15 +47,14 @@ const App = () => {
           <Route path="/faculty" element={<Faculty />} />
           <Route path="/clubs/:_id" element={<Club />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-          <Route path="/list" element={<ProtectedRoute><ListStuff /></ProtectedRoute>} />
           <Route path="/listroom" element={<ProtectedRoute><ListRoom /></ProtectedRoute>} />
-          <Route path="/edit/:_id" element={<ProtectedRoute><EditStuff /></ProtectedRoute>} />
           <Route path="/adminroom" element={<AdminProtectedRoute ready={ready}><ListRoomAdmin /></AdminProtectedRoute>} />
           <Route path="/roomdetails/:_id" element={<ProtectedRoute><RoomDetails /></ProtectedRoute>} />
           <Route path="/notauthorized" element={<NotAuthorized />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/cal" element={<ReserveRoom />} />
           <Route path="/editroom/:_id" element={<AdminProtectedRoute ready={ready}><EditRoom /></AdminProtectedRoute>} />
+          <Route path="/tech/" element={<TechProtectedRoute ready={ready}><AdminProtectedRoute ready={ready}><Tech /></AdminProtectedRoute></TechProtectedRoute>} />
         </Routes>
         <Footer />
       </div>
@@ -103,6 +101,18 @@ const OfficeProtectedRoute = ({ ready, children }) => {
   return (isLogged && isOffice) ? children : <Navigate to="/notauthorized" />;
 };
 
+const TechProtectedRoute = ({ ready, children }) => {
+  const isLogged = Meteor.userId() !== null;
+  if (!isLogged) {
+    return <Navigate to="/signin" />;
+  }
+  if (!ready) {
+    return <LoadingSpinner />;
+  }
+  const isOffice = Roles.userIsInRole(Meteor.userId(), [ROLE.TECH, ROLE.ADMIN]);
+  return (isLogged && isOffice) ? children : <Navigate to="/notauthorized" />;
+};
+
 // Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
@@ -130,6 +140,17 @@ OfficeProtectedRoute.propTypes = {
 };
 
 OfficeProtectedRoute.defaultProps = {
+  ready: false,
+  children: <Landing />,
+};
+
+// Require a component and location to be passed to each OfficeProtectedRoute.
+TechProtectedRoute.propTypes = {
+  ready: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+};
+
+TechProtectedRoute.defaultProps = {
   ready: false,
   children: <Landing />,
 };

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { RoomEquipments } from '../../api/room/RoomEquipments';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { RoomEquipments } from '../../../api/room/RoomEquipments';
+import { defineMethod } from '../../../api/base/BaseCollection.methods';
 
 // form schema based on the Equipment collection
 const formSchema = new SimpleSchema({
-  roomId: String,
+  roomKey: String,
   description: String,
   quantity: Number,
   serialNumber: {
@@ -21,13 +21,17 @@ const formSchema = new SimpleSchema({
     type: String,
     optional: true,
   },
-  owner: String,
+  equipmentType: {
+    type: String,
+    optional: true,
+    allowedValues: ['furniture', 'tech'],
+  },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddEquipment component for adding a new equipment. */
-const AddEquipment = ({ roomId, owner }) => {
+const AddEquipment = ({ roomKey }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
 
@@ -36,9 +40,9 @@ const AddEquipment = ({ roomId, owner }) => {
 
   // data added to the RoomEquipments collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional equipment.
   const submit = (data, formRef) => {
-    const { description, quantity, serialNumber, assetTag } = data;
+    const { description, quantity, serialNumber, assetTag, equipmentType } = data;
     const collectionName = RoomEquipments.getCollectionName();
-    const definitionData = { roomId, description, quantity, serialNumber, assetTag, owner };
+    const definitionData = { roomKey, description, quantity, serialNumber, assetTag, equipmentType };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -49,7 +53,7 @@ const AddEquipment = ({ roomId, owner }) => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" size="sm" onClick={handleShow}>
         Add Equipment
       </Button>
 
@@ -64,10 +68,10 @@ const AddEquipment = ({ roomId, owner }) => {
             <TextField name="quantity" />
             <TextField name="serialNumber" />
             <TextField name="assetTag" />
+            <SelectField name="equipmentType" />
             <SubmitField value="submit" />
             <ErrorsField />
-            <HiddenField name="owner" value={owner} />
-            <HiddenField name="roomId" value={roomId} />
+            <HiddenField name="roomKey" value={roomKey} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
@@ -81,8 +85,7 @@ const AddEquipment = ({ roomId, owner }) => {
 };
 
 AddEquipment.propTypes = {
-  roomId: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired,
+  roomKey: PropTypes.string.isRequired,
 };
 
 export default AddEquipment;

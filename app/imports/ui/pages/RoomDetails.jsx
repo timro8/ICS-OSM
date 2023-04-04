@@ -11,12 +11,12 @@ import { RoomJacks } from '../../api/room/RoomJacks';
 import { RoomEquipments } from '../../api/room/RoomEquipments';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { OccupantRoom } from '../../api/user/OccupantRoomCollection';
-import RoomNote from '../components/RoomNote';
-import AddNote from '../components/AddNote';
-import RoomJack from '../components/RoomJack';
-import AddJack from '../components/AddJack';
-import RoomEquipment from '../components/RoomEquipment';
-import AddEquipment from '../components/AddEquipment';
+import RoomNote from '../components/Roomthings/RoomNote';
+import AddNote from '../components/Addpages/AddNote';
+import RoomJack from '../components/Roomthings/RoomJack';
+import AddJack from '../components/Addpages/AddJack';
+import RoomEquipment from '../components/Roomthings/RoomEquipment';
+import AddEquipment from '../components/Addpages/AddEquipment';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { getRoomData } from '../../api/utilities/getRoomData';
 
@@ -29,7 +29,7 @@ const RoomDetails = () => {
   // constants for the page
   const {
     doc,
-    doc: { roomNumber, capacity, picture, status, roomSqFoot, roomClassification },
+    doc: { roomKey, roomNumber, capacity, picture, status, roomSqFoot, roomClassification },
     docNotes,
     docJacks,
     docEquipment,
@@ -69,12 +69,12 @@ const RoomDetails = () => {
   }, [ready]);
   return ready ? (
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
-      <Button variant="success" href="/adminroom">Back to List Room (Admin)</Button>
-      <h1>Room {roomNumber} Details</h1>
+      <Button variant="success" size="sm" href="/adminroom">Back to List Room (Admin)</Button>
+      <h3>Room {roomNumber} Details</h3>
       <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${doc._id}`}>Edit room</Link>
       <Row>
         <Col>
-          <h2>Occupants</h2>
+          <h4>Occupants</h4>
           {roomOccupants.occupants.map((o) => <div key={o._id}>{o.firstName} {o.lastName}</div>)}
         </Col>
       </Row>
@@ -91,8 +91,8 @@ const RoomDetails = () => {
       </Row>
       <Row>
         <Col>
-          <h2>Room Equipment</h2>
-          <AddEquipment owner={loggedInOwner} roomId={_id} />
+          <h4>Room Equipment</h4>
+          <AddEquipment roomKey={roomKey} />
           <Table>
             <thead>
               <tr>
@@ -111,13 +111,15 @@ const RoomDetails = () => {
       </Row>
       <Row>
         <Col>
-          <h2>Room Data Jacks</h2>
-          <AddJack owner={loggedInOwner} roomId={_id} />
+          <h4>Room Data Jacks</h4>
+          <AddJack roomKey={roomKey} />
           <Table>
             <thead>
               <tr>
                 <th>Jack Number</th>
+                <th>Wall Location</th>
                 <th>Description</th>
+                <th>IDF Room</th>
                 <th>Edit</th>
               </tr>
             </thead>

@@ -1,9 +1,7 @@
 export const COMPONENT_IDS = {
   ADD_ROOM: 'add-room',
-  LIST_STUFF_EDIT: 'list-stuff-edit',
-  NAVBAR_ADD_STUFF: 'navbar-add-stuff',
-  NAVBAR_LIST_STUFF: 'navbar-list-stuff',
-  NAVBAR_LIST_STUFF_ADMIN: 'navbar-list-stuff-admin',
+  DISCUSS: 'discuss',
+  NAVBAR_DISCUSS: 'navbar-discuss',
   NAVBAR_CURRENT_USER: 'navbar-current-user',
   NAVBAR_LANDING_PAGE: 'navbar-landing-page',
   NAVBAR_COLLAPSE: 'navbar-collapse',
@@ -41,4 +39,7 @@ export const COMPONENT_IDS = {
   NAVBAR_CLUB: 'navabar-club',
   ADD_CLUB: 'add-club',
   ADD_CLUB_OFFICER: 'add-club-officer',
+  NAVBAR_DROPDOWN_TECH: 'navbar-dropdown-tech',
+  ADD_TECH_JACK: 'add-tech-jack',
+  ADD_TECH_EQUIPMENT: 'add-tech-equipment',
 };

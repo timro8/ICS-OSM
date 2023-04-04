@@ -13,6 +13,7 @@ const OccupantIcon = (props) => {
   return props.roomData.map(room => {
     const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
     if (roomPosition) {
+      const amtOfOccupants = room.occupants.length - 1;
       const roomPositionTop = (roomPosition.top / 100) * props.mapHeight;
       const roomPositionLeft = (roomPosition.left / 100) * props.mapWidth;
       return room.occupants.map((occupant, index) => (
@@ -20,8 +21,8 @@ const OccupantIcon = (props) => {
           <div
             className="map-icon map-icon-occupant"
             style={{
-              top: roomPosition.vertical ? `${roomPositionTop + (COLLISION_SPACING * (index + 1)) - 7}px` : `${roomPositionTop - 12}px`,
-              left: roomPosition.vertical ? `${roomPositionLeft + 2}px` : `${roomPositionLeft + (COLLISION_SPACING * (index + 1)) - 4}px`,
+              top: `${roomPositionTop - 11}px`,
+              left: `${roomPositionLeft + (COLLISION_SPACING * index) + 6 - (amtOfOccupants * 3)}px`,
               background: getOccupantIconImage(occupant),
             }}
           />
