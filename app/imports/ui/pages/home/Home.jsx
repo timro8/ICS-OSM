@@ -16,8 +16,12 @@ const Home = () => (
       <VacantProgressBar />
       <OutOfCommissionProgressBar />
     </Row>
+    {/** Do we need a map layout for KELLER? */}
+    {/** For the map layout for the third floor of POST, interactive(zoomable and clickable) */}
     <PostThirdFloorSection />
+    {/** Need to add something that can delete faculty profiles/users */}
     <FacultySection />
+    {/** Need to add something that can delete Reservations */}
     {/** Only Faculty, Admin, Tech, and Office can see this */}
     {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE, ROLE.TECH, ROLE.FACULTY]) ? (
       <ReservationsSection />

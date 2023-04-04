@@ -6,8 +6,6 @@ import { Table, Button, Row } from 'react-bootstrap';
 import LoadingSpinner from '../../../../components/LoadingSpinner';
 import AddFacultyForm from '../../../../components/AddFacultyForm';
 import AdminPageFacultyComponent from '../../../../components/AdminPage/AdminPageFacultyComponent';
-import { Rooms } from '../../../../../api/room/RoomCollection';
-import { Events302 } from '../../../../../api/events/Events302Collection';
 import { FacultyProfiles } from '../../../../../api/user/FacultyProfileCollection';
 import { ROLE } from '../../../../../api/role/Role';
 
@@ -18,18 +16,12 @@ const FacultySection = () => {
   const { faculties, ready } = useTracker(() => {
     // Get access to Faculty documents.
     const subscription1 = FacultyProfiles.subscribeFacultyProfileAdmin();
-    const subscription2 = Rooms.subscribeRoomAdmin();
-    const subscription3 = Events302.subscribeEvents302Admin();
     // Determine if the subscription is ready
-    const rdy = subscription1.ready() && subscription2.ready() && subscription3.ready();
+    const rdy = subscription1.ready();
     // Get the Faculty documents
-    const items1 = FacultyProfiles.find({}).fetch();
-    const items2 = Rooms.find({}).fetch();
-    const items3 = Events302.find({}).fetch();
+    const items = FacultyProfiles.find({}).fetch();
     return {
-      faculties: items1,
-      rooms: items2,
-      events: items3,
+      faculties: items,
       ready: rdy,
     };
   }, []);
@@ -38,6 +30,9 @@ const FacultySection = () => {
     <Row className="simple-card">
       <div className="d-flex justify-content-between align-items-center" style={{ margin: '15px 0' }}>
         <h2>Faculties</h2>
+        {/** Need a button for deleting faculty profiles! Either on the faculty card component or here.
+          SAME RULES for which roles can see it, TO-DO! */}
+        {/** Button for adding faculty profiles, ONLY ADMIN & OFFICE can do this! */}
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
           [<Button key={Math.random()} style={{ width: '15rem' }} variant="primary" onClick={() => setShow(true)}>Add Faculty</Button>]
         ) : ''}
@@ -51,9 +46,11 @@ const FacultySection = () => {
               <th>Email</th>
               <th>Role</th>
               <th>Room</th>
+              {/** Empty header but it is reserved for deletion button from facultycard component */}
               <th> </th>
             </tr>
           </thead>
+          {/** Reiterates/Maps objects through the FacultyProfileCollection.js */}
           <tbody>
             {faculties.map((faculty) => <AdminPageFacultyComponent key={faculty._id} faculty={faculty} facultyProfile={faculty} />)}
           </tbody>
