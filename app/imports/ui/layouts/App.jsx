@@ -54,7 +54,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
           <Route path="/cal" element={<ReserveRoom />} />
           <Route path="/editroom/:_id" element={<AdminProtectedRoute ready={ready}><EditRoom /></AdminProtectedRoute>} />
-          <Route path="/tech/" element={<TechProtectedRoute ready={ready}><Tech /></TechProtectedRoute>} />
+          <Route path="/tech/" element={<TechProtectedRoute ready={ready}><AdminProtectedRoute ready={ready}><Tech /></AdminProtectedRoute></TechProtectedRoute>} />
         </Routes>
         <Footer />
       </div>
@@ -109,7 +109,7 @@ const TechProtectedRoute = ({ ready, children }) => {
   if (!ready) {
     return <LoadingSpinner />;
   }
-  const isOffice = Roles.userIsInRole(Meteor.userId(), [ROLE.TECH]);
+  const isOffice = Roles.userIsInRole(Meteor.userId(), [ROLE.TECH, ROLE.ADMIN]);
   return (isLogged && isOffice) ? children : <Navigate to="/notauthorized" />;
 };
 

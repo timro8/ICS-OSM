@@ -77,7 +77,7 @@ const NavBar = () => {
                 [<Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/cal" key="cal">Reserve</Nav.Link>,
                 ]
               ) : ''}
-              {Roles.userIsInRole(Meteor.userId(), [ROLE.TECH]) ? (
+              {Roles.userIsInRole(Meteor.userId(), [ROLE.TECH, ROLE.ADMIN]) ? (
                 [<Nav.Link id={COMPONENT_IDS.NAVBAR_DROPDOWN_TECH} as={NavLink} to="/tech" key="cal">Tech</Nav.Link>,
                 ]
               ) : ''}
