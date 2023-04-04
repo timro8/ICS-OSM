@@ -5,9 +5,9 @@ import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Modal } from 'react-bootstrap';
-import { RoomEquipments } from '../../api/room/RoomEquipments';
-import { updateMethod } from '../../api/base/BaseCollection.methods';
-import LoadingSpinner from './LoadingSpinner';
+import { RoomEquipments } from '../../../api/room/RoomEquipments';
+import { updateMethod } from '../../../api/base/BaseCollection.methods';
+import LoadingSpinner from '../LoadingSpinner';
 
 // form based on RoomEquipments collection
 const bridge = new SimpleSchema2Bridge(RoomEquipments._schema);

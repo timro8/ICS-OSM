@@ -7,9 +7,9 @@ import { AutoForm, ErrorsField, LongTextField, SelectField, TextField } from 'un
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { useTracker } from 'meteor/react-meteor-data';
-import LoadingSpinner from './LoadingSpinner';
-import { getTimeSelection, uploadImgUrl } from '../../api/faculty/faculty_form_helper.js';
-import { Rooms } from '../../api/room/RoomCollection';
+import LoadingSpinner from '../LoadingSpinner';
+import { getTimeSelection, uploadImgUrl } from '../../../api/faculty/faculty_form_helper.js';
+import { Rooms } from '../../../api/room/RoomCollection';
 
 const AddFacultyForm = props => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker

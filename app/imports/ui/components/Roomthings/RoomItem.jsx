@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, Col, Image, Row } from 'react-bootstrap';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
-import { PAGE_IDS } from '../utilities/PageIDs';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
+import { PAGE_IDS } from '../../utilities/PageIDs';
 
 /** Renders a single card in the List Room Admin card. See pages/ListRoomAdmin.jsx. */
 const RoomItem = ({ room }) => (

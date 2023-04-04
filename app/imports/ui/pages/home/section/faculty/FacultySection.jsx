@@ -4,7 +4,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
 import { Table, Button, Row } from 'react-bootstrap';
 import LoadingSpinner from '../../../../components/LoadingSpinner';
-import AddFacultyForm from '../../../../components/AddFacultyForm';
+import AddFacultyForm from '../../../../components/Addpages/AddFacultyForm';
 import AdminPageFacultyComponent from '../../../../components/AdminPage/AdminPageFacultyComponent';
 import { FacultyProfiles } from '../../../../../api/user/FacultyProfileCollection';
 import { ROLE } from '../../../../../api/role/Role';

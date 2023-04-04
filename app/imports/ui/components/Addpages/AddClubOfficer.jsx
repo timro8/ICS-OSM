@@ -5,10 +5,10 @@ import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
-import { ROLE } from '../../api/role/Role';
-import { ClubOfficers } from '../../api/clubofficers/ClubOfficersCollection';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
+import { defineMethod } from '../../../api/base/BaseCollection.methods';
+import { ROLE } from '../../../api/role/Role';
+import { ClubOfficers } from '../../../api/clubofficers/ClubOfficersCollection';
 
 // form schema based on the Club collection
 const bridge = new SimpleSchema2Bridge(ClubOfficers._schema);

@@ -6,10 +6,10 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Modal } from 'react-bootstrap';
-import { Rooms } from '../../api/room/RoomCollection';
-import { RoomJacks } from '../../api/room/RoomJacks';
-import { updateMethod } from '../../api/base/BaseCollection.methods';
-import LoadingSpinner from './LoadingSpinner';
+import { Rooms } from '../../../api/room/RoomCollection';
+import { RoomJacks } from '../../../api/room/RoomJacks';
+import { updateMethod } from '../../../api/base/BaseCollection.methods';
+import LoadingSpinner from '../LoadingSpinner';
 
 // form schema based on RoomJacks collection schema
 const makeSchema = new SimpleSchema({

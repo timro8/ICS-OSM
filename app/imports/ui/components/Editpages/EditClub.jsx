@@ -5,11 +5,11 @@ import { AutoForm, ErrorsField, HiddenField, LongTextField, SubmitField, TextFie
 import { useTracker } from 'meteor/react-meteor-data';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import PropTypes from 'prop-types';
-import { updateMethod } from '../../api/base/BaseCollection.methods';
-import LoadingSpinner from './LoadingSpinner';
-import { Clubs } from '../../api/club/Club';
-import { uploadImgUrl } from '../../api/faculty/faculty_form_helper';
 import { Meteor } from 'meteor/meteor';
+import { updateMethod } from '../../../api/base/BaseCollection.methods';
+import LoadingSpinner from '../LoadingSpinner';
+import { Clubs } from '../../../api/club/Club';
+import { uploadImgUrl } from '../../../api/faculty/faculty_form_helper';
 
 const bridge = new SimpleSchema2Bridge(Clubs._schema);
 

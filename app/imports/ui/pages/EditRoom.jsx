@@ -5,12 +5,12 @@ import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Container, Col, Row, Button, Image } from 'react-bootstrap';
+import { Meteor } from 'meteor/meteor';
 import { Rooms } from '../../api/room/RoomCollection';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { uploadImgUrl } from '../../api/faculty/faculty_form_helper';
-import { Meteor } from 'meteor/meteor';
 
 // form based on Rooms collection
 const bridge = new SimpleSchema2Bridge(Rooms._schema);

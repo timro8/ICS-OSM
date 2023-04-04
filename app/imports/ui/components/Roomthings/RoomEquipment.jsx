@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditEquipment from './EditEquipment';
+import EditEquipment from '../Editpages/EditEquipment';
 
 // Renders the equipment for the room. See pages/RoomDetails.jsx. The EditEquipment component used for each equipment based on the equipment id
 const RoomEquipment = ({ equipment }) => (

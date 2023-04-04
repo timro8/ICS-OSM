@@ -115,7 +115,7 @@ const EditFacultyProfile = ({ id }) => {
 
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
-      .then(() => swal('Success', `Faculty Profile updated successfully`, 'success'));
+      .then(() => swal('Success', 'Faculty Profile updated successfully', 'success'));
   };
 
   const handleImageClick = () => {

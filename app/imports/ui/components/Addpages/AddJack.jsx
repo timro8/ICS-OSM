@@ -5,8 +5,8 @@ import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField } from 'unif
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { RoomJacks } from '../../api/room/RoomJacks';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { RoomJacks } from '../../../api/room/RoomJacks';
+import { defineMethod } from '../../../api/base/BaseCollection.methods';
 
 // form schema based on the RoomJacks collection.
 const formSchema = new SimpleSchema({

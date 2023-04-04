@@ -11,12 +11,12 @@ import { RoomJacks } from '../../api/room/RoomJacks';
 import { RoomEquipments } from '../../api/room/RoomEquipments';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { OccupantRoom } from '../../api/user/OccupantRoomCollection';
-import RoomNote from '../components/RoomNote';
-import AddNote from '../components/AddNote';
-import RoomJack from '../components/RoomJack';
-import AddJack from '../components/AddJack';
-import RoomEquipment from '../components/RoomEquipment';
-import AddEquipment from '../components/AddEquipment';
+import RoomNote from '../components/Roomthings/RoomNote';
+import AddNote from '../components/Addpages/AddNote';
+import RoomJack from '../components/Roomthings/RoomJack';
+import AddJack from '../components/Addpages/AddJack';
+import RoomEquipment from '../components/Roomthings/RoomEquipment';
+import AddEquipment from '../components/Addpages/AddEquipment';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { getRoomData } from '../../api/utilities/getRoomData';
 
