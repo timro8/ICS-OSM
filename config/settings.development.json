@@ -464,161 +464,168 @@
       "status": "", "capacity": "",
       "roomSqFoot": "",
       "roomClassification": "",
-      "picture": "https://live.staticflickr.com/3022/2814793353_54966edfd3_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST301",
       "roomNumber": "301", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Sink",
-      "picture": "https://live.staticflickr.com/3022/2814793353_54966edfd3_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST302",
       "roomNumber": "302", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Conference",
-      "picture": "https://i0.hippopx.com/photos/669/176/967/chairs-empty-office-room-preview.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
+    },
+    {
+      "roomKey": "POST303",
+      "roomNumber": "303", "location":  "POST", "status": "Occupied", "capacity": "1",
+      "roomSqFoot": "100",
+      "roomClassification": "Office",
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303A",
       "roomNumber": "303A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303B",
       "roomNumber": "303B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ2sGgWwehw6Zr5gqp5cqEV1e_oQI981Y_9g&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303C",
       "roomNumber": "303C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303D",
       "roomNumber": "303D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303E",
       "roomNumber": "303E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303F",
       "roomNumber": "303F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303G",
       "roomNumber": "303G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303-1",
       "roomNumber": "303-1", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303-2",
       "roomNumber": "303-2", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303-3",
       "roomNumber": "303-3", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303-4",
       "roomNumber": "303-4", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303-5",
       "roomNumber": "303-5", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST303.0",
       "roomNumber": "303.0", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "ICS Library",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST305",
       "roomNumber": "305", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "311",
       "roomClassification": "OFCSVC",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST305A",
       "roomNumber": "305A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST305B",
       "roomNumber": "305B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST305C",
       "roomNumber": "305C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST305D",
       "roomNumber": "305D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST305E",
       "roomNumber": "305E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST305F",
       "roomNumber": "305F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
 
     {
@@ -626,224 +633,245 @@
       "roomNumber": "305G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "186",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST306",
       "roomNumber": "306", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "124",
       "roomClassification": "LNG",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST306A",
       "roomNumber": "306A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "141",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST306B",
       "roomNumber": "306B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "168",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST306C",
       "roomNumber": "306C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "168",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST306D",
       "roomNumber": "306D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "156",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST307",
       "roomNumber": "307", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "214",
       "roomClassification": "Lab",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST307A",
       "roomNumber": "307A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "173",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST307B",
       "roomNumber": "307B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "245",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST307C",
       "roomNumber": "307C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "139",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST309",
       "roomNumber": "309", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST309A",
       "roomNumber": "309A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "212",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST309B",
       "roomNumber": "309B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "224",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST309C",
       "roomNumber": "309C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
+    },
+    {
+      "roomKey": "POST310",
+      "roomNumber": "310", "location":  "POST", "status": "Occupied", "capacity": "1",
+      "roomSqFoot": "100",
+      "roomClassification": "Office",
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST310A",
       "roomNumber": "310A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST310B",
       "roomNumber": "310B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST310C",
       "roomNumber": "310C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST311",
       "roomNumber": "311", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "ASECOLAB",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST311A",
       "roomNumber": "311A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST311B",
       "roomNumber": "311B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
+    },
+    {
+      "roomKey": "POST312",
+      "roomNumber": "312", "location":  "POST", "status": "Occupied", "capacity": "1",
+      "roomSqFoot": "100",
+      "roomClassification": "Office",
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST312A",
       "roomNumber": "312A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST312B",
       "roomNumber": "312B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST312C",
       "roomNumber": "312C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
+    },
+    {
+      "roomKey": "POST314",
+      "roomNumber": "314", "location":  "POST", "status": "Occupied", "capacity": "1",
+      "roomSqFoot": "100",
+      "roomClassification": "Office",
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST314A",
       "roomNumber": "314A", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST314B",
       "roomNumber": "314B", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST314C",
       "roomNumber": "314C", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST314D",
       "roomNumber": "314D", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFOIlusgDwpvLUqYHmrYyUDgYT5SW8x6Otgg&usqp=CAU"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST314E",
       "roomNumber": "314E", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST314F",
       "roomNumber": "314F", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST314G",
       "roomNumber": "314G", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST314H",
       "roomNumber": "314H", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST314I",
       "roomNumber": "314I", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
 
     {
@@ -851,98 +879,98 @@
       "roomNumber": "314-1", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST3142",
       "roomNumber": "314-2", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST3143",
       "roomNumber": "314-3", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST3144",
       "roomNumber": "314-4", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST3145",
       "roomNumber": "314-5", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST3146",
       "roomNumber": "314-6", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST3147",
       "roomNumber": "314-7", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST3148",
       "roomNumber": "314-8", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST3149",
       "roomNumber": "314-9", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST31410",
       "roomNumber": "314-10", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Cubicle",
-      "picture": "https://live.staticflickr.com/174/476098132_cba076f785_b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST315",
       "roomNumber": "315", "location":  "POST", "status": "Occupied", "capacity": "1",
       "roomSqFoot": "100",
       "roomClassification": "Office",
-      "picture": "https://www.publicdomainpictures.net/pictures/40000/nahled/office-background-illustration.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST316",
       "roomNumber": "316", "location":  "POST", "status": "", "capacity": "0",
       "roomSqFoot": "100",
       "roomClassification": "Mail",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST317",
       "roomNumber": "317", "location":  "POST", "status": "Occupied", "capacity": "3",
       "roomSqFoot": "100",
       "roomClassification": "Main Office",
-      "picture": "https://c.pxhere.com/photos/fc/d9/office_sitting_room_executive_sitting_business_desk_workplace_corporate-735699.jpg!d"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST318",
       "roomNumber": "318", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Lab",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
 
     {
@@ -950,35 +978,35 @@
       "roomNumber": "318B", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "ICSpace",
-      "picture": "http://dev.ics.hawaii.edu/wp-content/uploads/2015/09/post318b.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST319",
       "roomNumber": "319", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "100",
       "roomClassification": "Lab",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST326",
       "roomNumber": "326", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "279",
       "roomClassification": "Storage",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST327",
       "roomNumber": "327", "location":  "POST", "status": "Occupied", "capacity": "2",
       "roomSqFoot": "200",
       "roomClassification": "Office",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     },
     {
       "roomKey": "POST328",
       "roomNumber": "328", "location":  "POST", "status": "", "capacity": "",
       "roomSqFoot": "279",
       "roomClassification": "ICS IT",
-      "picture": "https://www.hawaii.edu/news/wp-content/uploads/2016/03/manoa-post-building.jpg"
+      "picture": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-180x180.jpg"
     }
   ],
   "defaultOccupantRoomData": [
@@ -1164,8 +1192,57 @@
       "description": ""
     },
     {
+      "roomKey": "empty",
+      "jackNumber": "16562",
+      "wallLocation": "",
+      "IDFRoom": "POST 320",
+      "description": ""
+    },
+    {
       "roomKey": "POST309",
       "jackNumber": "16563",
+      "wallLocation": "Makai",
+      "IDFRoom": "POST 320",
+      "description": ""
+    },
+    {
+      "roomKey": "POST309A",
+      "jackNumber": "16564",
+      "wallLocation": "DH",
+      "IDFRoom": "POST 320",
+      "description": ""
+    },
+    {
+      "roomKey": "POST309B",
+      "jackNumber": "16565",
+      "wallLocation": "Ewa",
+      "IDFRoom": "POST 320",
+      "description": ""
+    },
+    {
+      "roomKey": "POST309C",
+      "jackNumber": "16566",
+      "wallLocation": "Makai",
+      "IDFRoom": "POST 320",
+      "description": ""
+    },
+    {
+      "roomKey": "POST310",
+      "jackNumber": "16567",
+      "wallLocation": "Ewa",
+      "IDFRoom": "POST 320",
+      "description": ""
+    },
+    {
+      "roomKey": "POST310",
+      "jackNumber": "16568",
+      "wallLocation": "DH",
+      "IDFRoom": "POST 320",
+      "description": ""
+    },
+    {
+      "roomKey": "POST310",
+      "jackNumber": "16569",
       "wallLocation": "Makai",
       "IDFRoom": "POST 320",
       "description": ""
