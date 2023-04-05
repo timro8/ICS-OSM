@@ -8,7 +8,6 @@ import { BoxArrowRight, PersonFill } from 'react-bootstrap-icons';
 import { ROLE } from '../../api/role/Role';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { Clubs } from '../../api/club/Club';
-import LoadingSpinner from './LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import AddClub from './Addpages/AddClub';
 
