@@ -5,6 +5,7 @@ import { navBar } from './navbar.component';
 import { facultyPage } from './faculty.page';
 import { facultyProfilePage } from './faculty-profile.page';
 import { listRoomAdminPage } from './room-admin.page';
+import { clubPage } from './club.page';
 
 /* global fixture:false, test:false */
 
@@ -97,3 +98,24 @@ test('Modal shows for Edit Room', async () => {
   await listRoomAdminPage.isDisplayed();
   await listRoomAdminPage.editRoom();
 });
+
+test('Navigating to club page', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoClubPage();
+  await clubPage.isDisplayed();
+});
+
+// TODO: implement test for adding faculty
+// TODO: implement test for editing faculty
+// TODO: implement test for adding room
+// TODO: implement test for editing room
+// TODO: implement test for adding club
+// TODO: implement test for editing club
+// TODO: implement test for tech page
+// TODO: implement test for add jack
+// TODO: implement test for edit jack
+// TODO: implement test for add equipment
+// TODO: implement test for edit equipment
+// TODO: implement test for add note
