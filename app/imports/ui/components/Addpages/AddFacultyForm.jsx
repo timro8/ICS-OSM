@@ -251,7 +251,7 @@ const AddFacultyForm = props => {
               </Button>
             </div>
           </Col>
-          <Col xl="auto">
+          <Col xl="auto" style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap' }}>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
               <Row xs="1" md="2" xl="2">
                 <TextField name="firstName" />
