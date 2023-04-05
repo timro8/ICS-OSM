@@ -10,7 +10,7 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import { Clubs } from '../../api/club/Club';
 import LoadingSpinner from './LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
-import AddClub from './AddClub';
+import AddClub from './Addpages/AddClub';
 
 const NavBar = () => {
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
@@ -75,6 +75,10 @@ const NavBar = () => {
               ) : ''}
               {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.FACULTY, ROLE.TECH, ROLE.OFFICE]) ? (
                 [<Nav.Link id={COMPONENT_IDS.NAVBAR_RESERVE_ROOM} as={NavLink} to="/cal" key="cal">Reserve</Nav.Link>,
+                ]
+              ) : ''}
+              {Roles.userIsInRole(Meteor.userId(), [ROLE.TECH, ROLE.ADMIN]) ? (
+                [<Nav.Link id={COMPONENT_IDS.NAVBAR_DROPDOWN_TECH} as={NavLink} to="/tech" key="cal">Tech</Nav.Link>,
                 ]
               ) : ''}
             </Nav>

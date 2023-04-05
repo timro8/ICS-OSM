@@ -8,8 +8,8 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { Clubs } from '../../api/club/Club';
 import { ClubOfficers } from '../../api/clubofficers/ClubOfficersCollection';
 import { StudentProfiles } from '../../api/user/StudentProfileCollection';
-import EditClub from '../components/EditClub';
-import AddClubOfficer from '../components/AddClubOfficer';
+import EditClub from '../components/Editpages/EditClub';
+import AddClubOfficer from '../components/Addpages/AddClubOfficer';
 
 const Club = () => {
   const { _id } = useParams();

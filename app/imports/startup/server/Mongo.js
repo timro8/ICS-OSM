@@ -7,6 +7,8 @@ import { Clubs } from '../../api/club/Club';
 import { ClubOfficers } from '../../api/clubofficers/ClubOfficersCollection';
 import { OfficeProfiles } from '../../api/user/OfficeProfileCollection';
 import { TechProfiles } from '../../api/user/TechProfileCollection';
+import { RoomJacks } from '../../api/room/RoomJacks';
+import { RoomEquipments } from '../../api/room/RoomEquipments';
 /* eslint-disable no-console */
 
 // Initialize the database with a default data document.
@@ -49,6 +51,16 @@ function addOfficeData(data) {
 function addTechData(data) {
   console.log(`  Adding: ${data.firstName} ${data.lastName}`);
   TechProfiles.define(data);
+}
+
+function addRoomJackData(data) {
+  console.log(`  Adding: ${data.jackNumber}`);
+  RoomJacks.define(data);
+}
+
+function addRoomEquipmentData(data) {
+  console.log(`  Adding: ${data.description}`);
+  RoomEquipments.define(data);
 }
 
 // Initialize the RoomsCollection if empty.
@@ -105,5 +117,19 @@ if (ClubOfficers.count() === 0) {
   if (Meteor.settings.defaultClubOfficers) {
     console.log('Creating default club officer data.');
     Meteor.settings.defaultClubOfficers.map(data => addClubOfficersData(data));
+  }
+}
+
+if (RoomJacks.count() === 0) {
+  if (Meteor.settings.defaultJackData) {
+    console.log('Creating default room jack data.');
+    Meteor.settings.defaultJackData.map(data => addRoomJackData(data));
+  }
+}
+
+if (RoomEquipments.count() === 0) {
+  if (Meteor.settings.defaultEquipmentData) {
+    console.log('Creating default room equipment data.');
+    Meteor.settings.defaultEquipmentData.map(data => addRoomEquipmentData(data));
   }
 }

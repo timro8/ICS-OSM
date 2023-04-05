@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Button, Modal } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
-import { RoomJacks } from '../../api/room/RoomJacks';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { StudentProfiles } from '../../api/user/StudentProfileCollection';
 
 // form schema based on the RoomJacks collection.
 const formSchema = new SimpleSchema({
-  roomId: String,
-  jackNumber: String,
-  description: String,
-  owner: String,
+  firstName: String,
+  lastName: String,
+  email: String,
+  password: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddJac component for adding a new jack. */
-const AddJack = ({ roomId, owner }) => {
+const AddStudent = () => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
 
@@ -28,51 +27,43 @@ const AddJack = ({ roomId, owner }) => {
 
   // data submitted to add a new jack. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional jacks.
   const submit = (data, formRef) => {
-    const { jackNumber, description } = data;
-    const collectionName = RoomJacks.getCollectionName();
-    const definitionData = { roomId, jackNumber, description, owner };
+    const { email, firstName, lastName, password } = data;
+    const collectionName = StudentProfiles.getCollectionName();
+    const definitionData = { email, firstName, lastName, password };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
-        swal('Success', 'Jack added successfully', 'success');
+        swal('Success', 'Student added successfully', 'success');
         formRef.reset();
       });
   };
   let fRef = null;
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Add Jacks
+      <Button variant="primary" onClick={handleShow} style={{ width: '15rem' }}>
+        Add Student
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Jacks</Modal.Title>
+          <Modal.Title>Add Student</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Add Jacks
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="jackNumber" />
-            <TextField name="description" />
-            <SubmitField value="submit" />
+            <TextField name="firstName" />
+            <TextField name="lastName" />
+            <TextField name="email" />
+            <TextField name="password" />
+            <div className="d-flex justify-content-end">
+              <SubmitField value="Submit" />
+            </div>
             <ErrorsField />
-            <HiddenField name="owner" value={owner} />
-            <HiddenField name="roomId" value={roomId} />
           </AutoForm>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
+        <Modal.Footer />
       </Modal>
     </>
   );
 };
 
-AddJack.propTypes = {
-  roomId: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired,
-};
-
-export default AddJack;
+export default AddStudent;

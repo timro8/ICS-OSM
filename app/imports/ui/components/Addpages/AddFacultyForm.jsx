@@ -1,18 +1,17 @@
 import React, { useState, useRef } from 'react';
-import { Button, Modal, Badge, CloseButton, FormLabel, Image } from 'react-bootstrap';
+import { Button, Modal, Badge, CloseButton, FormLabel, Image, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { useTracker } from 'meteor/react-meteor-data';
-import SimpleSchema from 'simpl-schema';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { AutoForm, ErrorsField, LongTextField, SelectField, TextField } from 'uniforms-bootstrap5';
 import { Meteor } from 'meteor/meteor';
-import { Rooms } from '../../api/room/RoomCollection';
-import LoadingSpinner from './LoadingSpinner';
-import { uploadImgUrl } from '../../startup/client/uploadImg.js';
+import SimpleSchema from 'simpl-schema';
+import { useTracker } from 'meteor/react-meteor-data';
+import LoadingSpinner from '../LoadingSpinner';
+import { getTimeSelection, uploadImgUrl } from '../../../api/faculty/faculty_form_helper.js';
+import { Rooms } from '../../../api/room/RoomCollection';
 
 const AddFacultyForm = props => {
-
   // useTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
   const { rooms, ready } = useTracker(() => {
     // Get access to Room documents.
@@ -27,23 +26,6 @@ const AddFacultyForm = props => {
     };
   }, []);
 
-  function getTime() {
-    const arr = [];
-    for (let j = 1; j < 24; j++) {
-      for (let i = 0; i < 60; i += 5) {
-        if (i < 10) {
-          arr.push(`${j}:0${i}`);
-        } else {
-          arr.push(`${j}:${i}`);
-        }
-      }
-    }
-    arr.push('--');
-    return arr;
-  }
-
-  const timeSelection = getTime();
-
   // getting the rooms
   let roomNumbers = [];
   rooms.map((roomNum) => roomNumbers.push(roomNum.roomNumber));
@@ -54,6 +36,8 @@ const AddFacultyForm = props => {
     return acc;
   }, []);
   roomNumbers.push('--');
+
+  const timeSelection = getTimeSelection();
 
   // Create a schema to specify the structure of the data to appear in the form.
   const formSchema = new SimpleSchema({
@@ -132,6 +116,7 @@ const AddFacultyForm = props => {
 
     formRef.reset();
   };
+
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   let fRef = null;
 
@@ -179,31 +164,41 @@ const AddFacultyForm = props => {
 
     let error = false;
     const error_message = [];
-    if (selectedOfficeHours.includes(time)) {
+
+    const givenStartTime = new Date();
+    givenStartTime.setHours(parseInt(currentStartTime.split(':')[0], 10));
+    givenStartTime.setMinutes(parseInt(currentStartTime.split(':')[1], 10));
+
+    const givenEndTime = new Date();
+    givenEndTime.setHours(parseInt(currentEndTime.split(':')[0], 10));
+    givenEndTime.setMinutes(parseInt(currentEndTime.split(':')[1], 10));
+
+    if (givenEndTime <= givenStartTime) {
       error = true;
-      error_message.push('You cannot have multiple office hours with the same start time and same day. Please select a different start time.');
+      error_message.push('End time cannot be same or earlier than start time.');
     }
 
-    const start = currentStartTime.split(':');
-    const end = currentEndTime.split(':');
+    if (selectedOfficeHours.length > 0) {
+      for (let i = 0; i < selectedOfficeHours.length; i++) {
+        const selectedDay = selectedOfficeHours[i].split(' ')[0];
+        const selectedStart = selectedOfficeHours[i].split(' ')[1];
+        const selectedEnd = selectedOfficeHours[i].split(' ')[3];
 
-    for (let i = 0; i < selectedOfficeHours.length; i++) {
-      if (selectedOfficeHours.length > 0) {
-        let selectedTime = selectedOfficeHours[i].split(' ');
-        selectedTime = selectedTime[1].split('-');
-        const selected_start = selectedTime[0].split(':');
-        const selected_end = selectedTime[1].split(':');
+        if (selectedDay === currentDay) {
+          const givenStart = new Date();
+          givenStart.setHours(parseInt(selectedStart.split(':')[0], 10));
+          givenStart.setMinutes(parseInt(selectedStart.split(':')[1], 10));
+          const givenEnd = new Date();
+          givenEnd.setHours(parseInt(selectedEnd.split(':')[0], 10));
+          givenEnd.setMinutes(parseInt(selectedEnd.split(':')[1], 10));
 
-        if (selected_start[0] >= (start[0] && end[0]) <= selected_end[0]) {
-          error_message.push('Two office hour cannot happen in the same period of time');
+          if ((givenStart <= givenStartTime && givenStartTime <= givenEnd) || (givenStart <= givenEndTime && givenEndTime <= givenEnd)) {
+            error = true;
+            error_message.push('The selected office hours overlap with previously selected hours. Please select a different time.');
+            break;
+          }
         }
-      }
-    }
 
-    if (start[0] >= end[0]) {
-      if (start[1] >= end[1]) {
-        error = true;
-        error_message.push('End time cannot be same or earlier than start time.');
       }
     }
 
@@ -242,79 +237,87 @@ const AddFacultyForm = props => {
 
   // pop up window: https://react-bootstrap.github.io/components/modal/
   return ready ? (
-    <Modal show={show}>
+    <Modal show={show} size="xl">
       <Modal.Header closeButton onClick={onClose}>
         <Modal.Title>Add Faculty</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column' }}>
-          <Button style={{ background: 'white', borderColor: 'white' }} onClick={handleImageClick}>
-            <input id="imageUpload" type="file" onChange={handleImageUpload} style={{ display: 'none' }} />
-            <Image style={{ borderRadius: '100%', width: '13rem', height: '13rem' }} src={selectedImage} />
-          </Button>
-        </div>
-        <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-          <TextField name="firstName" />
-          <TextField name="lastName" />
-          {selectedRoom.length > 0 && (
-            <div style={{ marginTop: '0px' }}>
-              {selectedRoom.map((value, index) => (
-                <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
-                  {value}
-                  <CloseButton
-                    variant="white"
-                    style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
-                    onClick={() => {
-                      setSelectedRoom([...selectedRoom.filter(item => item !== value)]);
-                    }}
-                  />
-                </Badge>
-              ))}
+        <Row xs="1" md="1" xl="2">
+          <Col xl={4}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+              <Button style={{ background: 'white', borderColor: 'white' }} onClick={handleImageClick}>
+                <input id="imageUpload" type="file" onChange={handleImageUpload} style={{ display: 'none' }} />
+                <Image style={{ borderRadius: '100%', width: '18rem', height: '18rem' }} src={selectedImage} />
+              </Button>
             </div>
-          )}
-          <SelectField name="room" label="Room (optional)" value={currentRoom} onChange={(value) => handleRoom(value)} />
-          <SelectField name="role" />
-          <TextField name="email" />
-          <TextField name="password" type="password" />
-          <LongTextField name="bio" label="Bio (optional)" />
-          {phoneNumber.length > 0 && (
-            <div>
-              {phoneNumber.map((value, index) => (
-                <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
-                  {value}
-                  <CloseButton variant="white" style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }} onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
-                </Badge>
-              ))}
-            </div>
-          )}
-          <TextField name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); }} />
-          <FormLabel>Office Hours (optional) :</FormLabel>
-          {putOfficeHours()}
-          {selectedOfficeHours.length > 0 && (
-            <div>
-              {selectedOfficeHours.map((value, index) => (
-                <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
-                  {value}
-                  <CloseButton
-                    variant="white"
-                    style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
-                    onClick={() => { removeOfficeHours(value); }}
-                  />
-                </Badge>
-              ))}
-            </div>
-          )}
-          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-            <SelectField style={{ marginRight: '5px' }} name="day" value={currentDay} onChange={(value) => setDay(value)} />
-            <SelectField style={{ marginRight: '5px' }} name="startTime" value={currentStartTime} onChange={(value) => setStartTime(value)} />
-            <SelectField name="endTime" value={currentEndTime} onChange={(value) => setEndTime(value)} />
-          </div>
-          <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column', gridColumnGap: '10px' }}>
-            <Button onClick={onClose} variant="danger">Cancel</Button>
-            <Button type="submit" variant="success">Add</Button>
-          </div>
-          <ErrorsField />
-        </AutoForm>
+          </Col>
+          <Col xl="auto">
+            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
+              <Row xs="1" md="2" xl="2">
+                <TextField name="firstName" />
+                <TextField name="lastName" />
+              </Row>
+              {selectedRoom.length > 0 && (
+                <div style={{ marginTop: '0px' }}>
+                  {selectedRoom.map((value, index) => (
+                    <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                      {value}
+                      <CloseButton
+                        variant="white"
+                        style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
+                        onClick={() => {
+                          setSelectedRoom([...selectedRoom.filter(item => item !== value)]);
+                        }}
+                      />
+                    </Badge>
+                  ))}
+                </div>
+              )}
+              <SelectField name="room" label="Room (optional)" value={currentRoom} onChange={(value) => handleRoom(value)} />
+              <SelectField name="role" />
+              <TextField name="email" />
+              <TextField name="password" type="password" />
+              <LongTextField name="bio" label="Bio (optional)" />
+              {phoneNumber.length > 0 && (
+                <div>
+                  {phoneNumber.map((value, index) => (
+                    <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                      {value}
+                      <CloseButton variant="white" style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }} onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
+                    </Badge>
+                  ))}
+                </div>
+              )}
+              <TextField name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); }} />
+              <FormLabel>Office Hours (optional) :</FormLabel>
+              {putOfficeHours()}
+              {selectedOfficeHours.length > 0 && (
+                <div>
+                  {selectedOfficeHours.map((value, index) => (
+                    <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                      {value}
+                      <CloseButton
+                        variant="white"
+                        style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
+                        onClick={() => { removeOfficeHours(value); }}
+                      />
+                    </Badge>
+                  ))}
+                </div>
+              )}
+              <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                <SelectField style={{ marginRight: '5px' }} name="day" value={currentDay} onChange={(value) => setDay(value)} />
+                <SelectField style={{ marginRight: '5px' }} name="startTime" value={currentStartTime} onChange={(value) => setStartTime(value)} />
+                <SelectField name="endTime" value={currentEndTime} onChange={(value) => setEndTime(value)} />
+              </div>
+              <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column', gridColumnGap: '10px' }}>
+                <Button onClick={onClose} variant="danger">Cancel</Button>
+                <Button type="submit" variant="success">Add</Button>
+              </div>
+              <ErrorsField />
+            </AutoForm>
+          </Col>
+        </Row>
       </Modal.Body>
     </Modal>
   ) : <LoadingSpinner />;
