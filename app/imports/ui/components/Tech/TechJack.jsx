@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { _ } from 'meteor/underscore';
-import { Container, Table } from 'react-bootstrap';
+import { Button, Container, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Rooms } from '../../../api/room/RoomCollection';
 import { RoomJacks } from '../../../api/room/RoomJacks';
@@ -43,6 +43,16 @@ const TechJack = () => {
     setList(jacks.filter(jack => (`${jack.roomNumber} + ' ' + ${jack.jackNumber} + ' ' + ${jack.wallLocation} + ' ' + ${jack.IDFRoom}`).toLowerCase().includes(searchInput.toLowerCase())));
   };
 
+  const convertToBlob = (collection) => {
+    const json = JSON.stringify(collection.dumpAll());
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = 'data.json';
+    link.href = url;
+    link.click();
+  };
+
   return (ready ? (
     <Container className="py-3">
       <h2 className="text-center p-2">Data Jacks</h2>
@@ -66,7 +76,7 @@ const TechJack = () => {
           ))}
         </tbody>
       </Table>
-
+      <Button onClick={() => { console.log(convertToBlob(RoomJacks)); }}>dump</Button>
     </Container>
   ) : <LoadingSpinner message="Loading tech data" />);
 };
