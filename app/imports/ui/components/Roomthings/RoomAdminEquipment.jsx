@@ -44,7 +44,7 @@ const RoomAdminEquipment = () => {
   };
   return (ready ? (
     <Container className="py-3">
-      <h4 className="text-center py-2">Equipment (furniture and tech)</h4>
+      <h1 className="text-center py-2 display-4">Equipment (furniture and tech)</h1>
       <TechAddEquipment />
 
       {/* Search Bar */}
