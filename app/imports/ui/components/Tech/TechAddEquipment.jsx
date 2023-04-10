@@ -81,10 +81,10 @@ const TechAddEquipment = () => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Jack</Modal.Title>
+          <Modal.Title>Add Equipment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Add Jack
+          Add Equipment
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)} onChange={(key, value) => { setRoom(value); }}>
             <SelectField
               name="rooms"

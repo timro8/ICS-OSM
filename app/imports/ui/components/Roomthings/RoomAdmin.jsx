@@ -7,7 +7,7 @@ import { OccupantRoom } from '../../../api/user/OccupantRoomCollection';
 import RoomItem from './RoomItem';
 import AddRoom from '../Addpages/AddRoom';
 import LoadingSpinner from '../LoadingSpinner';
-import { getRoomData } from '../../api/utilities/getRoomData';
+import { getRoomData } from '../../../api/utilities/getRoomData';
 import SearchBar from '../SearchBar';
 
 /* Renders a table containing all of the Room documents. Use <RoomItemAdmin> to render each row. */
@@ -36,11 +36,12 @@ const RoomAdmin = () => {
 
   const handleSearch = (search) => {
     const searchInput = search.trim();
-    setList(rooms.filter(room => (`${room.roomNumber} + ' ' + ${room.location}`).toLowerCase().includes(searchInput.toLowerCase())));
+    setList(rooms.filter(room => (`${room.roomNumber} + ' ' + ${room.location} + ' ' + ${room.status}`).toLowerCase().includes(searchInput.toLowerCase())));
   };
   document.title = 'Rooms';
   return ready ? (
     <Container className="py-3">
+      <h4>POST Rooms</h4>
       <SearchBar handleSearch={handleSearch} />
       <Row xs={1} md={2} lg={4} className="g-2">
         {roomList.map((room, index) => <RoomItem key={index} room={room} />)}
