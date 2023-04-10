@@ -5,7 +5,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { PAGE_IDS } from '../../utilities/PageIDs';
 import FacultySection from './section/faculty/FacultySection';
 import ReservationsSection from './section/reservation/ReservationsSection';
-import { OccupiedProgressBar, VacantProgressBar, OutOfCommissionProgressBar } from './progress-bar/ProgressBar';
+import ProgressBars from './progress-bar/ProgressBar';
 import PostThirdFloorSection from './section/map/POST-third-floor/PostThirdFloor';
 import StudentSection from './section/student/StudentSection';
 import { ROLE } from '../../../api/role/Role';
@@ -13,9 +13,7 @@ import { ROLE } from '../../../api/role/Role';
 const Home = () => (
   <Container id={PAGE_IDS.HOME} className="py-3">
     <Row className="d-flex justify-content-between">
-      <OccupiedProgressBar />
-      <VacantProgressBar />
-      <OutOfCommissionProgressBar />
+      <ProgressBars />
     </Row>
     {/** Do we need a map layout for KELLER? */}
     {/** For the map layout for the third floor of POST, interactive(zoomable and clickable) */}
