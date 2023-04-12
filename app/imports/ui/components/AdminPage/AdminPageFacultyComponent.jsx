@@ -1,4 +1,6 @@
 import React from 'react';
+import { Roles } from 'meteor/alanning:roles';
+import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Image, Button } from 'react-bootstrap';
@@ -7,6 +9,7 @@ import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import EditFacultyProfile from '../../pages/EditFacultyProfile';
 import { removeItMethod } from '../../../api/base/BaseCollection.methods';
+import { ROLE } from '../../../api/role/Role';
 
 /** Renders a single row of Faculty members in a (Admin) table. See pages/AdminPageFacultyComponent.jsx. */
 const AdminPageFacultyComponent = ({ facultyProfile }) => {
@@ -31,7 +34,9 @@ const AdminPageFacultyComponent = ({ facultyProfile }) => {
       <td>{facultyProfile.facRole}</td>
       <td>{facultyProfile.rooms}</td>
       <td><EditFacultyProfile id={facultyProfile._id}> Edit</EditFacultyProfile></td>
-      <Button className="btn btn-danger btn-delete d-inline" onClick={deleteUser}>Delete</Button>
+      {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
+        <td><Button className="btn btn-danger btn-delete d-inline" onClick={deleteUser}>Delete</Button></td>
+      ) : ''}
     </tr>
   );
 };
