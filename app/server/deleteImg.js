@@ -19,7 +19,7 @@ Meteor.methods({
     const startIndex = imageUrl.lastIndexOf('/') + 1;
     const endIndex = imageUrl.lastIndexOf('.');
     const public_id = imageUrl.substring(startIndex, endIndex);
-    console.log(public_id);
+
     return new Promise((resolve, reject) => {
       cloudinary.v2.uploader.destroy(public_id, (error, result) => {
         if (error) {
