@@ -11,6 +11,8 @@ import EditFacultyProfile from '../../pages/EditFacultyProfile';
 import { removeItMethod } from '../../../api/base/BaseCollection.methods';
 import { ROLE } from '../../../api/role/Role';
 
+/** Component for FacultySection.jsx */
+
 /** Renders a single row of Faculty members in a (Admin) table. See pages/AdminPageFacultyComponent.jsx. */
 const AdminPageFacultyComponent = ({ facultyProfile }) => {
 
@@ -34,8 +36,9 @@ const AdminPageFacultyComponent = ({ facultyProfile }) => {
       <td>{facultyProfile.facRole}</td>
       <td>{facultyProfile.rooms}</td>
       <td><EditFacultyProfile id={facultyProfile._id}> Edit</EditFacultyProfile></td>
+      {/** Button for deleting faculty users using FacultyProfileCollection.js */}
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
-        <td><Button className="btn btn-danger btn-delete d-inline" onClick={deleteUser}>Delete</Button></td>
+        <td><Button variant="danger" onClick={deleteUser}>Delete</Button></td>
       ) : ''}
     </tr>
   );
