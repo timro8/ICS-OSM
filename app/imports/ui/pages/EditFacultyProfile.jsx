@@ -41,7 +41,7 @@ const EditFacultyProfile = ({ id }) => {
       ready: rdy,
     };
   }, [id]);
-  console.log(doc);
+
   // Create a schema to specify the structure of the data to appear in the form.
   const formSchema = new SimpleSchema({
     image: { type: String, optional: true },
