@@ -3,6 +3,8 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Container, Row } from 'react-bootstrap';
 import { Rooms } from '../../../api/room/RoomCollection';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
+import { OfficeProfiles } from '../../../api/user/OfficeProfileCollection';
+import { TechProfiles } from '../../../api/user/TechProfileCollection';
 import { OccupantRoom } from '../../../api/user/OccupantRoomCollection';
 import RoomItem from './RoomItem';
 import AddRoom from '../Addpages/AddRoom';
@@ -19,10 +21,14 @@ const RoomAdmin = () => {
     const subscription = Rooms.subscribeRoomAdmin();
     // Get access to Faculty Profile documents.
     const subFaculty = FacultyProfiles.subscribeFacultyProfileAdmin();
+    // Get access to Office Profile documents
+    const subOffice = OfficeProfiles.subscribe();
+    // Get access to Tech Profile documents
+    const subTech = TechProfiles.subscribe();
     // Get access to Occupant Room documents
     const subOccupant = OccupantRoom.subscribeOccupantRoomAdmin();
     // Determine if the subscription is ready
-    const rdy = subscription.ready() && subFaculty.ready() && subOccupant.ready();
+    const rdy = subscription.ready() && subFaculty.ready() && subOffice.ready() && subTech.ready() && subOccupant.ready();
     // Get the Room documents
     const items = Rooms.find({}).fetch();
     const roomKeys = items.map(room => room._id);
@@ -33,7 +39,6 @@ const RoomAdmin = () => {
       ready: rdy,
     };
   }, []);
-
   const handleSearch = (search) => {
     const searchInput = search.trim();
     setList(rooms.filter(room => (`${room.roomNumber} + ' ' + ${room.location} + ' ' + ${room.status}`).toLowerCase().includes(searchInput.toLowerCase())));
