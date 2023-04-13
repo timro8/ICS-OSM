@@ -147,10 +147,6 @@ class FacultyProfileCollection extends BaseProfileCollection {
     check(doc, Object);
     this._collection.remove(doc._id);
     return true;
-    /** if (this.isDefined(profileID)) {
-      return super.removeIt(profileID);
-    }
-    return null; * */
   }
 
   /**

@@ -7,7 +7,7 @@ import SimpleSchema from 'simpl-schema';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { StudentProfiles } from '../../api/user/StudentProfileCollection';
 
-// form schema based on the RoomJacks collection.
+// form schema based on the StudentProfile collection.
 const formSchema = new SimpleSchema({
   firstName: String,
   lastName: String,
@@ -17,7 +17,7 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddJac component for adding a new jack. */
+/* Renders the AddStudent component for adding a new student. */
 const AddStudent = () => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
@@ -25,7 +25,7 @@ const AddStudent = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // data submitted to add a new jack. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional jacks.
+  // data submitted to add a new student. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional students.
   const submit = (data, formRef) => {
     const { email, firstName, lastName, password } = data;
     const collectionName = StudentProfiles.getCollectionName();
