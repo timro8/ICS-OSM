@@ -43,7 +43,7 @@ const StudentSection = () => {
               <th>Email</th>
               <th>Position</th>
               <th className="d-flex justify-content-center">Actions</th>
-              <th></th>
+              <th> </th>
             </tr>
           </thead>
           <tbody>
