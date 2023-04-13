@@ -6,8 +6,8 @@ import { Table, Row } from 'react-bootstrap';
 import LoadingSpinner from '../../../../components/LoadingSpinner';
 import { ROLE } from '../../../../../api/role/Role';
 import { StudentProfiles } from '../../../../../api/user/StudentProfileCollection';
-import AdminPageStudentComponent from '../../../../components/AdminPage/AdminPageStudentComponent';
 import AddStudent from '../../../../components/AddStudent';
+import AdminPageStudentComponent from '../../../../components/AdminPage/AdminPageStudentComponent';
 
 /* Renders a table containing all of the Faculty documents. Use <Admin> to render each row in each tabs. */
 const StudentSection = () => {
@@ -38,12 +38,16 @@ const StudentSection = () => {
         <Table hover className="scroll">
           <thead>
             <tr>
-              <th>Name</th>
+              <th>First Name</th>
+              <th>Last Name</th>
               <th>Email</th>
+              <th>Position</th>
+              <th className="d-flex justify-content-center">Actions</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            {students.map((student) => <AdminPageStudentComponent key={student._id} faculty={student} studentProfile={student} />)}
+            {students.map((student) => <AdminPageStudentComponent key={student._id} student={student} studentProfile={student} />)}
           </tbody>
         </Table>
       </div>
