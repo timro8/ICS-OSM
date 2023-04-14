@@ -9,7 +9,7 @@ export const roomLocations = ['POST', 'KELLER'];
 
 export const roomStatus = ['Occupied', 'Vacant', 'Out of Commission'];
 
-export const roomClassifications = ['Office', 'Sink', 'Conference', 'Cubicle', 'ICS Library', 'ASECOLAB', 'Mail', 'Main Office', 'Lab', 'ICSpace', 'Storage', 'ICS IT', 'OFCSVC', 'LNG'];
+export const roomClassifications = ['Office', 'Classroom', 'Sink', 'Conference', 'Cubicle', 'ICS Library', 'ASECOLAB', 'Mail', 'Main Office', 'Lab', 'ICSpace', 'Storage', 'ICS IT', 'OFCSVC', 'LNG'];
 
 export const roomPublications = {
   room: 'Room',

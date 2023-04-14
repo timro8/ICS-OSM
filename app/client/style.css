@@ -183,3 +183,8 @@ body {
 .map-section {
   height: 50rem;
 }
+
+#greeting {
+  font-family: 'Finger Paint', cursive;
+  font-size: xxx-large;
+}

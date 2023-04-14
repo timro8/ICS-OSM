@@ -46,6 +46,9 @@ const FacultySection = () => {
               <th>Email</th>
               <th>Role</th>
               <th>Room</th>
+              {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
+                <th className="text-end">Actions</th>
+              ) : ''}
               {/** Empty header but it is reserved for deletion button from facultycard component */}
               <th> </th>
             </tr>
