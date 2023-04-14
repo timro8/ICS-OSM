@@ -43,12 +43,28 @@ const TechJack = () => {
     setList(jacks.filter(jack => (`${jack.roomNumber} + ' ' + ${jack.jackNumber} + ' ' + ${jack.wallLocation} + ' ' + ${jack.IDFRoom}`).toLowerCase().includes(searchInput.toLowerCase())));
   };
 
-  const convertToBlob = (collection) => {
-    const json = JSON.stringify(collection.dumpAll());
-    const blob = new Blob([json], { type: 'application/json' });
+  function jsonToCsv(jsonData) {
+    const headers = Object.keys(jsonData[0]);
+    let csvString = '';
+
+    // Add header row to CSV string
+    csvString += `${headers.join(',')} \n`;
+
+    // Loop through each object and add its values to the CSV string
+    jsonData.forEach(obj => {
+      const values = headers.map(header => obj[header]);
+      csvString += `${values.join(',')} \n`;
+    });
+
+    return csvString;
+  }
+
+  const downloadCsv = (collection) => {
+    const csv = jsonToCsv(collection.dumpAll().contents);
+    const blob = new Blob([csv], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.download = 'data.json';
+    link.download = `${collection.getCollectionName()}.csv`;
     link.href = url;
     link.click();
   };
@@ -76,7 +92,7 @@ const TechJack = () => {
           ))}
         </tbody>
       </Table>
-      <Button onClick={() => { console.log(convertToBlob(RoomJacks)); }}>dump</Button>
+      <Button onClick={() => downloadCsv(RoomJacks)}>dump</Button>
     </Container>
   ) : <LoadingSpinner message="Loading tech data" />);
 };
