@@ -4,13 +4,14 @@ import AccordionItem from 'react-bootstrap/AccordionItem';
 import AccordionHeader from 'react-bootstrap/AccordionHeader';
 import AccordionBody from 'react-bootstrap/AccordionBody';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const RoomsList = ({ rooms, status }) => {
   const roomsByStatus = () => rooms.filter(room => room.status === status);
   if (!roomsByStatus().length) {
     return (<div style={{ color: '#444' }}>There are no rooms {status.toLowerCase()}</div>);
   }
-  return roomsByStatus().map(room => <ul><li key={rooms._id}>{room.roomNumber}</li></ul>);
+  return roomsByStatus().map(room => <ul><li key={rooms._id}><Link to={`/roomdetails/${room._id}`}>{room.roomNumber}</Link></li></ul>);
 };
 
 const FacultiesList = ({ faculties, assigned }) => {
