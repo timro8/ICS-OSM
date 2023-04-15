@@ -7,17 +7,21 @@
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
+import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 
 const HomeSearchBar = () => {
 
   const [searchInput, setSearchInput] = useState('');
   const [filteredFaculties, setFilteredFaculties] = useState([]);
+  const [filteredStudents, setFilteredStudents] = useState([]);
 
   // TODO: check readiness
-  const { faculties } = useTracker(() => {
+  const { faculties, students } = useTracker(() => {
     FacultyProfiles.subscribeFacultyProfileAdmin();
+    StudentProfiles.subscribeStudentProfile();
     return {
       faculties: FacultyProfiles.find({}).fetch(),
+      students: StudentProfiles.find({}).fetch(),
     };
   });
 
@@ -25,6 +29,7 @@ const HomeSearchBar = () => {
     e.preventDefault();
     setSearchInput(e.target.value);
     setFilteredFaculties(faculties.filter(faculty => `${faculty.firstName} ${faculty.lastName}`.toLowerCase().includes(searchInput.toLowerCase())));
+    setFilteredStudents(students.filter(student => `${student.firstName} ${student.lastName}`.toLowerCase().includes(searchInput.toLowerCase())));
   };
 
   return (
@@ -36,6 +41,12 @@ const HomeSearchBar = () => {
             <>
               <p className="search-heading"><strong>Faculties</strong></p>
               {filteredFaculties.map(faculty => <p>{faculty.firstName} {faculty.lastName}</p>)}
+            </>
+          )}
+          {filteredStudents.length > 0 && (
+            <>
+              <p className="search-heading"><strong>Students</strong></p>
+              {filteredStudents.map(student => <p>{student.firstName} {student.lastName}</p>)}
             </>
           )}
         </div>
