@@ -24,9 +24,9 @@ const FacultiesList = ({ faculties, assigned }) => {
     return (<div style={{ color: '#444' }}>There are no unassigned faculties</div>);
   }
   if (assigned) {
-    return facultiesAssigned().map(faculty => <ul><li key={faculty._id}>{faculty.firstName} {faculty.lastName}</li></ul>);
+    return facultiesAssigned().map(faculty => <ul><li key={faculty._id}><Link to={`/profile/${faculty._id}`}>{faculty.firstName} {faculty.lastName}</Link></li></ul>);
   }
-  return facultiesUnassigned().map(faculty => <ul><li key={faculty._id}>{faculty.firstName} {faculty.lastName}</li></ul>);
+  return facultiesUnassigned().map(faculty => <ul><li key={faculty._id}><Link to={`/profile/${faculty._id}`}>{faculty.firstName} {faculty.lastName}</Link></li></ul>);
 };
 
 const ListView = ({ rooms, faculties }) => {
