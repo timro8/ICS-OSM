@@ -120,7 +120,7 @@ body {
   height: min-content;
   color: white;
   background: rgba(200, 200, 200, 0.70) center;
-  font-size: 0.5rem;
+  font-size: 7px;
   font-weight: 600;
   box-shadow: 0 3px 7px rgba(128, 128, 128, 0.50);
 }
@@ -130,7 +130,7 @@ body {
 }
 
 .map-icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.7);
   z-index: 2;
   cursor: pointer;
 }
