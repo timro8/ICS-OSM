@@ -41,19 +41,19 @@ const ListView = ({ rooms, faculties }) => {
           <AccordionBody>
             <Accordion flush>
               <AccordionItem eventKey="0">
-                <AccordionHeader>Vacant ({getRoomAmt('Vacant')})</AccordionHeader>
+                <AccordionHeader>Vacant <span className="num-cell">{getRoomAmt('Vacant')}</span></AccordionHeader>
                 <AccordionBody>
                   <RoomsList rooms={rooms} status="Vacant" />
                 </AccordionBody>
               </AccordionItem>
               <AccordionItem eventKey="1">
-                <AccordionHeader>Occupied ({getRoomAmt('Occupied')})</AccordionHeader>
+                <AccordionHeader>Occupied <span className="num-cell">{getRoomAmt('Occupied')}</span></AccordionHeader>
                 <AccordionBody>
                   <RoomsList rooms={rooms} status="Occupied" />
                 </AccordionBody>
               </AccordionItem>
               <AccordionItem eventKey="2">
-                <AccordionHeader>Out of Commission ({getRoomAmt('Out of Commission')})</AccordionHeader>
+                <AccordionHeader>Out of Commission <span className="num-cell">{getRoomAmt('Out of Commission')}</span></AccordionHeader>
                 <AccordionBody>
                   <RoomsList rooms={rooms} status="Out of Commission" />
                 </AccordionBody>
@@ -66,11 +66,11 @@ const ListView = ({ rooms, faculties }) => {
           <AccordionBody>
             <Accordion flush>
               <AccordionItem eventKey="0">
-                <AccordionHeader>Assigned ({assignedOccupantsAmt})</AccordionHeader>
+                <AccordionHeader>Assigned <span className="num-cell">{assignedOccupantsAmt}</span></AccordionHeader>
                 <AccordionBody><FacultiesList faculties={faculties} assigned /></AccordionBody>
               </AccordionItem>
               <AccordionItem eventKey="1">
-                <AccordionHeader>Unassigned ({unassignedOccupantsAmt})</AccordionHeader>
+                <AccordionHeader>Unassigned <span className="num-cell">{unassignedOccupantsAmt}</span></AccordionHeader>
                 <AccordionBody><FacultiesList faculties={faculties} assigned={false} /></AccordionBody>
               </AccordionItem>
             </Accordion>

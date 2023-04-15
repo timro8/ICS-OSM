@@ -192,3 +192,11 @@ body {
   font-family: 'Finger Paint', cursive;
   font-size: xxx-large;
 }
+
+.num-cell {
+  background-color: lightgray;
+  border-radius: 7px;
+  width: 1.8rem;
+  text-align: center;
+  margin: 0 5px;
+}
