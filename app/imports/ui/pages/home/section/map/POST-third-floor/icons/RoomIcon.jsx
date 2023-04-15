@@ -1,5 +1,6 @@
 import { Button, Modal } from 'react-bootstrap';
 import React, { useState } from 'react';
+import { OverlayTrigger, Popover, PopoverBody } from 'react-bootstrap';
 import roomPositions from '../../../../../../../api/room/RoomPositions';
 
 const RoomIcon = (props) => {
@@ -16,12 +17,24 @@ const RoomIcon = (props) => {
   };
 
   return props.rooms.map((room, index) => {
+  const roomPopover = room => (
+    <Popover>
+      <PopoverBody>
+        <p><strong>Capacity:</strong> {room.capacity}</p>
+        <p><strong>Status:</strong> {room.status}</p>
+        <p><strong>Classification:</strong> {room.roomClassification}</p>
+        <p><strong>Size:</strong> {room.roomSqFoot} sq. ft.</p>
+      </PopoverBody>
+    </Popover>
+  );
+
     const roomPosition = roomPositions.find(element => element.roomNumber === room.roomNumber);
     if (roomPosition) {
       const roomPositionTop = (roomPosition.top / 100) * props.mapHeight;
       const roomPositionLeft = (roomPosition.left / 100) * props.mapWidth;
       return (
         <>
+        <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={roomPopover(room)}>
           <button
             type="button"
             className="map-icon map-icon-room"
@@ -58,6 +71,7 @@ const RoomIcon = (props) => {
             </Modal>
           )}
         </>
+        </OverlayTrigger>
       );
     }
     return null;
