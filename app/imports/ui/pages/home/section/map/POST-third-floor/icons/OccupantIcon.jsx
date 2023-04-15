@@ -1,5 +1,6 @@
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import roomPositions from '../../../../../../../api/room/RoomPositions';
 
 const OccupantIcon = (props) => {
@@ -16,18 +17,20 @@ const OccupantIcon = (props) => {
       const amtOfOccupants = room.occupants.length - 1;
       const roomPositionTop = (roomPosition.top / 100) * props.mapHeight;
       const roomPositionLeft = (roomPosition.left / 100) * props.mapWidth;
-      return room.occupants.map((occupant, index) => (
-        <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
-          <div
-            className="map-icon map-icon-occupant"
-            style={{
-              top: `${roomPositionTop - 11}px`,
-              left: `${roomPositionLeft + (COLLISION_SPACING * index) + 6 - (amtOfOccupants * 3)}px`,
-              background: getOccupantIconImage(occupant),
-            }}
-          />
-        </OverlayTrigger>
-      ));
+      return room.occupants.map((occupant, index) => (occupant._id ? (
+        <Link to={`/profile/${occupant._id}`}>
+          <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
+            <div
+              className="map-icon map-icon-occupant"
+              style={{
+                top: `${roomPositionTop - 11}px`,
+                left: `${roomPositionLeft + (COLLISION_SPACING * index) + 6 - (amtOfOccupants * 3)}px`,
+                background: getOccupantIconImage(occupant),
+              }}
+            />
+          </OverlayTrigger>
+        </Link>
+      ) : undefined));
     }
     return null;
   });
