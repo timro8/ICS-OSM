@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import roomPositions from '../../../../../../../api/room/RoomPositions';
 
 const OccupantIcon = (props) => {
-  const COLLISION_SPACING = 6;
+  const COLLISION_SPACING = 8;
   const getOccupantIconImage = (occupant) => {
     const occupantWithImage = `center / contain url(${occupant.image})`;
     const noImage = 'rgba(200, 200, 200) center';
@@ -24,7 +24,7 @@ const OccupantIcon = (props) => {
               className="map-icon map-icon-occupant"
               style={{
                 top: `${roomPositionTop - 11}px`,
-                left: `${roomPositionLeft + (COLLISION_SPACING * index) + 6 - (amtOfOccupants * 3)}px`,
+                left: `${roomPositionLeft + (COLLISION_SPACING * index) + 7 - (amtOfOccupants * 3)}px`,
                 background: getOccupantIconImage(occupant),
               }}
             />
