@@ -2,7 +2,6 @@ import { OverlayTrigger, Popover, PopoverBody } from 'react-bootstrap';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import roomPositions from '../../../../../../../api/room/RoomPositions';
-import { COMPONENT_IDS } from '../../../../../../utilities/ComponentIDs';
 
 const RoomIcon = (props) => {
   const getRoomColor = (status) => {
@@ -29,7 +28,7 @@ const RoomIcon = (props) => {
       const roomPositionTop = (roomPosition.top / 100) * props.mapHeight;
       const roomPositionLeft = (roomPosition.left / 100) * props.mapWidth;
       return (
-        <Link to={`/roomdetails/${room._id}`} style={{ color: 'black', textDecoration: 'none' }}>
+        <Link to={`/roomdetails/${room._id}`}>
           <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={roomPopover(room)}>
             <button
               type="button"
