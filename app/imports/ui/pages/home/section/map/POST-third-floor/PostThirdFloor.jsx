@@ -7,6 +7,7 @@ import { getRoomData } from '../../../../../../api/utilities/getRoomData';
 import ListView from './list-view/ListView';
 import OccupantIcon from './icons/OccupantIcon';
 import RoomIcon from './icons/RoomIcon';
+import { FacultyProfiles } from '../../../../../../api/user/FacultyProfileCollection';
 
 const PostThirdFloor = () => {
 
@@ -14,11 +15,14 @@ const PostThirdFloor = () => {
   const MAP_WIDTH = 900;
   const MAP_HEIGHT = MAP_WIDTH / MAP_ASPECT_RATIO;
 
-  const { rooms } = useTracker(() => {
-    const subscription = Rooms.subscribeRoom();
+  const { rooms, faculties } = useTracker(() => {
+    Rooms.subscribeRoom();
+    FacultyProfiles.subscribeFacultyProfileAdmin();
+
+    const facultyItems = FacultyProfiles.find({}).fetch();
     return {
-      ready: subscription.ready(),
       rooms: Rooms.find().fetch(),
+      faculties: facultyItems,
     };
   });
   const roomIds = rooms.map(room => room._id);
@@ -60,7 +64,7 @@ const PostThirdFloor = () => {
         </div>
       </Col>
       <Col className="list-view">
-        <ListView rooms={rooms} />
+        <ListView rooms={rooms} faculties={faculties} />
       </Col>
     </Row>
   );

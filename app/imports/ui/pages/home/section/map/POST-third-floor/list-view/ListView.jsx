@@ -13,8 +13,25 @@ const RoomsList = ({ rooms, status }) => {
   return roomsByStatus().map(room => <ul><li key={rooms._id}>{room.roomNumber}</li></ul>);
 };
 
-const ListView = ({ rooms }) => {
-  const getAmt = (status) => rooms.filter(room => room.status === status).length;
+const FacultiesList = ({ faculties, assigned }) => {
+  const facultiesAssigned = () => faculties.filter(faculty => faculty.rooms[0] !== 'N/A');
+  const facultiesUnassigned = () => faculties.filter(faculty => faculty.rooms[0] === 'N/A');
+  if (assigned && !facultiesAssigned().length) {
+    return (<div style={{ color: '#444' }}>There are no assigned faculties</div>);
+  }
+  if (!assigned && !facultiesUnassigned().length) {
+    return (<div style={{ color: '#444' }}>There are no unassigned faculties</div>);
+  }
+  if (assigned) {
+    return facultiesAssigned().map(faculty => <ul><li key={faculty._id}>{faculty.firstName} {faculty.lastName}</li></ul>);
+  }
+  return facultiesUnassigned().map(faculty => <ul><li key={faculty._id}>{faculty.firstName} {faculty.lastName}</li></ul>);
+};
+
+const ListView = ({ rooms, faculties }) => {
+  const getRoomAmt = (status) => rooms.filter(room => room.status === status).length;
+  const assignedOccupantsAmt = faculties.filter(faculty => faculty.rooms[0] !== 'N/A').length;
+  const unassignedOccupantsAmt = faculties.filter(faculty => faculty.rooms[0] === 'N/A').length;
   return (
     <>
       <h2 style={{ margin: '15px 0' }}>List View</h2>
@@ -24,19 +41,19 @@ const ListView = ({ rooms }) => {
           <AccordionBody>
             <Accordion flush>
               <AccordionItem eventKey="0">
-                <AccordionHeader>Vacant ({getAmt('Vacant')})</AccordionHeader>
+                <AccordionHeader>Vacant ({getRoomAmt('Vacant')})</AccordionHeader>
                 <AccordionBody>
                   <RoomsList rooms={rooms} status="Vacant" />
                 </AccordionBody>
               </AccordionItem>
               <AccordionItem eventKey="1">
-                <AccordionHeader>Occupied ({getAmt('Occupied')})</AccordionHeader>
+                <AccordionHeader>Occupied ({getRoomAmt('Occupied')})</AccordionHeader>
                 <AccordionBody>
                   <RoomsList rooms={rooms} status="Occupied" />
                 </AccordionBody>
               </AccordionItem>
               <AccordionItem eventKey="2">
-                <AccordionHeader>Out of Commission ({getAmt('Out of Commission')})</AccordionHeader>
+                <AccordionHeader>Out of Commission ({getRoomAmt('Out of Commission')})</AccordionHeader>
                 <AccordionBody>
                   <RoomsList rooms={rooms} status="Out of Commission" />
                 </AccordionBody>
@@ -49,12 +66,12 @@ const ListView = ({ rooms }) => {
           <AccordionBody>
             <Accordion flush>
               <AccordionItem eventKey="0">
-                <AccordionHeader>Assigned</AccordionHeader>
-                <AccordionBody>Body</AccordionBody>
+                <AccordionHeader>Assigned ({assignedOccupantsAmt})</AccordionHeader>
+                <AccordionBody><FacultiesList faculties={faculties} assigned /></AccordionBody>
               </AccordionItem>
               <AccordionItem eventKey="1">
-                <AccordionHeader>Unassigned</AccordionHeader>
-                <AccordionBody>Body</AccordionBody>
+                <AccordionHeader>Unassigned ({unassignedOccupantsAmt})</AccordionHeader>
+                <AccordionBody><FacultiesList faculties={faculties} assigned={false} /></AccordionBody>
               </AccordionItem>
             </Accordion>
           </AccordionBody>
@@ -75,12 +92,35 @@ RoomsList.propTypes = {
   status: PropTypes.string.isRequired,
 };
 
+FacultiesList.propTypes = {
+  faculties: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      rooms: PropTypes.string,
+    }),
+  ).isRequired,
+  assigned: PropTypes.bool.isRequired,
+};
+
 ListView.propTypes = {
   rooms: PropTypes.arrayOf(
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
       roomNumber: PropTypes.string.isRequired,
       location: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  faculties: PropTypes.arrayOf(
+    PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      email: PropTypes.string,
+      image: PropTypes.string,
+      facRole: PropTypes.string,
+      rooms: PropTypes.string,
+      _id: PropTypes.string,
     }),
   ).isRequired,
 };
