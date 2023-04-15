@@ -33,8 +33,8 @@ const HomeSearchBar = () => {
   };
 
   return (
-    <>
-      <input type="search-input" onChange={handleInputChange} value={searchInput} />
+    <div className="search">
+      <input type="search" onChange={handleInputChange} value={searchInput} placeholder="Search" className="search-input" />
       {searchInput.length > 0 && (
         <div className="search-body">
           {filteredFaculties.length > 0 && (
@@ -51,7 +51,7 @@ const HomeSearchBar = () => {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 
 };
