@@ -1,6 +1,5 @@
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
 import { Col, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
