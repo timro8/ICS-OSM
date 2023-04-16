@@ -5,6 +5,12 @@ import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { Clubs } from '../../../api/club/Club';
 
+// TODO: add filter buttons on the search body
+// TODO: limit to a maximum of 3 items of each array
+// TODO: add images to to items that has images
+// TODO: make list items clickable
+// TODO: show more info about the list items
+
 const HomeSearchBar = () => {
 
   const [searchInput, setSearchInput] = useState('');
