@@ -1,6 +1,7 @@
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
@@ -10,6 +11,7 @@ import { Clubs } from '../../../api/club/Club';
 // TODO: add images to to items that has images
 // TODO: make list items clickable
 // TODO: show more info about the list items
+// TODO: allow using keys to interact with the search bar
 
 const FacultyListItem = ({ faculty }) => (
   <div className="search-list-item faculty-list-item">
