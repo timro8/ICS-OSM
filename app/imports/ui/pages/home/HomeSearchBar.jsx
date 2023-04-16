@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { Clubs } from '../../../api/club/Club';
-import FacultyListItem from './FacultyListItem';
+import FacultyListItem from './list-item/FacultyListItem';
 
 // TODO: limit to a maximum of 3 items of each array and add show more to show full list
 // TODO: add images to to items that has images
