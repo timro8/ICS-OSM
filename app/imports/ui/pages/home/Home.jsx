@@ -34,7 +34,7 @@ const Home = () => {
       {Roles.userIsInRole(Meteor.userId(), [ROLE.STUDENT, ROLE.OFFICE, ROLE.TECH, ROLE.FACULTY, ROLE.USER]) ? (
         <Row id="greeting">Hi {firstName}</Row>
       ) : ''}
-      <Row><HomeSearchBar /></Row>
+      <Row className="d-flex justify-content-center"><HomeSearchBar /></Row>
       <Row className="d-flex justify-content-between">
         <ProgressBars />
       </Row>

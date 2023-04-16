@@ -1,27 +1,25 @@
-// TODO: create a search bar that searches through Rooms, Faculties, Students, and Reservations.
-// Make it dynamic: on input change update the results.
-//
-// Do faculties first
-// ex: faculties: [{firstName: 'Cam', lastName: 'Moore'}, {firstName: 'Peter', lastName: 'Sadowski'}, ...]
-
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
+import { Form } from 'react-bootstrap';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
+import { Clubs } from '../../../api/club/Club';
 
 const HomeSearchBar = () => {
 
   const [searchInput, setSearchInput] = useState('');
   const [filteredFaculties, setFilteredFaculties] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
+  const [filteredClubs, setFilteredClubs] = useState([]);
 
-  // TODO: check readiness
-  const { faculties, students } = useTracker(() => {
+  const { faculties, students, clubs } = useTracker(() => {
     FacultyProfiles.subscribeFacultyProfileAdmin();
     StudentProfiles.subscribeStudentProfile();
+    Clubs.subscribeClub();
     return {
       faculties: FacultyProfiles.find({}).fetch(),
       students: StudentProfiles.find({}).fetch(),
+      clubs: Clubs.find({}).fetch(),
     };
   });
 
@@ -30,28 +28,35 @@ const HomeSearchBar = () => {
     setSearchInput(e.target.value);
     setFilteredFaculties(faculties.filter(faculty => `${faculty.firstName} ${faculty.lastName}`.toLowerCase().includes(searchInput.toLowerCase())));
     setFilteredStudents(students.filter(student => `${student.firstName} ${student.lastName}`.toLowerCase().includes(searchInput.toLowerCase())));
+    setFilteredClubs(clubs.filter(club => `${club.clubName}`.toLowerCase().includes(searchInput.toLowerCase())));
   };
 
   return (
-    <div className="search">
-      <input type="search" onChange={handleInputChange} value={searchInput} placeholder="Search" className="search-input" />
+    <Form className="search" style={{ width: '75vw' }}>
+      <Form.Control type="search" onChange={handleInputChange} value={searchInput} placeholder="Search" className="search-input" />
       {searchInput.length > 0 && (
         <div className="search-body">
           {filteredFaculties.length > 0 && (
             <>
-              <p className="search-heading"><strong>Faculties</strong></p>
+              <div className="search-heading"><strong>Faculties</strong></div>
               {filteredFaculties.map(faculty => <p>{faculty.firstName} {faculty.lastName}</p>)}
             </>
           )}
           {filteredStudents.length > 0 && (
             <>
-              <p className="search-heading"><strong>Students</strong></p>
+              <div className="search-heading"><strong>Students</strong></div>
               {filteredStudents.map(student => <p>{student.firstName} {student.lastName}</p>)}
+            </>
+          )}
+          {filteredClubs.length > 0 && (
+            <>
+              <div className="search-heading"><strong>Clubs</strong></div>
+              {filteredClubs.map(club => <p>{club.clubName}</p>)}
             </>
           )}
         </div>
       )}
-    </div>
+    </Form>
   );
 
 };

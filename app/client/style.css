@@ -201,3 +201,17 @@ body {
   margin: 0 5px;
   font-size: 0.8rem;
 }
+
+.search-body {
+  box-shadow: 0 3px 10px 1px #ebebeb;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.search-body:empty {
+  display: none;
+}
+
+.search-heading {
+  margin: 5px 0;
+}
