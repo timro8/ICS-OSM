@@ -204,6 +204,21 @@ body {
 
 .search-container {
   position: relative;
+  padding: 0;
+}
+
+.search-container .search-input {
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  color: #333;
+  transition: border-color 0.3s ease-in-out;
+  width: 100%;
+}
+
+.search-container .search-input:focus {
+  border-color: #007bff;
+  outline: none;
 }
 
 .search-body {
@@ -211,7 +226,6 @@ body {
   border-radius: 15px;
   padding: 20px;
   position: absolute;
-  width: 100%;
   left: 0;
   background-color: white;
   z-index: 10;
