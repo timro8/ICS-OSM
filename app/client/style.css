@@ -253,16 +253,18 @@ body {
   cursor: pointer;
 }
 
-.search-list-item img {
-  height: 35px;
-  border-radius: 50%;
-}
-
 .search-list-item-extra {
   font-size: 0.9rem;
   color: #989898;
 }
 
+.faculty-list-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
 .faculty-list-item {
   height: 70px;
+  gap: 15px;
 }
