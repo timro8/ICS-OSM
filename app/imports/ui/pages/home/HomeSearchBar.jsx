@@ -1,32 +1,16 @@
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
-import { Col, Form } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import { Form } from 'react-bootstrap';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { Clubs } from '../../../api/club/Club';
+import FacultyListItem from './FacultyListItem';
 
 // TODO: limit to a maximum of 3 items of each array and add show more to show full list
 // TODO: add images to to items that has images
 // TODO: make list items clickable
 // TODO: show more info about the list items
 // TODO: allow using keys to interact with the search bar
-
-const FacultyListItem = ({ faculty }) => (
-  <div className="search-list-item faculty-list-item">
-    <Col md={1}>
-      <img src={faculty.image} alt="faculty" />
-    </Col>
-    <Col md={11}>
-      <div className="search-list-item-main">
-        {faculty.firstName} {faculty.lastName}
-      </div>
-      <div className="search-list-item-extra">
-        {faculty.email}
-      </div>
-    </Col>
-  </div>
-);
 
 const HomeSearchBar = () => {
 
@@ -86,15 +70,6 @@ const HomeSearchBar = () => {
       )}
     </Form>
   );
-};
-
-FacultyListItem.propTypes = {
-  faculty: PropTypes.shape({
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    image: PropTypes.string,
-  }).isRequired,
 };
 
 export default HomeSearchBar;
