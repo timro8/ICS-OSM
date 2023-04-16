@@ -1,4 +1,4 @@
-import { OverlayTrigger, Popover, PopoverBody } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import roomPositions from '../../../../../../../api/room/RoomPositions';
@@ -12,14 +12,13 @@ const RoomIcon = (props) => {
   };
 
   const roomPopover = room => (
-    <Popover>
-      <PopoverBody>
-        <p><strong>Capacity:</strong> {room.capacity}</p>
-        <p><strong>Status:</strong> {room.status}</p>
-        <p><strong>Classification:</strong> {room.roomClassification}</p>
-        <p><strong>Size:</strong> {room.roomSqFoot} sq. ft.</p>
-      </PopoverBody>
-    </Popover>
+    <Tooltip>
+      <br />
+      <p><strong>Capacity:</strong> {room.capacity}</p>
+      <p><strong>Status:</strong> {room.status}</p>
+      <p><strong>Classification:</strong> {room.roomClassification}</p>
+      <p><strong>Size:</strong> {room.roomSqFoot} sq. ft.</p>
+    </Tooltip>
   );
 
   return props.rooms.map((room) => {
