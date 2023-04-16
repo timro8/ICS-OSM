@@ -28,7 +28,7 @@ class OccupantRoomCollection extends BaseCollection {
    * @param roomKey the roomKey of the room.
    * @return {String} the occupantID of the new document.
    */
-  define({ email, roomKey }) {
+  define({ email, roomNumber }) {
     let user = FacultyProfiles.findOne({ email: email });
     if (user === undefined) {
       user = OfficeProfiles.findOne({ email: email });
@@ -37,7 +37,7 @@ class OccupantRoomCollection extends BaseCollection {
       user = TechProfiles.findOne({ email: email });
     }
     const userId = user._id;
-    const room = Rooms.findOne({ roomKey: roomKey });
+    const room = Rooms.findOne({ roomNumber: roomNumber });
     const roomId = room._id;
     const occupantID = this._collection.insert({
       userId,
