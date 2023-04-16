@@ -32,7 +32,7 @@ const HomeSearchBar = () => {
   };
 
   return (
-    <Form className="search" style={{ width: '75vw' }}>
+    <Form className="search col-md-6 col-sm-12">
       <Form.Control type="search" onChange={handleInputChange} value={searchInput} placeholder="Search" className="search-input" />
       {searchInput.length > 0 && (
         <div className="search-body">
