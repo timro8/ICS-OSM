@@ -125,6 +125,10 @@ body {
   box-shadow: 0 3px 7px rgba(128, 128, 128, 0.50);
 }
 
+.map-icon-room:hover {
+  text-decoration: underline;
+}
+
 .map-icon:hover {
   transform: scale(1.2);
   z-index: 2;
