@@ -5,8 +5,7 @@ import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { Clubs } from '../../../api/club/Club';
 
-// TODO: add filter buttons on the search body
-// TODO: limit to a maximum of 3 items of each array
+// TODO: limit to a maximum of 3 items of each array and add show more to show full list
 // TODO: add images to to items that has images
 // TODO: make list items clickable
 // TODO: show more info about the list items
@@ -32,9 +31,14 @@ const HomeSearchBar = () => {
   const handleInputChange = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
-    setFilteredFaculties(faculties.filter(faculty => `${faculty.firstName} ${faculty.lastName}`.toLowerCase().includes(searchInput.toLowerCase())));
-    setFilteredStudents(students.filter(student => `${student.firstName} ${student.lastName}`.toLowerCase().includes(searchInput.toLowerCase())));
-    setFilteredClubs(clubs.filter(club => `${club.clubName}`.toLowerCase().includes(searchInput.toLowerCase())));
+
+    const getFacultyInfo = (faculty) => `${faculty.firstName} ${faculty.lastName} ${faculty.email}`.toLowerCase();
+    const getStudentInfo = (student) => `${student.firstName} ${student.lastName}`.toLowerCase();
+    const getClubInfo = (club) => `${club.clubName}`.toLowerCase().toLowerCase();
+
+    setFilteredFaculties(faculties.filter(faculty => getFacultyInfo(faculty).includes(searchInput.toLowerCase())));
+    setFilteredStudents(students.filter(student => getStudentInfo(student).includes(searchInput.toLowerCase())));
+    setFilteredClubs(clubs.filter(club => getClubInfo(club).includes(searchInput.toLowerCase())));
   };
 
   return (
@@ -44,20 +48,20 @@ const HomeSearchBar = () => {
         <div className="search-body">
           {filteredFaculties.length > 0 && (
             <>
-              <div className="search-heading"><strong>Faculties</strong></div>
               {filteredFaculties.map(faculty => <div className="search-list-item">{faculty.firstName} {faculty.lastName}</div>
               )}
+              <div className="search-heading">Faculties</div>
             </>
           )}
           {filteredStudents.length > 0 && (
             <>
-              <div className="search-heading"><strong>Students</strong></div>
+              <div className="search-heading">Students</div>
               {filteredStudents.map(student => <div className="search-list-item">{student.firstName} {student.lastName}</div>)}
             </>
           )}
           {filteredClubs.length > 0 && (
             <>
-              <div className="search-heading"><strong>Clubs</strong></div>
+              <div className="search-heading">Clubs</div>
               {filteredClubs.map(club => <div className="search-list-item">{club.clubName}</div>)}
             </>
           )}
