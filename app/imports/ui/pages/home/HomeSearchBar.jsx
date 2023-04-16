@@ -1,6 +1,7 @@
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Col, Form, Row } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { Clubs } from '../../../api/club/Club';
@@ -9,6 +10,22 @@ import { Clubs } from '../../../api/club/Club';
 // TODO: add images to to items that has images
 // TODO: make list items clickable
 // TODO: show more info about the list items
+
+const FacultyListItem = ({ faculty }) => (
+  <div className="search-list-item faculty-list-item">
+    <Col md={1}>
+      <img src={faculty.image} alt="faculty" />
+    </Col>
+    <Col md={11}>
+      <div className="search-list-item-main">
+        {faculty.firstName} {faculty.lastName}
+      </div>
+      <div className="search-list-item-extra">
+        {faculty.email}
+      </div>
+    </Col>
+  </div>
+);
 
 const HomeSearchBar = () => {
 
@@ -48,9 +65,8 @@ const HomeSearchBar = () => {
         <div className="search-body">
           {filteredFaculties.length > 0 && (
             <>
-              {filteredFaculties.map(faculty => <div className="search-list-item">{faculty.firstName} {faculty.lastName}</div>
-              )}
               <div className="search-heading">Faculties</div>
+              {filteredFaculties.map(faculty => <FacultyListItem faculty={faculty} />)}
             </>
           )}
           {filteredStudents.length > 0 && (
@@ -69,7 +85,15 @@ const HomeSearchBar = () => {
       )}
     </Form>
   );
+};
 
+FacultyListItem.propTypes = {
+  faculty: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    image: PropTypes.string,
+  }).isRequired,
 };
 
 export default HomeSearchBar;
