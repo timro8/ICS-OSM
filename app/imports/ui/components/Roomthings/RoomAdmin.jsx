@@ -11,6 +11,7 @@ import AddRoom from '../Addpages/AddRoom';
 import LoadingSpinner from '../LoadingSpinner';
 import { getRoomData } from '../../../api/utilities/getRoomData';
 import SearchBar from '../SearchBar';
+import DownloadCSVButton from '../DownloadCSVButton';
 
 /* Renders a table containing all of the Room documents. Use <RoomItemAdmin> to render each row. */
 const RoomAdmin = () => {
@@ -48,6 +49,9 @@ const RoomAdmin = () => {
     <Container className="py-3">
       <h4>POST Rooms</h4>
       <SearchBar handleSearch={handleSearch} />
+      <div className="py-3">
+        <DownloadCSVButton collection={Rooms} />
+      </div>
       <Row xs={1} md={2} lg={4} className="g-2">
         {roomList.map((room, index) => <RoomItem key={index} room={room} />)}
       </Row>
