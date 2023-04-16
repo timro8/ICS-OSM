@@ -10,6 +10,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { ROLE } from '../../api/role/Role';
+import DownloadCSVButton from '../components/DownloadCSVButton';
 
 const Faculty = () => {
   // show pop up to add faculty
@@ -39,7 +40,10 @@ const Faculty = () => {
 
         { /* Add Faculty button */ }
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
-          [<Button key={Math.random()} style={{ marginLeft: '1vw', marginBottom: '20px' }} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>]
+          <div className="py-3 d-flex gap-2">
+            <Button key={Math.random()} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>
+            <DownloadCSVButton collection={FacultyProfiles} />
+          </div>
         ) : ''}
 
         { /* pop up for add faculty */ }

@@ -9,6 +9,7 @@ import LoadingSpinner from '../LoadingSpinner';
 import TechRoomJack from './TechRoomJack';
 import TechAddJack from './TechAddJack';
 import { downloadCsv } from '../../../api/utilities/downloadCsv';
+import DownloadCSVButton from '../DownloadCSVButton';
 
 function getJackData(jack) {
   // get the room number, location from Rooms Collection and extend the jacks data
@@ -67,7 +68,8 @@ const TechJack = () => {
           ))}
         </tbody>
       </Table>
-      <Button onClick={() => downloadCsv(RoomJacks)}>dump</Button>
+      {/*<Button onClick={() => downloadCsv(RoomJacks)}>dump</Button>*/}
+      <DownloadCSVButton collection={RoomJacks} />
     </Container>
   ) : <LoadingSpinner message="Loading tech data" />);
 };
