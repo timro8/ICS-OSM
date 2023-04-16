@@ -207,31 +207,48 @@ body {
   padding: 0;
 }
 
-.search-container .search-input {
+.search-container .search-input,
+.search-body {
   padding: 10px;
-  border-radius: 15px;
-  border: 1px solid #ccc;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 100%;
+}
+
+.search-container .search-input {
+  border: none;
   color: #333;
   transition: border-color 0.3s ease-in-out;
-  width: 100%;
   outline: none;
 }
 
 .search-body {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 15px;
-  padding: 20px;
   position: absolute;
   left: 0;
   background-color: white;
   z-index: 10;
-  width: 100%;
 }
 
 .search-body:empty {
   display: none;
 }
 
+.search-heading,
+.search-list-item {
+  padding: 10px;
+}
+
 .search-heading {
-  margin: 5px 0;
+  color: #808080;
+  font-weight: 300;
+}
+
+.search-list-item {
+  border-radius: 10px;
+  height: 45px;
+}
+
+.search-list-item:hover {
+  background-color: #f3f3f3;
+  cursor: pointer;
 }

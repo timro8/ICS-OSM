@@ -45,19 +45,20 @@ const HomeSearchBar = () => {
           {filteredFaculties.length > 0 && (
             <>
               <div className="search-heading"><strong>Faculties</strong></div>
-              {filteredFaculties.map(faculty => <p>{faculty.firstName} {faculty.lastName}</p>)}
+              {filteredFaculties.map(faculty => <div className="search-list-item">{faculty.firstName} {faculty.lastName}</div>
+              )}
             </>
           )}
           {filteredStudents.length > 0 && (
             <>
               <div className="search-heading"><strong>Students</strong></div>
-              {filteredStudents.map(student => <p>{student.firstName} {student.lastName}</p>)}
+              {filteredStudents.map(student => <div className="search-list-item">{student.firstName} {student.lastName}</div>)}
             </>
           )}
           {filteredClubs.length > 0 && (
             <>
               <div className="search-heading"><strong>Clubs</strong></div>
-              {filteredClubs.map(club => <p>{club.clubName}</p>)}
+              {filteredClubs.map(club => <div className="search-list-item">{club.clubName}</div>)}
             </>
           )}
         </div>
