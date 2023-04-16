@@ -202,10 +202,19 @@ body {
   font-size: 0.8rem;
 }
 
+.search-container {
+  position: relative;
+}
+
 .search-body {
-  box-shadow: 0 3px 10px 1px #ebebeb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   padding: 20px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  background-color: white;
+  z-index: 10;
 }
 
 .search-body:empty {
