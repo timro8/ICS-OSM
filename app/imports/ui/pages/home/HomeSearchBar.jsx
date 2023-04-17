@@ -8,7 +8,6 @@ import { Rooms } from '../../../api/room/RoomCollection';
 import FacultyListItem from './list-item/FacultyListItem';
 import StudentListItem from './list-item/StudentListItem';
 import ClubListItem from './list-item/ClubListItem';
-import { getRoomData } from '../../../api/utilities/getRoomData';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
 // TODO: add icons to search
@@ -49,8 +48,8 @@ const HomeSearchBar = () => {
 
     const getFacultyInfo = (faculty) => `${faculty.firstName} ${faculty.lastName} ${faculty.email}`.toLowerCase();
     const getStudentInfo = (student) => `${student.firstName} ${student.lastName}`.toLowerCase();
-    const getClubInfo = (club) => `${club.clubName}`.toLowerCase().toLowerCase();
-    const getRoomInfo = (room) => `${room.location} ${room.roomNumber}`;
+    const getClubInfo = (club) => `${club.clubName}`.toLowerCase();
+    const getRoomInfo = (room) => `${room.location} ${room.roomNumber}`.toLowerCase();
 
     setFilteredFaculties(faculties.filter(faculty => getFacultyInfo(faculty).includes(searchInput.toLowerCase())));
     setFilteredStudents(students.filter(student => getStudentInfo(student).includes(searchInput.toLowerCase())));
