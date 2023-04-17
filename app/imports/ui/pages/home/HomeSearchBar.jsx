@@ -54,7 +54,7 @@ const HomeSearchBar = () => {
     setFilteredFaculties(faculties.filter(faculty => getFacultyInfo(faculty).includes(searchInput.toLowerCase())));
     setFilteredStudents(students.filter(student => getStudentInfo(student).includes(searchInput.toLowerCase())));
     setFilteredClubs(clubs.filter(club => getClubInfo(club).includes(searchInput.toLowerCase())));
-    setFilteredRooms(rooms.filter(room => getRoomInfo(room).includes(searchInput.toLowerCase())));
+    setFilteredRooms(rooms.filter(room => getRoomInfo(room).match(searchInput.toLowerCase())));
 
     setSelectedItemIndex(0); // Reset active item index on input change
   };
