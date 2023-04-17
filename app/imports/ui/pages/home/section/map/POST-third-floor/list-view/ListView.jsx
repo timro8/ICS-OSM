@@ -11,7 +11,7 @@ const RoomsList = ({ rooms, status }) => {
   if (!roomsByStatus().length) {
     return (<div style={{ color: '#444' }}>There are no rooms {status.toLowerCase()}</div>);
   }
-  return roomsByStatus().map(room => <ul><li key={rooms._id}><Link to={`/roomdetails/${room._id}`}>{room.roomNumber}</Link></li></ul>);
+  return roomsByStatus().map(room => <ul key={`${room._id}`}><li key={room._id}><Link to={`/roomdetails/${room._id}`}>{room.roomNumber}</Link></li></ul>);
 };
 
 const FacultiesList = ({ faculties, assigned }) => {
@@ -24,9 +24,9 @@ const FacultiesList = ({ faculties, assigned }) => {
     return (<div style={{ color: '#444' }}>There are no unassigned faculties</div>);
   }
   if (assigned) {
-    return facultiesAssigned().map(faculty => <ul><li key={faculty._id}><Link to={`/profile/${faculty._id}`}>{faculty.firstName} {faculty.lastName}</Link></li></ul>);
+    return facultiesAssigned().map(faculty => <ul key={`${faculty._id}`}><li key={`${faculty._id}assigned`}><Link to={`/profile/${faculty._id}`}>{faculty.firstName} {faculty.lastName}</Link></li></ul>);
   }
-  return facultiesUnassigned().map(faculty => <ul><li key={faculty._id}><Link to={`/profile/${faculty._id}`}>{faculty.firstName} {faculty.lastName}</Link></li></ul>);
+  return facultiesUnassigned().map(faculty => <ul key={`${faculty._id}`}><li key={`${faculty._id}unassigned`}><Link to={`/profile/${faculty._id}`}>{faculty.firstName} {faculty.lastName}</Link></li></ul>);
 };
 
 const ListView = ({ rooms, faculties }) => {

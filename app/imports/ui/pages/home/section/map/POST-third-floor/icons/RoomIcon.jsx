@@ -27,7 +27,7 @@ const RoomIcon = (props) => {
       const roomPositionTop = (roomPosition.top / 100) * props.mapHeight;
       const roomPositionLeft = (roomPosition.left / 100) * props.mapWidth;
       return (
-        <Link to={`/roomdetails/${room._id}`}>
+        <Link to={`/roomdetails/${room._id}`} key={`${room._id}`}>
           <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={roomPopover(room)}>
             <button
               type="button"
