@@ -10,6 +10,7 @@ import { RoomNotes } from '../../api/room/RoomNotes';
 import { RoomJacks } from '../../api/room/RoomJacks';
 import { RoomEquipments } from '../../api/room/RoomEquipments';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
+import { StaffProfiles } from '../../api/user/StaffProfileCollection';
 import { OccupantRoom } from '../../api/user/OccupantRoomCollection';
 import RoomNote from '../components/Roomthings/RoomNote';
 import AddNote from '../components/Addpages/AddNote';
@@ -19,6 +20,7 @@ import RoomEquipment from '../components/Roomthings/RoomEquipment';
 import AddEquipment from '../components/Addpages/AddEquipment';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { getRoomData } from '../../api/utilities/getRoomData';
+import AddOccupant from '../components/Addpages/AddOccupant';
 
 /* The RoomDetails page with equipment, jacks, and notes. */
 
@@ -43,9 +45,10 @@ const RoomDetails = () => {
     const subJacks = RoomJacks.subscribeRoomJacksAdmin();
     const subEquipment = RoomEquipments.subscribeRoomEquipmentAdmin();
     const subFaculty = FacultyProfiles.subscribeFacultyProfileAdmin();
+    const subStaff = StaffProfiles.subscribeStaffProfileAdmin();
     const subOccupant = OccupantRoom.subscribeOccupantRoomAdmin();
     const owner = Meteor.user().username;
-    const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready() && subFaculty.ready() && subOccupant.ready();
+    const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready() && subFaculty.ready() && subStaff.ready() && subOccupant.ready();
     const document = Rooms.findDoc({ _id: _id });
     const documentNotes = RoomNotes.find({ roomId: _id }).fetch();
     const documentJacks = RoomJacks.find({ roomId: _id }).fetch();
@@ -70,6 +73,7 @@ const RoomDetails = () => {
   return ready ? (
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
       <h3>Room {roomNumber} Details</h3>
+      <AddOccupant roomKey={doc._id} />
       <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${doc._id}`}>Edit room</Link>
       <Row>
         <Col>
