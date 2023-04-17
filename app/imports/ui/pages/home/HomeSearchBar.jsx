@@ -13,11 +13,11 @@ import FacultyListItem from './list-item/FacultyListItem';
 // TODO: allow using keys to interact with the search bar
 
 const HomeSearchBar = () => {
-
   const [searchInput, setSearchInput] = useState('');
   const [filteredFaculties, setFilteredFaculties] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [filteredClubs, setFilteredClubs] = useState([]);
+  const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
   const { faculties, students, clubs } = useTracker(() => {
     FacultyProfiles.subscribeFacultyProfileAdmin();
@@ -41,23 +41,44 @@ const HomeSearchBar = () => {
     setFilteredFaculties(faculties.filter(faculty => getFacultyInfo(faculty).includes(searchInput.toLowerCase())));
     setFilteredStudents(students.filter(student => getStudentInfo(student).includes(searchInput.toLowerCase())));
     setFilteredClubs(clubs.filter(club => getClubInfo(club).includes(searchInput.toLowerCase())));
+
+    setSelectedItemIndex(0); // Reset active item index on input change
+  };
+
+  const handleKeyDown = (e) => {
+    const searchResultsLength = (filteredFaculties.length + filteredClubs.length + filteredStudents.length) - 1;
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (selectedItemIndex === 0) {
+        setSelectedItemIndex(searchResultsLength);
+      } else {
+        setSelectedItemIndex(Math.max(selectedItemIndex - 1, 0));
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (selectedItemIndex === searchResultsLength) {
+        setSelectedItemIndex(0);
+      } else {
+        setSelectedItemIndex(Math.min(selectedItemIndex + 1, searchResultsLength));
+      }
+    }
   };
 
   return (
     <Form className="search-container col-lg-6 p-0">
-      <input type="search" onChange={handleInputChange} value={searchInput} placeholder="Search" className="search-input" />
+      <input type="search" onChange={handleInputChange} onKeyDown={handleKeyDown} value={searchInput} placeholder="Search" className="search-input" />
       {searchInput.length > 0 && (
         <div className="search-body">
           {filteredFaculties.length > 0 && (
             <>
               <div className="search-heading">Faculties</div>
-              {filteredFaculties.map(faculty => <FacultyListItem faculty={faculty} />)}
+              {filteredFaculties.map((faculty, index) => <FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} />)}
             </>
           )}
           {filteredStudents.length > 0 && (
             <>
               <div className="search-heading">Students</div>
-              {filteredStudents.map(student => <div className="search-list-item">{student.firstName} {student.lastName}</div>)}
+              {filteredStudents.map((student) => <div className="search-list-item">{student.firstName} {student.lastName}</div>)}
             </>
           )}
           {filteredClubs.length > 0 && (

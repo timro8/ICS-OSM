@@ -268,3 +268,7 @@ body {
   height: 70px;
   gap: 15px;
 }
+
+.search-list-item.active {
+  color: red;
+}
