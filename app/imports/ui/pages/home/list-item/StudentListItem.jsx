@@ -4,10 +4,7 @@ import PropTypes from 'prop-types';
 
 const StudentListItem = ({ student, selectedItemIndex, index }) => (
   <div className={`search-list-item faculty-list-item ${selectedItemIndex === index ? 'active' : ''}`} key={index}>
-    <Col md={1}>
-      <img src={student.image} alt="student" />
-    </Col>
-    <Col md={11}>
+    <Col>
       <div className="search-list-item-main">
         {student.firstName} {student.lastName}
       </div>
@@ -23,7 +20,6 @@ StudentListItem.propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    image: PropTypes.string,
   }).isRequired,
   selectedItemIndex: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
