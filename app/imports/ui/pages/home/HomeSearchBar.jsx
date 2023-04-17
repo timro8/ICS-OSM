@@ -9,6 +9,7 @@ import FacultyListItem from './list-item/FacultyListItem';
 import StudentListItem from './list-item/StudentListItem';
 import ClubListItem from './list-item/ClubListItem';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import RoomListItem from './list-item/RoomListItem';
 
 // TODO: add icons to search
 // TODO: move search to nav
@@ -104,7 +105,7 @@ const HomeSearchBar = () => {
           {filteredRooms.length > 0 && (
             <>
               <div className="search-heading">Rooms</div>
-              {filteredRooms.map((room) => <div>{room.location} {room.roomNumber}</div>)}
+              {filteredRooms.map((room, index) => <RoomListItem index={index} room={room} selectedItemIndex={index} />) }
             </>
           )}
         </div>
