@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { _ } from 'meteor/underscore';
-import { Container, Table } from 'react-bootstrap';
+import { Button, Container, Table } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Rooms } from '../../../api/room/RoomCollection';
 import { RoomJacks } from '../../../api/room/RoomJacks';
@@ -8,6 +8,8 @@ import SearchBar from '../SearchBar';
 import LoadingSpinner from '../LoadingSpinner';
 import TechRoomJack from './TechRoomJack';
 import TechAddJack from './TechAddJack';
+import { downloadCsv } from '../../../api/utilities/downloadCsv';
+import DownloadCSVButton from '../DownloadCSVButton';
 
 function getJackData(jack) {
   // get the room number, location from Rooms Collection and extend the jacks data
@@ -45,7 +47,7 @@ const TechJack = () => {
 
   return (ready ? (
     <Container className="py-3">
-      <h2 className="text-center p-2">Data Jacks</h2>
+      <h1 className="text-center p-2 display-4">Data Jacks</h1>
       <TechAddJack />
       {/* Search Bar */}
       <SearchBar handleSearch={handleSearch} />
@@ -66,7 +68,8 @@ const TechJack = () => {
           ))}
         </tbody>
       </Table>
-
+      {/*<Button onClick={() => downloadCsv(RoomJacks)}>dump</Button>*/}
+      <DownloadCSVButton collection={RoomJacks} />
     </Container>
   ) : <LoadingSpinner message="Loading tech data" />);
 };

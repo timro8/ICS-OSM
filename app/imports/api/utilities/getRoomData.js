@@ -16,7 +16,6 @@ export const getRoomData = (room) => {
 
   // Get the data for the roomOccupant based on the roomId
   const roomOccupant = OccupantRoom.find({ roomId: room }).fetch();
-
   // Get the data for the Faculty, Office, Tech based on the roomOccupant userId
   const occupants = roomOccupant.map(occupant => {
     // Return FacultyProfiles if userId is defined

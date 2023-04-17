@@ -6,8 +6,9 @@ import { Rooms } from '../../../api/room/RoomCollection';
 import { RoomEquipments } from '../../../api/room/RoomEquipments';
 import SearchBar from '../SearchBar';
 import LoadingSpinner from '../LoadingSpinner';
-import TechRoomEquipment from './TechRoomEquipment';
-import TechAddEquipment from './TechAddEquipment';
+import TechRoomEquipment from '../Tech/TechRoomEquipment';
+import TechAddEquipment from '../Tech/TechAddEquipment';
+import DownloadCSVButton from '../DownloadCSVButton';
 
 function getEquipmentData(equipment) {
   // get the room number, location from Rooms Collection and extend the equipment data
@@ -15,7 +16,7 @@ function getEquipmentData(equipment) {
   return _.extend({}, equipment, { roomNumber: rooms });
 }
 
-const TechEquipment = () => {
+const RoomAdminEquipment = () => {
   const [equipmentList, setList] = useState([]);
 
   const { equipment, ready } = useTracker(() => {
@@ -25,7 +26,7 @@ const TechEquipment = () => {
     // Get jack subscription
     const subEquipment = RoomEquipments.subscribeRoomEquipment();
 
-    const documentEquipment = RoomEquipments.find({ equipmentType: 'tech' }).fetch();
+    const documentEquipment = RoomEquipments.find({}).fetch();
 
     const equipmentData = documentEquipment.map(e => getEquipmentData(e));
     setList(equipmentData);
@@ -44,9 +45,11 @@ const TechEquipment = () => {
   };
   return (ready ? (
     <Container className="py-3">
-      <h2 className="text-center py-2">Equipment</h2>
-      <TechAddEquipment />
-
+      <h1 className="text-center py-2 display-4">Equipment (furniture and tech)</h1>
+      <div className="py-3 d-flex gap-2">
+        <TechAddEquipment />
+        <DownloadCSVButton collection={RoomEquipments} />
+      </div>
       {/* Search Bar */}
       <SearchBar handleSearch={handleSearch} />
 
@@ -73,4 +76,4 @@ const TechEquipment = () => {
   ) : <LoadingSpinner message="Loading tech data" />);
 };
 
-export default TechEquipment;
+export default RoomAdminEquipment;

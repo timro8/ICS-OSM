@@ -294,11 +294,11 @@ const AddFacultyForm = props => {
               {selectedOfficeHours.length > 0 && (
                 <div>
                   {selectedOfficeHours.map((value, index) => (
-                    <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                    <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px', justifyContent: 'center', alignItems: 'center', flex: 1, flexWrap: 'wrap' }}>
                       {value}
                       <CloseButton
                         variant="white"
-                        style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
+                        style={{ fontSize: '10px', marginRight: '10px' }}
                         onClick={() => { removeOfficeHours(value); }}
                       />
                     </Badge>

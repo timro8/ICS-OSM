@@ -54,12 +54,12 @@ class StudentProfileCollection extends BaseProfileCollection {
    * @param firstName new first name (optional).
    * @param lastName new last name (optional).
    */
-  update(docID, { firstName, lastName }) {
-    this.assertDefined(docID);
+  update(profileID, { firstName, lastName }) {
+    this.assertDefined(profileID);
     const updateData = {};
     if (firstName) updateData.firstName = firstName;
     if (lastName) updateData.lastName = lastName;
-    this._collection.update(docID, { $set: updateData });
+    this._collection.update(profileID, { $set: updateData });
   }
 
   /**

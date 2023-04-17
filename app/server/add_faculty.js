@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { FacultyProfiles } from '../imports/api/user/FacultyProfileCollection';
+import { OccupantRoom } from '../imports/api/user/OccupantRoomCollection';
 
 Meteor.methods({
   insertFaculty(data, rooms, officeHours, phoneNumber, imageUpload) {
@@ -18,5 +19,8 @@ Meteor.methods({
     }
     const facultyDefinitionData = { image: userImg, firstName, lastName, email, rooms: rooms, bio, phoneNumber: phoneNumber.toString(), officeHours: officeHours.toString(), owner: Meteor.user().emails[0].address, facRole: role, password: password };
     FacultyProfiles.define(facultyDefinitionData);
+    if (rooms.length > 0 && !rooms.includes('n/a')) {
+      rooms.map((room) => OccupantRoom.define({ email: email, roomNumber: room }));
+    }
   },
 });
