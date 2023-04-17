@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const StudentListItem = ({ student, selectedItemIndex, index }) => (
-  <div className={`search-list-item faculty-list-item ${selectedItemIndex === index ? 'active' : ''}`} key={index}>
+  <div className={`search-list-item student-list-item ${selectedItemIndex === index ? 'active' : ''}`} key={index}>
     <Col>
       <div className="search-list-item-main">
         {student.firstName} {student.lastName}
