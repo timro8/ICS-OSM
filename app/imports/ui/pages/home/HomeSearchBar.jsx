@@ -4,9 +4,12 @@ import { Form } from 'react-bootstrap';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { Clubs } from '../../../api/club/Club';
+import { Rooms } from '../../../api/room/RoomCollection';
 import FacultyListItem from './list-item/FacultyListItem';
 import StudentListItem from './list-item/StudentListItem';
 import ClubListItem from './list-item/ClubListItem';
+import { getRoomData } from '../../../api/utilities/getRoomData';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 // TODO: add icons to search
 // TODO: move search to nav
@@ -20,16 +23,23 @@ const HomeSearchBar = () => {
   const [filteredFaculties, setFilteredFaculties] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [filteredClubs, setFilteredClubs] = useState([]);
+  const [filteredRooms, setFilteredRooms] = useState([]);
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
-  const { faculties, students, clubs } = useTracker(() => {
-    FacultyProfiles.subscribeFacultyProfileAdmin();
-    StudentProfiles.subscribeStudentProfile();
-    Clubs.subscribeClub();
+  const { faculties, students, clubs, rooms, ready } = useTracker(() => {
+    const facultySubscription = FacultyProfiles.subscribeFacultyProfileAdmin();
+    const studentSubscription = StudentProfiles.subscribeStudentProfile();
+    const clubSubscription = Clubs.subscribeClub();
+    const roomsSubscription = Rooms.subscribeRoom();
+
+    const allSubcriptionsReady = facultySubscription.ready() && studentSubscription.ready() && clubSubscription.ready() && roomsSubscription.ready();
+
     return {
       faculties: FacultyProfiles.find({}).fetch(),
       students: StudentProfiles.find({}).fetch(),
       clubs: Clubs.find({}).fetch(),
+      rooms: rooms.find({}).fetch().map(room => room._id).map(room => getRoomData(room)),
+      ready: allSubcriptionsReady,
     };
   });
 
@@ -40,10 +50,12 @@ const HomeSearchBar = () => {
     const getFacultyInfo = (faculty) => `${faculty.firstName} ${faculty.lastName} ${faculty.email}`.toLowerCase();
     const getStudentInfo = (student) => `${student.firstName} ${student.lastName}`.toLowerCase();
     const getClubInfo = (club) => `${club.clubName}`.toLowerCase().toLowerCase();
+    const getRoomInfo = (room) => `${room.location} ${room.roomNumber}`;
 
     setFilteredFaculties(faculties.filter(faculty => getFacultyInfo(faculty).includes(searchInput.toLowerCase())));
     setFilteredStudents(students.filter(student => getStudentInfo(student).includes(searchInput.toLowerCase())));
     setFilteredClubs(clubs.filter(club => getClubInfo(club).includes(searchInput.toLowerCase())));
+    setFilteredRooms(rooms.filter(room => getRoomInfo(room).includes(searchInput.toLowerCase())));
 
     setSelectedItemIndex(0); // Reset active item index on input change
   };
@@ -67,7 +79,7 @@ const HomeSearchBar = () => {
     }
   };
 
-  return (
+  return ready ? (
     <Form className="search-container col-lg-6 p-0">
       <input type="search" onChange={handleInputChange} onKeyDown={handleKeyDown} value={searchInput} placeholder="Search" className="search-input" />
       {searchInput.length > 0 && (
@@ -90,10 +102,16 @@ const HomeSearchBar = () => {
               {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length + filteredStudents.length)} selectedItemIndex={selectedItemIndex} />)}
             </>
           )}
+          {filteredRooms.length > 0 && (
+            <>
+              <div className="search-heading">Rooms</div>
+              {filteredRooms.map((room) => <div>{room.location} {room.roomNumber}</div>)}
+            </>
+          )}
         </div>
       )}
     </Form>
-  );
+  ) : <LoadingSpinner />;
 };
 
 export default HomeSearchBar;
