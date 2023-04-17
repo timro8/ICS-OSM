@@ -10,7 +10,6 @@ import StudentListItem from './list-item/StudentListItem';
 // TODO: limit to a maximum of 3 items of each array and add show more to show full list
 // TODO: add images to to items that has images
 // TODO: make list items clickable
-// TODO: show more info about the list items
 // TODO: allow using keys to interact with the search bar
 
 const HomeSearchBar = () => {
