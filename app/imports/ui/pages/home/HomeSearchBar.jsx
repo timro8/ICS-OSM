@@ -6,6 +6,7 @@ import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { Clubs } from '../../../api/club/Club';
 import FacultyListItem from './list-item/FacultyListItem';
 import StudentListItem from './list-item/StudentListItem';
+import ClubListItem from './list-item/ClubListItem';
 
 // TODO: limit to a maximum of 3 items of each array and add show more to show full list
 // TODO: add images to to items that has images
@@ -84,7 +85,7 @@ const HomeSearchBar = () => {
           {filteredClubs.length > 0 && (
             <>
               <div className="search-heading">Clubs</div>
-              {filteredClubs.map(club => <div className="search-list-item">{club.clubName}</div>)}
+              {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length + filteredStudents.length)} selectedItemIndex={selectedItemIndex} />)}
             </>
           )}
         </div>
