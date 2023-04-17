@@ -38,7 +38,7 @@ const HomeSearchBar = () => {
       faculties: FacultyProfiles.find({}).fetch(),
       students: StudentProfiles.find({}).fetch(),
       clubs: Clubs.find({}).fetch(),
-      rooms: rooms.find({}).fetch().map(room => room._id).map(room => getRoomData(room)),
+      rooms: Rooms.find({}).fetch(),
       ready: allSubcriptionsReady,
     };
   });
