@@ -52,7 +52,7 @@ AdminPageFacultyComponent.propTypes = {
     email: PropTypes.string,
     image: PropTypes.string,
     facRole: PropTypes.string,
-    rooms: PropTypes.string,
+    rooms: PropTypes.arrayOf(PropTypes.string),
     _id: PropTypes.string,
   }).isRequired,
 };
