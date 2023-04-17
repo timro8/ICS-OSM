@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Tab, Tabs } from 'react-bootstrap';
+import { Container, Tab, Tabs } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import TechJack from '../components/Tech/TechJack';
 import TechEquipment from '../components/Tech/TechEquipment';
