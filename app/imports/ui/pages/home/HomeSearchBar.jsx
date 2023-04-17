@@ -8,7 +8,8 @@ import FacultyListItem from './list-item/FacultyListItem';
 import StudentListItem from './list-item/StudentListItem';
 import ClubListItem from './list-item/ClubListItem';
 
-// TODO: limit to a maximum of 3 items of each array and add show more to show full list
+// TODO: add rooms to search
+// TODO: limit to a maximum of 5 items of each array and add show more to show full list
 // TODO: make list items clickable
 // TODO: allow using keys to interact with the search bar
 
