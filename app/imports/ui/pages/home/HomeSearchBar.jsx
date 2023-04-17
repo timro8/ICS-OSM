@@ -8,6 +8,8 @@ import FacultyListItem from './list-item/FacultyListItem';
 import StudentListItem from './list-item/StudentListItem';
 import ClubListItem from './list-item/ClubListItem';
 
+// TODO: add icons to search
+// TODO: move search to nav
 // TODO: add rooms to search
 // TODO: limit to a maximum of 5 items of each array and add show more to show full list
 // TODO: make list items clickable
