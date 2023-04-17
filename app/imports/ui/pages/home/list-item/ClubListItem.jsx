@@ -11,9 +11,6 @@ const ClubListItem = ({ club, selectedItemIndex, index }) => (
       <div className="search-list-item-main">
         {club.clubName}
       </div>
-      <div className="search-list-item-extra">
-        {club.description}
-      </div>
     </Col>
   </div>
 );
@@ -22,7 +19,6 @@ ClubListItem.propTypes = {
   club: PropTypes.shape({
     clubName: PropTypes.string.isRequired,
     image: PropTypes.string,
-    description: PropTypes.string,
   }).isRequired,
   selectedItemIndex: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,

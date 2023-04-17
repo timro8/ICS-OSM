@@ -258,13 +258,15 @@ body {
   color: #989898;
 }
 
-.faculty-list-item img {
+.faculty-list-item img,
+.club-list-item img {
   width: 100%;
   height: auto;
   border-radius: 50%;
 }
 
-.faculty-list-item {
+.faculty-list-item,
+.club-list-item {
   height: 70px;
   gap: 15px;
 }
