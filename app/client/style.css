@@ -246,6 +246,7 @@ body {
   border-radius: 10px;
   display: flex;
   align-items: center;
+  margin: 5px;
 }
 
 .search-list-item:hover {
