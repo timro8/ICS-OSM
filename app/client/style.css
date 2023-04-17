@@ -270,5 +270,5 @@ body {
 }
 
 .search-list-item.active {
-  color: red;
+  background-color: #f3f3f3;
 }

@@ -2,24 +2,24 @@ import { Col } from 'react-bootstrap';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FacultyListItem = ({ faculty, selectedItemIndex, index }) => (
+const StudentListItem = ({ student, selectedItemIndex, index }) => (
   <div className={`search-list-item faculty-list-item ${selectedItemIndex === index ? 'active' : ''}`} key={index}>
     <Col md={1}>
-      <img src={faculty.image} alt="faculty" />
+      <img src={student.image} alt="student" />
     </Col>
     <Col md={11}>
       <div className="search-list-item-main">
-        {faculty.firstName} {faculty.lastName}
+        {student.firstName} {student.lastName}
       </div>
       <div className="search-list-item-extra">
-        {faculty.email}
+        {student.email}
       </div>
     </Col>
   </div>
 );
 
-FacultyListItem.propTypes = {
-  faculty: PropTypes.shape({
+StudentListItem.propTypes = {
+  student: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
@@ -29,4 +29,4 @@ FacultyListItem.propTypes = {
   index: PropTypes.number.isRequired,
 };
 
-export default FacultyListItem;
+export default StudentListItem;
