@@ -9,7 +9,6 @@ import StudentListItem from './list-item/StudentListItem';
 import ClubListItem from './list-item/ClubListItem';
 
 // TODO: limit to a maximum of 3 items of each array and add show more to show full list
-// TODO: add images to to items that has images
 // TODO: make list items clickable
 // TODO: allow using keys to interact with the search bar
 
