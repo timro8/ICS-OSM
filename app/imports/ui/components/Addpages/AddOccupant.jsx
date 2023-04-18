@@ -16,7 +16,7 @@ import LoadingSpinner from '../LoadingSpinner';
 // form schema based on the Equipment collection
 const formSchema = new SimpleSchema({
   roomKey: String,
-  occupantList: String,
+  occupant: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -41,13 +41,12 @@ const AddOccupant = ({ roomKey }) => {
       ready: rdy,
     };
   });
-  console.log(userList);
-  const occupantList = userList.map((user) => ({ label: `${user.firstName} ${user.lastName}`, value: user._id }));
+  const occupantList = userList.map((user) => ({ label: `${user.firstName} ${user.lastName}`, value: user.email }));
   // data added to the OccupantRoom collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional occupant.
   const submit = (data, formRef) => {
-    const { occupantList } = data;
     const collectionName = OccupantRoom.getCollectionName();
-    const definitionData = { userId, roomId };
+    const email = data.occupant;
+    const definitionData = { email, roomKey };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
@@ -69,7 +68,7 @@ const AddOccupant = ({ roomKey }) => {
         <Modal.Body>
           Add Occupant
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <SelectField name="occupantList" options={occupantList} />
+            <SelectField name="occupant" options={occupantList} />
             <SubmitField value="submit" />
             <ErrorsField />
             <HiddenField name="roomKey" value={roomKey} />
