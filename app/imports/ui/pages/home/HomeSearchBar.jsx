@@ -87,25 +87,25 @@ const HomeSearchBar = () => {
           {filteredFaculties.length > 0 && (
             <>
               <div className="search-heading">Faculties</div>
-              {filteredFaculties.map((faculty, index) => <FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} />)}
+              {filteredFaculties.map((faculty, index) => <FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} />).slice(0, Math.min(3, filteredFaculties.length - 1))}
             </>
           )}
           {filteredStudents.length > 0 && (
             <>
               <div className="search-heading">Students</div>
-              {filteredStudents.map((student, index) => <StudentListItem student={student} selectedItemIndex={selectedItemIndex} index={index + (filteredFaculties.length)} />)}
+              {filteredStudents.map((student, index) => <StudentListItem student={student} selectedItemIndex={selectedItemIndex} index={index + (filteredFaculties.length)} />).slice(0, Math.min(3, filteredStudents.length - 1))}
             </>
           )}
           {filteredClubs.length > 0 && (
             <>
               <div className="search-heading">Clubs</div>
-              {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length + filteredStudents.length)} selectedItemIndex={selectedItemIndex} />)}
+              {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length + filteredStudents.length)} selectedItemIndex={selectedItemIndex} />).slice(0, Math.min(3, filteredClubs.length - 1))}
             </>
           )}
           {filteredRooms.length > 0 && (
             <>
               <div className="search-heading">Rooms</div>
-              {filteredRooms.map((room, index) => <RoomListItem index={index} room={room} selectedItemIndex={index} />) }
+              {filteredRooms.map((room, index) => <RoomListItem index={index} room={room} selectedItemIndex={index} />).slice(0, Math.min(3, filteredRooms.length - 1)) }
             </>
           )}
         </div>
