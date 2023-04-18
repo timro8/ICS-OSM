@@ -87,25 +87,25 @@ const HomeSearchBar = () => {
           {filteredFaculties.length > 0 && (
             <>
               <div className="search-heading">Faculties</div>
-              {filteredFaculties.map((faculty, index) => <FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} />).slice(0, Math.min(3, filteredFaculties.length - 1))}
+              {filteredFaculties.map((faculty, index) => <FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} />)}
             </>
           )}
           {filteredStudents.length > 0 && (
             <>
               <div className="search-heading">Students</div>
-              {filteredStudents.map((student, index) => <StudentListItem student={student} selectedItemIndex={selectedItemIndex} index={index + (filteredFaculties.length)} />).slice(0, Math.min(3, filteredStudents.length - 1))}
+              {filteredStudents.map((student, index) => <StudentListItem student={student} selectedItemIndex={selectedItemIndex} index={index + (filteredFaculties.length)} />)}
             </>
           )}
           {filteredClubs.length > 0 && (
             <>
               <div className="search-heading">Clubs</div>
-              {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length + filteredStudents.length)} selectedItemIndex={selectedItemIndex} />).slice(0, Math.min(3, filteredClubs.length - 1))}
+              {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length + filteredStudents.length)} selectedItemIndex={selectedItemIndex} />)}
             </>
           )}
           {filteredRooms.length > 0 && (
             <>
               <div className="search-heading">Rooms</div>
-              {filteredRooms.map((room, index) => <RoomListItem index={index} room={room} selectedItemIndex={index} />).slice(0, Math.min(3, filteredRooms.length - 1)) }
+              {filteredRooms.map((room, index) => <RoomListItem index={index + filteredClubs.length + filteredStudents.length + filteredFaculties.length} room={room} selectedItemIndex={index} />) }
             </>
           )}
         </div>
