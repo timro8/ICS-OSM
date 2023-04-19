@@ -1,6 +1,7 @@
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
+import { ArrowDown, ArrowReturnLeft, ArrowUp, Command } from 'react-bootstrap-icons';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { Clubs } from '../../../api/club/Club';
@@ -14,7 +15,7 @@ import RoomListItem from './list-item/RoomListItem';
 // TODO: add icons to search
 // TODO: move search to nav
 // TODO: limit to a maximum of 5 items of each array and add show more to show full list
-// TODO: make list items clickable
+// TODO: make list items clickablex
 // TODO: allow using keys to interact with the search bar
 
 const HomeSearchBar = () => {
@@ -51,10 +52,10 @@ const HomeSearchBar = () => {
     const getClubInfo = (club) => `${club.clubName}`.toLowerCase();
     const getRoomInfo = (room) => `${room.location} ${room.roomNumber}`.toLowerCase();
 
-    setFilteredFaculties(faculties.filter(faculty => getFacultyInfo(faculty).includes(searchInput.toLowerCase())));
-    setFilteredStudents(students.filter(student => getStudentInfo(student).includes(searchInput.toLowerCase())));
-    setFilteredClubs(clubs.filter(club => getClubInfo(club).includes(searchInput.toLowerCase())));
-    setFilteredRooms(rooms.filter(room => getRoomInfo(room).match(searchInput.toLowerCase())));
+    setFilteredFaculties(faculties.filter(faculty => getFacultyInfo(faculty).includes(searchInput.toLowerCase())).slice(0, 3));
+    setFilteredStudents(students.filter(student => getStudentInfo(student).includes(searchInput.toLowerCase())).slice(0, 3));
+    setFilteredClubs(clubs.filter(club => getClubInfo(club).includes(searchInput.toLowerCase())).slice(0, 3));
+    setFilteredRooms(rooms.filter(room => getRoomInfo(room).match(searchInput.toLowerCase())).slice(0, 3));
 
     setSelectedItemIndex(0); // Reset active item index on input change
   };
@@ -83,30 +84,49 @@ const HomeSearchBar = () => {
       <input type="search" onChange={handleInputChange} onKeyDown={handleKeyDown} value={searchInput} placeholder="Search" className="search-input" />
       {searchInput.length > 0 && (
         <div className="search-body">
-          {filteredFaculties.length > 0 && (
-            <>
-              <div className="search-heading">Faculties</div>
-              {filteredFaculties.map((faculty, index) => <FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} />)}
-            </>
-          )}
-          {filteredStudents.length > 0 && (
-            <>
-              <div className="search-heading">Students</div>
-              {filteredStudents.map((student, index) => <StudentListItem student={student} selectedItemIndex={selectedItemIndex} index={index + (filteredFaculties.length)} />)}
-            </>
-          )}
-          {filteredClubs.length > 0 && (
-            <>
-              <div className="search-heading">Clubs</div>
-              {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length + filteredStudents.length)} selectedItemIndex={selectedItemIndex} />)}
-            </>
-          )}
-          {filteredRooms.length > 0 && (
-            <>
-              <div className="search-heading">Rooms</div>
-              {filteredRooms.map((room, index) => <RoomListItem index={index + filteredClubs.length + filteredStudents.length + filteredFaculties.length} room={room} selectedItemIndex={index} />) }
-            </>
-          )}
+          <div className="search-results">
+            {filteredFaculties.length > 0 && (
+              <>
+                <div className="search-heading">Faculties</div>
+                {filteredFaculties.map((faculty, index) => <FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} />)}
+              </>
+            )}
+            {filteredStudents.length > 0 && (
+              <>
+                <div className="search-heading">Students</div>
+                {filteredStudents.map((student, index) => <StudentListItem student={student} selectedItemIndex={selectedItemIndex} index={index + (filteredFaculties.length)} />)}
+              </>
+            )}
+            {filteredClubs.length > 0 && (
+              <>
+                <div className="search-heading">Clubs</div>
+                {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length + filteredStudents.length)} selectedItemIndex={selectedItemIndex} />)}
+              </>
+            )}
+            {filteredRooms.length > 0 && (
+              <>
+                <div className="search-heading">Rooms</div>
+                {filteredRooms.map((room, index) => <RoomListItem index={index + filteredClubs.length + filteredStudents.length + filteredFaculties.length} room={room} selectedItemIndex={index} />) }
+              </>
+            )}
+          </div>
+          <div className="key-use-info">
+            <div className="key-section">
+              <div className="move-keys">
+                <ArrowUp className="key-icon" />
+                <ArrowDown className="key-icon" />
+              </div>
+              <span className="key-text">Move</span>
+            </div>
+            <div className="key-section">
+              <ArrowReturnLeft className="key-icon" />
+              <span className="key-text">Select</span>
+            </div>
+            <div className="key-section">
+              <Command className="key-icon" />
+              <span className="key-text">Quit</span>
+            </div>
+          </div>
         </div>
       )}
     </Form>

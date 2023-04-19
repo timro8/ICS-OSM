@@ -221,6 +221,11 @@ body {
   outline: none;
 }
 
+.search-results {
+  max-height: 30rem;
+  overflow: auto;
+}
+
 .search-body {
   position: absolute;
   left: 0;
@@ -274,4 +279,36 @@ body {
 
 .search-list-item.active {
   background-color: #f3f3f3;
+}
+
+.key-use-info {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+  border-top: 1px solid lightgray;
+}
+
+.key-icon {
+  width: 1.5rem;
+  height: 1.75rem;
+}
+
+.key-section {
+  display: flex;
+  gap: 5px;
+}
+
+.key-text,
+.key-icon {
+  color: #989898;
+  font-weight: 600;
+}
+
+.key-use-info {
+  padding: 10px;
+}
+
+.move-keys {
+  display: flex;
+  gap: 2px;
 }
