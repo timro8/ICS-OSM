@@ -10,6 +10,7 @@ import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import EditFacultyProfile from '../../pages/EditFacultyProfile';
 import { removeItMethod } from '../../../api/base/BaseCollection.methods';
 import { ROLE } from '../../../api/role/Role';
+import { OccupantRoom } from '../../../api/user/OccupantRoomCollection';
 
 /** Component for FacultySection.jsx */
 
@@ -18,11 +19,14 @@ const AdminPageFacultyComponent = ({ facultyProfile }) => {
 
   const deleteUser = () => {
     const collectionName = FacultyProfiles.getCollectionName();
+    const collectionName2 = OccupantRoom.getCollectionName();
     const roomId = facultyProfile._id;
+    Meteor.call('deleteFacultyUser', facultyProfile._id);
+    removeItMethod.callPromise({ collectionName2, instance: facultyProfile._id });
     removeItMethod.callPromise({ collectionName, instance: roomId })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
-        swal('Success', 'Room removed successfully', 'success');
+        swal('Success', 'Faculty removed successfully', 'success');
       });
   };
 
@@ -52,7 +56,7 @@ AdminPageFacultyComponent.propTypes = {
     email: PropTypes.string,
     image: PropTypes.string,
     facRole: PropTypes.string,
-    rooms: PropTypes.string,
+    rooms: PropTypes.arrayOf(PropTypes.string),
     _id: PropTypes.string,
   }).isRequired,
 };

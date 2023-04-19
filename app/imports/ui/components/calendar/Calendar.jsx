@@ -9,12 +9,6 @@ const Calendar = ({ events }) => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  console.log('events in calendar', events);
-  console.log(events.map(event => ({
-    title: event.owner,
-    start: event.start,
-    end: event.end,
-  })));
   return (
     <div className="w-100">
       <h2>Conference Room 302</h2>

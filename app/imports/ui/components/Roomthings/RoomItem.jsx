@@ -22,9 +22,7 @@ const RoomItem = ({ room }) => (
           </Row>
           <Row>
             <Col>
-              <Card.Text>
-                {room.occupants.map((o) => <p key={o._id}>{o.firstName} {o.lastName}</p>)}
-              </Card.Text>
+              {room.occupants.map((o) => <div key={o._id}>{o.firstName} {o.lastName}</div>)}
             </Col>
           </Row>
           <Row>

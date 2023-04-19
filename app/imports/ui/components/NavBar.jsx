@@ -44,7 +44,7 @@ const NavBar = () => {
     (
       <Navbar expand="lg" style={menuStyle} className="px-3">
         <Container fluid>
-          <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/">
+          <Navbar.Brand id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} to="/" key="logo">
             <img
               src="/images/Hawaii_Warriors_logo.svg.png"
               width="70"
@@ -56,13 +56,13 @@ const NavBar = () => {
           <Navbar.Collapse id={COMPONENT_IDS.NAVBAR_COLLAPSE}>
             <Nav className="me-auto justify-content-start">
               {currentUser ? ([
-                <Nav.Link id={COMPONENT_IDS.NAVBAR_HOME} as={NavLink} to="/home" key="faculty">Home</Nav.Link>,
+                <Nav.Link id={COMPONENT_IDS.NAVBAR_HOME} as={NavLink} to="/home" key="home">Home</Nav.Link>,
                 <Nav.Link id={COMPONENT_IDS.NAVBAR_FACULTY} as={NavLink} to="/faculty" key="faculty">Faculty</Nav.Link>,
-                <NavDropdown id={COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB} title="Clubs">
+                <NavDropdown id={COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB} title="Clubs" key="club-dropdown">
                   {ready && clubs ? (
                     clubs.map((club) => (<Nav.Link className="d-flex justify-content-center" as={NavLink} id={COMPONENT_IDS.NAVBAR_CLUB} to={`/clubs/${club._id}`} key={`${club._id}`}> {club.clubName} </Nav.Link>))
                   ) : '' }
-                  <Nav.Item className="d-flex justify-content-center">
+                  <Nav.Item className="d-flex justify-content-center" key="add-club">
                     <AddClub />
                   </Nav.Item>
                 </NavDropdown>,
@@ -93,11 +93,12 @@ const NavBar = () => {
                       id={COMPONENT_IDS.NAVBAR_PROFILE}
                       as={NavLink}
                       to={`/profile/${facultyId}`}
+                      key="profile"
                     >
                       <PersonFill />Profile
                     </NavDropdown.Item>
                   ) : ''}
-                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} onClick={handleSignout}><BoxArrowRight />Sign out</NavDropdown.Item>
+                  <NavDropdown.Item id={COMPONENT_IDS.NAVBAR_SIGN_OUT} as={NavLink} onClick={handleSignout} key="sign-out"><BoxArrowRight />Sign out</NavDropdown.Item>
                 </NavDropdown>
               )}
             </Nav>
