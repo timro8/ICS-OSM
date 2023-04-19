@@ -24,6 +24,8 @@ import AddOccupant from '../components/Addpages/AddOccupant';
 
 /* The RoomDetails page with equipment, jacks, and notes. */
 
+// TODO: edit and remove occupants
+
 const RoomDetails = () => {
   // Get the documentID from the URL field.
   const { _id } = useParams();

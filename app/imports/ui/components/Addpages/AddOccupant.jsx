@@ -10,7 +10,8 @@ import SimpleSchema from 'simpl-schema';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StaffProfiles } from '../../../api/user/StaffProfileCollection';
 import { OccupantRoom } from '../../../api/user/OccupantRoomCollection';
-import { defineMethod } from '../../../api/base/BaseCollection.methods';
+import { Rooms } from '../../../api/room/RoomCollection';
+import { defineMethod, updateMethod } from '../../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../LoadingSpinner';
 
 // form schema based on the Equipment collection
@@ -29,27 +30,39 @@ const AddOccupant = ({ roomKey }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { userList, ready } = useTracker(() => {
+  const { userList, ready, room } = useTracker(() => {
     const subFac = FacultyProfiles.subscribeFacultyProfileAdmin();
     const subStaff = StaffProfiles.subscribeStaffProfileAdmin();
+    const subRoom = Rooms.subscribeRoom();
     const docFac = FacultyProfiles.find().fetch();
     const docStaff = StaffProfiles.find().fetch();
-    const rdy = subFac.ready() && subStaff.ready();
+    const docRoom = Rooms.find({ roomKey: roomKey }).fetch();
+    const rdy = subFac.ready() && subStaff.ready() && subRoom.ready();
     const allUsers = _.extend([], docFac, docStaff);
     return {
       userList: allUsers,
+      room: docRoom,
       ready: rdy,
     };
   });
+
   const occupantList = userList.map((user) => ({ label: `${user.firstName} ${user.lastName}`, value: user.email }));
   // data added to the OccupantRoom collection. If there are errors, an error message will appear. If the data is submitted successfully, a success message will appear. Upon success, the form will reset for the user to add additional occupant.
   const submit = (data, formRef) => {
-    const collectionName = OccupantRoom.getCollectionName();
+    let collectionName = OccupantRoom.getCollectionName();
     const email = data.occupant;
     const definitionData = { email, roomKey };
     defineMethod.callPromise({ collectionName, definitionData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
+        collectionName = Rooms.getCollectionName();
+        const status = 'Occupied';
+        const capacity = room[0].capacity;
+        const roomSqFoot = room[0].roomSqFoot;
+        const roomClassification = room[0].roomClassification;
+        const picture = room[0].picture;
+        const updateData = { id: room[0]._id, status, capacity, roomSqFoot, roomClassification, picture };
+        updateMethod.callPromise({ collectionName, updateData });
         swal('Success', 'Occupant assigned successfully', 'success');
         formRef.reset();
       });
@@ -68,7 +81,7 @@ const AddOccupant = ({ roomKey }) => {
         <Modal.Body>
           Add Occupant
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <SelectField name="occupant" options={occupantList} />
+            <SelectField name="occupant" options={occupantList} multiple />
             <SubmitField value="submit" />
             <ErrorsField />
             <HiddenField name="roomKey" value={roomKey} />
