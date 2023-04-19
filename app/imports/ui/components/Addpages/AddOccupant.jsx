@@ -81,7 +81,7 @@ const AddOccupant = ({ roomKey }) => {
         <Modal.Body>
           Add Occupant
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <SelectField name="occupant" options={occupantList} multiple />
+            <SelectField name="occupant" options={occupantList} />
             <SubmitField value="submit" />
             <ErrorsField />
             <HiddenField name="roomKey" value={roomKey} />

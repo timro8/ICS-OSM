@@ -50,24 +50,26 @@ const TechEquipment = () => {
       {/* Search Bar */}
       <SearchBar handleSearch={handleSearch} />
 
-      <Table responsive hover>
-        <thead>
-          <tr>
-            <th>Room Number</th>
-            <th>Quantity</th>
-            <th>Description</th>
-            <th>Serial Number</th>
-            <th>Asset Tag</th>
-            <th>Equipment Type</th>
-            <th>Edit</th>
-          </tr>
-        </thead>
-        <tbody>
-          {equipmentList.map((e, index) => (
-            <TechRoomEquipment key={index} equipment={e} />
-          ))}
-        </tbody>
-      </Table>
+      <div className="scroll" style={{ height: '20rem' }}>
+        <Table responsive hover>
+          <thead>
+            <tr>
+              <th>Room Number</th>
+              <th>Quantity</th>
+              <th>Description</th>
+              <th>Serial Number</th>
+              <th>Asset Tag</th>
+              <th>Equipment Type</th>
+              <th>Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {equipmentList.map((e, index) => (
+              <TechRoomEquipment key={index} equipment={e} />
+            ))}
+          </tbody>
+        </Table>
+      </div>
 
     </Container>
   ) : <LoadingSpinner message="Loading tech data" />);

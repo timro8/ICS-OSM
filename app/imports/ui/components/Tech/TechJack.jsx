@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { _ } from 'meteor/underscore';
-import { Container, Table } from 'react-bootstrap';
+import { Container, Table, Button } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Rooms } from '../../../api/room/RoomCollection';
 import { RoomJacks } from '../../../api/room/RoomJacks';
@@ -50,23 +50,26 @@ const TechJack = () => {
       <TechAddJack />
       {/* Search Bar */}
       <SearchBar handleSearch={handleSearch} />
-      <Table responsive hover>
-        <thead>
-          <tr>
-            <th>Room Number</th>
-            <th>Jack Number</th>
-            <th>Location</th>
-            <th>Description</th>
-            <th>IDF Room</th>
-            <th>Edit Jack</th>
-          </tr>
-        </thead>
-        <tbody>
-          {jackList.map((j, index) => (
-            <TechRoomJack key={index} jack={j} />
-          ))}
-        </tbody>
-      </Table>
+      <div className="scroll" style={{ height: '20rem' }}>
+        <Table responsive hover>
+          <thead>
+            <tr>
+              <th>Room Number</th>
+              <th>Jack Number</th>
+              <th>Location</th>
+              <th>Description</th>
+              <th>IDF Room</th>
+              <th>Edit Jack</th>
+            </tr>
+          </thead>
+          <tbody>
+            {jackList.map((j, index) => (
+              <TechRoomJack key={index} jack={j} />
+            ))}
+          </tbody>
+        </Table>
+      </div>
+
       {/* <Button onClick={() => downloadCsv(RoomJacks)}>dump</Button> */}
       <DownloadCSVButton collection={RoomJacks} />
     </Container>
