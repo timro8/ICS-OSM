@@ -1,24 +1,21 @@
 import React from 'react';
 import { Card, Col, Image, Row } from 'react-bootstrap';
 import PropTypes, { arrayOf } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const FacultyCard = ({ faculty }) => (
-  <Col style={{ marginBottom: '20px' }}>
-    <Card className="w-100" border="info">
-      <Card.Body>
-        <Row>
-          <a style={{ color: 'black', textDecoration: 'none' }} className="faculty-card" href={`/profile/${faculty._id}`}>
-            <Col className="d-flex justify-content-center">
-              <Image roundedCircle src={faculty.image} width="100px" />
-            </Col>
-            <hr />
-            <Col className="d-flex justify-content-center"><Card.Text>{faculty.firstName} {faculty.lastName}</Card.Text></Col>
-            <Col className="d-flex justify-content-center"><Card.Text>Room: {faculty.rooms} </Card.Text></Col>
-          </a>
-        </Row>
-      </Card.Body>
-    </Card>
-  </Col>
+  <Row className="py-3">
+    <Col className="d-flex gap-4">
+      <a href={`/profile/${faculty._id}`}>
+        <Image roundedCircle src={faculty.image} width="100px" />
+      </a>
+      <div>
+        <div>{faculty.firstName} {faculty.lastName}</div>
+        <div>Room {faculty.rooms}</div>
+        <div>{faculty.phoneNumber}</div>
+      </div>
+    </Col>
+  </Row>
 );
 
 FacultyCard.propTypes = {
