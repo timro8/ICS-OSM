@@ -61,7 +61,7 @@ const AddClub = () => {
         </Button>
       ) : ''}
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="add-club-modal">
         <Modal.Header closeButton>
           <Modal.Title>Add Club</Modal.Title>
         </Modal.Header>

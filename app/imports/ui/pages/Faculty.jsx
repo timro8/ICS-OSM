@@ -11,6 +11,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { ROLE } from '../../api/role/Role';
 import DownloadCSVButton from '../components/DownloadCSVButton';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const Faculty = () => {
   // show pop up to add faculty
@@ -41,7 +42,7 @@ const Faculty = () => {
         { /* Add Faculty button */ }
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
           <div className="py-3 d-flex gap-2">
-            <Button key={Math.random()} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>
+            <Button id={COMPONENT_IDS.ADD_FACULTY} key={Math.random()} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>
             <DownloadCSVButton collection={FacultyProfiles} />
           </div>
         ) : ''}

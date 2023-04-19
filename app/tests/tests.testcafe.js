@@ -16,6 +16,7 @@ const facultyCredentials = { username: 'esb@hawaii.edu', password: 'changeme' };
 const studentCredentials = { username: 'student@foo.com', password: 'changeme' };
 const officeCredentials = { username: 'office@foo.com', password: 'changeme' };
 const techCredentials = { username: 'tech@foo.com', password: 'changeme' };
+const acmCredentials = { username: 'acm@foo.com', password: 'changeme' };
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
 
 /** Room */
@@ -108,11 +109,48 @@ test('Navigating to club page', async () => {
 });
 
 // TODO: implement test for adding faculty
+test('Modal works for adding faculty', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoFacultyPage();
+  await facultyPage.isDisplayed();
+  await facultyPage.addFaculty();
+});
+
 // TODO: implement test for editing faculty
+test('Modal works for editing faculty', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoFacultyPage();
+  await facultyPage.isDisplayed();
+  await facultyPage.gotoFacultyProfile();
+  await facultyProfilePage.isDisplayed();
+  await facultyProfilePage.editFaculty();
+});
+
 // TODO: implement test for adding room
 // TODO: implement test for editing room
+
 // TODO: implement test for adding club
+test.only('Modal works for adding club', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.addClub();
+});
+
 // TODO: implement test for editing club
+test.only('Modal works for editing club', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(acmCredentials.username, acmCredentials.password);
+  await navBar.isLoggedIn(acmCredentials.username);
+  await navBar.gotoClubPage();
+  await clubPage.isDisplayed();
+  await clubPage.editClub();
+});
+
 // TODO: implement test for tech page
 // TODO: implement test for add jack
 // TODO: implement test for edit jack

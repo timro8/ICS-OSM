@@ -21,6 +21,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { ROLE } from '../../api/role/Role';
 import { getTimeSelection, uploadImgUrl } from '../../api/faculty/faculty_form_helper';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 /* Renders the EditFaculty page for editing a single document. */
 const EditFacultyProfile = ({ id }) => {
@@ -223,13 +224,13 @@ const EditFacultyProfile = ({ id }) => {
     <>
       <Col className="d-flex justify-content-center">
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) || doc.email === Meteor.user().username ? (
-          <Button key={Math.random()} style={{ width: '7rem' }} variant="primary" onClick={handleShow}>
+          <Button id={COMPONENT_IDS.EDIT_FACULTY_PROFILE} key={Math.random()} style={{ width: '7rem' }} variant="primary" onClick={handleShow}>
             Edit Profile
           </Button>
         ) : ''}
       </Col>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="edit-faculty-modal">
         <Modal.Header closeButton onClick={handleClose}>
           <Modal.Title className="d-flex justify-content-center">Edit Faculty Profile</Modal.Title>
         </Modal.Header>

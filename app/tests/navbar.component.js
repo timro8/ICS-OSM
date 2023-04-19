@@ -96,6 +96,17 @@ class NavBar {
     await t.click(`#${COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB}`);
     await t.click(`#${COMPONENT_IDS.NAVBAR_CLUB}`);
   }
+
+  async addClub() {
+    const visible = await Selector(`#${COMPONENT_IDS.NAVBAR_COLLAPSE}`).visible;
+    if (!visible) {
+      await t.click('button.navbar-toggler');
+    }
+    await t.expect(Selector(`#${COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB}`).exists).ok();
+    await t.click(`#${COMPONENT_IDS.NAVBAR_DROPDOWN_CLUB}`);
+    await t.click(`#${COMPONENT_IDS.ADD_CLUB}`);
+    await t.expect(Selector('#add-club-modal').exists).ok();
+  }
 }
 
 export const navBar = new NavBar();

@@ -10,6 +10,7 @@ import { updateMethod } from '../../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../LoadingSpinner';
 import { Clubs } from '../../../api/club/Club';
 import { uploadImgUrl } from '../../../api/faculty/faculty_form_helper';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 const bridge = new SimpleSchema2Bridge(Clubs._schema);
 
@@ -70,13 +71,13 @@ const EditClub = ({ id }) => {
 
   return ready ? (
     <>
-      <Col className="pt-3 d-flex justify-content-center">
+      <Col id={COMPONENT_IDS.EDIT_CLUB} className="pt-3 d-flex justify-content-center">
         <Button variant="primary" onClick={handleShow}>
           Edit Club
         </Button>
       </Col>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="edit-club-modal">
         <Modal.Header closeButton onClick={handleClose}>
           <Modal.Title className="d-flex justify-content-center">Edit Club</Modal.Title>
         </Modal.Header>
