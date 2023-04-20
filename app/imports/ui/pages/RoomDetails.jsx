@@ -3,7 +3,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
-import { Col, Row, Container, ListGroup, Image, Table, Button } from 'react-bootstrap';
+import { Col, Row, Container, ListGroup, Image, Table } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import { RoomNotes } from '../../api/room/RoomNotes';
@@ -21,6 +21,7 @@ import AddEquipment from '../components/Addpages/AddEquipment';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { getRoomData } from '../../api/utilities/getRoomData';
 import AddOccupant from '../components/Addpages/AddOccupant';
+import RoomOccupant from '../components/Roomthings/RoomOccupant';
 
 /* The RoomDetails page with occupants, equipment, jacks, and notes. */
 
@@ -88,36 +89,28 @@ const RoomDetails = () => {
           <Image src={picture} alt={`${roomNumber} picture`} width={100} />
         </Col>
       </Row>
-      <Row className="simple-card">
+      <Row className="simple-card mb-4">
         <div className="scroll" style={{ height: '20rem' }}>
           <h4>Occupants</h4>
           <AddOccupant roomKey={doc.roomKey} />
           <Table responsive hover>
             <thead>
-              <th> </th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Actions</th>
-              <th> </th>
+              <tr>
+                <th> </th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+                <th> </th>
+              </tr>
             </thead>
             <tbody>
-              {roomOccupants.occupants.map((o) => (
-                <tr key={o._id}>
-                  <td>
-                    <Image roundedCircle src={o.image} height="35rem" className="px-2" />
-                  </td>
-                  <td>{o.firstName}</td>
-                  <td>{o.lastName}</td>
-                  <td>{o.email}</td>
-                  <td><Button variant="outline-danger" size="sm">Remove {o.firstName}</Button></td>
-                </tr>
-              ))}
+              {roomOccupants.occupants.map((occupant, index) => <RoomOccupant key={index} occupant={occupant} roomId={doc._id} />)}
             </tbody>
           </Table>
         </div>
       </Row>
-      <Row className="simple-card">
+      <Row className="simple-card  mb-4">
         <div className="scroll" style={{ height: '20rem' }}>
           <h4>Room Equipment</h4>
           <AddEquipment roomKey={roomKey} />
@@ -138,7 +131,7 @@ const RoomDetails = () => {
           </Table>
         </div>
       </Row>
-      <Row className="simple-card">
+      <Row className="simple-card  mb-4">
         <div className="scroll" style={{ height: '20rem' }}>
           <h4>Room Data Jacks</h4>
           <AddJack roomKey={roomKey} />

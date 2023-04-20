@@ -34,11 +34,17 @@ const AddOccupant = ({ roomKey }) => {
     const subFac = FacultyProfiles.subscribeFacultyProfileAdmin();
     const subStaff = StaffProfiles.subscribeStaffProfileAdmin();
     const subRoom = Rooms.subscribeRoom();
+    const subOccupantRoom = OccupantRoom.subscribeOccupantRoomAdmin();
     const docFac = FacultyProfiles.find().fetch();
     const docStaff = StaffProfiles.find().fetch();
     const docRoom = Rooms.find({ roomKey: roomKey }).fetch();
-    const rdy = subFac.ready() && subStaff.ready() && subRoom.ready();
+    const docOccupantRoom = OccupantRoom.find({ roomId: docRoom[0]._id }).fetch();
+    console.log(docOccupantRoom);
+    const rdy = subFac.ready() && subStaff.ready() && subRoom.ready() && subOccupantRoom.ready();
     const allUsers = _.extend([], docFac, docStaff);
+    allUsers.sort(function (a, b) {
+      return a.lastName.localeCompare(b.lastName) || a.firstName.localeCompare(b.firstName);
+    });
     return {
       userList: allUsers,
       room: docRoom,
@@ -56,8 +62,9 @@ const AddOccupant = ({ roomKey }) => {
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         collectionName = Rooms.getCollectionName();
+        const occupants = OccupantRoom.find({ roomId: room[0]._id }).fetch();
         const status = 'Occupied';
-        const capacity = room[0].capacity;
+        const capacity = occupants.length;
         const roomSqFoot = room[0].roomSqFoot;
         const roomClassification = room[0].roomClassification;
         const picture = room[0].picture;
