@@ -50,7 +50,7 @@ const Faculty = () => {
         <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
 
         { /* show all the faculty card */ }
-        <Row xs="1" md="2" xl="3">
+        <Row xs="1" md="2" xl="3" className="d-flex justify-content-center">
           {facultyList.map((faculty) => <FacultyCard key={faculty._id} faculty={faculty} />)}
         </Row>
       </Container>

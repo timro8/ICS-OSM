@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col, Image, Row } from 'react-bootstrap';
+import { Col, Image, Row } from 'react-bootstrap';
 import PropTypes, { arrayOf } from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ const FacultyCard = ({ faculty }) => (
         <Image roundedCircle src={faculty.image} width="100px" />
       </a>
       <div>
-        <div>{faculty.firstName} {faculty.lastName}</div>
+        <Link to={`/profile/${faculty._id}`} className="fw-bold faculty-name text-decoration-none text-black">{faculty.firstName} {faculty.lastName}</Link>
         <div>Room {faculty.rooms}</div>
         <div>{faculty.phoneNumber}</div>
       </div>
