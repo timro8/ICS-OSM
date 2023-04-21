@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTracker } from 'meteor/react-meteor-data';
-import { _ } from 'meteor/underscore';
 import { Button, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, HiddenField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
@@ -39,12 +38,17 @@ const AddOccupant = ({ roomKey }) => {
     const docStaff = StaffProfiles.find().fetch();
     const docRoom = Rooms.find({ roomKey: roomKey }).fetch();
     const docOccupantRoom = OccupantRoom.find({ roomId: docRoom[0]._id }).fetch();
-    console.log(docOccupantRoom);
     const rdy = subFac.ready() && subStaff.ready() && subRoom.ready() && subOccupantRoom.ready();
-    const allUsers = _.extend([], docFac, docStaff);
+    let allUsers = docFac;
+    allUsers = allUsers.concat(docStaff);
     allUsers.sort(function (a, b) {
       return a.lastName.localeCompare(b.lastName) || a.firstName.localeCompare(b.firstName);
     });
+    if (docOccupantRoom.length !== 0) {
+      docOccupantRoom.forEach(occupant => {
+        allUsers = allUsers.filter(u => u._id !== occupant.userId);
+      });
+    }
     return {
       userList: allUsers,
       room: docRoom,
@@ -62,9 +66,9 @@ const AddOccupant = ({ roomKey }) => {
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
         collectionName = Rooms.getCollectionName();
-        const occupants = OccupantRoom.find({ roomId: room[0]._id }).fetch();
+        const occupancy = OccupantRoom.find({ roomId: room[0]._id }).fetch();
         const status = 'Occupied';
-        const capacity = occupants.length;
+        const capacity = occupancy.length;
         const roomSqFoot = room[0].roomSqFoot;
         const roomClassification = room[0].roomClassification;
         const picture = room[0].picture;

@@ -21,7 +21,7 @@ const RoomOccupant = ({ occupant, roomId }) => {
         const roomData = Rooms.find({ _id: roomId }).fetch();
         if (occupants.length === 0) {
           const status = 'Vacant';
-          const capacity = 1;
+          const capacity = roomData[0].capacity;
           const roomSqFoot = roomData[0].roomSqFoot;
           const roomClassification = roomData[0].roomClassification;
           const picture = roomData[0].picture;
