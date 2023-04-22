@@ -12,7 +12,7 @@ import { removeItMethod } from '../../../api/base/BaseCollection.methods';
 import { ROLE } from '../../../api/role/Role';
 import { OccupantRoom } from '../../../api/user/OccupantRoomCollection';
 
-/** Component for FacultySection.jsx */
+/** Component for StaffSection.jsx */
 
 /** Renders a single row of Faculty members in a (Admin) table. See pages/AdminPageFacultyComponent.jsx. */
 const AdminPageFacultyComponent = ({ facultyProfile }) => {
