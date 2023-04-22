@@ -42,4 +42,5 @@ export const COMPONENT_IDS = {
   NAVBAR_DROPDOWN_TECH: 'navbar-dropdown-tech',
   ADD_TECH_JACK: 'add-tech-jack',
   ADD_TECH_EQUIPMENT: 'add-tech-equipment',
+  LIST_STAFF_ADMIN: 'list-staff-admin',
 };

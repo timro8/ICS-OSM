@@ -7,7 +7,7 @@ import { Image, Button } from 'react-bootstrap';
 import swal from 'sweetalert';
 import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import { StaffProfiles } from '../../../api/user/StaffProfileCollection';
-//import EditFacultyProfile from '../../pages/EditFacultyProfile';
+import EditStaffProfile from '../../pages/EditStaffProfile';
 import { removeItMethod } from '../../../api/base/BaseCollection.methods';
 import { ROLE } from '../../../api/role/Role';
 import { OccupantRoom } from '../../../api/user/OccupantRoomCollection';
@@ -30,13 +30,14 @@ const AdminPageStaffComponent = ({ staffProfile }) => {
   return (
     <tr>
       <td><Image roundedCircle src={staffProfile.image} height="35rem" className="px-2" />
-        <Link className={COMPONENT_IDS.LIST_STAFF_ADMIN} to={`/profile/${staffProfile._id}`}>{staffProfile.firstName} {staffProfile.lastName}</Link>
+        <Link className={COMPONENT_IDS.LIST_STAFF_ADMIN} to={`/staffprofile/${staffProfile._id}`}>{staffProfile.firstName} {staffProfile.lastName}</Link>
       </td>
       <td>{staffProfile.email}</td>
       <td>{staffProfile.role}</td>
-      <td>{staffProfile.office.map(office => <p key={Math.random()}>{office[0].roomNumber}</p>)}
+      <td>{staffProfile.office.map(office => <div key={Math.random()}>{office[0].roomNumber}</div>)}
       </td>
-      <td>Edit staff profile button</td>
+      <td><EditStaffProfile id={staffProfile._id}>Edit</EditStaffProfile>
+      </td>
       {/** Button for deleting staff users using StaffProfileCollection.js */}
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
         <td><Button variant="danger" onClick={deleteUser}>Delete</Button></td>

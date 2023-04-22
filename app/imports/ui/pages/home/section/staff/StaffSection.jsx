@@ -17,7 +17,6 @@ function getStaffData(staff) {
   const rooms = [];
   roomOccupant.map(r => rooms.push(Rooms.find({ _id: r }).fetch()));
   return _.extend({}, staff, { office: rooms });
-
 }
 /* Renders a table containing all of the Staff documents. Use <Admin> to render each row in each tabs. */
 const StaffSection = () => {
