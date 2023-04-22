@@ -3,7 +3,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
-import { Col, Row, Container, ListGroup, Image, Table } from 'react-bootstrap';
+import { Col, Row, Container, ListGroup, Image, Table, Button } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import { RoomNotes } from '../../api/room/RoomNotes';
@@ -24,9 +24,6 @@ import AddOccupant from '../components/Addpages/AddOccupant';
 import RoomOccupant from '../components/Roomthings/RoomOccupant';
 
 /* The RoomDetails page with occupants, equipment, jacks, and notes. */
-
-// TODO: remove occupants
-// TODO: check that removing occupant removes on Home
 
 const RoomDetails = () => {
   // Get the documentID from the URL field.
@@ -77,7 +74,7 @@ const RoomDetails = () => {
   return ready ? (
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
       <h3>Room {roomNumber} Details</h3>
-      <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${doc._id}`}>Edit room</Link>
+      <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${doc._id}`}><Button size="sm">Edit room</Button></Link>
       <Row>
         <Col>
           <p><strong>Room Status:</strong> {status}</p>
