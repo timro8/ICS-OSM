@@ -10,11 +10,18 @@ const SearchBar = ({ handleSearch }) => {
     handleSearch(filter);
   };
 
+  document.addEventListener('keydown', function (event) {
+    if (event.code === 'Enter') {
+      event.preventDefault();
+      document.getElementById('search-button').click();
+    }
+  });
+
   return (
     <Container className="d-flex align-items-center justify-content-center">
       <Form className="search-input">
         <Form.Control type="text" onChange={(event) => setFilter(event.target.value)} placeholder="Search..." />
-        <Button onClick={handleClick}><Search style={{ display: 'grid', justifyContent: 'center' }} /></Button>
+        <Button id="search-button" onClick={handleClick}><Search style={{ display: 'grid', justifyContent: 'center' }} /></Button>
       </Form>
     </Container>
   );
