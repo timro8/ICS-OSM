@@ -4,8 +4,7 @@ import { check } from 'meteor/check';
 import { Roles } from 'meteor/alanning:roles';
 import BaseCollection from '../base/BaseCollection';
 import { FacultyProfiles } from './FacultyProfileCollection';
-import { OfficeProfiles } from './OfficeProfileCollection';
-import { TechProfiles } from './TechProfileCollection';
+import { StaffProfiles } from './StaffProfileCollection';
 import { Rooms } from '../room/RoomCollection';
 import { ROLE } from '../role/Role';
 
@@ -28,16 +27,13 @@ class OccupantRoomCollection extends BaseCollection {
    * @param roomKey the roomKey of the room.
    * @return {String} the occupantID of the new document.
    */
-  define({ email, roomNumber }) {
+  define({ email, roomKey }) {
     let user = FacultyProfiles.findOne({ email: email });
     if (user === undefined) {
-      user = OfficeProfiles.findOne({ email: email });
-    }
-    if (user === undefined) {
-      user = TechProfiles.findOne({ email: email });
+      user = StaffProfiles.findOne({ email: email });
     }
     const userId = user._id;
-    const room = Rooms.findOne({ roomNumber: roomNumber });
+    const room = Rooms.findOne({ roomKey: roomKey });
     const roomId = room._id;
     const occupantID = this._collection.insert({
       userId,

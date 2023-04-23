@@ -1,17 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
+import swal from 'sweetalert';
+import { RoomJacks } from '../../../api/room/RoomJacks';
 import EditJack from '../Editpages/EditJack';
+import { removeItMethod } from '../../../api/base/BaseCollection.methods';
 
 // Renders the jacks for the room. See pages/RoomDetails.jsx. The EditJack component used for each jack based on jackId
-const RoomJack = ({ jack }) => (
-  <tr>
-    <td>{jack.jackNumber}</td>
-    <td>{jack.wallLocation}</td>
-    <td>{jack.description}</td>
-    <td>{jack.IDFRoom}</td>
-    <td><EditJack jackId={jack._id} /></td>
-  </tr>
-);
+const RoomJack = ({ jack }) => {
+  const deleteJack = () => {
+    const collectionName = RoomJacks.getCollectionName();
+    removeItMethod.callPromise({ collectionName, instance: jack._id })
+      .catch(error => swal('Error', error.message, 'error'))
+      .then(() => {
+        swal('Success', 'Jack removed successfully', 'success');
+      });
+  };
+  return (
+    <tr>
+      <td>{jack.jackNumber}</td>
+      <td>{jack.wallLocation}</td>
+      <td>{jack.description}</td>
+      <td>{jack.IDFRoom}</td>
+      <td><EditJack jackId={jack._id} /></td>
+      <td><Button variant="outline-danger" size="sm" onClick={deleteJack}>Delete {jack.jackNumber}</Button></td>
+    </tr>
+  );
+};
 
 // Requires a document to be passed to this component.
 RoomJack.propTypes = {

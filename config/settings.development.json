@@ -1210,32 +1210,46 @@
       "meetingDay": "", "meetingTime": "", "meetingLocation": "", "officers": ["officers"], "advisor": "advisor"
     }
   ],
-  "defaultOfficeData": [
+  "defaultStaffData": [
     {
+      "role": "OFFICE",
       "email": "wesleysu@hawaii.edu",
+      "password": "changeme",
       "firstName": "Wesley",
       "lastName": "Sugimoto",
-      "role": "OFFICE"
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2013/08/Wesley_Sugimoto-2014.jpg",
+      "bio": "I am Wesley the Admin. and Fiscal Support.",
+      "phoneNumber": "808-956-8249"
     },
     {
+      "role": "OFFICE",
       "email": "kennydq@hawaii.edu",
+      "password": "changeme",
       "firstName": "Kenny",
       "lastName": "Ka‘aiakamanu-Quibilan",
-      "role": "OFFICE"
-    }
-  ],
-  "defaultTechData": [
-    {
-      "email": "toddtt@hawaii.edu",
-      "firstName": "Todd",
-      "lastName": "Tomita",
-      "role": "TECH"
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2022/03/KennyQuibilan300x300.png",
+      "bio": "I am Kenny the ICS Undergraduate Academic Advisor.",
+      "phoneNumber": "808-956-5428"
     },
     {
+      "role": "TECH",
+      "email": "toddtt@hawaii.edu",
+      "password": "changeme",
+      "firstName": "Todd",
+      "lastName": "Tomita",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-300x300.jpg",
+      "bio": "I am Todd the IT System Admin.",
+      "phoneNumber": "808-956-7639"
+    },
+    {
+      "role": "TECH",
       "email": "shackfor@hawaii.edu",
+      "password": "changeme",
       "firstName": "Charles",
       "lastName": "Shackford",
-      "role": "TECH"
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-300x300.jpg",
+      "bio": "I am Charles the IT Network/System Admin.",
+      "phoneNumber": "808-956-4989"
     }
   ],
   "defaultJackData": [
