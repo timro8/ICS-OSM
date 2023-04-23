@@ -51,7 +51,7 @@ const RoomAdmin = () => {
         <DownloadCSVButton collection={Rooms} />
       </div>
       <Row xs={1} md={2} lg={4} className="g-2">
-        {roomList.map((room, index) => <RoomItem key={index} room={room} />)}
+        {roomList.map((room) => <RoomItem key={Math.random()} room={room} />)}
       </Row>
       <AddRoom />
     </Container>

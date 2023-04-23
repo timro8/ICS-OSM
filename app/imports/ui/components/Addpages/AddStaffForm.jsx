@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { Button, Modal, Image, Row, Col } from 'react-bootstrap';
+import { Button, Modal, Badge, CloseButton, Image, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import swal from 'sweetalert';
 import { AutoForm, ErrorsField, LongTextField, SelectField, TextField } from 'uniforms-bootstrap5';
+import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import { useTracker } from 'meteor/react-meteor-data';
-import { StaffProfiles } from '../../../api/user/StaffProfileCollection';
-import { defineMethod } from '../../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../LoadingSpinner';
 import { uploadImgUrl } from '../../../api/faculty/faculty_form_helper.js';
 import { Rooms } from '../../../api/room/RoomCollection';
@@ -49,11 +48,16 @@ const AddStaffForm = props => {
       type: String,
       optional: true,
     },
+    room: {
+      type: String,
+      allowedValues: roomNumbers,
+      optional: true,
+    },
     phoneNumber: { type: String, optional: true },
     role: {
       type: String,
-      allowedValues: ['STAFF', 'TECH'],
-      defaultValue: 'STAFF',
+      allowedValues: ['OFFICE', 'TECH'],
+      defaultValue: 'OFFICE',
     },
     userId: { type: String, optional: true },
   });
@@ -61,9 +65,9 @@ const AddStaffForm = props => {
   const bridge = new SimpleSchema2Bridge(formSchema);
 
   const [selectedRoom, setSelectedRoom] = useState([roomNumbers[0]]);
-
+  const [phoneNumber, setPhoneNumber] = useState([]);
   const [currentRoom, setCurrentRoom] = useState(roomNumbers[0]);
-
+  const [currentPhoneNumber, setCurrentPhoneNumber] = useState('');
   const [selectedImage, setSelectedImage] = useState('https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg');
   const imageSubmit = useRef(null);
   // On submit, insert the data.
@@ -72,16 +76,23 @@ const AddStaffForm = props => {
     if (selectedImage !== imageUrl) {
       imageUrl = await uploadImgUrl(imageSubmit.current);
     }
-    const { email, firstName, lastName, password, role, image, bio, phoneNumber } = data;
-    console.log(data);
-    const collectionName = StaffProfiles.getCollectionName();
-    const definitionData = { email, firstName, lastName, password, role, image, bio, phoneNumber };
-    defineMethod.callPromise({ collectionName, definitionData })
-      .catch(error => swal('Error', error.message, 'error'))
-      .then(() => {
-        swal('Success', 'Staff added successfully', 'success');
-        formRef.reset();
-      });
+    Meteor.call(
+      'insertStaff',
+      data,
+      selectedRoom,
+      phoneNumber,
+      imageUrl,
+      (err) => {
+        if (err) {
+          console.log(err.message);
+          swal('Error', err.message, 'error');
+        } else {
+          swal('Success', 'Staff added successfully', 'success');
+        }
+      },
+    );
+
+    formRef.reset();
   };
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
@@ -98,6 +109,27 @@ const AddStaffForm = props => {
     if (!selectedRoom.includes(value) && value !== undefined && value !== '--') {
       setSelectedRoom([...selectedRoom, value]);
       setCurrentRoom(value);
+    }
+  };
+
+  const handlePhoneNumber = (value) => {
+    if (value !== undefined && value.length === 12) {
+      if (!phoneNumber.includes(value)) {
+        setPhoneNumber([...phoneNumber, value]);
+      }
+      setCurrentPhoneNumber('');
+    } else if (value !== undefined) {
+      const numericValue = value.replace(/\D/g, '');
+      let formattedValue = '';
+
+      for (let i = 0; i < numericValue.length; i++) {
+        if (i > 0 && i % 3 === 0) {
+          formattedValue += '-';
+        }
+        formattedValue += numericValue[i];
+      }
+
+      setCurrentPhoneNumber(formattedValue);
     }
   };
 
@@ -133,11 +165,38 @@ const AddStaffForm = props => {
                 <TextField name="firstName" />
                 <TextField name="lastName" />
               </Row>
+              {selectedRoom.length > 0 && (
+                <div style={{ marginTop: '0px' }}>
+                  {selectedRoom.map((value, index) => (
+                    <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                      {value}
+                      <CloseButton
+                        variant="white"
+                        style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
+                        onClick={() => {
+                          setSelectedRoom([...selectedRoom.filter(item => item !== value)]);
+                        }}
+                      />
+                    </Badge>
+                  ))}
+                </div>
+              )}
+              <SelectField name="room" label="Room (optional)" value={currentRoom} onChange={(value) => handleRoom(value)} />
               <SelectField name="role" />
               <TextField name="email" />
               <TextField name="password" type="password" />
               <LongTextField name="bio" label="Bio (optional)" />
-              <TextField name="phoneNumber" label="Phone Number (optional)" />
+              {phoneNumber.length > 0 && (
+                <div>
+                  {phoneNumber.map((value, index) => (
+                    <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                      {value}
+                      <CloseButton variant="white" style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }} onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
+                    </Badge>
+                  ))}
+                </div>
+              )}
+              <TextField name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); }} />
               <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column', gridColumnGap: '10px' }}>
                 <Button onClick={onClose} variant="danger">Cancel</Button>
                 <Button type="submit" variant="success">Add</Button>

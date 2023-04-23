@@ -19,7 +19,7 @@ const AdminPageStaffComponent = ({ staffProfile }) => {
     const collectionName = StaffProfiles.getCollectionName();
     const collectionName2 = OccupantRoom.getCollectionName();
     const roomId = staffProfile._id;
-    Meteor.call('deleteFacultyUser', staffProfile._id);
+    Meteor.call('deleteStaffUser', staffProfile._id);
     removeItMethod.callPromise({ collectionName2, instance: staffProfile._id });
     removeItMethod.callPromise({ collectionName, instance: roomId })
       .catch(error => swal('Error', error.message, 'error'))

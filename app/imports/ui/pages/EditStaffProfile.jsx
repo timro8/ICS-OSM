@@ -51,6 +51,10 @@ const EditStaffProfile = ({ id }) => {
       type: String,
       optional: true,
     },
+    room: {
+      type: String,
+      optional: true,
+    },
     phoneNumber: { type: String, optional: true },
     userId: { type: String, optional: true },
   });
@@ -59,12 +63,18 @@ const EditStaffProfile = ({ id }) => {
 
   let initialImage = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
 
-  if (doc.image) {
+  if (doc.image > 0) {
     initialImage = doc.image;
   }
 
   const [selectedImage, setSelectedImage] = useState(initialImage);
   const imageSubmit = useRef(doc.image);
+  const [currentPhoneNumber, setCurrentPhoneNumber] = useState('');
+  let tmp = [];
+  if (doc.phoneNumber !== undefined) {
+    tmp = doc.phoneNumber.split(',');
+  }
+  const [phoneNumber, setPhoneNumber] = useState(tmp);
 
   // On successful submit, insert the data.
   const submit = async (data) => {
@@ -77,7 +87,7 @@ const EditStaffProfile = ({ id }) => {
     }
     const { firstName, lastName, bio } = data;
     const collectionName = StaffProfiles.getCollectionName();
-    const updateData = { id: id, image: imageUrl, firstName, lastName, bio, phoneNumber: phoneNumber };
+    const updateData = { id: id, image: imageUrl, firstName, lastName, bio, rooms: doc.rooms, phoneNumber: phoneNumber.toString() };
 
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
@@ -93,6 +103,28 @@ const EditStaffProfile = ({ id }) => {
     imageSubmit.current = file;
     setSelectedImage(URL.createObjectURL(file));
   };
+
+  const handlePhoneNumber = (value) => {
+    if (value !== undefined && value.length === 12) {
+      if (!phoneNumber.includes(value)) {
+        setPhoneNumber([...phoneNumber, value]);
+      }
+      setCurrentPhoneNumber('');
+    } else if (value !== undefined) {
+      const numericValue = value.replace(/\D/g, '');
+      let formattedValue = '';
+
+      for (let i = 0; i < numericValue.length; i++) {
+        if (i > 0 && i % 3 === 0) {
+          formattedValue += '-';
+        }
+        formattedValue += numericValue[i];
+      }
+
+      setCurrentPhoneNumber(formattedValue);
+    }
+  };
+
   return ready ? (
     <>
       <Col className="d-flex justify-content-center">
@@ -118,11 +150,22 @@ const EditStaffProfile = ({ id }) => {
             <TextField name="firstName" />
             <TextField name="lastName" />
             <LongTextField name="bio" />
-            <TextField name="phoneNumber" label="Phone Number (optional)"  />
+            {phoneNumber.length > 0 && (
+              <div>
+                {phoneNumber.map((value, index) => (
+                  <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                    {value}
+                    <CloseButton variant="white" style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }} onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
+                  </Badge>
+                ))}
+              </div>
+            )}
+            <TextField name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); }} />
             <Col className="d-flex justify-content-end">
               <SubmitField value="Submit" />
               <ErrorsField />
             </Col>
+            <HiddenField name="room" />
             <HiddenField name="email" />
           </Modal.Body>
         </AutoForm>

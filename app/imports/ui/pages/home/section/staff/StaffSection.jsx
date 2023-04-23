@@ -24,10 +24,9 @@ const StaffSection = () => {
   const [show, setShow] = useState(false);
   const { roomsData, ready } = useTracker(() => {
     // Get access to Staff documents.
-    const subscription1 = StaffProfiles.subscribeStaffProfileAdmin();
-    const subOccupantRoom = OccupantRoom.subscribeOccupantRoomAdmin();
+    const subscription1 = StaffProfiles.subscribeStaffProfile();
     // Determine if the subscription is ready
-    const rdy = subscription1.ready() && subOccupantRoom.ready();
+    const rdy = subscription1.ready();
     const docStaff = StaffProfiles.find().fetch();
     const roomData = docStaff.map(s => getStaffData(s));
 
