@@ -11,6 +11,8 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { ROLE } from '../../api/role/Role';
 import DownloadCSVButton from '../components/DownloadCSVButton';
+import { Plus } from 'react-bootstrap-icons';
+import CircleButton from '../components/CircleButton';
 
 const Faculty = () => {
   // show pop up to add faculty
@@ -41,7 +43,9 @@ const Faculty = () => {
         { /* Add Faculty button */ }
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
           <div className="py-3 d-flex gap-2">
-            <Button key={Math.random()} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>
+            <CircleButton onClick={() => setShow(true)} key="add-faculty" variant="dark">
+              <Plus fontSize="25px" />
+            </CircleButton>
             <DownloadCSVButton collection={FacultyProfiles} />
           </div>
         ) : ''}
@@ -50,7 +54,7 @@ const Faculty = () => {
         <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
 
         { /* show all the faculty card */ }
-        <Row xs="1" md="2" xl="3" className="d-flex justify-content-center">
+        <Row xs="1" md="2" xl="3">
           {facultyList.map((faculty) => <FacultyCard key={faculty._id} faculty={faculty} />)}
         </Row>
       </Container>
