@@ -201,3 +201,7 @@ body {
   margin: 0 5px;
   font-size: 0.8rem;
 }
+
+.faculty-name:hover {
+  text-decoration: underline !important;
+}

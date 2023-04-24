@@ -3,13 +3,14 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { useParams } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
-import { Col, Row, Container, ListGroup, Image, Table } from 'react-bootstrap';
+import { Col, Row, Container, ListGroup, Image, Table, Button } from 'react-bootstrap';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { Rooms } from '../../api/room/RoomCollection';
 import { RoomNotes } from '../../api/room/RoomNotes';
 import { RoomJacks } from '../../api/room/RoomJacks';
 import { RoomEquipments } from '../../api/room/RoomEquipments';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
+import { StaffProfiles } from '../../api/user/StaffProfileCollection';
 import { OccupantRoom } from '../../api/user/OccupantRoomCollection';
 import RoomNote from '../components/Roomthings/RoomNote';
 import AddNote from '../components/Addpages/AddNote';
@@ -19,8 +20,10 @@ import RoomEquipment from '../components/Roomthings/RoomEquipment';
 import AddEquipment from '../components/Addpages/AddEquipment';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { getRoomData } from '../../api/utilities/getRoomData';
+import AddOccupant from '../components/Addpages/AddOccupant';
+import RoomOccupant from '../components/Roomthings/RoomOccupant';
 
-/* The RoomDetails page with equipment, jacks, and notes. */
+/* The RoomDetails page with occupants, equipment, jacks, and notes. */
 
 const RoomDetails = () => {
   // Get the documentID from the URL field.
@@ -36,16 +39,17 @@ const RoomDetails = () => {
     ready,
     loggedInOwner,
   } = useTracker(() => {
-    // subscriptions (Admin) to Rooms, RoomNotes, RoomJacks, RoomEquipments, FacultyProfiles, OccupantRoom collections
+    // subscriptions (Admin) to Rooms, RoomNotes, RoomJacks, RoomEquipments, FacultyProfiles, Staff, OccupantRoom collections
 
     const subRoom = Rooms.subscribeRoomAdmin();
     const subNotes = RoomNotes.subscribeRoomNotesAdmin();
     const subJacks = RoomJacks.subscribeRoomJacksAdmin();
     const subEquipment = RoomEquipments.subscribeRoomEquipmentAdmin();
     const subFaculty = FacultyProfiles.subscribeFacultyProfileAdmin();
+    const subStaff = StaffProfiles.subscribeStaffProfileAdmin();
     const subOccupant = OccupantRoom.subscribeOccupantRoomAdmin();
     const owner = Meteor.user().username;
-    const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready() && subFaculty.ready() && subOccupant.ready();
+    const rdy = subRoom.ready() && subNotes.ready() && subJacks.ready() && subEquipment.ready() && subFaculty.ready() && subStaff.ready() && subOccupant.ready();
     const document = Rooms.findDoc({ _id: _id });
     const documentNotes = RoomNotes.find({ roomId: _id }).fetch();
     const documentJacks = RoomJacks.find({ roomId: _id }).fetch();
@@ -70,13 +74,7 @@ const RoomDetails = () => {
   return ready ? (
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
       <h3>Room {roomNumber} Details</h3>
-      <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${doc._id}`}>Edit room</Link>
-      <Row>
-        <Col>
-          <h4>Occupants</h4>
-          {roomOccupants.occupants.map((o) => <div key={o._id}>{o.firstName} {o.lastName}</div>)}
-        </Col>
-      </Row>
+      <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${doc._id}`}><Button size="sm">Edit room</Button></Link>
       <Row>
         <Col>
           <p><strong>Room Status:</strong> {status}</p>
@@ -88,8 +86,29 @@ const RoomDetails = () => {
           <Image src={picture} alt={`${roomNumber} picture`} width={100} />
         </Col>
       </Row>
-      <Row>
-        <Col>
+      <Row className="simple-card mb-4">
+        <div className="scroll" style={{ height: '20rem' }}>
+          <h4>Occupants</h4>
+          <AddOccupant roomKey={doc.roomKey} />
+          <Table responsive hover>
+            <thead>
+              <tr>
+                <th> </th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+                <th> </th>
+              </tr>
+            </thead>
+            <tbody>
+              {roomOccupants.occupants.map((occupant, index) => <RoomOccupant key={index} occupant={occupant} roomId={doc._id} />)}
+            </tbody>
+          </Table>
+        </div>
+      </Row>
+      <Row className="simple-card  mb-4">
+        <div className="scroll" style={{ height: '20rem' }}>
           <h4>Room Equipment</h4>
           <AddEquipment roomKey={roomKey} />
           <Table>
@@ -99,17 +118,18 @@ const RoomDetails = () => {
                 <th>Description</th>
                 <th>Serial Number</th>
                 <th>Asset Tag</th>
-                <th>Edit</th>
+                <th>Actions</th>
+                <th> </th>
               </tr>
             </thead>
             <tbody>
               {docEquipment.map((equipment) => <RoomEquipment key={equipment._id} equipment={equipment} />) }
             </tbody>
           </Table>
-        </Col>
+        </div>
       </Row>
-      <Row>
-        <Col>
+      <Row className="simple-card  mb-4">
+        <div className="scroll" style={{ height: '20rem' }}>
           <h4>Room Data Jacks</h4>
           <AddJack roomKey={roomKey} />
           <Table>
@@ -119,23 +139,24 @@ const RoomDetails = () => {
                 <th>Wall Location</th>
                 <th>Description</th>
                 <th>IDF Room</th>
-                <th>Edit</th>
+                <th>Actions</th>
+                <th> </th>
               </tr>
             </thead>
             <tbody>
               {docJacks.map((jack) => <RoomJack key={jack._id} jack={jack} />)}
             </tbody>
           </Table>
-        </Col>
+        </div>
       </Row>
-      <Row>
-        <Col>
+      <Row className="simple-card">
+        <div className="scroll" style={{ height: '10rem' }}>
           <h2>Room Notes</h2>
           <AddNote roomId={_id} owner={loggedInOwner} />
           <ListGroup variant="flush">
             {docNotes.map((note) => <RoomNote key={note._id} note={note} />)}
           </ListGroup>
-        </Col>
+        </div>
       </Row>
     </Container>
   ) : <LoadingSpinner message="Loading room details" />;

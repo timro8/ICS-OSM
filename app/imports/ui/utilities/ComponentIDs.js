@@ -45,4 +45,5 @@ export const COMPONENT_IDS = {
   ADD_TECH_EQUIPMENT: 'add-tech-equipment',
   ADD_FACULTY: 'add-faculty',
   EDIT_FACULTY_PROFILE: 'edit-faculty-profile',
+  LIST_STAFF_ADMIN: 'list-staff-admin',
 };

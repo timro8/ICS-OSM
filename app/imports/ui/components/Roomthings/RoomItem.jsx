@@ -22,7 +22,7 @@ const RoomItem = ({ room }) => (
           </Row>
           <Row>
             <Col>
-              {room.occupants.map((o) => <div key={o._id}>{o.firstName} {o.lastName}</div>)}
+              {room.occupants.map((o) => <div key={Math.random()}>{o.firstName} {o.lastName}</div>)}
             </Col>
           </Row>
           <Row>
