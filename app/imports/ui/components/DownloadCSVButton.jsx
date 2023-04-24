@@ -7,7 +7,7 @@ import CircleButton from './CircleButton';
 
 /* Use CollectionName.dumpAll() when passed to 'collection' prop */
 const DownloadCSVButton = ({ collection }) => (
-  <CircleButton key="download" onClick={() => downloadCsv(collection)} variant="dark">
+  <CircleButton onClick={() => downloadCsv(collection)} variant="dark">
     <Download />
   </CircleButton>
 );
