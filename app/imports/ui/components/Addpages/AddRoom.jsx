@@ -7,6 +7,8 @@ import { Rooms } from '../../../api/room/RoomCollection';
 import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
 import { uploadImgUrl } from '../../../api/faculty/faculty_form_helper';
+import CircleButton from '../CircleButton';
+import { Plus } from 'react-bootstrap-icons';
 
 // form schema based on the Room collection
 const bridge = new SimpleSchema2Bridge(Rooms._schema);
@@ -53,9 +55,9 @@ const AddRoom = () => {
 
   return (
     <>
-      <Button id={COMPONENT_IDS.ADD_ROOM} variant="primary" onClick={handleShow}>
-        Add Room
-      </Button>
+      <CircleButton onClick={handleShow} variant="dark" key="add-room">
+        <Plus fontSize="25px" />
+      </CircleButton>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

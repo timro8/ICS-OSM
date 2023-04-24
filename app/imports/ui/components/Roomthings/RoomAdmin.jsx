@@ -47,13 +47,16 @@ const RoomAdmin = () => {
     <Container className="py-3">
       <h4>POST Rooms</h4>
       <SearchBar handleSearch={handleSearch} />
-      <div className="py-3">
+      <div className="py-3 d-flex gap-2">
+
+        <AddRoom />
+
         <DownloadCSVButton collection={Rooms} />
       </div>
       <Row xs={1} md={2} lg={4} className="g-2">
         {roomList.map((room) => <RoomItem key={Math.random()} room={room} />)}
       </Row>
-      <AddRoom />
+
     </Container>
   ) : <LoadingSpinner />;
 };
