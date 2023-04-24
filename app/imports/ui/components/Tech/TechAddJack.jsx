@@ -77,7 +77,7 @@ const TechAddJack = () => {
         Add Jack
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="tech-add-jack">
         <Modal.Header closeButton>
           <Modal.Title>Add Jack</Modal.Title>
         </Modal.Header>

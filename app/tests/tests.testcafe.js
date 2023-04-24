@@ -6,6 +6,8 @@ import { facultyPage } from './faculty.page';
 import { facultyProfilePage } from './faculty-profile.page';
 import { listRoomAdminPage } from './room-admin.page';
 import { clubPage } from './club.page';
+import { techPage } from './tech.page';
+import { roomDetailsPage } from './room-details.page';
 
 /* global fixture:false, test:false */
 
@@ -73,6 +75,7 @@ test('Room details shows up', async () => {
   await listRoomAdminPage.gotoRoomDetails();
 });
 
+// TODO: implement test for adding room
 test('Modal shows for Add Room', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -91,6 +94,7 @@ test('Navigating to profile from faculty page', async () => {
   await facultyProfilePage.isDisplayed();
 });
 
+// TODO: implement test for editing room
 test('Modal shows for Edit Room', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -130,11 +134,8 @@ test('Modal works for editing faculty', async () => {
   await facultyProfilePage.editFaculty();
 });
 
-// TODO: implement test for adding room
-// TODO: implement test for editing room
-
 // TODO: implement test for adding club
-test.only('Modal works for adding club', async () => {
+test('Modal works for adding club', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
@@ -142,7 +143,7 @@ test.only('Modal works for adding club', async () => {
 });
 
 // TODO: implement test for editing club
-test.only('Modal works for editing club', async () => {
+test('Modal works for editing club', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(acmCredentials.username, acmCredentials.password);
   await navBar.isLoggedIn(acmCredentials.username);
@@ -152,8 +153,56 @@ test.only('Modal works for editing club', async () => {
 });
 
 // TODO: implement test for tech page
+test('Tech page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(techCredentials.username, techCredentials.password);
+  await navBar.isLoggedIn(techCredentials.username);
+  await navBar.gotoTechPage();
+  await techPage.isDisplayed();
+});
+
 // TODO: implement test for add jack
+test('Modal works for Add Jack', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(techCredentials.username, techCredentials.password);
+  await navBar.isLoggedIn(techCredentials.username);
+  await navBar.gotoTechPage();
+  await techPage.isDisplayed();
+  await techPage.addJack();
+});
+
 // TODO: implement test for edit jack
+test('Modal works for Edit Jack', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(techCredentials.username, techCredentials.password);
+  await navBar.isLoggedIn(techCredentials.username);
+  await navBar.gotoTechPage();
+  await techPage.isDisplayed();
+  await techPage.editJack();
+});
+
 // TODO: implement test for add equipment
+test('Modal shows for add equipment', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListRoomAdminPage();
+  await listRoomAdminPage.isDisplayed();
+  await listRoomAdminPage.gotoRoomDetails();
+  await roomDetailsPage.isDisplayed();
+  await roomDetailsPage.addEquipment();
+});
+
 // TODO: implement test for edit equipment
+
 // TODO: implement test for add note
+test.only('Modal shows for add note', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListRoomAdminPage();
+  await listRoomAdminPage.isDisplayed();
+  await listRoomAdminPage.gotoRoomDetails();
+  await roomDetailsPage.isDisplayed();
+  await roomDetailsPage.addNote();
+});

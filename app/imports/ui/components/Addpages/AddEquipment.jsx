@@ -7,6 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { RoomEquipments } from '../../../api/room/RoomEquipments';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 // form schema based on the Equipment collection
 const formSchema = new SimpleSchema({
@@ -53,11 +54,11 @@ const AddEquipment = ({ roomKey }) => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" size="sm" onClick={handleShow}>
+      <Button id={COMPONENT_IDS.ADD_EQUIPMENT} variant="primary" size="sm" onClick={handleShow} >
         Add Equipment
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="add-equip-modal">
         <Modal.Header closeButton>
           <Modal.Title>Add Equipment</Modal.Title>
         </Modal.Header>

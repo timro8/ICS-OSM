@@ -7,6 +7,7 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { RoomNotes } from '../../../api/room/RoomNotes';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 // form schema based on RoomNotes collection
 const formSchema = new SimpleSchema({
@@ -41,11 +42,11 @@ const AddNote = ({ roomId, owner }) => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" size="sm" onClick={handleShow}>
+      <Button id={COMPONENT_IDS.ADD_NOTE} variant="primary" size="sm" onClick={handleShow}>
         Add Notes
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="add-note-modal">
         <Modal.Header closeButton>
           <Modal.Title>Add Notes</Modal.Title>
         </Modal.Header>

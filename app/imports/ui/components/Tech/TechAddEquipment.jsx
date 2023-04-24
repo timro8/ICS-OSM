@@ -79,7 +79,7 @@ const TechAddEquipment = () => {
         Add Equipment
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="tech-add-equip">
         <Modal.Header closeButton>
           <Modal.Title>Add Equipment</Modal.Title>
         </Modal.Header>
