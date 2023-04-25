@@ -34,7 +34,7 @@ const FacultySection = () => {
           SAME RULES for which roles can see it, TO-DO! */}
         {/** Button for adding faculty profiles, ONLY ADMIN & OFFICE can do this! */}
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
-          [<Button key={Math.random()} style={{ width: '15rem' }} variant="primary" onClick={() => setShow(true)}>Add Faculty</Button>]
+          [<Button id="add-faculty" key={Math.random()} style={{ width: '15rem' }} variant="primary" onClick={() => setShow(true)}>Add Faculty</Button>]
         ) : ''}
         <AddFacultyForm show={show} onClose={() => setShow(false)} key={Math.random()} />
       </div>

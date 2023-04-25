@@ -42,7 +42,7 @@ const AdminPageFacultyComponent = ({ facultyProfile }) => {
       <td><EditFacultyProfile id={facultyProfile._id}> Edit</EditFacultyProfile></td>
       {/** Button for deleting faculty users using FacultyProfileCollection.js */}
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
-        <td><Button variant="danger" onClick={deleteUser}>Delete</Button></td>
+        <td><Button id="delete-faculty" variant="danger" onClick={deleteUser}>Delete</Button></td>
       ) : ''}
     </tr>
   );

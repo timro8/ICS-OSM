@@ -6,6 +6,8 @@ import { facultyPage } from './faculty.page';
 import { facultyProfilePage } from './faculty-profile.page';
 import { listRoomAdminPage } from './room-admin.page';
 import { clubPage } from './club.page';
+import { addFaculty } from './add-faculty.form';
+import { editFaculty } from './edit-faculty.form';
 
 /* global fixture:false, test:false */
 
@@ -16,6 +18,8 @@ const facultyCredentials = { username: 'esb@hawaii.edu', password: 'changeme' };
 const studentCredentials = { username: 'student@foo.com', password: 'changeme' };
 const officeCredentials = { username: 'office@foo.com', password: 'changeme' };
 const techCredentials = { username: 'tech@foo.com', password: 'changeme' };
+const addFacultyCredentials = { firstName: 'TEST', lastName: 'test', email: 'test@foo.com', password: 'changeme', bio: 'Hello World!', phone: '808-123-2567' };
+const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'Hello ICS!', phone: '765-432-1808' };
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
 
 /** Room */
@@ -96,6 +100,7 @@ test('Modal shows for Edit Room', async () => {
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.gotoListRoomAdminPage();
   await listRoomAdminPage.isDisplayed();
+  await listRoomAdminPage.gotoRoomDetails();
   await listRoomAdminPage.editRoom();
 });
 
@@ -107,8 +112,18 @@ test('Navigating to club page', async () => {
   await clubPage.isDisplayed();
 });
 
-// TODO: implement test for adding faculty
-// TODO: implement test for editing faculty
+test('Add faculty', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await addFaculty.addFaculty(addFacultyCredentials);
+});
+
+test('Edit faculty', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(facultyCredentials.username, facultyCredentials.password);
+  await editFaculty.editFaculty(editFacultyCredentials);
+});
+
 // TODO: implement test for adding room
 // TODO: implement test for editing room
 // TODO: implement test for adding club

@@ -74,7 +74,7 @@ const RoomDetails = () => {
   return ready ? (
     <Container id={PAGE_IDS.ROOM_DETAILS} className="py-3" doc={doc}>
       <h3>Room {roomNumber} Details</h3>
-      <Link className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${doc._id}`}><Button size="sm">Edit room</Button></Link>
+      <Link id="edit-room-button" className={PAGE_IDS.EDIT_ROOM} to={`/editroom/${doc._id}`}><Button size="sm">Edit room</Button></Link>
       <Row>
         <Col>
           <p><strong>Room Status:</strong> {status}</p>

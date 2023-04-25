@@ -59,7 +59,7 @@ const AddRoom = () => {
         <Plus fontSize="25px" />
       </CircleButton>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="add-room-form">
         <Modal.Header closeButton>
           <Modal.Title>Add Room</Modal.Title>
         </Modal.Header>
