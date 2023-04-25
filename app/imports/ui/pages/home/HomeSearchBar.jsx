@@ -2,7 +2,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { ArrowDown, ArrowReturnLeft, ArrowUp } from 'react-bootstrap-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { Clubs } from '../../../api/club/Club';
 import { Rooms } from '../../../api/room/RoomCollection';
@@ -58,6 +58,8 @@ const HomeSearchBar = () => {
     setSelectedItemIndex(0); // Reset active item index on input change
   };
 
+  const navigate = useNavigate();
+
   const handleKeyDown = (e) => {
     const searchResultsLength = (filteredFaculties.length + filteredClubs.length + filteredRooms.length) - 1;
     if (e.key === 'ArrowUp') {
@@ -84,7 +86,7 @@ const HomeSearchBar = () => {
       } else if (isClubItem) {
         window.location.href = `/clubs/${filteredItems[selectedItemIndex]._id}`;
       } else {
-        window.location.replace(`/roomdetails/${filteredItems[selectedItemIndex]._id}`);
+        navigate(`/roomdetails/${filteredItems[selectedItemIndex]._id}`, { replace: true });
       }
     }
   };
