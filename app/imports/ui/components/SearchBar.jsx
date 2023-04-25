@@ -19,7 +19,7 @@ const SearchBar = ({ handleSearch }) => {
 
   return (
     <Container className="d-flex align-items-center justify-content-center">
-      <Form className="search-input">
+      <Form id="search-input" className="search-input">
         <Form.Control type="text" onChange={(event) => setFilter(event.target.value)} placeholder="Search..." />
         <Button id="search-button" onClick={handleClick}><Search style={{ display: 'grid', justifyContent: 'center' }} /></Button>
       </Form>

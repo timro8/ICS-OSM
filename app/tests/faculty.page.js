@@ -1,6 +1,7 @@
 import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
+import {COMPONENT_IDS} from "../imports/ui/utilities/ComponentIDs";
 
 class FacultyPage {
   constructor() {
@@ -14,7 +15,8 @@ class FacultyPage {
   }
 
   async gotoFacultyProfile() {
-    await t.click('a.faculty-card');
+    // await t.click('a.faculty-card');
+    await t.click(`#${COMPONENT_IDS.FACULTY_CARD}`);
     await t.expect(Selector(`#${PAGE_IDS.PROFILE}`).exists).ok();
   }
 

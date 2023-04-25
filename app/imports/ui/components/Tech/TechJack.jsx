@@ -47,9 +47,12 @@ const TechJack = () => {
   return (ready ? (
     <Container className="py-3">
       <h1 className="text-center p-2 display-4">Data Jacks</h1>
-      <TechAddJack />
       {/* Search Bar */}
       <SearchBar handleSearch={handleSearch} />
+      <div className="py-3 d-flex gap-2">
+        <TechAddJack />
+        <DownloadCSVButton collection={RoomJacks} />
+      </div>
       <div className="scroll" style={{ height: '20rem' }}>
         <Table responsive hover>
           <thead>
@@ -69,9 +72,6 @@ const TechJack = () => {
           </tbody>
         </Table>
       </div>
-
-      {/* <Button onClick={() => downloadCsv(RoomJacks)}>dump</Button> */}
-      <DownloadCSVButton collection={RoomJacks} />
     </Container>
   ) : <LoadingSpinner message="Loading tech data" />);
 };

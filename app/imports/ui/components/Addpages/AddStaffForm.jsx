@@ -112,6 +112,13 @@ const AddStaffForm = props => {
     }
   };
 
+  const removeNARoom = () => {
+    if (selectedRoom.includes('n/a') && selectedRoom.length > 1) {
+      const updatedRoom = selectedRoom.filter((room) => room !== 'n/a');
+      setSelectedRoom(updatedRoom);
+    }
+  };
+
   const handlePhoneNumber = (value) => {
     if (value !== undefined && value.length === 12) {
       if (!phoneNumber.includes(value)) {
@@ -165,14 +172,15 @@ const AddStaffForm = props => {
                 <TextField name="firstName" />
                 <TextField name="lastName" />
               </Row>
+              {removeNARoom()}
               {selectedRoom.length > 0 && (
-                <div style={{ marginTop: '0px' }}>
+                <div style={{ marginTop: '0px' }} className="badges">
                   {selectedRoom.map((value, index) => (
-                    <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                    <Badge key={index} className="m-1 p-2">
                       {value}
                       <CloseButton
                         variant="white"
-                        style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
+                        className="badges-close-button"
                         onClick={() => {
                           setSelectedRoom([...selectedRoom.filter(item => item !== value)]);
                         }}

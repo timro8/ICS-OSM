@@ -225,6 +225,7 @@ const EditFacultyProfile = ({ id }) => {
       <Col className="d-flex justify-content-center">
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) || doc.email === Meteor.user().username ? (
           <Button id={COMPONENT_IDS.EDIT_FACULTY_PROFILE} key={Math.random()} style={{ width: '7rem' }} variant="primary" onClick={handleShow}>
+          <Button id="edit-faculty-profile" key={id} style={{ width: '7rem' }} variant="primary" onClick={handleShow}>
             Edit Profile
           </Button>
         ) : ''}
@@ -232,7 +233,7 @@ const EditFacultyProfile = ({ id }) => {
 
       <Modal show={show} onHide={handleClose} id="edit-faculty-modal">
         <Modal.Header closeButton onClick={handleClose}>
-          <Modal.Title className="d-flex justify-content-center">Edit Faculty Profile</Modal.Title>
+          <Modal.Title id="close-edit-faculty-form" className="d-flex justify-content-center">Edit Faculty Profile</Modal.Title>
         </Modal.Header>
         <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column' }}>
           <Button style={{ background: 'white', borderColor: 'white' }} onClick={handleImageClick}>
@@ -242,30 +243,31 @@ const EditFacultyProfile = ({ id }) => {
         </div>
         <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
           <Modal.Body>
-            <TextField name="firstName" />
-            <TextField name="lastName" />
-            <LongTextField name="bio" />
+            <TextField id="edit-faculty-first-name" name="firstName" />
+            <TextField id="edit-faculty-last-name" name="lastName" />
+            <LongTextField id="edit-faculty-bio" name="bio" />
             {phoneNumber.length > 0 && (
-              <div>
+              <div className="badges">
                 {phoneNumber.map((value, index) => (
-                  <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                  <Badge key={index} className="m-1 p-2">
                     {value}
-                    <CloseButton variant="white" style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }} onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
+                    <CloseButton id="remove-faculty-phone" variant="white" className="badges-close-button" onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
                   </Badge>
                 ))}
               </div>
             )}
-            <TextField name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); }} />
+            <TextField id="edit-faculty-phone" name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); }} />
             <FormLabel>Office Hours (optional) :</FormLabel>
             {putOfficeHours()}
             {selectedOfficeHours.length > 0 && (
-              <div>
+              <div className="badges">
                 {selectedOfficeHours.map((value, index) => (
-                  <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                  <Badge key={index} className="m-1 p-2">
                     {value}
                     <CloseButton
+                      id="remove-faculty-office-hours"
                       variant="white"
-                      style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
+                      className="badges-close-button"
                       onClick={() => { removeOfficeHours(value); }}
                     />
                   </Badge>
@@ -273,12 +275,12 @@ const EditFacultyProfile = ({ id }) => {
               </div>
             )}
             <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-              <SelectField style={{ marginRight: '5px' }} name="day" value={currentDay} onChange={(value) => setDay(value)} />
-              <SelectField style={{ marginRight: '5px' }} name="startTime" value={currentStartTime} onChange={(value) => setStartTime(value)} />
-              <SelectField name="endTime" value={currentEndTime} onChange={(value) => setEndTime(value)} />
+              <SelectField id="edit-faculty-day" style={{ marginRight: '5px' }} name="day" value={currentDay} onChange={(value) => setDay(value)} />
+              <SelectField id="edit-faculty-start-time" style={{ marginRight: '5px' }} name="startTime" value={currentStartTime} onChange={(value) => setStartTime(value)} />
+              <SelectField id="edit-faculty-end-time" name="endTime" value={currentEndTime} onChange={(value) => setEndTime(value)} />
             </div>
             <Col className="d-flex justify-content-end">
-              <SubmitField value="Submit" />
+              <SubmitField id="edit-faculty-submit" value="Submit" />
               <ErrorsField />
             </Col>
             <HiddenField name="room" />

@@ -5,11 +5,13 @@ import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, HiddenField
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { Plus } from 'react-bootstrap-icons';
 import { Rooms } from '../../../api/room/RoomCollection';
 import { RoomJacks } from '../../../api/room/RoomJacks';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
 import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import LoadingSpinner from '../LoadingSpinner';
+import CircleButton from '../CircleButton';
 
 // form schema based on the RoomJacks collection.
 const formSchema = new SimpleSchema({
@@ -38,7 +40,7 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddJack component for adding a new jack. */
+/* Renders the AddRoomJack component for adding a new jack. */
 const TechAddJack = () => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
@@ -78,6 +80,10 @@ const TechAddJack = () => {
       </Button>
 
       <Modal show={show} onHide={handleClose} id="tech-add-jack">
+      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_TECH_JACK}>
+        <Plus fontSize="25px" />
+      </CircleButton>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Jack</Modal.Title>
         </Modal.Header>
