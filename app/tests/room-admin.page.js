@@ -27,20 +27,20 @@ class ListRoomAdmin {
     const optionLocation = selectLocation.find('option');
     await t
       .click(selectLocation)
-      .click(optionLocation.nth(1));
+      .click(optionLocation.nth(0));
     const selectStatus = Selector(`#${COMPONENT_IDS.ADD_ROOM_FORM_STATUS}`);
     const optionStatus = selectStatus.find('option');
     await t
       .click(selectStatus)
-      .click(optionStatus.nth(1));
+      .click(optionStatus.nth(0));
     await t.typeText(`#${COMPONENT_IDS.ADD_ROOM_FORM_CAPACITY}`, addNewRoom.capacity);
     await t.typeText(`#${COMPONENT_IDS.ADD_ROOM_FORM_ROOM_SQ_FT}`, addNewRoom.roomSqFt);
     const selectClassification = Selector(`#${COMPONENT_IDS.ADD_ROOM_FORM_CLASSIFICATION}`);
     const optionClassification = selectClassification.find('option');
     await t
       .click(selectClassification)
-      .click(optionClassification.nth(1));
-    await t.click(`#${COMPONENT_IDS.ADD_ROOM_FORM_SUBMIT} input.btn.btn-primary`);
+      .click(optionClassification.nth(0));
+    await t.click(`#${COMPONENT_IDS.ADD_ROOM_FORM_SUBMIT}`);
     await t.click(Selector('.swal-button--confirm'));
     await t.click(`#${COMPONENT_IDS.ADD_ROOM_FORM_CLOSE_BUTTON}`);
     await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_ROOM_ADMIN}`);

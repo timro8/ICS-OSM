@@ -76,7 +76,7 @@ test('Room details shows up', async () => {
   await listRoomAdminPage.gotoRoomDetails();
 });
 */
-test('Modal shows for Add Room', async () => {
+test('Add Room', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Button, Image, Modal } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, NumField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField, SelectField, NumField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Plus } from 'react-bootstrap-icons';
@@ -59,7 +59,7 @@ const AddRoom = () => {
       </CircleButton>
 
       <Modal show={show} onHide={handleClose} id="add-room-form">
-        <Modal.Header closeButton id="add-room-form-close-button">
+        <Modal.Header closeButton>
           <Modal.Title>Add Room</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -89,12 +89,12 @@ const AddRoom = () => {
               allowedValues={['Office', 'Sink', 'Conference', 'Cubicle', 'ICS Library', 'ASECOLAB', 'Mail', 'Main Office', 'Lab', 'ICSpace', 'Storage', 'ICS IT', 'OFCSVC', 'LNG']}
               id="add-room-form-classification"
             />
-            <SubmitField value="submit" id="add-room-form-submit" />
+            <Button id="add-room-form-submit" type="submit" variant="success">Add</Button>
             <ErrorsField />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} id="add-room-form-close-button">
             Close
           </Button>
         </Modal.Footer>
