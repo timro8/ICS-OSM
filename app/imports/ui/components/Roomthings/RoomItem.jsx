@@ -2,12 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Col, Image, Row } from 'react-bootstrap';
-import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
-import { PAGE_IDS } from '../../utilities/PageIDs';
-
 /** Renders a single card in the List Room Admin card. See pages/ListRoomAdmin.jsx. */
 const RoomItem = ({ room }) => (
-
   <Row className="py-3">
     <Col className="d-flex gap-4">
       <Link to={`/roomdetails/${room._id}`}><Image roundedCircle src={room.picture} width="100px" />
@@ -22,8 +18,8 @@ const RoomItem = ({ room }) => (
 
       </div>
     </Col>
-
-  </Row>);
+  </Row>
+);
 
 // Require a document to be passed to this component.
 RoomItem.propTypes = {
