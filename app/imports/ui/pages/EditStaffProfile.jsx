@@ -151,11 +151,11 @@ const EditStaffProfile = ({ id }) => {
             <TextField name="lastName" />
             <LongTextField name="bio" />
             {phoneNumber.length > 0 && (
-              <div>
+              <div className="badges">
                 {phoneNumber.map((value, index) => (
-                  <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                  <Badge key={index} className="m-1 p-2">
                     {value}
-                    <CloseButton variant="white" style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }} onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
+                    <CloseButton variant="white" className="badges-close-button" onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
                   </Badge>
                 ))}
               </div>

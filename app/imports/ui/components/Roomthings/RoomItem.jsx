@@ -6,13 +6,13 @@ import { Col, Image, Row } from 'react-bootstrap';
 const RoomItem = ({ room }) => (
   <Row className="py-3">
     <Col className="d-flex gap-4">
-      <Link to={`/roomdetails/${room._id}`}><Image roundedCircle src={room.picture} width="100px" />
+      <Link to={`/roomdetails/${room._id}`} id="room-card"><Image roundedCircle src={room.picture} width="100px" />
       </Link>
       <div>
         <Link className="fw-bold faculty-name text-decoration-none text-black" to={`/roomdetails/${room._id}`}>{room.location} {room.roomNumber}</Link>
         <div>Status {room.status}</div>
         {room.occupants.length > 0 ? (
-          <div>Occupant(s): {room.occupants.map((o) => <div key={Math.random()} className="text-success">{o.firstName} {o.lastName}</div>)}
+          <div>Occupant(s): {room.occupants.map((o) => <div key={o.id} className="text-success">{o.firstName} {o.lastName}</div>)}
           </div>
         ) : ''}
 

@@ -205,3 +205,16 @@ body {
 .faculty-name:hover {
   text-decoration: underline !important;
 }
+
+.badges {
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.badges-close-button {
+  font-size: 10px;
+  margin: 0 5px 0 5px;
+}
