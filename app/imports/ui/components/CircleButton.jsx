@@ -2,9 +2,8 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const CircleButton = ({ children, key, onClick, variant }) => (
+const CircleButton = ({ children, onClick, variant }) => (
   <Button
-    key={key}
     variant={variant}
     style={{ width: '50px', height: '50px', borderRadius: '50%' }}
     onClick={onClick}
@@ -15,7 +14,6 @@ const CircleButton = ({ children, key, onClick, variant }) => (
 
 CircleButton.propTypes = {
   children: PropTypes.element.isRequired,
-  key: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   variant: PropTypes.string.isRequired,
 };

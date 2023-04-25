@@ -20,10 +20,12 @@ const RoomEquipment = ({ equipment }) => {
 
   return (
     <tr>
+      <td>{equipment.roomNumber}</td>
       <td>{equipment.quantity}</td>
       <td>{equipment.description}</td>
       <td>{equipment.serialNumber}</td>
       <td>{equipment.assetTag}</td>
+      <td>{equipment.equipmentType}</td>
       <td><EditEquipment equipmentId={equipment._id} /></td>
       <td><Button variant="outline-danger" size="sm" onClick={deleteEquipment}>Delete {equipment.description}</Button></td>
     </tr>
@@ -38,6 +40,8 @@ RoomEquipment.propTypes = {
     quantity: PropTypes.number,
     serialNumber: PropTypes.string,
     assetTag: PropTypes.string,
+    equipmentType: PropTypes.string,
+    roomNumber: PropTypes.arrayOf(PropTypes.string),
     _id: PropTypes.string,
   }).isRequired,
 };

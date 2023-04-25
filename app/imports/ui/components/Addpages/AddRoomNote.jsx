@@ -5,8 +5,11 @@ import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField } from 'unif
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { Plus } from 'react-bootstrap-icons';
 import { RoomNotes } from '../../../api/room/RoomNotes';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
+import CircleButton from '../CircleButton';
 
 // form schema based on RoomNotes collection
 const formSchema = new SimpleSchema({
@@ -18,8 +21,8 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddNote component for adding a new note. */
-const AddNote = ({ roomId, owner }) => {
+/* Renders the AddRoomNote component for adding a new note. */
+const AddRoomNote = ({ roomId, owner }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
 
@@ -41,9 +44,9 @@ const AddNote = ({ roomId, owner }) => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" size="sm" onClick={handleShow}>
-        Add Notes
-      </Button>
+      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_NOTE}>
+        <Plus fontSize="25px " />
+      </CircleButton>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -70,9 +73,9 @@ const AddNote = ({ roomId, owner }) => {
   );
 };
 
-AddNote.propTypes = {
+AddRoomNote.propTypes = {
   roomId: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
 };
 
-export default AddNote;
+export default AddRoomNote;

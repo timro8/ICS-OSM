@@ -6,8 +6,8 @@ import { Rooms } from '../../../api/room/RoomCollection';
 import { RoomEquipments } from '../../../api/room/RoomEquipments';
 import SearchBar from '../SearchBar';
 import LoadingSpinner from '../LoadingSpinner';
-import TechRoomEquipment from '../Tech/TechRoomEquipment';
-import TechAddEquipment from '../Tech/TechAddEquipment';
+import RoomEquipment from './RoomEquipment';
+import AddEquipment from '../Addpages/AddEquipment';
 import DownloadCSVButton from '../DownloadCSVButton';
 
 function getEquipmentData(equipment) {
@@ -47,7 +47,7 @@ const RoomAdminEquipment = () => {
     <Container className="py-3">
       <h1 className="text-center py-2 display-4">Equipment (furniture and tech)</h1>
       <div className="py-3 d-flex gap-2">
-        <TechAddEquipment />
+        <AddEquipment />
         <DownloadCSVButton collection={RoomEquipments} />
       </div>
       {/* Search Bar */}
@@ -62,12 +62,13 @@ const RoomAdminEquipment = () => {
             <th>Serial Number</th>
             <th>Asset Tag</th>
             <th>Equipment Type</th>
-            <th>Edit</th>
+            <th>Actions</th>
+            <th> </th>
           </tr>
         </thead>
         <tbody>
           {equipmentList.map((e, index) => (
-            <TechRoomEquipment key={index} equipment={e} />
+            <RoomEquipment key={index} equipment={e} />
           ))}
         </tbody>
       </Table>

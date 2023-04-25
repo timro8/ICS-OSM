@@ -8,6 +8,7 @@ import SearchBar from '../SearchBar';
 import LoadingSpinner from '../LoadingSpinner';
 import TechRoomEquipment from './TechRoomEquipment';
 import TechAddEquipment from './TechAddEquipment';
+import DownloadCSVButton from '../DownloadCSVButton';
 
 function getEquipmentData(equipment) {
   // get the room number, location from Rooms Collection and extend the equipment data
@@ -45,7 +46,10 @@ const TechEquipment = () => {
   return (ready ? (
     <Container className="py-3">
       <h2 className="text-center py-2">Equipment</h2>
-      <TechAddEquipment />
+      <div className="py-3 d-flex gap-2">
+        <TechAddEquipment />
+        <DownloadCSVButton collection={RoomEquipments} />
+      </div>
 
       {/* Search Bar */}
       <SearchBar handleSearch={handleSearch} />
@@ -59,8 +63,8 @@ const TechEquipment = () => {
               <th>Description</th>
               <th>Serial Number</th>
               <th>Asset Tag</th>
-              <th>Equipment Type</th>
-              <th>Edit</th>
+              <th>Actions</th>
+              <th> </th>
             </tr>
           </thead>
           <tbody>

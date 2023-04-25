@@ -5,11 +5,13 @@ import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, HiddenField
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { Plus } from 'react-bootstrap-icons';
 import { Rooms } from '../../../api/room/RoomCollection';
 import { RoomEquipments } from '../../../api/room/RoomEquipments';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
 import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import LoadingSpinner from '../LoadingSpinner';
+import CircleButton from '../CircleButton';
 
 // form schema based on the RoomJacks collection.
 const formSchema = new SimpleSchema({
@@ -34,13 +36,13 @@ const formSchema = new SimpleSchema({
   equipmentType: {
     type: String,
     optional: true,
-    allowedValues: ['furniture', 'tech'],
+    defaultValue: 'tech',
   },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddEquipment component for adding a new equipment. */
+/* Renders the AddRoomEquipment component for adding a new equipment. */
 const TechAddEquipment = () => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
@@ -75,10 +77,9 @@ const TechAddEquipment = () => {
   let fRef = null;
   return ready ? (
     <>
-      <Button id={COMPONENT_IDS.ADD_TECH_EQUIPMENT} variant="secondary" size="sm" onClick={handleShow}>
-        Add Equipment
-      </Button>
-
+      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_TECH_EQUIPMENT}>
+        <Plus fontSize="25px" />
+      </CircleButton>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Equipment</Modal.Title>
@@ -94,13 +95,10 @@ const TechAddEquipment = () => {
             <TextField name="description" />
             <TextField name="serialNumber" />
             <TextField name="assetTag" />
-            <SelectField
-              name="equipmentType"
-              label="Type"
-            />
             <SubmitField value="submit" />
             <ErrorsField />
             <HiddenField name="roomId" value={initRoom} />
+            <HiddenField name="equipmentType" value="tech" />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
