@@ -15,7 +15,6 @@ import RoomListItem from './list-item/RoomListItem';
 // TODO: add icons to search
 // TODO: move search to nav
 // TODO: limit to a maximum of 5 items of each array and add show more to show full list
-// TODO: make list items clickablex
 // TODO: allow using keys to interact with the search bar
 
 const HomeSearchBar = () => {
