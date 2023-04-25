@@ -12,8 +12,8 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import RoomListItem from './list-item/RoomListItem';
 
 // TODO: move search to nav
-// TODO: limit to a maximum of 5 items of each array and add show more to show full list
-// TODO: allow using keys to interact with the search bar
+// TODO: don't show search body if search results is empty
+// TODO: remove Link text decoration
 
 const HomeSearchBar = () => {
   const [searchInput, setSearchInput] = useState('');
