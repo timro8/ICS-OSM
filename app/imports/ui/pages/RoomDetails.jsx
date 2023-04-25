@@ -13,14 +13,14 @@ import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { StaffProfiles } from '../../api/user/StaffProfileCollection';
 import { OccupantRoom } from '../../api/user/OccupantRoomCollection';
 import RoomNote from '../components/Roomthings/RoomNote';
-import AddNote from '../components/Addpages/AddNote';
+import AddRoomNote from '../components/Addpages/AddRoomNote';
 import RoomJack from '../components/Roomthings/RoomJack';
-import AddJack from '../components/Addpages/AddJack';
-import RoomEquipment from '../components/Roomthings/RoomEquipment';
-import AddEquipment from '../components/Addpages/AddEquipment';
+import AddRoomJack from '../components/Addpages/AddRoomJack';
+import RoomDetailEquipment from '../components/Roomthings/RoomDetailEquipment';
+import AddRoomEquipment from '../components/Addpages/AddRoomEquipment';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { getRoomData } from '../../api/utilities/getRoomData';
-import AddOccupant from '../components/Addpages/AddOccupant';
+import AddRoomOccupant from '../components/Addpages/AddRoomOccupant';
 import RoomOccupant from '../components/Roomthings/RoomOccupant';
 
 /* The RoomDetails page with occupants, equipment, jacks, and notes. */
@@ -89,7 +89,7 @@ const RoomDetails = () => {
       <Row className="simple-card mb-4">
         <div className="scroll" style={{ height: '20rem' }}>
           <h4>Occupants</h4>
-          <AddOccupant roomKey={doc.roomKey} />
+          <AddRoomOccupant roomKey={doc.roomKey} />
           <Table responsive hover>
             <thead>
               <tr>
@@ -110,7 +110,7 @@ const RoomDetails = () => {
       <Row className="simple-card  mb-4">
         <div className="scroll" style={{ height: '20rem' }}>
           <h4>Room Equipment</h4>
-          <AddEquipment roomKey={roomKey} />
+          <AddRoomEquipment roomKey={roomKey} />
           <Table>
             <thead>
               <tr>
@@ -123,7 +123,7 @@ const RoomDetails = () => {
               </tr>
             </thead>
             <tbody>
-              {docEquipment.map((equipment) => <RoomEquipment key={equipment._id} equipment={equipment} />) }
+              {docEquipment.map((equipment) => <RoomDetailEquipment key={equipment._id} equipment={equipment} />) }
             </tbody>
           </Table>
         </div>
@@ -131,7 +131,7 @@ const RoomDetails = () => {
       <Row className="simple-card  mb-4">
         <div className="scroll" style={{ height: '20rem' }}>
           <h4>Room Data Jacks</h4>
-          <AddJack roomKey={roomKey} />
+          <AddRoomJack roomKey={roomKey} />
           <Table>
             <thead>
               <tr>
@@ -152,7 +152,7 @@ const RoomDetails = () => {
       <Row className="simple-card">
         <div className="scroll" style={{ height: '10rem' }}>
           <h2>Room Notes</h2>
-          <AddNote roomId={_id} owner={loggedInOwner} />
+          <AddRoomNote roomId={_id} owner={loggedInOwner} />
           <ListGroup variant="flush">
             {docNotes.map((note) => <RoomNote key={note._id} note={note} />)}
           </ListGroup>

@@ -43,4 +43,8 @@ export const COMPONENT_IDS = {
   ADD_TECH_JACK: 'add-tech-jack',
   ADD_TECH_EQUIPMENT: 'add-tech-equipment',
   LIST_STAFF_ADMIN: 'list-staff-admin',
+  ADD_ROOM_EQUIPMENT: 'add-room-equipment',
+  ADD_ROOM_JACK: 'add-room-jack',
+  ADD_OCCUPANT: 'add-occupant',
+  ADD_NOTE: 'add-note',
 };

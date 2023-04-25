@@ -6,12 +6,15 @@ import { AutoForm, ErrorsField, SubmitField, HiddenField, SelectField } from 'un
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { Plus } from 'react-bootstrap-icons';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StaffProfiles } from '../../../api/user/StaffProfileCollection';
 import { OccupantRoom } from '../../../api/user/OccupantRoomCollection';
 import { Rooms } from '../../../api/room/RoomCollection';
 import { defineMethod, updateMethod } from '../../../api/base/BaseCollection.methods';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import LoadingSpinner from '../LoadingSpinner';
+import CircleButton from '../CircleButton';
 
 // form schema based on the Equipment collection
 const formSchema = new SimpleSchema({
@@ -21,8 +24,8 @@ const formSchema = new SimpleSchema({
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
-/* Renders the AddOccupant component for adding a new occupant. */
-const AddOccupant = ({ roomKey }) => {
+/* Renders the AddRoomOccupant component for adding a new occupant. */
+const AddRoomOccupant = ({ roomKey }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
 
@@ -81,10 +84,9 @@ const AddOccupant = ({ roomKey }) => {
   let fRef = null;
   return ready ? (
     <>
-      <Button variant="primary" size="sm" onClick={handleShow}>
-        Add Occupant
-      </Button>
-
+      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_OCCUPANT}>
+        <Plus fontSize="25px" />
+      </CircleButton>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Occupant</Modal.Title>
@@ -108,8 +110,8 @@ const AddOccupant = ({ roomKey }) => {
   ) : <LoadingSpinner />;
 };
 
-AddOccupant.propTypes = {
+AddRoomOccupant.propTypes = {
   roomKey: PropTypes.string.isRequired,
 };
 
-export default AddOccupant;
+export default AddRoomOccupant;
