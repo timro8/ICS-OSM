@@ -12,7 +12,6 @@ import ClubListItem from './list-item/ClubListItem';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import RoomListItem from './list-item/RoomListItem';
 
-// TODO: add icons to search
 // TODO: move search to nav
 // TODO: limit to a maximum of 5 items of each array and add show more to show full list
 // TODO: allow using keys to interact with the search bar
