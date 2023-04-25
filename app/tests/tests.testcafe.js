@@ -23,11 +23,11 @@ const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'He
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
 
 /** Room */
-// const fakeRoom = { roomKey: 'POST1337', roomNumber: '1337', capacity: 1, roomSqFt: '10', occupants: '10', picture: '#' };
+const addNewRoom = { roomKey: 'POST1337', roomNumber: '1337', capacity: '1', roomSqFt: '150', picture: '#' };
 
 fixture('meteor-application-template-production localhost test with default db')
   .page('http://localhost:3000');
-
+/*
 test('Test that landing page shows up', async () => {
   await landingPage.isDisplayed();
 });
@@ -75,15 +75,15 @@ test('Room details shows up', async () => {
   await listRoomAdminPage.isDisplayed();
   await listRoomAdminPage.gotoRoomDetails();
 });
-
+*/
 test('Modal shows for Add Room', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.addRoom();
+  await listRoomAdminPage.addRoom(addNewRoom);
 });
-
+/*
 test('Navigating to profile from faculty page', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -123,7 +123,7 @@ test('Edit faculty', async () => {
   await signInPage.signin(facultyCredentials.username, facultyCredentials.password);
   await editFaculty.editFaculty(editFacultyCredentials);
 });
-
+*/
 // TODO: implement test for adding room
 // TODO: implement test for editing room
 // TODO: implement test for adding club

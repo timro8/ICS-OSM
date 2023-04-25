@@ -5,7 +5,6 @@ import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Plus } from 'react-bootstrap-icons';
 import { Rooms } from '../../../api/room/RoomCollection';
-import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
 import { uploadImgUrl } from '../../../api/faculty/faculty_form_helper';
 import CircleButton from '../CircleButton';
@@ -55,12 +54,12 @@ const AddRoom = () => {
 
   return (
     <>
-      <CircleButton onClick={handleShow} variant="dark" key="add-room" id={COMPONENT_IDS.ADD_ROOM}>
+      <CircleButton onClick={handleShow} variant="dark" key="add-room" id="add-room-form">
         <Plus fontSize="25px" />
       </CircleButton>
 
       <Modal show={show} onHide={handleClose} id="add-room-form">
-        <Modal.Header closeButton>
+        <Modal.Header closeButton id="add-room-form-close-button">
           <Modal.Title>Add Room</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -71,23 +70,26 @@ const AddRoom = () => {
             </Button>
           </div>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="roomKey" placeholder="location and room number" />
-            <TextField name="roomNumber" />
+            <TextField name="roomKey" placeholder="location and room number" id="add-room-form-roomkey" />
+            <TextField name="roomNumber" id="add-room-form-roomnumber" />
             <SelectField
               name="location"
               allowedValues={['POST', 'KELLER']}
+              id="add-room-form-location"
             />
             <SelectField
               name="status"
               allowedValues={['Occupied', 'Vacant', 'Ouf of Commission']}
+              id="add-room-form-status"
             />
-            <NumField name="capacity" />
-            <TextField name="roomSqFoot" />
+            <NumField name="capacity" id="add-room-form-capacity" />
+            <TextField name="roomSqFoot" id="add-room-form-room-sq-ft" />
             <SelectField
               name="roomClassification"
               allowedValues={['Office', 'Sink', 'Conference', 'Cubicle', 'ICS Library', 'ASECOLAB', 'Mail', 'Main Office', 'Lab', 'ICSpace', 'Storage', 'ICS IT', 'OFCSVC', 'LNG']}
+              id="add-room-form-classification"
             />
-            <SubmitField value="submit" />
+            <SubmitField value="submit" id="add-room-form-submit" />
             <ErrorsField />
           </AutoForm>
         </Modal.Body>

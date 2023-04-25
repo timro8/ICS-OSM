@@ -10,13 +10,13 @@ const ListRoomAdmin = () => {
   return (
     <Container id={PAGE_IDS.LIST_ROOM_ADMIN} className="py-3">
       <Tabs defaultActiveKey="rooms">
-        <Tab eventKey="rooms" title="Rooms">
+        <Tab eventKey="rooms" title="Rooms" id="list-room-admin-rooms">
           <RoomAdmin />
         </Tab>
-        <Tab eventKey="equipment" title="Equipment">
+        <Tab eventKey="equipment" title="Equipment" id="list-room-admin-equipment">
           <RoomAdminEquipment />
         </Tab>
-        <Tab eventKey="jacks" title="Jacks">
+        <Tab eventKey="jacks" title="Jacks" id="list-room-admin-jacks">
           <TechJack />
         </Tab>
       </Tabs>
