@@ -17,10 +17,11 @@ import RoomListItem from './list-item/RoomListItem';
 
 const HomeSearchBar = () => {
   const [searchInput, setSearchInput] = useState('');
+  const [selectedItemIndex, setSelectedItemIndex] = useState(0);
   const [filteredFaculties, setFilteredFaculties] = useState([]);
   const [filteredClubs, setFilteredClubs] = useState([]);
   const [filteredRooms, setFilteredRooms] = useState([]);
-  const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+  const [filteredItems, setFilteredItems] = useState([]);
 
   const { faculties, clubs, rooms, ready } = useTracker(() => {
     const facultySubscription = FacultyProfiles.subscribeFacultyProfileAdmin();
@@ -45,15 +46,20 @@ const HomeSearchBar = () => {
     const getClubInfo = (club) => `${club.clubName}`.toLowerCase();
     const getRoomInfo = (room) => `${room.location} ${room.roomNumber}`.toLowerCase();
 
-    setFilteredFaculties(faculties.filter(faculty => getFacultyInfo(faculty).includes(searchInput.toLowerCase())).slice(0, 3));
-    setFilteredClubs(clubs.filter(club => getClubInfo(club).includes(searchInput.toLowerCase())).slice(0, 3));
-    setFilteredRooms(rooms.filter(room => getRoomInfo(room).match(searchInput.toLowerCase())).slice(0, 3));
+    const facultiesSearchResult = faculties.filter(faculty => getFacultyInfo(faculty).includes(searchInput.toLowerCase())).slice(0, 3);
+    const clubsSearchResult = clubs.filter(club => getClubInfo(club).includes(searchInput.toLowerCase())).slice(0, 3);
+    const roomsSearchResult = rooms.filter(room => getRoomInfo(room).match(searchInput.toLowerCase())).slice(0, 3);
+
+    setFilteredItems([...facultiesSearchResult, ...clubsSearchResult, ...roomsSearchResult]);
+    setFilteredFaculties(facultiesSearchResult);
+    setFilteredClubs(clubsSearchResult);
+    setFilteredRooms(roomsSearchResult);
 
     setSelectedItemIndex(0); // Reset active item index on input change
   };
 
   const handleKeyDown = (e) => {
-    const searchResultsLength = (filteredFaculties.length + filteredClubs.length) - 1;
+    const searchResultsLength = (filteredFaculties.length + filteredClubs.length + filteredRooms.length) - 1;
     if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (selectedItemIndex === 0) {
@@ -70,6 +76,16 @@ const HomeSearchBar = () => {
       }
     } else if (e.key === 'Enter') {
       e.preventDefault();
+      const isFacultyItem = selectedItemIndex <= filteredFaculties.length - 1;
+      const isClubItem = selectedItemIndex <= (filteredFaculties.length - 1) + (filteredClubs.length - 1);
+
+      if (isFacultyItem) {
+        window.location.href = `/profile/${filteredItems[selectedItemIndex]._id}`;
+      } else if (isClubItem) {
+        window.location.href = `/clubs/${filteredItems[selectedItemIndex]._id}`;
+      } else {
+        window.location.replace(`/roomdetails/${filteredItems[selectedItemIndex]._id}`);
+      }
     }
   };
 
@@ -94,7 +110,7 @@ const HomeSearchBar = () => {
             {filteredRooms.length > 0 && (
               <>
                 <div className="search-heading">Rooms</div>
-                {filteredRooms.map((room, index) => <Link to={`/roomdetails/${room._id}`}><RoomListItem index={index + filteredClubs.length + filteredFaculties.length} room={room} selectedItemIndex={index} /></Link>) }
+                {filteredRooms.map((room, index) => <Link to={`/roomdetails/${room._id}`}><RoomListItem index={index + filteredClubs.length + filteredFaculties.length} room={room} selectedItemIndex={selectedItemIndex} /></Link>) }
               </>
             )}
           </div>
