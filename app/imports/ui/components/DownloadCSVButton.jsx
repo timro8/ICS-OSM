@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Download } from 'react-bootstrap-icons';
 import { downloadCsv } from '../../api/utilities/downloadCsv';

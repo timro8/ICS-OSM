@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Container, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
+import { Plus } from 'react-bootstrap-icons';
 import AddFacultyForm from '../components/Addpages/AddFacultyForm';
 import SearchBar from '../components/SearchBar';
 import FacultyCard from '../components/Facultypage/FacultyCard';
@@ -11,7 +12,6 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { ROLE } from '../../api/role/Role';
 import DownloadCSVButton from '../components/DownloadCSVButton';
-import { Plus } from 'react-bootstrap-icons';
 import CircleButton from '../components/CircleButton';
 
 const Faculty = () => {
