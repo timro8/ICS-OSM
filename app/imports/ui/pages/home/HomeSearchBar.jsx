@@ -4,7 +4,6 @@ import { Form } from 'react-bootstrap';
 import { ArrowDown, ArrowReturnLeft, ArrowUp } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
-import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { Clubs } from '../../../api/club/Club';
 import { Rooms } from '../../../api/room/RoomCollection';
 import FacultyListItem from './list-item/FacultyListItem';
@@ -19,22 +18,19 @@ import RoomListItem from './list-item/RoomListItem';
 const HomeSearchBar = () => {
   const [searchInput, setSearchInput] = useState('');
   const [filteredFaculties, setFilteredFaculties] = useState([]);
-  const [filteredStudents, setFilteredStudents] = useState([]);
   const [filteredClubs, setFilteredClubs] = useState([]);
   const [filteredRooms, setFilteredRooms] = useState([]);
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
 
-  const { faculties, students, clubs, rooms, ready } = useTracker(() => {
+  const { faculties, clubs, rooms, ready } = useTracker(() => {
     const facultySubscription = FacultyProfiles.subscribeFacultyProfileAdmin();
-    const studentSubscription = StudentProfiles.subscribeStudentProfile();
     const clubSubscription = Clubs.subscribeClub();
     const roomsSubscription = Rooms.subscribeRoom();
 
-    const allSubcriptionsReady = facultySubscription.ready() && studentSubscription.ready() && clubSubscription.ready() && roomsSubscription.ready();
+    const allSubcriptionsReady = facultySubscription.ready() && clubSubscription.ready() && roomsSubscription.ready();
 
     return {
       faculties: FacultyProfiles.find({}).fetch(),
-      students: StudentProfiles.find({}).fetch(),
       clubs: Clubs.find({}).fetch(),
       rooms: Rooms.find({}).fetch(),
       ready: allSubcriptionsReady,
@@ -46,12 +42,10 @@ const HomeSearchBar = () => {
     setSearchInput(e.target.value);
 
     const getFacultyInfo = (faculty) => `${faculty.firstName} ${faculty.lastName} ${faculty.email}`.toLowerCase();
-    const getStudentInfo = (student) => `${student.firstName} ${student.lastName}`.toLowerCase();
     const getClubInfo = (club) => `${club.clubName}`.toLowerCase();
     const getRoomInfo = (room) => `${room.location} ${room.roomNumber}`.toLowerCase();
 
     setFilteredFaculties(faculties.filter(faculty => getFacultyInfo(faculty).includes(searchInput.toLowerCase())).slice(0, 3));
-    setFilteredStudents(students.filter(student => getStudentInfo(student).includes(searchInput.toLowerCase())).slice(0, 3));
     setFilteredClubs(clubs.filter(club => getClubInfo(club).includes(searchInput.toLowerCase())).slice(0, 3));
     setFilteredRooms(rooms.filter(room => getRoomInfo(room).match(searchInput.toLowerCase())).slice(0, 3));
 
@@ -59,7 +53,7 @@ const HomeSearchBar = () => {
   };
 
   const handleKeyDown = (e) => {
-    const searchResultsLength = (filteredFaculties.length + filteredClubs.length + filteredStudents.length) - 1;
+    const searchResultsLength = (filteredFaculties.length + filteredClubs.length) - 1;
     if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (selectedItemIndex === 0) {
@@ -74,6 +68,8 @@ const HomeSearchBar = () => {
       } else {
         setSelectedItemIndex(Math.min(selectedItemIndex + 1, searchResultsLength));
       }
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
     }
   };
 
