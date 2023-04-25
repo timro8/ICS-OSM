@@ -8,7 +8,6 @@ import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { Clubs } from '../../../api/club/Club';
 import { Rooms } from '../../../api/room/RoomCollection';
 import FacultyListItem from './list-item/FacultyListItem';
-import StudentListItem from './list-item/StudentListItem';
 import ClubListItem from './list-item/ClubListItem';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import RoomListItem from './list-item/RoomListItem';
@@ -92,22 +91,16 @@ const HomeSearchBar = () => {
                 {filteredFaculties.map((faculty, index) => <Link to={`/profile/${faculty._id}`}><FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} /></Link>)}
               </>
             )}
-            {filteredStudents.length > 0 && (
-              <>
-                <div className="search-heading">Students</div>
-                {filteredStudents.map((student, index) => <StudentListItem student={student} selectedItemIndex={selectedItemIndex} index={index + (filteredFaculties.length)} />)}
-              </>
-            )}
             {filteredClubs.length > 0 && (
               <>
                 <div className="search-heading">Clubs</div>
-                {filteredClubs.map((club, index) => <Link to={`/clubs/${club._id}`}><ClubListItem club={club} index={index + (filteredFaculties.length + filteredStudents.length)} selectedItemIndex={selectedItemIndex} /></Link>)}
+                {filteredClubs.map((club, index) => <Link to={`/clubs/${club._id}`}><ClubListItem club={club} index={index + (filteredFaculties.length)} selectedItemIndex={selectedItemIndex} /></Link>)}
               </>
             )}
             {filteredRooms.length > 0 && (
               <>
                 <div className="search-heading">Rooms</div>
-                {filteredRooms.map((room, index) => <Link to={`/roomdetails/${room._id}`}><RoomListItem index={index + filteredClubs.length + filteredStudents.length + filteredFaculties.length} room={room} selectedItemIndex={index} /></Link>) }
+                {filteredRooms.map((room, index) => <Link to={`/roomdetails/${room._id}`}><RoomListItem index={index + filteredClubs.length + filteredFaculties.length} room={room} selectedItemIndex={index} /></Link>) }
               </>
             )}
           </div>
