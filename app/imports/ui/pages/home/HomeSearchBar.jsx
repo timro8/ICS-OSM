@@ -1,7 +1,7 @@
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { ArrowDown, ArrowReturnLeft, ArrowUp, Command } from 'react-bootstrap-icons';
+import { ArrowDown, ArrowReturnLeft, ArrowUp } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
@@ -114,10 +114,6 @@ const HomeSearchBar = () => {
             <div className="key-section">
               <ArrowReturnLeft className="key-icon" />
               <span className="key-text">Select</span>
-            </div>
-            <div className="key-section">
-              <Command className="key-icon" />
-              <span className="key-text">Quit</span>
             </div>
           </div>
         </div>
