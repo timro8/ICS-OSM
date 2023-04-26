@@ -41,7 +41,6 @@ const StudentSection = () => {
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email</th>
-              <th>Position</th>
               <th className="d-flex justify-content-center">Actions</th>
               <th> </th>
             </tr>

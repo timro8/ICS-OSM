@@ -29,7 +29,6 @@ const AdminPageStudentComponent = ({ studentProfile }) => {
       <td>{studentProfile.firstName}</td>
       <td>{studentProfile.lastName}</td>
       <td>{studentProfile.email}</td>
-      <td>Position</td>
       <td><EditStudent id={studentProfile._id} /></td>
       <td>{Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
         <div>
