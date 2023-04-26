@@ -68,10 +68,10 @@ const EditStudent = ({ id }) => {
         </Modal.Header>
         <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
           <Modal.Body>
-            <TextField name="firstName" />
-            <TextField name="lastName" />
+            <TextField name="firstName" id={`${COMPONENT_IDS.EDIT_STUDENT_FORM_FIRST_NAME}`} />
+            <TextField name="lastName" id={`${COMPONENT_IDS.EDIT_STUDENT_FORM_LAST_NAME}`} />
             <Col className="d-flex justify-content-end">
-              <SubmitField value="Submit" />
+              <SubmitField value="Submit" id={`${COMPONENT_IDS.EDIT_STUDENT_FORM_SUBMIT}`} />
               <ErrorsField />
             </Col>
           </Modal.Body>

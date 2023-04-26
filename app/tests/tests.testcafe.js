@@ -11,6 +11,7 @@ import { roomDetailsPage } from './room-details.page';
 import { addFaculty } from './add-faculty.form';
 import { editFaculty } from './edit-faculty.form';
 import { addStudentForm } from './add-student.form';
+import { editStudentForm } from './edit-student.form';
 
 /* global fixture:false, test:false */
 
@@ -25,7 +26,8 @@ const acmCredentials = { username: 'acm@foo.com', password: 'changeme' };
 const toddCredentials = { username: 'toddtt@hawaii.edu', password: 'changeme' };
 const addFacultyCredentials = { firstName: 'TEST', lastName: 'test', email: 'test@foo.com', password: 'changeme', bio: 'Hello World!', phone: '808-123-2567' };
 const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'Hello ICS!', phone: '765-432-1808' };
-const addStudentCredentials = { firstName: 'TEST', lastName: 'test', email: 'teststudent@foo.com', password: 'changeme'};
+const addStudentCredentials = { firstName: 'TEST', lastName: 'test', email: 'teststudent@foo.com', password: 'changeme' };
+const editStudentCredentials = { firstName: 'Caitlyn', lastName: 'Belmont' };
 
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
 
@@ -225,3 +227,8 @@ test('Add student', async () => {
   await addStudentForm.addStudent(addStudentCredentials);
 });
 // TODO: implement test for edit student
+test.only('Edit student', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await editStudentForm.editStudent(editStudentCredentials);
+});
