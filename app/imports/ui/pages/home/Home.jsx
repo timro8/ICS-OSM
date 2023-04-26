@@ -11,11 +11,8 @@ import StaffSection from './section/staff/StaffSection';
 import StudentSection from './section/student/StudentSection';
 import { ROLE } from '../../../api/role/Role';
 import LoadingSpinner from '../../components/LoadingSpinner';
-import HomeSearchBar from './HomeSearchBar';
 
 const Home = () => {
-  document.title = 'Home';
-
   const [loading, setLoading] = useState(true);
   const [firstName, setFirstName] = useState([]);
 
@@ -35,7 +32,6 @@ const Home = () => {
       {Roles.userIsInRole(Meteor.userId(), [ROLE.STUDENT, ROLE.OFFICE, ROLE.TECH, ROLE.FACULTY, ROLE.USER]) ? (
         <Row id="greeting">Hi {firstName}</Row>
       ) : ''}
-      <Row className="d-flex justify-content-center"><HomeSearchBar /></Row>
       <Row className="d-flex justify-content-between">
         <ProgressBars />
       </Row>

@@ -4,15 +4,14 @@ import AccordionItem from 'react-bootstrap/AccordionItem';
 import AccordionHeader from 'react-bootstrap/AccordionHeader';
 import AccordionBody from 'react-bootstrap/AccordionBody';
 import PropTypes from 'prop-types';
-import FacultyListItem from '../../../../list-item/FacultyListItem';
-import RoomListItem from '../../../../list-item/RoomListItem';
+import { Link } from 'react-router-dom';
 
 const RoomsList = ({ rooms, status }) => {
   const roomsByStatus = rooms.filter(room => room.status === status);
   if (!roomsByStatus) {
     return (<div style={{ color: '#444' }}>There are no rooms {status.toLowerCase()}</div>);
   }
-  return roomsByStatus.map((room, index) => <RoomListItem index={index} room={room} key={`${room._id}`} />);
+  return roomsByStatus.map(room => <ul key={`${room._id}`}><li key={room._id}><Link to={`/roomdetails/${room._id}`}>{room.roomNumber}</Link></li></ul>);
 };
 
 const FacultiesList = ({ faculties, assigned }) => {
@@ -25,9 +24,9 @@ const FacultiesList = ({ faculties, assigned }) => {
     return (<div style={{ color: '#444' }}>There are no unassigned faculties</div>);
   }
   if (assigned) {
-    return facultiesAssigned.map((faculty, index) => <FacultyListItem faculty={faculty} index={index} key={`${faculty._id}`} />);
+    return facultiesAssigned.map(faculty => <ul key={`${faculty._id}`}><li key={`${faculty._id}assigned`}><Link to={`/profile/${faculty._id}`}>{faculty.firstName} {faculty.lastName}</Link></li></ul>);
   }
-  return facultiesUnassigned.map((faculty, index) => <FacultyListItem faculty={faculty} index={index} key={`${faculty._id}`} />);
+  return facultiesUnassigned.map(faculty => <ul key={`${faculty._id}`}><li key={`${faculty._id}unassigned`}><Link to={`/profile/${faculty._id}`}>{faculty.firstName} {faculty.lastName}</Link></li></ul>);
 };
 
 const ListView = ({ rooms, faculties }) => {

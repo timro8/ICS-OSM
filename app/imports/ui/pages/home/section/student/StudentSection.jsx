@@ -8,7 +8,6 @@ import { ROLE } from '../../../../../api/role/Role';
 import { StudentProfiles } from '../../../../../api/user/StudentProfileCollection';
 import AddStudent from '../../../../components/AddStudent';
 import AdminPageStudentComponent from '../../../../components/AdminPage/AdminPageStudentComponent';
-import { COMPONENT_IDS } from '../../../../utilities/ComponentIDs';
 
 /* Renders a table containing all of the Faculty documents. Use <Admin> to render each row in each tabs. */
 const StudentSection = () => {

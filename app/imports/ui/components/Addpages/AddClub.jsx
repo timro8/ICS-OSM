@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Button, Image, Modal } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Meteor } from 'meteor/meteor';
@@ -61,7 +61,7 @@ const AddClub = () => {
         </Button>
       ) : ''}
 
-      <Modal show={show} onHide={handleClose} id="add-club-modal">
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Club</Modal.Title>
         </Modal.Header>
@@ -73,18 +73,18 @@ const AddClub = () => {
             </Button>
           </div>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="clubName" id="add-club-name" />
-            <LongTextField name="description" id="add-club-description" />
-            <TextField name="advisor" id="add-club-advisor" />
-            <TextField name="meetingDay" id="add-club-meetingDay" />
-            <TextField name="meetingTime" id="add-club-meetingTime" />
-            <TextField name="meetingLocation" id="add-club-meetingLocation" />
-            <TextField name="joinLink" id="add-club-joinLink" />
+            <TextField name="clubName" />
+            <LongTextField name="description" />
+            <TextField name="officers" />
+            <TextField name="advisor" />
+            <TextField name="meetingDay" />
+            <TextField name="meetingTime" />
+            <TextField name="meetingLocation" />
+            <TextField name="joinLink" />
             <div className="d-flex justify-content-end">
               <SubmitField value="Submit" />
             </div>
             <ErrorsField />
-            <HiddenField name="officers" />
           </AutoForm>
         </Modal.Body>
       </Modal>

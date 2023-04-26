@@ -6,7 +6,6 @@ import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { StudentProfiles } from '../../api/user/StudentProfileCollection';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 // form schema based on the StudentProfile collection.
 const formSchema = new SimpleSchema({
@@ -41,7 +40,7 @@ const AddStudent = () => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" onClick={handleShow} style={{ width: '15rem' }} id={`${COMPONENT_IDS.ADD_STUDENT_BUTTON}`}>
+      <Button variant="primary" onClick={handleShow} style={{ width: '15rem' }}>
         Add Student
       </Button>
 
@@ -51,12 +50,12 @@ const AddStudent = () => {
         </Modal.Header>
         <Modal.Body>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="firstName" id={`${COMPONENT_IDS.ADD_STUDENT_FORM_FIRST_NAME}`} />
-            <TextField name="lastName" id={`${COMPONENT_IDS.ADD_STUDENT_FORM_LAST_NAME}`} />
-            <TextField name="email" id={`${COMPONENT_IDS.ADD_STUDENT_FORM_EMAIL}`} />
-            <TextField name="password" id={`${COMPONENT_IDS.ADD_STUDENT_FORM_PASSWORD}`} />
+            <TextField name="firstName" />
+            <TextField name="lastName" />
+            <TextField name="email" />
+            <TextField name="password" />
             <div className="d-flex justify-content-end">
-              <SubmitField value="Submit" id={`${COMPONENT_IDS.ADD_STUDENT_FORM_SUBMIT}`} />
+              <SubmitField value="Submit" />
             </div>
             <ErrorsField />
           </AutoForm>

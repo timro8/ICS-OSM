@@ -8,7 +8,6 @@ import EditStudent from '../Editpages/EditStudent';
 import { removeItMethod } from '../../../api/base/BaseCollection.methods';
 import { ROLE } from '../../../api/role/Role';
 import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
-import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 const AdminPageStudentComponent = ({ studentProfile }) => {
   const [show, setShow] = useState(false);
@@ -33,16 +32,16 @@ const AdminPageStudentComponent = ({ studentProfile }) => {
       <td><EditStudent id={studentProfile._id} /></td>
       <td>{Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
         <div>
-          <Button id="delete-student-btn" variant="danger" onClick={handleShow}>
+          <Button variant="danger" onClick={handleShow}>
             Delete
           </Button>
         </div>
       ) : ''}
       </td>
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
-        <Modal id="delete-student-modal" show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton onClick={handleClose}>
-            <Modal.Title className="d-flex justify-content-center">Delete Student</Modal.Title>
+            <Modal.Title className="d-flex justify-content-center">Delete Club</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="p-5 text-center">
@@ -50,7 +49,7 @@ const AdminPageStudentComponent = ({ studentProfile }) => {
               <h6>This action can not be undone.</h6>
             </div>
             <div className="d-flex justify-content-center justify-content-around">
-              <Button variant="danger" onClick={deleteStudent} id={COMPONENT_IDS.DELETE_STUDENT}>Delete</Button>
+              <Button variant="danger" onClick={deleteStudent}>Delete</Button>
               <Button variant="secondary" onClick={handleClose}>Cancel</Button>
             </div>
           </Modal.Body>

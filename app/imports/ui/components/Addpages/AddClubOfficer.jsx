@@ -39,21 +39,21 @@ const AddClubOfficer = () => {
   return (
     <>
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
-        <Button id={COMPONENT_IDS.ADD_CLUB_OFFICER} key={Math.random()} style={{ width: '7rem' }} variant="primary" onClick={handleShow}>
+        <Button key={Math.random()} style={{ width: '7rem' }} id={COMPONENT_IDS.ADD_CLUB_OFFICER} variant="primary" onClick={handleShow}>
           Add Officer
         </Button>
       ) : ''}
 
-      <Modal id="add-officer-modal" show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Officer</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField id="add-officer-email" name="studentId" placeholder="Student Email" />
-            <TextField id="add-officer-club" name="clubId" placeholder="Club Name" />
-            <TextField id="add-officer-president" name="isPresident" placeholder="true or false" />
-            <TextField id="add-officer-position" name="position" />
+            <TextField name="studentId" placeholder="Student Email" />
+            <TextField name="clubId" placeholder="Club Name" />
+            <TextField name="isPresident" placeholder="true or false" />
+            <TextField name="position" />
             <div className="d-flex justify-content-end">
               <SubmitField value="Submit" />
             </div>

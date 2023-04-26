@@ -14,7 +14,6 @@ import EditClub from '../components/Editpages/EditClub';
 import AddClubOfficer from '../components/Addpages/AddClubOfficer';
 import { removeItMethod } from '../../api/base/BaseCollection.methods';
 import { ROLE } from '../../api/role/Role';
-import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 
 const Club = () => {
   const [show, setShow] = useState(false);
@@ -131,13 +130,13 @@ const Club = () => {
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
           <div className="p-2">
-            <Button variant="danger" onClick={handleShow} id="delete-club-btn">
+            <Button variant="danger" onClick={handleShow}>
               Delete Club
             </Button>
           </div>
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
-          <Modal show={show} onHide={handleClose} id="delete-club-modal">
+          <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton onClick={handleClose}>
               <Modal.Title className="d-flex justify-content-center">Delete Club</Modal.Title>
             </Modal.Header>
@@ -147,7 +146,7 @@ const Club = () => {
                 <h5>This action can not be undone.</h5>
               </div>
               <div className="d-flex justify-content-center justify-content-around">
-                <Button id={COMPONENT_IDS.DELETE_CLUB} variant="danger" onClick={deleteClub}>Delete</Button>
+                <Button variant="danger" onClick={deleteClub}>Delete</Button>
                 <Button variant="secondary" onClick={handleClose}>Cancel</Button>
               </div>
             </Modal.Body>

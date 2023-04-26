@@ -10,7 +10,6 @@ import { updateMethod } from '../../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../LoadingSpinner';
 import { Clubs } from '../../../api/club/Club';
 import { uploadImgUrl } from '../../../api/faculty/faculty_form_helper';
-import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 const bridge = new SimpleSchema2Bridge(Clubs._schema);
 
@@ -71,13 +70,13 @@ const EditClub = ({ id }) => {
 
   return ready ? (
     <>
-      <Col id={COMPONENT_IDS.EDIT_CLUB} className="pt-3 d-flex justify-content-center">
+      <Col className="pt-3 d-flex justify-content-center">
         <Button variant="primary" onClick={handleShow}>
           Edit Club
         </Button>
       </Col>
 
-      <Modal show={show} onHide={handleClose} id="edit-club-modal">
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton onClick={handleClose}>
           <Modal.Title className="d-flex justify-content-center">Edit Club</Modal.Title>
         </Modal.Header>
@@ -89,13 +88,13 @@ const EditClub = ({ id }) => {
         </div>
         <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
           <Modal.Body>
-            <TextField name="clubName" id="edit-club-name" />
-            <LongTextField name="description" id="edit-club-description" />
-            <TextField name="joinLink" id="edit-club-joinLink" />
-            <TextField name="meetingDay" id="edit-club-meetingDay" />
-            <TextField name="meetingTime" id="edit-club-meetingTime" />
-            <TextField name="meetingLocation" id="edit-club-meetingLocation" />
-            <TextField name="advisor" id="edit-club-advisor" />
+            <TextField name="clubName" />
+            <LongTextField name="description" />
+            <TextField name="joinLink" />
+            <TextField name="meetingDay" />
+            <TextField name="meetingTime" />
+            <TextField name="meetingLocation" />
+            <TextField name="advisor" />
             <Col className="d-flex justify-content-end">
               <SubmitField value="Submit" />
               <ErrorsField />

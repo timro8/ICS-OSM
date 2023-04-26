@@ -44,14 +44,11 @@ const AddRoomNote = ({ roomId, owner }) => {
   let fRef = null;
   return (
     <>
-      <Button id={COMPONENT_IDS.ADD_NOTE} variant="primary" size="sm" onClick={handleShow}>
-        Add Notes
-      </Button>
       <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_NOTE}>
         <Plus fontSize="25px " />
       </CircleButton>
 
-      <Modal show={show} onHide={handleClose} id="add-note-modal">
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Notes</Modal.Title>
         </Modal.Header>
