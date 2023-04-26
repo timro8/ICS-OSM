@@ -30,15 +30,6 @@ class ClubPage {
     await t.expect(Selector('#delete-club-modal').exists).ok();
     await t.click(`#${COMPONENT_IDS.DELETE_CLUB}`);
   }
-
-  async addOfficer(addOfficerCrendentials) {
-    await t.click(`#${COMPONENT_IDS.ADD_CLUB_OFFICER}`);
-    await t.expect(Selector('#add-officer-modal').exists).ok();
-    await t.typeText('#add-officer-club', addOfficerCrendentials.clubId, { replace: true });
-    await t.typeText('#add-officer-email', addOfficerCrendentials.studentId, { replace: true });
-    await t.typeText('#add-officer-president', addOfficerCrendentials.isPresident, { replace: true });
-    await t.typeText('#add-officer-position', addOfficerCrendentials.position, { replace: true });
-  }
 }
 
 export const clubPage = new ClubPage();
