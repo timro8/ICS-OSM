@@ -55,7 +55,7 @@ const AddRoomEquipment = ({ roomKey }) => {
   let fRef = null;
   return (
     <>
-      <CircleButton onClick={handleShow} variant="dark" id="add-room-equipment">
+      <CircleButton onClick={handleShow} variant="dark" id="add-room-equipment" tooltip="Add Equipment">
         <Plus fontSize="25px" id="add-room-equipment" />
       </CircleButton>
 

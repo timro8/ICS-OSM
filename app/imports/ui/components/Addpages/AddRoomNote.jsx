@@ -43,7 +43,7 @@ const AddRoomNote = ({ roomId, owner }) => {
   let fRef = null;
   return (
     <>
-      <CircleButton onClick={handleShow} variant="dark" id="add-note">
+      <CircleButton onClick={handleShow} variant="dark" id="add-note" tooltip="Add Note">
         <Plus fontSize="25px " id="add-note" />
       </CircleButton>
 

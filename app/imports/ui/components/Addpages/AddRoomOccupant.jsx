@@ -83,7 +83,7 @@ const AddRoomOccupant = ({ roomKey }) => {
   let fRef = null;
   return ready ? (
     <>
-      <CircleButton onClick={handleShow} variant="dark" id="add-occupant">
+      <CircleButton onClick={handleShow} variant="dark" id="add-occupant" tooltip="Add Occupant">
         <Plus fontSize="25px" id="add-occupant" />
       </CircleButton>
       <Modal show={show} onHide={handleClose} id="add-occupant-form">
