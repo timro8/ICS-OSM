@@ -202,6 +202,125 @@ body {
   font-size: 0.8rem;
 }
 
+.search-container {
+  position: relative;
+}
+
+.search-container .search-input,
+.search-body {
+  padding: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 100%;
+}
+
+.search-container .search-input {
+  border: none;
+  color: #333;
+  transition: border-color 0.3s ease-in-out;
+  outline: none;
+}
+
+.search-results {
+  max-height: 30rem;
+  overflow: auto;
+}
+
+.search-body {
+  position: absolute;
+  left: 0;
+  background-color: white;
+  z-index: 10;
+}
+
+.search-body:empty {
+  display: none;
+}
+
+.search-heading,
+.search-list-item {
+  padding: 10px;
+}
+
+.search-heading {
+  color: #808080;
+  font-weight: 300;
+}
+
+.search-list-item {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.search-list-item:hover {
+  background-color: #f3f3f3;
+  cursor: pointer;
+}
+
+.search-list-item-extra {
+  font-size: 0.9rem;
+  color: #989898;
+}
+
+.faculty-list-item img,
+.club-list-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.faculty-list-item,
+.club-list-item {
+  height: 70px;
+  gap: 15px;
+}
+
+.search-body .search-list-item.active {
+  background-color: #f3f3f3;
+}
+
+.key-use-info {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+}
+
+.key-icon {
+  width: 1.5rem;
+  height: 1.75rem;
+}
+
+.key-section {
+  display: flex;
+  gap: 5px;
+}
+
+.key-text,
+.key-icon {
+  color: #989898;
+  font-weight: 600;
+}
+
+.key-use-info {
+  padding: 10px;
+}
+
+.search-link {
+  text-decoration: none;
+  color: #464646;
+}
+
+.search-link:hover {
+  color: #000;
+}
+
+.move-keys {
+  display: flex;
+  gap: 2px;
+}
+
 .faculty-name:hover {
   text-decoration: underline !important;
 }
