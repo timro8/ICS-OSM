@@ -155,7 +155,7 @@ const EditStaffProfile = ({ id }) => {
                 {phoneNumber.map((value, index) => (
                   <Badge key={index} className="m-1 p-2">
                     {value}
-                    <CloseButton id="remove-phone-button" variant="white" className="badges-close-button" onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
+                    <CloseButton variant="white" className="badges-close-button" onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
                   </Badge>
                 ))}
               </div>

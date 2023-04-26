@@ -19,7 +19,6 @@ class EditStaffForm {
     await t.typeText(Selector('[name="firstName"]'), editStaffCredentials.firstName, { replace: true });
     await t.typeText(Selector('[name="lastName"]'), editStaffCredentials.lastName, { replace: true });
     await t.typeText('[name="bio"]', editStaffCredentials.bio, { replace: true });
-    await t.click('#remove-phone-button');
     await t.typeText('[name="phoneNumber"]', editStaffCredentials.phone, { replace: true });
 
     await t.click('[type="submit"]');
