@@ -12,7 +12,6 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import RoomListItem from './list-item/RoomListItem';
 
 // TODO: move search to nav
-// TODO: don't show search body if search results is empty
 // TODO: remove Link text decoration
 
 const HomeSearchBar = () => {
