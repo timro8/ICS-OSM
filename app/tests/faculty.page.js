@@ -1,7 +1,6 @@
 import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
-import {COMPONENT_IDS} from "../imports/ui/utilities/ComponentIDs";
 
 class FacultyPage {
   constructor() {

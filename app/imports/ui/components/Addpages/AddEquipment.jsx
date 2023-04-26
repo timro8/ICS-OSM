@@ -78,15 +78,10 @@ const AddEquipment = () => {
   let fRef = null;
   return ready ? (
     <>
-      <Button id={COMPONENT_IDS.ADD_EQUIPMENT} variant="primary" size="sm" onClick={handleShow} >
-        Add Equipment
-      </Button>
-
-      <Modal show={show} onHide={handleClose} id="add-equip-modal">
       <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_TECH_EQUIPMENT}>
         <Plus fontSize="25px" />
       </CircleButton>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="add-equip-modal">
         <Modal.Header closeButton>
           <Modal.Title>Add Equipment</Modal.Title>
         </Modal.Header>

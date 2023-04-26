@@ -75,15 +75,10 @@ const TechAddJack = () => {
   let fRef = null;
   return ready ? (
     <>
-      <Button id={COMPONENT_IDS.ADD_TECH_JACK} variant="secondary" size="sm" onClick={handleShow}>
-        Add Jack
-      </Button>
-
-      <Modal show={show} onHide={handleClose} id="tech-add-jack">
       <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_TECH_JACK}>
         <Plus fontSize="25px" />
       </CircleButton>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="tech-add-jack">
         <Modal.Header closeButton>
           <Modal.Title>Add Jack</Modal.Title>
         </Modal.Header>

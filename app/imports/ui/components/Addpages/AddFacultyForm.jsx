@@ -245,8 +245,6 @@ const AddFacultyForm = props => {
   // pop up window: https://react-bootstrap.github.io/components/modal/
   return ready ? (
     <Modal show={show} size="xl" id="add-faculty-modal">
-      <Modal.Header closeButton onClick={onClose}>
-    <Modal show={show} size="xl">
       <Modal.Header id="close-add-faculty-form" closeButton onClick={onClose}>
         <Modal.Title>Add Faculty</Modal.Title>
       </Modal.Header>
