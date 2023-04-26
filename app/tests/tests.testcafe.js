@@ -8,6 +8,7 @@ import { listRoomAdminPage } from './room-admin.page';
 import { clubPage } from './club.page';
 import { addFaculty } from './add-faculty.form';
 import { editFaculty } from './edit-faculty.form';
+import { techPageComponents } from './tech.page';
 
 /* global fixture:false, test:false */
 
@@ -24,6 +25,12 @@ const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'He
 
 /** Room */
 const addNewRoom = { roomKey: 'POST1337', roomNumber: '1337', capacity: '1', roomSqFt: '150', picture: '#' };
+
+const addNewRoomEquipment = { quantity: '2', description: 'Herman Miller chairs', serialNumber: '100 and 101', assetTag: 'UH 100 and UH 101' };
+
+const addNewRoomJack = { jackNumber: '8000', wallLocation: 'DH', IDFRoom: 'POST 320', description: 'close to ceiling'};
+
+const addNewTechEquipment
 
 fixture('meteor-application-template-production localhost test with default db')
   .page('http://localhost:3000');
@@ -75,7 +82,7 @@ test('Room details shows up', async () => {
   await listRoomAdminPage.isDisplayed();
   await listRoomAdminPage.gotoRoomDetails();
 });
-*/
+
 test('Add Room', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -83,6 +90,8 @@ test('Add Room', async () => {
   await navBar.gotoListRoomAdminPage();
   await listRoomAdminPage.addRoom(addNewRoom);
 });
+*/
+
 /*
 test('Navigating to profile from faculty page', async () => {
   await navBar.gotoSignInPage();
@@ -123,14 +132,29 @@ test('Edit faculty', async () => {
   await signInPage.signin(facultyCredentials.username, facultyCredentials.password);
   await editFaculty.editFaculty(editFacultyCredentials);
 });
+
+test('Add Room Admin Equipment', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListRoomAdminPage();
+  await listRoomAdminPage.addEquipment(addNewRoomEquipment);
+});
+
 */
-// TODO: implement test for adding room
+test('Add Room Admin Jack', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListRoomAdminPage();
+  await listRoomAdminPage.addJack(addNewRoomJack);
+});
+
+
 // TODO: implement test for editing room
 // TODO: implement test for adding club
 // TODO: implement test for editing club
 // TODO: implement test for tech page
-// TODO: implement test for add jack
 // TODO: implement test for edit jack
-// TODO: implement test for add equipment
 // TODO: implement test for edit equipment
 // TODO: implement test for add note

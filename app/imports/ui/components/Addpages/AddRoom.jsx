@@ -55,7 +55,7 @@ const AddRoom = () => {
   return (
     <>
       <CircleButton onClick={handleShow} variant="dark" key="add-room" id="add-room-form">
-        <Plus fontSize="25px" />
+        <Plus fontSize="25px" id="add-room-form" />
       </CircleButton>
 
       <Modal show={show} onHide={handleClose} id="add-room-form">

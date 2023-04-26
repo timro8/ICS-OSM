@@ -51,9 +51,11 @@ const RoomAdminEquipment = () => {
         <DownloadCSVButton collection={RoomEquipments} />
       </div>
       {/* Search Bar */}
-      <SearchBar handleSearch={handleSearch} />
+      <div id="equipment-search">
+        <SearchBar handleSearch={handleSearch} />
+      </div>
 
-      <Table responsive hover>
+      <Table responsive hover id="list-room-admin-equipment">
         <thead>
           <tr>
             <th>Room Number</th>

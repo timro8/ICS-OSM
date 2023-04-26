@@ -2,7 +2,7 @@ import { Selector, t } from 'testcafe';
 import { PAGE_IDS } from '../imports/ui/utilities/PageIDs';
 import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
-class ListRoomAdmin {
+class TechPage {
   constructor() {
     this.pageId = `#${PAGE_IDS.LIST_ROOM_ADMIN}`;
     this.pageSelector = Selector(this.pageId);
@@ -137,4 +137,4 @@ class ListRoomAdmin {
   }
 }
 
-export const listRoomAdminPage = new ListRoomAdmin();
+export const techPageComponents = new TechPage();
