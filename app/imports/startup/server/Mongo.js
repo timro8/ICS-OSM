@@ -78,7 +78,7 @@ if (Events302.count() === 0) {
   }
 }
 
-if (StaffProfiles.count() === 0) {
+if (StaffProfiles.count() > 1) {
   if (Meteor.settings.defaultStaffData) {
     console.log('Creating default staff data.');
     Meteor.settings.defaultStaffData.map(data => addStaffData(data));

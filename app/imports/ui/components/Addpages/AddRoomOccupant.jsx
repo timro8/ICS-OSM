@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Modal } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, HiddenField, SelectField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, HiddenField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
@@ -12,7 +12,6 @@ import { StaffProfiles } from '../../../api/user/StaffProfileCollection';
 import { OccupantRoom } from '../../../api/user/OccupantRoomCollection';
 import { Rooms } from '../../../api/room/RoomCollection';
 import { defineMethod, updateMethod } from '../../../api/base/BaseCollection.methods';
-import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import LoadingSpinner from '../LoadingSpinner';
 import CircleButton from '../CircleButton';
 
@@ -84,24 +83,24 @@ const AddRoomOccupant = ({ roomKey }) => {
   let fRef = null;
   return ready ? (
     <>
-      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_OCCUPANT}>
-        <Plus fontSize="25px" />
+      <CircleButton onClick={handleShow} variant="dark" id="add-occupant">
+        <Plus fontSize="25px" id="add-occupant" />
       </CircleButton>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="add-occupant-form">
         <Modal.Header closeButton>
           <Modal.Title>Add Occupant</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           Add Occupant
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <SelectField name="occupant" options={occupantList} />
-            <SubmitField value="submit" />
+            <SelectField name="occupant" options={occupantList} id="add-occupant-form-occupant" />
+            <Button id="add-occupant-form-submit" type="submit" variant="success">Add</Button>
             <ErrorsField />
             <HiddenField name="roomKey" value={roomKey} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} id="add-occupant-form-close-button">
             Close
           </Button>
         </Modal.Footer>

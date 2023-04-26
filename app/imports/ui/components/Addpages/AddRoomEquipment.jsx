@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField, SelectField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField, HiddenField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Plus } from 'react-bootstrap-icons';
 import { RoomEquipments } from '../../../api/room/RoomEquipments';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
-import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import CircleButton from '../CircleButton';
 
 // form schema based on the Equipment collection
@@ -56,29 +55,29 @@ const AddRoomEquipment = ({ roomKey }) => {
   let fRef = null;
   return (
     <>
-      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_ROOM_EQUIPMENT}>
-        <Plus fontSize="25px" />
+      <CircleButton onClick={handleShow} variant="dark" id="add-room-equipment">
+        <Plus fontSize="25px" id="add-room-equipment" />
       </CircleButton>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="add-room-equipment-form">
         <Modal.Header closeButton>
           <Modal.Title>Add Equipment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           Add Equipment
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="description" />
-            <TextField name="quantity" />
-            <TextField name="serialNumber" />
-            <TextField name="assetTag" />
-            <SelectField name="equipmentType" />
-            <SubmitField value="submit" />
+            <TextField name="description" id="add-room-equipment-form-description" />
+            <TextField name="quantity" id="add-room-equipment-form-quantity" />
+            <TextField name="serialNumber" id="add-room-equipment-form-serialnumber" />
+            <TextField name="assetTag" id="add-room-equipment-form-assettag" />
+            <SelectField name="equipmentType" id="add-room-equipment-form-equipmenttype" />
+            <Button type="submit" id="add-room-equipment-form-submit" variant="success">Add</Button>
             <ErrorsField />
             <HiddenField name="roomKey" value={roomKey} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} id="add-room-equipment-form-close-button">
             Close
           </Button>
         </Modal.Footer>

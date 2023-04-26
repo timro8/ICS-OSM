@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField, HiddenField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button, Modal } from 'react-bootstrap';
-import { Rooms } from '../../../api/room/RoomCollection';
 import { RoomJacks } from '../../../api/room/RoomJacks';
 import { updateMethod } from '../../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../LoadingSpinner';
@@ -14,10 +13,6 @@ import LoadingSpinner from '../LoadingSpinner';
 // form schema based on RoomJacks collection schema
 const makeSchema = new SimpleSchema({
   roomId: {
-    type: String,
-    optional: true,
-  },
-  rooms: {
     type: String,
     optional: true,
   },
@@ -40,38 +35,28 @@ const makeSchema = new SimpleSchema({
 const EditJack = ({ jackId }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
-  const [initRoom, setRoom] = useState(0);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   // subscription to RoomJacks (Admin)
-  const { doc, docRooms, ready } = useTracker(() => {
+  const { doc, ready } = useTracker(() => {
     // Get access to RoomJacks documents.
     const subscription = RoomJacks.subscribeRoomJacksAdmin();
-    const subRoom = Rooms.subscribeRoom();
-    // Determine if the subscription is ready
-    const rdy = subscription.ready() && subRoom.ready();
+    const rdy = subscription.ready();
     // Get the document based on the jackId
     const document = RoomJacks.findDoc(jackId);
-    const documentRooms = Rooms.find().fetch();
     return {
       doc: document,
-      docRooms: documentRooms,
       ready: rdy,
     };
   }, [jackId]);
-
-  // const roomList = _.pluck(docRooms, 'roomNumber');
-  const roomList = docRooms.map((room) => ({ label: room.roomNumber, value: room._id }));
-
   const formSchema = makeSchema;
   const bridge = new SimpleSchema2Bridge(formSchema);
   // data submitted to update a jack. If there are errors, an error message will appear. If the data successfully updates, a success message appears.
   const submit = (data) => {
     const { jackNumber, wallLocation, IDFRoom, description } = data;
-    const roomId = data.rooms;
     const collectionName = RoomJacks.getCollectionName();
-    const updateData = { id: jackId, roomId, jackNumber, wallLocation, IDFRoom, description };
+    const updateData = { id: jackId, jackNumber, wallLocation, IDFRoom, description };
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => swal('Success', 'Jack updated successfully', 'success'));
@@ -79,11 +64,11 @@ const EditJack = ({ jackId }) => {
 
   return ready ? (
     <>
-      <Button variant="outline-secondary" size="sm" onClick={handleShow}>
+      <Button variant="outline-secondary" size="sm" onClick={handleShow} id="edit-room-detail-jack">
         Edit {doc.jackNumber}
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="edit-room-detail-jack-form">
         <Modal.Header closeButton>
           <Modal.Title>Edit Jack</Modal.Title>
         </Modal.Header>
@@ -92,25 +77,18 @@ const EditJack = ({ jackId }) => {
             schema={bridge}
             onSubmit={data => submit(data)}
             model={doc}
-            onChange={(key, value) => {
-              setRoom(value);
-            }}
           >
-            <TextField name="jackNumber" />
-            <SelectField
-              name="rooms"
-              options={roomList}
-            />
-            <TextField name="wallLocation" />
-            <TextField name="IDFRoom" label="IDF Room" />
-            <TextField name="description" />
-            <SubmitField value="Submit" />
+            <TextField name="jackNumber" id="edit-room-detail-jack-form-jacknumber" />
+            <TextField name="wallLocation" id="edit-room-detail-jack-form-walllocation" />
+            <TextField name="IDFRoom" label="IDF Room" id="edit-room-detail-jack-form-idfroom" />
+            <TextField name="description" id="edit-room-detail-jack-form-description" />
+            <Button id="edit-room-detail-jack-form-submit" type="Submit" variant="success">Add</Button>
             <ErrorsField />
-            <HiddenField name="roomId" value={initRoom} />
+            <HiddenField name="roomId" value={doc.roomId} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" size="sm" onClick={handleClose}>
+          <Button variant="secondary" size="sm" onClick={handleClose} id="edit-room-detail-jack-form-close-button">
             Close
           </Button>
         </Modal.Footer>

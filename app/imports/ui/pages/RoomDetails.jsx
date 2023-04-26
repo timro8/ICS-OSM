@@ -118,6 +118,7 @@ const RoomDetails = () => {
                 <th>Description</th>
                 <th>Serial Number</th>
                 <th>Asset Tag</th>
+                <th>Equipment Type</th>
                 <th>Actions</th>
                 <th> </th>
               </tr>

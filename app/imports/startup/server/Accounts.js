@@ -3,15 +3,20 @@ import { ROLE } from '../../api/role/Role';
 import { AdminProfiles } from '../../api/user/AdminProfileCollection';
 import { UserProfiles } from '../../api/user/UserProfileCollection';
 import { StudentProfiles } from '../../api/user/StudentProfileCollection';
+import { StaffProfiles } from '../../api/user/StaffProfileCollection';
 
 /* eslint-disable no-console */
 
-function createUser(email, role, firstName, lastName, password, isClubPresident, clubPosition) {
+function createUser(email, role, firstName, lastName, password, isClubPresident, clubPosition, image, bio, phoneNumber) {
   if (role === ROLE.ADMIN) AdminProfiles.define({ email, firstName, lastName, password });
   if (role === ROLE.FACULTY) UserProfiles.define({ email, firstName, lastName, password });
-  if (role === ROLE.OFFICE) UserProfiles.define({ email, firstName, lastName, password });
+  if (role === ROLE.OFFICE) {
+    StaffProfiles.define({ email, firstName, lastName, password, role, image, bio, phoneNumber });
+  }
   if (role === ROLE.STUDENT) StudentProfiles.define({ email, firstName, lastName, password, isClubPresident, clubPosition });
-  if (role === ROLE.TECH) UserProfiles.define({ email, firstName, lastName, password });
+  if (role === ROLE.TECH) {
+    StaffProfiles.define({ email, firstName, lastName, password, role, image, bio, phoneNumber });
+  }
   if (role === ROLE.USER) UserProfiles.define({ email, firstName, lastName, password });
 }
 

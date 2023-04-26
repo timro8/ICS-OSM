@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal } from 'react-bootstrap';
-import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField, HiddenField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
 import { Plus } from 'react-bootstrap-icons';
 import { RoomNotes } from '../../../api/room/RoomNotes';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
-import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import CircleButton from '../CircleButton';
 
 // form schema based on RoomNotes collection
@@ -44,19 +43,19 @@ const AddRoomNote = ({ roomId, owner }) => {
   let fRef = null;
   return (
     <>
-      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_NOTE}>
-        <Plus fontSize="25px " />
+      <CircleButton onClick={handleShow} variant="dark" id="add-note">
+        <Plus fontSize="25px " id="add-note" />
       </CircleButton>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="add-note-form">
         <Modal.Header closeButton>
           <Modal.Title>Add Notes</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           Add Notes
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
-            <TextField name="note" />
-            <SubmitField value="submit" />
+            <TextField name="note" id="add-note-form-note" />
+            <Button id="add-note-form-submit" type="submit" variant="success">Add</Button>
             <ErrorsField />
             <HiddenField name="owner" value={owner} />
             <HiddenField name="roomId" value={roomId} />
@@ -64,7 +63,7 @@ const AddRoomNote = ({ roomId, owner }) => {
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} id="add-note-form-close-button">
             Close
           </Button>
         </Modal.Footer>

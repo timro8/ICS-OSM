@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useParams } from 'react-router';
-import { AutoForm, ErrorsField, SubmitField, TextField, NumField, SelectField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField, NumField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -85,11 +85,13 @@ const EditRoom = () => {
             </Button>
           </div>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
-            <SelectField name="status" allowedValues={statusList} />
-            <NumField name="capacity" decimal={null} />
-            <TextField name="roomSqFoot" />
-            <SelectField name="roomClassification" allowedValues={classificationList} />
-            <SubmitField value="Submit" />
+            <SelectField name="status" allowedValues={statusList} id="edit-room-form-status" />
+            <NumField name="capacity" decimal={null} id="edit-room-form-capacity" />
+            <TextField name="roomSqFoot" id="edit-room-form-roomsqft" />
+            <SelectField name="roomClassification" allowedValues={classificationList} id="edit-room-form-classification" />
+            <Button type="Submit" variant="success" id="edit-room-form-submit">
+              Update
+            </Button>
             <ErrorsField />
           </AutoForm>
         </Col>

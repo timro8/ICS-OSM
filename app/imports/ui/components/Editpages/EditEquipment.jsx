@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField, NumField, SelectField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField, HiddenField, NumField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -33,8 +33,6 @@ const EditEquipment = ({ equipmentId }) => {
       ready: rdy,
     };
   }, [equipmentId]);
-
-  console.log(doc);
   // data submitted to edit an equipment. If there are errors, an error message will pop up. If the data is successfully updated, a success message will appear.
   const submit = (data) => {
     const { description, quantity, serialNumber, assetTag, equipmentType } = data;
@@ -47,28 +45,28 @@ const EditEquipment = ({ equipmentId }) => {
 
   return ready ? (
     <>
-      <Button variant="outline-secondary" size="sm" onClick={handleShow}>
+      <Button variant="outline-secondary" size="sm" onClick={handleShow} id="edit-room-detail-equipment">
         Edit {doc.description}
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="edit-room-detail-equipment-form">
         <Modal.Header closeButton>
           <Modal.Title>Edit Equipment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
-            <TextField name="description" />
-            <NumField name="quantity" decimal={null} />
-            <TextField name="serialNumber" />
-            <TextField name="assetTag" />
-            <SelectField name="equipmentType" allowedValues={['furniture', 'tech']} />
-            <SubmitField value="Submit" />
+            <TextField name="description" id="edit-room-detail-equipment-form-description" />
+            <NumField name="quantity" decimal={null} id="edit-room-detail-equipment-form-quantity" />
+            <TextField name="serialNumber" id="edit-room-detail-equipment-form-serialnumber" />
+            <TextField name="assetTag" id="edit-room-detail-equipment-form-assettag" />
+            <SelectField name="equipmentType" allowedValues={['furniture', 'tech']} id="edit-room-detail-equipment-form-equipmenttype" />
+            <Button type="Submit" id="edit-room-detail-equipment-form-submit" variant="success">Add</Button>
             <ErrorsField />
             <HiddenField name="roomId" value={doc.roomId} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} id="edit-room-detail-equipment-form-close-button">
             Close
           </Button>
         </Modal.Footer>

@@ -14,7 +14,7 @@ class ListRoomAdmin {
   }
 
   async gotoRoomDetails() {
-    await t.click('#room-card');
+    await t.click(Selector('a').withText('POST 302'));
     await t.expect(Selector(`#${PAGE_IDS.ROOM_DETAILS}`).exists).ok();
   }
 
@@ -54,17 +54,38 @@ class ListRoomAdmin {
     await t.click(Selector('.swal-button--confirm'));
     await t.click(`#${COMPONENT_IDS.ADD_ROOM_FORM_CLOSE_BUTTON}`);
     await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_ROOM_ADMIN}`);
-    await t.click(Selector('button').withText('Rooms'));
-    await t.typeText(`#${COMPONENT_IDS.SEARCH_INPUT}`, addNewRoom.roomNumber);
-    await t.click(`#${COMPONENT_IDS.SEARCH_BUTTON}`);
-    await t.click(`#${COMPONENT_IDS.ROOM_CARD}`);
-
   }
 
-  async editRoom() {
+  async editRoom(editRoom) {
     // await t.click('a.edit-room');
     await t.click('#edit-room-button');
     await t.expect(Selector(`#${PAGE_IDS.EDIT_ROOM}`).exists).ok();
+
+    const selectStatus = Selector(`#${COMPONENT_IDS.EDIT_ROOM_FORM_STATUS}`);
+    const optionStatus = selectStatus.find('option');
+    await t
+      .click(selectStatus)
+      .click(optionStatus.nth(0));
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_ROOM_FORM_CAPACITY}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_ROOM_FORM_CAPACITY}`, editRoom.capacity);
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_ROOM_FORM_ROOMSQFT}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_ROOM_FORM_ROOMSQFT}`, editRoom.roomSqFt);
+
+    const selectClassification = Selector(`#${COMPONENT_IDS.EDIT_ROOM_FORM_CLASSIFICATION}`);
+    const optionClassification = selectClassification.find('option');
+    await t
+      .click(selectClassification)
+      .click(optionClassification.nth(2));
+
+    await t.click(`#${COMPONENT_IDS.EDIT_ROOM_FORM_SUBMIT}`);
+
+    await t.click(Selector('.swal-button--confirm'));
   }
 
   async addEquipment(addNewRoomEquipment) {
@@ -86,6 +107,12 @@ class ListRoomAdmin {
 
     await t.typeText(`#${COMPONENT_IDS.ADD_EQUIPMENT_FORM_ASSETTAG}`, addNewRoomEquipment.assetTag);
 
+    const selectType = Selector(`#${COMPONENT_IDS.ADD_EQUIPMENT_FORM_EQUIPMENTTYPE}`);
+    const optionType = selectType.find('option');
+    await t
+      .click(selectType)
+      .click(optionType.nth(1));
+
     await t.click(`#${COMPONENT_IDS.ADD_EQUIPMENT_FORM_SUBMIT}`);
 
     await t.click(Selector('.swal-button--confirm'));
@@ -94,14 +121,6 @@ class ListRoomAdmin {
 
     await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_ROOM_ADMIN}`);
     await t.click(Selector('button').withText('Equipment'));
-    /*
-    need to implement the search
-    await t.click('#equipment-search');
-    await t.typeText(Selector('input'), 'chair');
-    await t.pressKey('tab');
-    await t.pressKey('enter');
-    await t.click(`#${COMPONENT_IDS.LIST_ROOM_ADMIN_EQUIPMENT}`);
-     */
   }
 
   async addJack(addNewRoomJack) {
@@ -130,10 +149,149 @@ class ListRoomAdmin {
     await t.click(`#${COMPONENT_IDS.ADD_JACK_FORM_CLOSE_BUTTON}`);
 
     await t.click(`#${COMPONENT_IDS.NAVBAR_LIST_ROOM_ADMIN}`);
+  }
 
-    /*
-    * need to implement search after add
-    * */
+  async addRoomOccupant() {
+    await t.click(Selector('#add-occupant'));
+    await t.expect(Selector(`#${COMPONENT_IDS.ADD_OCCUPANT_FORM}`).exists).ok();
+
+    const selectOccupant = Selector(`#${COMPONENT_IDS.ADD_OCCUPANT_FORM_OCCUPANT}`);
+    const optionOccupant = selectOccupant.find('option');
+
+    await t
+      .click(selectOccupant)
+      .click(optionOccupant.nth(2));
+
+    await t.click(`#${COMPONENT_IDS.ADD_OCCUPANT_FORM_SUBMIT}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+
+    await t.click(`#${COMPONENT_IDS.ADD_OCCUPANT_FORM_CLOSE_BUTTON}`);
+  }
+
+  async addRoomNote() {
+    await t.click(Selector('#add-note'));
+    await t.expect(Selector(`#${COMPONENT_IDS.ADD_NOTE_FORM}`).exists).ok();
+
+    await t.typeText(`#${COMPONENT_IDS.ADD_NOTE_FORM_NOTE}`, 'Test note');
+
+    await t.click(`#${COMPONENT_IDS.ADD_NOTE_FORM_SUBMIT}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+
+    await t.click(`#${COMPONENT_IDS.ADD_NOTE_FORM_CLOSE_BUTTON}`);
+  }
+
+  async addRoomEquipment(addNewRoomEquipment) {
+    await t.click(Selector('#add-room-equipment'));
+    await t.expect(Selector(`#${COMPONENT_IDS.ADD_ROOM_EQUIPMENT_FORM}`).exists).ok();
+
+    await t.typeText(`#${COMPONENT_IDS.ADD_ROOM_EQUIPMENT_FORM_DESCRIPTION}`, addNewRoomEquipment.description);
+
+    await t.typeText(`#${COMPONENT_IDS.ADD_ROOM_EQUIPMENT_FORM_QUANTITY}`, addNewRoomEquipment.quantity);
+
+    await t.typeText(`#${COMPONENT_IDS.ADD_ROOM_EQUIPMENT_FORM_SERIALNUMBER}`, addNewRoomEquipment.serialNumber);
+
+    await t.typeText(`#${COMPONENT_IDS.ADD_ROOM_EQUIPMENT_FORM_ASSETTAG}`, addNewRoomEquipment.assetTag);
+
+    const selectType = Selector(`#${COMPONENT_IDS.ADD_ROOM_EQUIPMENT_FORM_EQUIPMENTTYPE}`);
+    const optionType = selectType.find('option');
+    await t
+      .click(selectType)
+      .click(optionType.nth(1));
+
+    await t.click(`#${COMPONENT_IDS.ADD_ROOM_EQUIPMENT_FORM_SUBMIT}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+
+    await t.click(`#${COMPONENT_IDS.ADD_ROOM_EQUIPMENT_FORM_CLOSE_BUTTON}`);
+  }
+
+  async addRoomJack(addNewRoomDetailJack) {
+    await t.click(Selector('#add-room-jack'));
+    await t.expect(Selector(`#${COMPONENT_IDS.ADD_ROOM_JACK_FORM}`).exists).ok();
+
+    await t.typeText(`#${COMPONENT_IDS.ADD_ROOM_JACK_FORM_JACKNUMBER}`, addNewRoomDetailJack.jackNumber);
+
+    await t.typeText(`#${COMPONENT_IDS.ADD_ROOM_JACK_FORM_WALLLOCATION}`, addNewRoomDetailJack.wallLocation);
+
+    await t.typeText(`#${COMPONENT_IDS.ADD_ROOM_JACK_FORM_IDFROOM}`, addNewRoomDetailJack.IDFRoom);
+
+    await t.typeText(`#${COMPONENT_IDS.ADD_ROOM_JACK_FORM_DESCRIPTION}`, addNewRoomDetailJack.description);
+
+    await t.click(`#${COMPONENT_IDS.ADD_ROOM_JACK_FORM_SUBMIT}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+
+    await t.click(`#${COMPONENT_IDS.ADD_ROOM_JACK_FORM_CLOSE_BUTTON}`);
+  }
+
+  async editRoomEquipment(editRoomEquipment) {
+    await t.click('#edit-room-detail-equipment');
+    await t.expect(Selector(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM}`).exists).ok();
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_DESCRIPTION}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_DESCRIPTION}`, editRoomEquipment.description);
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_QUANTITY}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_QUANTITY}`, editRoomEquipment.quantity);
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_SERIALNUMBER}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_SERIALNUMBER}`, editRoomEquipment.serialNumber);
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_ASSETTAG}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_ASSETTAG}`, editRoomEquipment.assetTag);
+
+    const selectType = Selector(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_EQUIPMENTTYPE}`);
+    const optionType = selectType.find('option');
+    await t
+      .click(selectType)
+      .click(optionType.nth(1));
+
+    await t.click(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_SUBMIT}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+
+    await t.click(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_EQUIPMENT_FORM_CLOSE_BUTTON}`);
+  }
+
+  async editRoomJack(editRoomJack) {
+    await t.click('#edit-room-detail-jack');
+    await t.expect(Selector(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM}`).exists).ok();
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_JACKNUMBER}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_JACKNUMBER}`, editRoomJack.jackNumber);
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_WALLLOCATION}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_WALLLOCATION}`, editRoomJack.wallLocation);
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_IDFROOM}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_IDFROOM}`, editRoomJack.IDFRoom);
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_DESCRIPTION}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_DESCRIPTION}`, editRoomJack.description);
+
+    await t.click(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_SUBMIT}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+
+    await t.click(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_CLOSE_BUTTON}`);
   }
 }
 

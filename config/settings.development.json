@@ -4,8 +4,16 @@
     { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" },
     { "email":  "faculty@foo.com", "password":  "changeme", "role":  "FACULTY", "firstName": "Faculty", "lastName":  "FACULTY" },
     { "email":  "student@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "Student", "lastName":  "STUDENT" },
-    { "email":  "office@foo.com", "password":  "changeme", "role":  "OFFICE", "firstName": "Office", "lastName":  "OFFICE" },
-    { "email":  "tech@foo.com", "password":  "changeme", "role":  "TECH", "firstName":  "Tech", "lastName":  "TECH" },
+    { "role":  "OFFICE", "email":  "office@foo.com", "password":  "changeme", "firstName": "Office", "lastName":  "OFFICE",
+      "image": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-300x300.jpg",
+      "bio": "I am Office.",
+      "phoneNumber": "808-956-0000"
+    },
+    { "role":  "TECH",
+      "email":  "tech@foo.com", "password":  "changeme",  "firstName":  "Tech", "lastName":  "TECH", "image": "https://www.ics.hawaii.edu/wp-content/uploads/2017/08/ICSLogo350x350-300x300.jpg",
+      "bio": "I am Tech.",
+      "phoneNumber": "808-956-0000"
+    },
     { "email":  "acm@foo.com", "password":  "changeme", "role":  "STUDENT", "firstName": "acm", "lastName":  "acm",
       "isClubPresident": true, "clubPosition": "Chair"
     },

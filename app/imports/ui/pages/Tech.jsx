@@ -9,10 +9,10 @@ const Tech = () => {
   return (
     <Container className="py-3" id={PAGE_IDS.TECH}>
       <Tabs defaultActiveKey="jacks">
-        <Tab eventKey="jacks" title="Jacks">
+        <Tab eventKey="jacks" title="Jacks" id="tech-jacks">
           <TechJack />
         </Tab>
-        <Tab eventKey="equipment" title="Equipment">
+        <Tab eventKey="equipment" title="Equipment" id="tech-equipment">
           <TechEquipment />
         </Tab>
       </Tabs>
