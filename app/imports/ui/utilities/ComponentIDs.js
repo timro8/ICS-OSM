@@ -194,4 +194,5 @@ export const COMPONENT_IDS = {
   ADD_STUDENT: 'add-student',
   EDIT_STUDENT: 'edit-student',
   DELETE_STUDENT: 'delete-student',
+  ADD_STAFF: 'add-staff',
 };

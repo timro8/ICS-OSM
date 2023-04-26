@@ -153,7 +153,7 @@ const AddStaffForm = props => {
   // pop up window: https://react-bootstrap.github.io/components/modal/
   return ready ? (
     <Modal show={show} size="xl">
-      <Modal.Header closeButton onClick={onClose}>
+      <Modal.Header id="close-button" closeButton onClick={onClose}>
         <Modal.Title>Add Staff</Modal.Title>
       </Modal.Header>
       <Modal.Body>

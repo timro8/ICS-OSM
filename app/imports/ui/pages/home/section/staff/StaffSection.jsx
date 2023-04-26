@@ -42,7 +42,7 @@ const StaffSection = () => {
         <h2>Staffs</h2>
         {/** Button for adding staff profiles, ONLY ADMIN & OFFICE can do this! */}
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
-          [<Button key={Math.random()} style={{ width: '15rem' }} variant="primary" onClick={() => setShow(true)}>Add Staff</Button>]
+          [<Button id="add-staff" key={Math.random()} style={{ width: '15rem' }} variant="primary" onClick={() => setShow(true)}>Add Staff</Button>]
         ) : ''}
         <AddStaffForm show={show} onClose={() => setShow(false)} key={Math.random()} />
       </div>

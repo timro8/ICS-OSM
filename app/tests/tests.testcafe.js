@@ -11,6 +11,8 @@ import { editFaculty } from './edit-faculty.form';
 import { techPageComponents } from './tech.page';
 import { addStudentForm } from './add-student.form';
 import { editStudentForm } from './edit-student.form';
+import { addStaff } from './add-staff.form';
+import { editStaff } from './edit-staff.form';
 
 /* global fixture:false, test:false */
 
@@ -27,6 +29,7 @@ const addFacultyCredentials = { firstName: 'TEST', lastName: 'test', email: 'tes
 const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'Hello ICS!', phone: '765-432-1808' };
 const addStudentCredentials = { firstName: 'TEST', lastName: 'test', email: 'teststudent@foo.com', password: 'changeme' };
 const editStudentCredentials = { firstName: 'Caitlyn', lastName: 'Belmont' };
+const addStaffCredentials = { firstName: 'TEST3', lastName: 'test3', email: 'test3@foo.com', password: 'changeme', bio: 'Hello World!', phone: '808-123-2567' };
 
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
 
@@ -371,4 +374,16 @@ test('Delete Tech Jack', async () => {
   await navBar.isLoggedIn(techCredentials.username);
   await navBar.gotoTechPage();
   await techPageComponents.deleteTechJack();
+});
+
+test('Add Staff', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await addStaff.addStaff(addStaffCredentials);
+});
+
+test('Edit Staff', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await editStaff.editStaff(editFacultyCredentials);
 });
