@@ -25,6 +25,10 @@ const addFacultyCredentials = { firstName: 'TEST', lastName: 'test', email: 'tes
 const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'Hello ICS!', phone: '765-432-1808' };
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
 
+/** Club */
+const addClubCredentials ={ clubName: 'CLUBNAME', image: 'image', description: 'DESCRIPTION', joinLink: 'JOINLINK.COM', meetingDay: 'SUNDAY', meetingTime: '12AM', meetingLocation: 'MANOA', advisor: 'ADVISOR' };
+const editClubCredentials = { clubName: 'CLUBNAME', image: 'image', description: 'DESCRIPTION', joinLink: 'JOINLINK.COM', meetingDay: 'SUNDAY', meetingTime: '12AM', meetingLocation: 'MANOA', advisor: 'ADVISOR' };
+
 /** Room */
 // const fakeRoom = { roomKey: 'POST1337', roomNumber: '1337', capacity: 1, roomSqFt: '10', occupants: '10', picture: '#' };
 
@@ -118,7 +122,7 @@ test('Navigating to club page', async () => {
 });
 
 // TODO: implement test for adding faculty
-test('Modal works for adding faculty', async () => {
+test('Modal shows for adding faculty', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
@@ -127,8 +131,14 @@ test('Modal works for adding faculty', async () => {
   await facultyPage.addFaculty();
 });
 
+test('Modal works for adding faculty', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await addFaculty.addFaculty(addFacultyCredentials);
+});
+
 // TODO: implement test for editing faculty
-test('Modal works for editing faculty', async () => {
+test('Modal shows for editing faculty', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
@@ -139,13 +149,7 @@ test('Modal works for editing faculty', async () => {
   await facultyProfilePage.editFaculty();
 });
 
-test('Add faculty', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await addFaculty.addFaculty(addFacultyCredentials);
-});
-
-test('Edit faculty', async () => {
+test('Modal works for editing faculty', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(facultyCredentials.username, facultyCredentials.password);
   await editFaculty.editFaculty(editFacultyCredentials);
@@ -153,22 +157,30 @@ test('Edit faculty', async () => {
 
 // TODO: implement test for adding room
 // TODO: implement test for editing room
-// TODO: implement test for adding club
+
 test('Modal works for adding club', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.addClub();
+  await navBar.addClub(addClubCredentials);
 });
 
-// TODO: implement test for editing club
 test('Modal works for editing club', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(acmCredentials.username, acmCredentials.password);
   await navBar.isLoggedIn(acmCredentials.username);
   await navBar.gotoClubPage();
   await clubPage.isDisplayed();
-  await clubPage.editClub();
+  await clubPage.editClub(editClubCredentials);
+});
+
+test.only('Modal works for deleting club', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoClubPage();
+  await clubPage.isDisplayed();
+  await clubPage.deleteClub();
 });
 
 // TODO: implement test for tech page
@@ -215,7 +227,7 @@ test('Modal shows for add equipment', async () => {
 // TODO: implement test for edit equipment
 
 // TODO: implement test for add note
-test.only('Modal shows for add note', async () => {
+test('Modal shows for add note', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);

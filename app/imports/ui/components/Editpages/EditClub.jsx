@@ -89,13 +89,13 @@ const EditClub = ({ id }) => {
         </div>
         <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
           <Modal.Body>
-            <TextField name="clubName" />
-            <LongTextField name="description" />
-            <TextField name="joinLink" />
-            <TextField name="meetingDay" />
-            <TextField name="meetingTime" />
-            <TextField name="meetingLocation" />
-            <TextField name="advisor" />
+            <TextField name="clubName" id="edit-club-name" />
+            <LongTextField name="description" id="edit-club-description" />
+            <TextField name="joinLink" id="edit-club-joinLink" />
+            <TextField name="meetingDay" id="edit-club-meetingDay" />
+            <TextField name="meetingTime" id="edit-club-meetingTime" />
+            <TextField name="meetingLocation" id="edit-club-meetingLocation" />
+            <TextField name="advisor" id="edit-club-advisor" />
             <Col className="d-flex justify-content-end">
               <SubmitField value="Submit" />
               <ErrorsField />
