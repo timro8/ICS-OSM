@@ -21,6 +21,7 @@ const studentCredentials = { username: 'student@foo.com', password: 'changeme' }
 const officeCredentials = { username: 'office@foo.com', password: 'changeme' };
 const techCredentials = { username: 'tech@foo.com', password: 'changeme' };
 const acmCredentials = { username: 'acm@foo.com', password: 'changeme' };
+const toddCredentials = { username: 'toddtt@hawaii.edu', password: 'changeme' };
 const addFacultyCredentials = { firstName: 'TEST', lastName: 'test', email: 'test@foo.com', password: 'changeme', bio: 'Hello World!', phone: '808-123-2567' };
 const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'Hello ICS!', phone: '765-432-1808' };
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
@@ -121,15 +122,6 @@ test('Navigating to club page', async () => {
   await clubPage.isDisplayed();
 });
 
-test('Modal shows for adding faculty', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoFacultyPage();
-  await facultyPage.isDisplayed();
-  await facultyPage.addFaculty();
-});
-
 test('Modal works for adding faculty', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -169,7 +161,7 @@ test('Modal works for editing club', async () => {
   await clubPage.editClub(editClubCredentials);
 });
 
-test.only('Modal works for adding officer', async () => {
+test('Modal works for adding officer', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
@@ -180,8 +172,8 @@ test.only('Modal works for adding officer', async () => {
 
 test('Tech page shows up', async () => {
   await navBar.gotoSignInPage();
-  await signInPage.signin(techCredentials.username, techCredentials.password);
-  await navBar.isLoggedIn(techCredentials.username);
+  await signInPage.signin(toddCredentials.username, toddCredentials.password);
+  await navBar.isLoggedIn(toddCredentials.username);
   await navBar.gotoTechPage();
   await techPage.isDisplayed();
 });
@@ -234,4 +226,3 @@ test('Modal shows for add note', async () => {
 
 // TODO: implement test for add student
 // TODO: implement test for edit student
-
