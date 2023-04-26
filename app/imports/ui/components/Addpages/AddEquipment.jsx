@@ -81,7 +81,7 @@ const AddEquipment = () => {
       <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_TECH_EQUIPMENT}>
         <Plus fontSize="25px" />
       </CircleButton>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="add-equip-modal">
         <Modal.Header closeButton>
           <Modal.Title>Add Equipment</Modal.Title>
         </Modal.Header>

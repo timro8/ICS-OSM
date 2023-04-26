@@ -10,6 +10,7 @@ import { Rooms } from '../../../api/room/RoomCollection';
 import { RoomJacks } from '../../../api/room/RoomJacks';
 import { updateMethod } from '../../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../LoadingSpinner';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 // form schema based on RoomJacks collection schema
 const makeSchema = new SimpleSchema({
@@ -79,11 +80,11 @@ const EditJack = ({ jackId }) => {
 
   return ready ? (
     <>
-      <Button variant="outline-secondary" size="sm" onClick={handleShow}>
+      <Button id={COMPONENT_IDS.EDIT_TECH_JACK} variant="outline-secondary" size="sm" onClick={handleShow}>
         Edit {doc.jackNumber}
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="edit-tech-jack">
         <Modal.Header closeButton>
           <Modal.Title>Edit Jack</Modal.Title>
         </Modal.Header>
