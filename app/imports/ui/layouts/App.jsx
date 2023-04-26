@@ -111,7 +111,7 @@ const TechProtectedRoute = ({ ready, children }) => {
   if (!ready) {
     return <LoadingSpinner />;
   }
-  const isOffice = Roles.userIsInRole(Meteor.userId(), [ROLE.TECH]);
+  const isOffice = Roles.userIsInRole(Meteor.userId(), [ROLE.TECH, ROLE.ADMIN]);
   return (isLogged && isOffice) ? children : <Navigate to="/notauthorized" />;
 };
 

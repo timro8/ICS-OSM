@@ -9,6 +9,7 @@ import { Button, Modal } from 'react-bootstrap';
 import { RoomJacks } from '../../../api/room/RoomJacks';
 import { updateMethod } from '../../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../LoadingSpinner';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 // form schema based on RoomJacks collection schema
 const makeSchema = new SimpleSchema({

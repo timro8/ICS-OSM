@@ -1195,27 +1195,27 @@
   "defaultClubsData": [
     { "clubKey":"clubACM", "clubName":  "ACManoa","image":  "https://acmanoa.github.io/assets/img/officers/placehold.png", "description":  "We are a registered student chapter of the Association for Computing Machinery as well as a recognized student-chartered registered independent organization (RIO) at the University of Hawaii at Manoa. We welcome students of all different backgrounds, interests, and skill levels to join our community and share our passion for computer science.",
       "joinLink": "https://discord.com/invite/acmmanoa",
-      "meetingDay": "", "meetingTime": "", "meetingLocation": "POST318B", "officers": ["officers"], "advisor": "advisor"
+      "meetingDay": "", "meetingTime": "", "meetingLocation": "POST318B", "officers": ["officers"], "advisor": "Scott Robertson, Kenny Quiblin, Anthony Peruma, Peter Sadowski"
     },
     { "clubKey":"clubGameDev", "clubName":  "Game Developers","image":  "https://acmanoa.github.io/assets/img/logos/gamedev.png", "description":  "We are a group dedicated to designing, building, and demoing video games using Unity and other various tools.",
       "joinLink": "https://discord.com/invite/5apDUyUEq4",
-      "meetingDay": "Thursdays", "meetingTime": "7:00pm-8:00pm", "meetingLocation": "POST 318B", "officers": ["officers"], "advisor": "advisor"
+      "meetingDay": "Thursdays", "meetingTime": "7:00pm-8:00pm", "meetingLocation": "POST 318B", "officers": ["officers"], "advisor": "N/A"
     },
     { "clubKey":"clubGreyHats", "clubName":  "Grey Hats","image":  "https://acmanoa.github.io/assets/img/logos/greyhats.png", "description":  "The Grey Hats is a student-led, extracurricular organization focused on real-world training for cyber defense. Membership gives students an outstanding opportunity to learn and apply critical skills, attack and defend systems, and to network with others interested in modern security issues.",
       "joinLink": "https://discord.com/invite/r9xm9ZCVU3",
-      "meetingDay": "Tuesdays", "meetingTime": "4:30pm-5:30pm", "meetingLocation": "POST 318B and Zoom", "officers": ["officers"], "advisor": "advisor"
+      "meetingDay": "Tuesdays", "meetingTime": "4:30pm-5:30pm", "meetingLocation": "POST 318B and Zoom", "officers": ["officers"], "advisor": "Carleton Moore"
     },
     { "clubKey":"clubICSpark", "clubName":  "ICSpark","image":  "https://acmanoa.github.io/assets/img/logos/icspark.PNG", "description":  "ICSpark is a Registered Independent Organization (RIO) at the University of Hawaii. We are a group of students who offer free coding classes every Saturday for students through the 6th - 12th grade.",
       "joinLink": "https://discord.com/invite/r9xm9ZCVU3",
-      "meetingDay": "", "meetingTime": "", "meetingLocation": "", "officers": ["officers"], "advisor": "advisor"
+      "meetingDay": "", "meetingTime": "", "meetingLocation": "", "officers": ["officers"], "advisor": "Charlie Shackford"
     },
     { "clubKey":"clubPANDA", "clubName":  "PANDA","image":  "https://acmanoa.github.io/assets/img/logos/Panda.png", "description":  "PANDA (Programming AND Algorithms) is a special interest group of ACM Manoa dedicated to studying and applying algorithms. We aim to help students develop the algorithmic problem solving skills needed to succeed in the field of computer science.",
       "joinLink": "https://discord.com/invite/naDnBZ5",
-      "meetingDay": "Thursdays", "meetingTime": "4:30pm", "meetingLocation": "POST 318B", "officers": ["officers"], "advisor": "advisor"
+      "meetingDay": "Thursdays", "meetingTime": "4:30pm", "meetingLocation": "POST 318B", "officers": ["officers"], "advisor": "N/A"
     },
     { "clubKey":"clubSWITCH", "clubName":  "SWITCH","image":  "https://acmanoa.github.io/assets/img/logos/switchlogo.png", "description":  "SWITCH (Supporting Women in Technology Computing Hawaii) is the culmination of efforts of the awesome students, faculty, and working professionals supporting social change in the ICS department. Established in Fall 2019, we are officially a UH Manoa RIO, ACM-W Chapter, and Girls Who Code College Loops Chapter. We strive to provide useful resources from these organizations to improve your professional, technical, and personal development.",
       "joinLink": "https://discord.com/invite/ksxdKeZBxP",
-      "meetingDay": "", "meetingTime": "", "meetingLocation": "", "officers": ["officers"], "advisor": "advisor"
+      "meetingDay": "", "meetingTime": "", "meetingLocation": "", "officers": ["officers"], "advisor": "Martha Crosby"
     }
   ],
   "defaultStaffData": [
