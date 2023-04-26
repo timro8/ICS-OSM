@@ -24,13 +24,13 @@ const HomeSearchBar = () => {
     const clubSubscription = Clubs.subscribeClub();
     const roomsSubscription = Rooms.subscribeRoom();
 
-    const allSubcriptionsReady = facultySubscription.ready() && clubSubscription.ready() && roomsSubscription.ready();
+    const allSubscriptionsReady = facultySubscription.ready() && clubSubscription.ready() && roomsSubscription.ready();
 
     return {
       faculties: FacultyProfiles.find({}).fetch(),
       clubs: Clubs.find({}).fetch(),
       rooms: Rooms.find({}).fetch(),
-      ready: allSubcriptionsReady,
+      ready: allSubscriptionsReady,
     };
   });
 
