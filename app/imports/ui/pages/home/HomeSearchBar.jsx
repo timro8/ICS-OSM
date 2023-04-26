@@ -99,19 +99,19 @@ const HomeSearchBar = () => {
             {filteredFaculties.length > 0 && (
               <>
                 <div className="search-heading">Faculties</div>
-                {filteredFaculties.map((faculty, index) => <FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} />)}
+                {filteredFaculties.map((faculty, index) => <FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} key={`${faculty._id}`} />)}
               </>
             )}
             {filteredClubs.length > 0 && (
               <>
                 <div className="search-heading">Clubs</div>
-                {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length)} selectedItemIndex={selectedItemIndex} />)}
+                {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length)} selectedItemIndex={selectedItemIndex} key={`${club._id}`} />)}
               </>
             )}
             {filteredRooms.length > 0 && (
               <>
                 <div className="search-heading">Rooms</div>
-                {filteredRooms.map((room, index) => <RoomListItem index={index + filteredClubs.length + filteredFaculties.length} room={room} selectedItemIndex={selectedItemIndex} />) }
+                {filteredRooms.map((room, index) => <RoomListItem index={index + filteredClubs.length + filteredFaculties.length} room={room} selectedItemIndex={selectedItemIndex} key={`${room._id}`} />) }
               </>
             )}
             {filteredItems.length === 0 && (
