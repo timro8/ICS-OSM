@@ -127,7 +127,7 @@ test('Navigating to club page', async () => {
   await clubPage.isDisplayed();
 });
 
-test.only('Modal works for adding faculty', async () => {
+test('Modal works for adding faculty', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await addFaculty.addFaculty(addFacultyCredentials);

@@ -47,7 +47,7 @@ const AddRoomNote = ({ roomId, owner }) => {
       <Button id={COMPONENT_IDS.ADD_NOTE} variant="primary" size="sm" onClick={handleShow}>
         Add Notes
       </Button>
-      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_NOTE}>
+      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_NOTE} tooltip="Add Note">
         <Plus fontSize="25px " />
       </CircleButton>
 
