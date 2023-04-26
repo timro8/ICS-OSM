@@ -11,9 +11,6 @@ import ClubListItem from './list-item/ClubListItem';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import RoomListItem from './list-item/RoomListItem';
 
-// TODO: move search to nav
-// TODO: remove Link text decoration
-
 const HomeSearchBar = () => {
   const [searchInput, setSearchInput] = useState('');
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
