@@ -2,7 +2,6 @@ import { Col } from 'react-bootstrap';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import FacultyListItem from './FacultyListItem';
 
 const ClubListItem = ({ club, selectedItemIndex, index }) => (
   <Link to={`/clubs/${club._id}`} className="search-link">
