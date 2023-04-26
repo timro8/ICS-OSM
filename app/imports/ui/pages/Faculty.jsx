@@ -44,8 +44,7 @@ const Faculty = () => {
         { /* Add Faculty button */ }
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
           <div className="py-3 d-flex gap-2">
-            <Button id={COMPONENT_IDS.ADD_FACULTY} key={Math.random()} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>
-            <CircleButton onClick={() => setShow(true)} key="add-faculty" variant="dark">
+            <CircleButton id={`${COMPONENT_IDS.ADD_FACULTY}`} onClick={() => setShow(true)} key="add-faculty" variant="dark">
               <Plus fontSize="25px" />
             </CircleButton>
             <DownloadCSVButton collection={FacultyProfiles} />
