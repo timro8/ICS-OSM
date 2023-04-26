@@ -100,7 +100,7 @@ const HomeSearchBar = () => {
             {filteredFaculties.length > 0 && (
               <>
                 <div className="search-heading">Faculties</div>
-                {filteredFaculties.map((faculty, index) => <Link to={`/profile/${faculty._id}`}><FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} /></Link>)}
+                {filteredFaculties.map((faculty, index) => <FacultyListItem faculty={faculty} selectedItemIndex={selectedItemIndex} index={index} />)}
               </>
             )}
             {filteredClubs.length > 0 && (
