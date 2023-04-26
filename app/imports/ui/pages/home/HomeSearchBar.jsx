@@ -105,7 +105,7 @@ const HomeSearchBar = () => {
             {filteredClubs.length > 0 && (
               <>
                 <div className="search-heading">Clubs</div>
-                {filteredClubs.map((club, index) => <Link to={`/clubs/${club._id}`}><ClubListItem club={club} index={index + (filteredFaculties.length)} selectedItemIndex={selectedItemIndex} /></Link>)}
+                {filteredClubs.map((club, index) => <ClubListItem club={club} index={index + (filteredFaculties.length)} selectedItemIndex={selectedItemIndex} />)}
               </>
             )}
             {filteredRooms.length > 0 && (
