@@ -21,8 +21,12 @@ RoomListItem.propTypes = {
     roomNumber: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired,
   }).isRequired,
-  selectedItemIndex: PropTypes.number.isRequired,
+  selectedItemIndex: PropTypes.number,
   index: PropTypes.number.isRequired,
+};
+
+RoomListItem.defaultProps = {
+  selectedItemIndex: -1,
 };
 
 export default RoomListItem;

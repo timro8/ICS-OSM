@@ -29,8 +29,12 @@ FacultyListItem.propTypes = {
     image: PropTypes.string,
     _id: PropTypes.string.isRequired,
   }).isRequired,
-  selectedItemIndex: PropTypes.number.isRequired,
+  selectedItemIndex: PropTypes.number,
   index: PropTypes.number.isRequired,
+};
+
+FacultyListItem.defaultProps = {
+  selectedItemIndex: -1,
 };
 
 export default FacultyListItem;
