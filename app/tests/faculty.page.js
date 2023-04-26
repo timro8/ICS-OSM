@@ -22,7 +22,6 @@ class FacultyPage {
   async addFaculty() {
     await t.click(`#${COMPONENT_IDS.ADD_FACULTY}`);
     await t.expect(Selector('#add-faculty-modal').exists).ok();
-
   }
 }
 

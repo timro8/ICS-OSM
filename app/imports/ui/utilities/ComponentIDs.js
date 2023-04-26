@@ -80,4 +80,7 @@ export const COMPONENT_IDS = {
   EDIT_FACULTY_FORM_END_TIME: 'edit-faculty-end-time',
   EDIT_FACULTY_FORM_SUBMIT: 'edit-faculty-submit',
   CLOSE_EDIT_FACULTY_FORM: 'close-edit-faculty-form',
+  ADD_STUDENT: 'add-student',
+  EDIT_STUDENT: 'edit-student',
+  DELETE_STUDENT: 'delete-student',
 };

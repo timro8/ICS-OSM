@@ -26,9 +26,9 @@ const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'He
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
 
 /** Club */
-const addClubCredentials ={ clubName: 'CLUBNAME', image: 'image', description: 'DESCRIPTION', joinLink: 'JOINLINK.COM', meetingDay: 'SUNDAY', meetingTime: '12AM', meetingLocation: 'MANOA', advisor: 'ADVISOR' };
+const addClubCredentials = { clubName: 'CLUBNAME', image: 'image', description: 'DESCRIPTION', joinLink: 'JOINLINK.COM', meetingDay: 'SUNDAY', meetingTime: '12AM', meetingLocation: 'MANOA', advisor: 'ADVISOR' };
 const editClubCredentials = { clubName: 'CLUBNAME', image: 'image', description: 'DESCRIPTION', joinLink: 'JOINLINK.COM', meetingDay: 'SUNDAY', meetingTime: '12AM', meetingLocation: 'MANOA', advisor: 'ADVISOR' };
-
+const addOfficerCrendentials = { studentId: 'acm@foo.com', clubId: 'ACManoa', isPresident: 'true', position: 'President' };
 /** Room */
 // const fakeRoom = { roomKey: 'POST1337', roomNumber: '1337', capacity: 1, roomSqFt: '10', occupants: '10', picture: '#' };
 
@@ -121,7 +121,6 @@ test('Navigating to club page', async () => {
   await clubPage.isDisplayed();
 });
 
-// TODO: implement test for adding faculty
 test('Modal shows for adding faculty', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -137,7 +136,6 @@ test('Modal works for adding faculty', async () => {
   await addFaculty.addFaculty(addFacultyCredentials);
 });
 
-// TODO: implement test for editing faculty
 test('Modal shows for editing faculty', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -155,9 +153,6 @@ test('Modal works for editing faculty', async () => {
   await editFaculty.editFaculty(editFacultyCredentials);
 });
 
-// TODO: implement test for adding room
-// TODO: implement test for editing room
-
 test('Modal works for adding club', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -174,16 +169,15 @@ test('Modal works for editing club', async () => {
   await clubPage.editClub(editClubCredentials);
 });
 
-test.only('Modal works for deleting club', async () => {
+test.only('Modal works for adding officer', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await navBar.isLoggedIn(adminCredentials.username);
   await navBar.gotoClubPage();
   await clubPage.isDisplayed();
-  await clubPage.deleteClub();
+  await clubPage.addOfficer(addOfficerCrendentials);
 });
 
-// TODO: implement test for tech page
 test('Tech page shows up', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(techCredentials.username, techCredentials.password);
@@ -237,3 +231,7 @@ test('Modal shows for add note', async () => {
   await roomDetailsPage.isDisplayed();
   await roomDetailsPage.addNote();
 });
+
+// TODO: implement test for add student
+// TODO: implement test for edit student
+
