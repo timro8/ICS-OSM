@@ -30,7 +30,7 @@ const AdminPageStaffComponent = ({ staffProfile }) => {
   return (
     <tr>
       <td><Image roundedCircle src={staffProfile.image} height="35rem" className="px-2" />
-        <Link className={COMPONENT_IDS.LIST_STAFF_ADMIN} to={`/staffprofile/${staffProfile._id}`}>{staffProfile.firstName} {staffProfile.lastName}</Link>
+        <Link id="staff-link" className={COMPONENT_IDS.LIST_STAFF_ADMIN} to={`/staffprofile/${staffProfile._id}`}>{staffProfile.firstName} {staffProfile.lastName}</Link>
       </td>
       <td>{staffProfile.email}</td>
       <td>{staffProfile.role}</td>

@@ -129,14 +129,14 @@ const EditStaffProfile = ({ id }) => {
     <>
       <Col className="d-flex justify-content-center">
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) || doc.email === Meteor.user().username ? (
-          <Button key={Math.random()} style={{ width: '7rem' }} variant="primary" onClick={handleShow}>
+          <Button id="edit-staff-button" key={Math.random()} style={{ width: '7rem' }} variant="primary" onClick={handleShow}>
             Edit Profile
           </Button>
         ) : ''}
       </Col>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton onClick={handleClose}>
+        <Modal.Header id="close-button" closeButton onClick={handleClose}>
           <Modal.Title className="d-flex justify-content-center">Edit Staff Profile</Modal.Title>
         </Modal.Header>
         <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column' }}>
@@ -155,7 +155,7 @@ const EditStaffProfile = ({ id }) => {
                 {phoneNumber.map((value, index) => (
                   <Badge key={index} className="m-1 p-2">
                     {value}
-                    <CloseButton variant="white" className="badges-close-button" onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
+                    <CloseButton id="remove-phone-button" variant="white" className="badges-close-button" onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
                   </Badge>
                 ))}
               </div>

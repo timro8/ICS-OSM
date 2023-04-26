@@ -8,6 +8,8 @@ import { listRoomAdminPage } from './room-admin.page';
 import { clubPage } from './club.page';
 import { addFaculty } from './add-faculty.form';
 import { editFaculty } from './edit-faculty.form';
+import { addStaff } from './add-staff.form';
+import { editStaff } from './edit-staff.form';
 
 /* global fixture:false, test:false */
 
@@ -20,6 +22,7 @@ const officeCredentials = { username: 'office@foo.com', password: 'changeme' };
 const techCredentials = { username: 'tech@foo.com', password: 'changeme' };
 const addFacultyCredentials = { firstName: 'TEST', lastName: 'test', email: 'test@foo.com', password: 'changeme', bio: 'Hello World!', phone: '808-123-2567' };
 const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'Hello ICS!', phone: '765-432-1808' };
+const addStaffCredentials = { firstName: 'TEST3', lastName: 'test3', email: 'test3@foo.com', password: 'changeme', bio: 'Hello World!', phone: '808-123-2567' };
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
 
 /** Room */
@@ -122,6 +125,18 @@ test('Edit faculty', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(facultyCredentials.username, facultyCredentials.password);
   await editFaculty.editFaculty(editFacultyCredentials);
+});
+
+test('Add Staff', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await addStaff.addStaff(addStaffCredentials);
+});
+
+test('Edit Staff', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await editStaff.editStaff(editFacultyCredentials);
 });
 
 // TODO: implement test for adding room

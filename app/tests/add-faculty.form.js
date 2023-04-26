@@ -4,18 +4,19 @@ import { COMPONENT_IDS } from '../imports/ui/utilities/ComponentIDs';
 
 class AddFacultyForm {
   constructor() {
-    this.pageId = `#${PAGE_IDS.HOME}`;
+    this.pageId = `#${PAGE_IDS.FACULTY}`;
     this.pageSelector = Selector(this.pageId);
   }
 
   async isDisplayed() {
+    await t.click(`#${COMPONENT_IDS.NAVBAR_FACULTY}`);
     await t.expect(this.pageSelector.exists).ok();
   }
 
   /** Fills out and submits the form to add faculty, then check if faculty added successfully */
   async addFaculty(addFacultyCredentials) {
     await this.isDisplayed();
-    await t.click(`#${COMPONENT_IDS.ADD_FACULTY}`);
+    await t.click('#add-button');
 
     await t.typeText(`#${COMPONENT_IDS.ADD_FACULTY_FORM_FIRST_NAME}`, addFacultyCredentials.firstName);
     await t.typeText(`#${COMPONENT_IDS.ADD_FACULTY_FORM_LAST_NAME}`, addFacultyCredentials.lastName);
