@@ -227,7 +227,7 @@ test('Add student', async () => {
   await addStudentForm.addStudent(addStudentCredentials);
 });
 // TODO: implement test for edit student
-test.only('Edit student', async () => {
+test('Edit student', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await editStudentForm.editStudent(editStudentCredentials);
