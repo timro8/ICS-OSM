@@ -22,10 +22,6 @@ class EditStaffForm {
     await t.typeText('[name="phoneNumber"]', editStaffCredentials.phone, { replace: true });
 
     await t.click('[type="submit"]');
-    await t.click('.swal-button--confirm');
-    await t.click('#close-button');
-
-    await t.click('#staff-link');
   }
 }
 
