@@ -307,6 +307,15 @@ body {
   padding: 10px;
 }
 
+.search-link {
+  text-decoration: none;
+  color: #464646;
+}
+
+.search-link:hover {
+  color: #000;
+}
+
 .move-keys {
   display: flex;
   gap: 2px;

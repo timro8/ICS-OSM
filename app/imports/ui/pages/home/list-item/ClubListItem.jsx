@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const ClubListItem = ({ club, selectedItemIndex, index }) => (
-  <Link to={`/clubs/${club._id}`}>
+  <Link to={`/clubs/${club._id}`} className="search-link">
     <div className={`search-list-item club-list-item ${selectedItemIndex === index ? 'active' : ''}`} key={index}>
       <Col md={1}>
         <img src={club.image} alt="club" />

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const RoomListItem = ({ room, selectedItemIndex, index }) => (
-  <Link to={`/roomdetails/${room._id}`}>
+  <Link to={`/roomdetails/${room._id}`} className="search-link">
     <div className={`search-list-item room-list-item ${selectedItemIndex === index ? 'active' : ''}`} key={index}>
       <Col>
         <div className="search-list-item-main">
