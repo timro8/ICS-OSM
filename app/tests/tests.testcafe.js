@@ -33,6 +33,7 @@ const editStudentCredentials = { firstName: 'Caitlyn', lastName: 'Belmont' };
 /** Club */
 const addClubCredentials = { clubName: 'CLUBNAME', image: 'image', description: 'DESCRIPTION', joinLink: 'JOINLINK.COM', meetingDay: 'SUNDAY', meetingTime: '12AM', meetingLocation: 'MANOA', advisor: 'ADVISOR' };
 const editClubCredentials = { clubName: 'CLUBNAME', image: 'image', description: 'DESCRIPTION', joinLink: 'JOINLINK.COM', meetingDay: 'SUNDAY', meetingTime: '12AM', meetingLocation: 'MANOA', advisor: 'ADVISOR' };
+const addOfficerCrendentials = { studentId: 'acm@foo.com', clubId: 'ACManoa', isPresident: 'true', position: 'President' };
 
 /** Room */
 const addNewRoom = { roomKey: 'POST1337', roomNumber: '1337', capacity: '1', roomSqFt: '150', picture: '#' };
@@ -138,9 +139,6 @@ test('Modal works for editing faculty', async () => {
   await editFaculty.editFaculty(editFacultyCredentials);
 });
 
-// TODO: implement test for adding club
-// TODO: implement test for editing club
-
 test('Modal works for adding club', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -157,14 +155,21 @@ test('Modal works for editing club', async () => {
   await clubPage.editClub(editClubCredentials);
 });
 
-// TODO: implement test for add student
+test('Modal works for adding officer', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoClubPage();
+  await clubPage.isDisplayed();
+  await clubPage.addOfficer(addOfficerCrendentials);
+});
+
 test('Add student', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await addStudentForm.addStudent(addStudentCredentials);
 });
 
-// TODO: implement test for edit student
 test('Edit student', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
