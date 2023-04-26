@@ -19,4 +19,5 @@ export const PAGE_IDS = {
   ROOM_DETAILS: 'room-details',
   CLUB: 'club',
   TECH: 'tech',
+  STAFF_PROFILE: 'staff-profile',
 };

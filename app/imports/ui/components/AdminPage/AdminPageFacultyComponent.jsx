@@ -10,19 +10,23 @@ import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import EditFacultyProfile from '../../pages/EditFacultyProfile';
 import { removeItMethod } from '../../../api/base/BaseCollection.methods';
 import { ROLE } from '../../../api/role/Role';
+import { OccupantRoom } from '../../../api/user/OccupantRoomCollection';
 
-/** Component for FacultySection.jsx */
+/** Component for StaffSection.jsx */
 
 /** Renders a single row of Faculty members in a (Admin) table. See pages/AdminPageFacultyComponent.jsx. */
 const AdminPageFacultyComponent = ({ facultyProfile }) => {
 
   const deleteUser = () => {
     const collectionName = FacultyProfiles.getCollectionName();
+    const collectionName2 = OccupantRoom.getCollectionName();
     const roomId = facultyProfile._id;
+    Meteor.call('deleteFacultyUser', facultyProfile._id);
+    removeItMethod.callPromise({ collectionName2, instance: facultyProfile._id });
     removeItMethod.callPromise({ collectionName, instance: roomId })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => {
-        swal('Success', 'Room removed successfully', 'success');
+        swal('Success', 'Faculty removed successfully', 'success');
       });
   };
 
@@ -38,7 +42,7 @@ const AdminPageFacultyComponent = ({ facultyProfile }) => {
       <td><EditFacultyProfile id={facultyProfile._id}> Edit</EditFacultyProfile></td>
       {/** Button for deleting faculty users using FacultyProfileCollection.js */}
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
-        <td><Button variant="danger" onClick={deleteUser}>Delete</Button></td>
+        <td><Button id="delete-faculty" variant="danger" onClick={deleteUser}>Delete</Button></td>
       ) : ''}
     </tr>
   );
@@ -52,7 +56,7 @@ AdminPageFacultyComponent.propTypes = {
     email: PropTypes.string,
     image: PropTypes.string,
     facRole: PropTypes.string,
-    rooms: PropTypes.string,
+    rooms: PropTypes.arrayOf(PropTypes.string),
     _id: PropTypes.string,
   }).isRequired,
 };

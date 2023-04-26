@@ -10,7 +10,6 @@ const ReserveRoom = () => {
     const subscription = Events302.subscribeEvents302();
     const rdy = subscription.ready();
     const allEvents = Events302.find({}, {}).fetch();
-    console.log('allEvents', allEvents);
     return {
       events302: allEvents,
       ready: rdy,

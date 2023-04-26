@@ -8,6 +8,7 @@ import SearchBar from '../SearchBar';
 import LoadingSpinner from '../LoadingSpinner';
 import TechRoomJack from './TechRoomJack';
 import TechAddJack from './TechAddJack';
+import DownloadCSVButton from '../DownloadCSVButton';
 
 function getJackData(jack) {
   // get the room number, location from Rooms Collection and extend the jacks data
@@ -46,27 +47,31 @@ const TechJack = () => {
   return (ready ? (
     <Container className="py-3">
       <h1 className="text-center p-2 display-4">Data Jacks</h1>
-      <TechAddJack />
       {/* Search Bar */}
       <SearchBar handleSearch={handleSearch} />
-      <Table responsive hover>
-        <thead>
-          <tr>
-            <th>Room Number</th>
-            <th>Jack Number</th>
-            <th>Location</th>
-            <th>Description</th>
-            <th>IDF Room</th>
-            <th>Edit Jack</th>
-          </tr>
-        </thead>
-        <tbody>
-          {jackList.map((j, index) => (
-            <TechRoomJack key={index} jack={j} />
-          ))}
-        </tbody>
-      </Table>
-
+      <div className="py-3 d-flex gap-2">
+        <TechAddJack />
+        <DownloadCSVButton collection={RoomJacks} />
+      </div>
+      <div className="scroll" style={{ height: '20rem' }}>
+        <Table responsive hover>
+          <thead>
+            <tr>
+              <th>Room Number</th>
+              <th>Jack Number</th>
+              <th>Location</th>
+              <th>Description</th>
+              <th>IDF Room</th>
+              <th>Edit Jack</th>
+            </tr>
+          </thead>
+          <tbody>
+            {jackList.map((j, index) => (
+              <TechRoomJack key={index} jack={j} />
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </Container>
   ) : <LoadingSpinner message="Loading tech data" />);
 };

@@ -24,6 +24,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import Club from '../pages/Club';
 import EditRoom from '../pages/EditRoom';
 import Tech from '../pages/Tech';
+import StaffProfile from '../pages/StaffProfile';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 const App = () => {
@@ -55,6 +56,7 @@ const App = () => {
           <Route path="/cal" element={<ReserveRoom />} />
           <Route path="/editroom/:_id" element={<AdminProtectedRoute ready={ready}><EditRoom /></AdminProtectedRoute>} />
           <Route path="/tech/" element={<TechProtectedRoute ready={ready}><Tech /></TechProtectedRoute>} />
+          <Route path="/staffprofile/:_id" element={<StaffProfile />} />
         </Routes>
         <Footer />
       </div>

@@ -18,7 +18,7 @@ const OccupantIcon = (props) => {
       const roomPositionTop = (roomPosition.top / 100) * props.mapHeight;
       const roomPositionLeft = (roomPosition.left / 100) * props.mapWidth;
       return room.occupants.map((occupant, index) => (occupant._id ? (
-        <Link to={`/profile/${occupant._id}`}>
+        <Link to={`/profile/${occupant._id}`} key={`${occupant._id}`}>
           <OverlayTrigger trigger={['hover', 'focus']} defaultShow={false} placement="bottom" overlay={<Tooltip>{`${occupant.firstName} ${occupant.lastName}`}</Tooltip>}>
             <div
               className="map-icon map-icon-occupant"

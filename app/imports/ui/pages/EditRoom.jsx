@@ -15,7 +15,7 @@ import { uploadImgUrl } from '../../api/faculty/faculty_form_helper';
 // form based on Rooms collection
 const bridge = new SimpleSchema2Bridge(Rooms._schema);
 
-const statusList = ['Occupied', 'Vacant', 'Out of Commission', 'Other'];
+const statusList = ['Occupied', 'Vacant', 'Out of Commission'];
 
 const classificationList = ['Office', 'Sink', 'Conference', 'Cubicle', 'ICS Library', 'ASECOLAB', 'Mail', 'Main Office', 'Lab', 'ICSpace', 'Storage', 'ICS IT', 'OFCSVC', 'LNG'];
 

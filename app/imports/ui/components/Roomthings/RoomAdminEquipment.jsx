@@ -6,8 +6,9 @@ import { Rooms } from '../../../api/room/RoomCollection';
 import { RoomEquipments } from '../../../api/room/RoomEquipments';
 import SearchBar from '../SearchBar';
 import LoadingSpinner from '../LoadingSpinner';
-import TechRoomEquipment from '../Tech/TechRoomEquipment';
-import TechAddEquipment from '../Tech/TechAddEquipment';
+import RoomEquipment from './RoomEquipment';
+import AddEquipment from '../Addpages/AddEquipment';
+import DownloadCSVButton from '../DownloadCSVButton';
 
 function getEquipmentData(equipment) {
   // get the room number, location from Rooms Collection and extend the equipment data
@@ -45,8 +46,10 @@ const RoomAdminEquipment = () => {
   return (ready ? (
     <Container className="py-3">
       <h1 className="text-center py-2 display-4">Equipment (furniture and tech)</h1>
-      <TechAddEquipment />
-
+      <div className="py-3 d-flex gap-2">
+        <AddEquipment />
+        <DownloadCSVButton collection={RoomEquipments} />
+      </div>
       {/* Search Bar */}
       <SearchBar handleSearch={handleSearch} />
 
@@ -59,12 +62,13 @@ const RoomAdminEquipment = () => {
             <th>Serial Number</th>
             <th>Asset Tag</th>
             <th>Equipment Type</th>
-            <th>Edit</th>
+            <th>Actions</th>
+            <th> </th>
           </tr>
         </thead>
         <tbody>
           {equipmentList.map((e, index) => (
-            <TechRoomEquipment key={index} equipment={e} />
+            <RoomEquipment key={index} equipment={e} />
           ))}
         </tbody>
       </Table>

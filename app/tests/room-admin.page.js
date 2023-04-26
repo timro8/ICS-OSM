@@ -14,16 +14,18 @@ class ListRoomAdmin {
   }
 
   async gotoRoomDetails() {
-    await t.click('a.room-details');
+    await t.click('#room-card');
     await t.expect(Selector(`#${PAGE_IDS.ROOM_DETAILS}`).exists).ok();
   }
 
   async addRoom() {
-    await t.click(`#${COMPONENT_IDS.ADD_ROOM}`);
+    await t.click('#add-button');
+    await t.expect(Selector(`#${COMPONENT_IDS.ADD_ROOM_FORM}`).exists).ok();
   }
 
   async editRoom() {
-    await t.click('a.edit-room');
+    // await t.click('a.edit-room');
+    await t.click('#edit-room-button');
     await t.expect(Selector(`#${PAGE_IDS.EDIT_ROOM}`).exists).ok();
   }
 }

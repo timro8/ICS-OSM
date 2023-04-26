@@ -7,6 +7,7 @@ import FacultySection from './section/faculty/FacultySection';
 import ReservationsSection from './section/reservation/ReservationsSection';
 import ProgressBars from './progress-bar/ProgressBar';
 import PostThirdFloorSection from './section/map/POST-third-floor/PostThirdFloor';
+import StaffSection from './section/staff/StaffSection';
 import StudentSection from './section/student/StudentSection';
 import { ROLE } from '../../../api/role/Role';
 import LoadingSpinner from '../../components/LoadingSpinner';
@@ -42,6 +43,9 @@ const Home = () => {
       {/** Need to add something that can delete faculty profiles/users */}
       <FacultySection />
       {/** Only Faculty, Admin, Tech, and Office can see this */}
+      {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
+        <StaffSection />
+      ) : ''}
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
         <StudentSection />
       ) : ''}
