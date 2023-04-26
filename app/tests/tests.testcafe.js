@@ -8,6 +8,7 @@ import { listRoomAdminPage } from './room-admin.page';
 import { clubPage } from './club.page';
 import { addFaculty } from './add-faculty.form';
 import { editFaculty } from './edit-faculty.form';
+import { addStudentForm } from './add-student.form';
 
 /* global fixture:false, test:false */
 
@@ -20,6 +21,8 @@ const officeCredentials = { username: 'office@foo.com', password: 'changeme' };
 const techCredentials = { username: 'tech@foo.com', password: 'changeme' };
 const addFacultyCredentials = { firstName: 'TEST', lastName: 'test', email: 'test@foo.com', password: 'changeme', bio: 'Hello World!', phone: '808-123-2567' };
 const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'Hello ICS!', phone: '765-432-1808' };
+const addStudentCredentials = { firstName: 'TEST', lastName: 'test', email: 'teststudent@foo.com', password: 'changeme'};
+
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
 
 /** Room */
@@ -134,3 +137,8 @@ test('Edit faculty', async () => {
 // TODO: implement test for add equipment
 // TODO: implement test for edit equipment
 // TODO: implement test for add note
+test.only('Add student', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await addStudentForm.addStudent(addStudentCredentials);
+});
