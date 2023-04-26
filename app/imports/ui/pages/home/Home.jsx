@@ -13,6 +13,8 @@ import { ROLE } from '../../../api/role/Role';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
 const Home = () => {
+  document.title = 'Home';
+
   const [loading, setLoading] = useState(true);
   const [firstName, setFirstName] = useState([]);
 

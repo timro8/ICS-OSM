@@ -12,7 +12,7 @@ const Tech = () => {
         <Tab eventKey="jacks" title="Jacks">
           <TechJack />
         </Tab>
-        <Tab eventKey="equipment" title="Equipment">
+        <Tab eventKey="equipment" title="Equipment" id="equip-tab">
           <TechEquipment />
         </Tab>
       </Tabs>

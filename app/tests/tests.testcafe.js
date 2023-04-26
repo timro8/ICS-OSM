@@ -6,6 +6,8 @@ import { facultyPage } from './faculty.page';
 import { facultyProfilePage } from './faculty-profile.page';
 import { listRoomAdminPage } from './room-admin.page';
 import { clubPage } from './club.page';
+import { techPage } from './tech.page';
+import { roomDetailsPage } from './room-details.page';
 import { addFaculty } from './add-faculty.form';
 import { editFaculty } from './edit-faculty.form';
 import { addStudentForm } from './add-student.form';
@@ -19,11 +21,17 @@ const facultyCredentials = { username: 'esb@hawaii.edu', password: 'changeme' };
 const studentCredentials = { username: 'student@foo.com', password: 'changeme' };
 const officeCredentials = { username: 'office@foo.com', password: 'changeme' };
 const techCredentials = { username: 'tech@foo.com', password: 'changeme' };
+const acmCredentials = { username: 'acm@foo.com', password: 'changeme' };
+const toddCredentials = { username: 'toddtt@hawaii.edu', password: 'changeme' };
 const addFacultyCredentials = { firstName: 'TEST', lastName: 'test', email: 'test@foo.com', password: 'changeme', bio: 'Hello World!', phone: '808-123-2567' };
 const editFacultyCredentials = { firstName: 'TEST2', lastName: 'test2', bio: 'Hello ICS!', phone: '765-432-1808' };
 const addStudentCredentials = { firstName: 'TEST', lastName: 'test', email: 'teststudent@foo.com', password: 'changeme'};
 
 // const newCredentials = { username: 'jane@foo.com', password: 'changeme' };
+
+/** Club */
+const addClubCredentials = { clubName: 'CLUBNAME', image: 'image', description: 'DESCRIPTION', joinLink: 'JOINLINK.COM', meetingDay: 'SUNDAY', meetingTime: '12AM', meetingLocation: 'MANOA', advisor: 'ADVISOR' };
+const editClubCredentials = { clubName: 'CLUBNAME', image: 'image', description: 'DESCRIPTION', joinLink: 'JOINLINK.COM', meetingDay: 'SUNDAY', meetingTime: '12AM', meetingLocation: 'MANOA', advisor: 'ADVISOR' };
 
 /** Room */
 // const fakeRoom = { roomKey: 'POST1337', roomNumber: '1337', capacity: 1, roomSqFt: '10', occupants: '10', picture: '#' };
@@ -79,6 +87,7 @@ test('Room details shows up', async () => {
   await listRoomAdminPage.gotoRoomDetails();
 });
 
+// TODO: implement test for adding room
 test('Modal shows for Add Room', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -97,6 +106,7 @@ test('Navigating to profile from faculty page', async () => {
   await facultyProfilePage.isDisplayed();
 });
 
+// TODO: implement test for editing room
 test('Modal shows for Edit Room', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -115,30 +125,103 @@ test('Navigating to club page', async () => {
   await clubPage.isDisplayed();
 });
 
-test('Add faculty', async () => {
+test('Modal works for adding faculty', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await addFaculty.addFaculty(addFacultyCredentials);
 });
 
-test('Edit faculty', async () => {
+test('Modal shows for editing faculty', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoFacultyPage();
+  await facultyPage.isDisplayed();
+  await facultyPage.gotoFacultyProfile();
+  await facultyProfilePage.isDisplayed();
+  await facultyProfilePage.editFaculty();
+});
+
+test('Modal works for editing faculty', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(facultyCredentials.username, facultyCredentials.password);
   await editFaculty.editFaculty(editFacultyCredentials);
 });
 
-// TODO: implement test for adding room
-// TODO: implement test for editing room
-// TODO: implement test for adding club
-// TODO: implement test for editing club
-// TODO: implement test for tech page
+test('Modal works for adding club', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.addClub(addClubCredentials);
+});
+
+test('Modal works for editing club', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(acmCredentials.username, acmCredentials.password);
+  await navBar.isLoggedIn(acmCredentials.username);
+  await navBar.gotoClubPage();
+  await clubPage.isDisplayed();
+  await clubPage.editClub(editClubCredentials);
+});
+
+test('Tech page shows up', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(toddCredentials.username, toddCredentials.password);
+  await navBar.isLoggedIn(toddCredentials.username);
+  await navBar.gotoTechPage();
+  await techPage.isDisplayed();
+});
+
 // TODO: implement test for add jack
+test('Modal works for Add Jack', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(toddCredentials.username, toddCredentials.password);
+  await navBar.isLoggedIn(toddCredentials.username);
+  await navBar.gotoTechPage();
+  await techPage.isDisplayed();
+  // await techPage.addJack();
+});
+
 // TODO: implement test for edit jack
+test('Modal works for Edit Jack', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(toddCredentials.username, toddCredentials.password);
+  await navBar.isLoggedIn(toddCredentials.username);
+  await navBar.gotoTechPage();
+  await techPage.isDisplayed();
+  // await techPage.editJack();
+});
+
 // TODO: implement test for add equipment
+test('Modal shows for add equipment', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListRoomAdminPage();
+  await listRoomAdminPage.isDisplayed();
+  await listRoomAdminPage.gotoRoomDetails();
+  await roomDetailsPage.isDisplayed();
+  // await roomDetailsPage.addEquipment();
+});
+
 // TODO: implement test for edit equipment
+
 // TODO: implement test for add note
-test.only('Add student', async () => {
+test('Modal shows for add note', async () => {
+  await navBar.gotoSignInPage();
+  await signInPage.signin(adminCredentials.username, adminCredentials.password);
+  await navBar.isLoggedIn(adminCredentials.username);
+  await navBar.gotoListRoomAdminPage();
+  await listRoomAdminPage.isDisplayed();
+  await listRoomAdminPage.gotoRoomDetails();
+  await roomDetailsPage.isDisplayed();
+  // await roomDetailsPage.addNote();
+});
+
+// TODO: implement test for add student
+test('Add student', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
   await addStudentForm.addStudent(addStudentCredentials);
 });
+// TODO: implement test for edit student

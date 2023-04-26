@@ -7,10 +7,10 @@ import { Image, Button } from 'react-bootstrap';
 import swal from 'sweetalert';
 import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
-import EditFacultyProfile from '../../pages/EditFacultyProfile';
 import { removeItMethod } from '../../../api/base/BaseCollection.methods';
 import { ROLE } from '../../../api/role/Role';
 import { OccupantRoom } from '../../../api/user/OccupantRoomCollection';
+import EditFacultyProfile from '../../pages/EditFacultyProfile';
 
 /** Component for StaffSection.jsx */
 
