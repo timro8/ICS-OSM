@@ -16,24 +16,24 @@ import HomeSearchBar from './HomeSearchBar';
 const Home = () => {
   document.title = 'Home';
 
-  const [loading, setLoading] = useState(true);
-  const [firstName, setFirstName] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // const [firstName, setFirstName] = useState([]);
+  //
+  // useEffect(() => {
+  //   Meteor.call('findFirstName', (error, result) => {
+  //     if (error) {
+  //       console.log(error);
+  //     } else {
+  //       setFirstName(result);
+  //       setLoading(false);
+  //     }
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    Meteor.call('findFirstName', (error, result) => {
-      if (error) {
-        console.log(error);
-      } else {
-        setFirstName(result);
-        setLoading(false);
-      }
-    });
-  }, []);
-
-  return (!loading ? (
+  return (
     <Container id={PAGE_IDS.HOME} className="py-3">
       {Roles.userIsInRole(Meteor.userId(), [ROLE.STUDENT, ROLE.OFFICE, ROLE.TECH, ROLE.FACULTY, ROLE.USER]) ? (
-        <Row id="greeting">Hi {firstName}</Row>
+        <Row id="greeting">Hi {Meteor.user().username}</Row>
       ) : ''}
       <Row className="d-flex justify-content-center"><HomeSearchBar /></Row>
       <Row className="d-flex justify-content-between">
@@ -57,7 +57,6 @@ const Home = () => {
         <ReservationsSection />
       ) : ''}
     </Container>
-  ) : <LoadingSpinner />
   );
 };
 
