@@ -12,6 +12,7 @@ import { StudentProfiles } from '../../../api/user/StudentProfileCollection';
 import { updateMethod } from '../../../api/base/BaseCollection.methods';
 import LoadingSpinner from '../LoadingSpinner';
 import { ROLE } from '../../../api/role/Role';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 
 /* Renders the EditStudent page for editing a single document. */
 const EditStudent = ({ id }) => {
@@ -55,7 +56,7 @@ const EditStudent = ({ id }) => {
     <>
       <Col className="d-flex justify-content-center">
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
-          <Button key={Math.random()} variant="primary" onClick={handleShow}>
+          <Button id={COMPONENT_IDS.EDIT_STUDENT} key={Math.random()} variant="primary" onClick={handleShow}>
             Edit
           </Button>
         ) : ''}

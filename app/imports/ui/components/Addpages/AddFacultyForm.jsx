@@ -134,6 +134,13 @@ const AddFacultyForm = props => {
     }
   };
 
+  const removeNARoom = () => {
+    if (selectedRoom.includes('n/a') && selectedRoom.length > 1) {
+      const updatedRoom = selectedRoom.filter((room) => room !== 'n/a');
+      setSelectedRoom(updatedRoom);
+    }
+  };
+
   const handlePhoneNumber = (value) => {
     if (value !== undefined && value.length === 12) {
       if (!phoneNumber.includes(value)) {
@@ -237,8 +244,8 @@ const AddFacultyForm = props => {
 
   // pop up window: https://react-bootstrap.github.io/components/modal/
   return ready ? (
-    <Modal show={show} size="xl">
-      <Modal.Header closeButton onClick={onClose}>
+    <Modal show={show} size="xl" id="add-faculty-modal">
+      <Modal.Header id="close-add-faculty-form" closeButton onClick={onClose}>
         <Modal.Title>Add Faculty</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -254,17 +261,18 @@ const AddFacultyForm = props => {
           <Col xl="auto" style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap' }}>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => submit(data, fRef)}>
               <Row xs="1" md="2" xl="2">
-                <TextField name="firstName" />
-                <TextField name="lastName" />
+                <TextField id="add-faculty-first-name" name="firstName" />
+                <TextField id="add-faculty-last-name" name="lastName" />
               </Row>
+              {removeNARoom()}
               {selectedRoom.length > 0 && (
-                <div style={{ marginTop: '0px' }}>
+                <div style={{ marginTop: '0px' }} className="badges">
                   {selectedRoom.map((value, index) => (
                     <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
                       {value}
                       <CloseButton
                         variant="white"
-                        style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
+                        className="badges-close-button"
                         onClick={() => {
                           setSelectedRoom([...selectedRoom.filter(item => item !== value)]);
                         }}
@@ -273,32 +281,32 @@ const AddFacultyForm = props => {
                   ))}
                 </div>
               )}
-              <SelectField name="room" label="Room (optional)" value={currentRoom} onChange={(value) => handleRoom(value)} />
-              <SelectField name="role" />
-              <TextField name="email" />
-              <TextField name="password" type="password" />
-              <LongTextField name="bio" label="Bio (optional)" />
+              <SelectField id="add-faculty-room" name="room" label="Room (optional)" value={currentRoom} onChange={(value) => handleRoom(value)} />
+              <SelectField id="add-faculty-role" name="role" />
+              <TextField id="add-faculty-email" name="email" />
+              <TextField id="add-faculty-password" name="password" type="password" />
+              <LongTextField id="add-faculty-bio" name="bio" label="Bio (optional)" />
               {phoneNumber.length > 0 && (
-                <div>
+                <div className="badges">
                   {phoneNumber.map((value, index) => (
                     <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
                       {value}
-                      <CloseButton variant="white" style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }} onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
+                      <CloseButton variant="white" className="badges-close-button" onClick={() => { setPhoneNumber([...phoneNumber.filter(item => item !== value)]); }} />
                     </Badge>
                   ))}
                 </div>
               )}
-              <TextField name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); }} />
+              <TextField id="add-faculty-phone" name="phoneNumber" label="Phone Number (optional)" value={currentPhoneNumber} onChange={(value) => { handlePhoneNumber(value); }} />
               <FormLabel>Office Hours (optional) :</FormLabel>
               {putOfficeHours()}
               {selectedOfficeHours.length > 0 && (
-                <div>
+                <div className="badges">
                   {selectedOfficeHours.map((value, index) => (
-                    <Badge key={index} className="m-1 p-2" style={{ fontSize: '15px' }}>
+                    <Badge key={index} className="m-1 p-2">
                       {value}
                       <CloseButton
+                        className="badges-close-button"
                         variant="white"
-                        style={{ fontSize: '10px', padding: '5px 7px 5px 2px' }}
                         onClick={() => { removeOfficeHours(value); }}
                       />
                     </Badge>
@@ -306,13 +314,13 @@ const AddFacultyForm = props => {
                 </div>
               )}
               <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                <SelectField style={{ marginRight: '5px' }} name="day" value={currentDay} onChange={(value) => setDay(value)} />
-                <SelectField style={{ marginRight: '5px' }} name="startTime" value={currentStartTime} onChange={(value) => setStartTime(value)} />
-                <SelectField name="endTime" value={currentEndTime} onChange={(value) => setEndTime(value)} />
+                <SelectField id="add-faculty-day" style={{ marginRight: '5px' }} name="day" value={currentDay} onChange={(value) => setDay(value)} />
+                <SelectField id="add-faculty-start-time" style={{ marginRight: '5px' }} name="startTime" value={currentStartTime} onChange={(value) => setStartTime(value)} />
+                <SelectField id="add-faculty-end-time" name="endTime" value={currentEndTime} onChange={(value) => setEndTime(value)} />
               </div>
               <div style={{ display: 'grid', justifyContent: 'center', gridAutoFlow: 'column', gridColumnGap: '10px' }}>
                 <Button onClick={onClose} variant="danger">Cancel</Button>
-                <Button type="submit" variant="success">Add</Button>
+                <Button id="add-faculty-submit" type="submit" variant="success">Add</Button>
               </div>
               <ErrorsField />
             </AutoForm>

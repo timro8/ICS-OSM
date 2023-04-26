@@ -3,10 +3,12 @@ import { Button, Image, Modal } from 'react-bootstrap';
 import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, NumField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { Plus } from 'react-bootstrap-icons';
 import { Rooms } from '../../../api/room/RoomCollection';
 import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
 import { uploadImgUrl } from '../../../api/faculty/faculty_form_helper';
+import CircleButton from '../CircleButton';
 
 // form schema based on the Room collection
 const bridge = new SimpleSchema2Bridge(Rooms._schema);
@@ -53,11 +55,11 @@ const AddRoom = () => {
 
   return (
     <>
-      <Button id={COMPONENT_IDS.ADD_ROOM} variant="primary" onClick={handleShow}>
-        Add Room
-      </Button>
+      <CircleButton onClick={handleShow} variant="dark" key="add-room" id={COMPONENT_IDS.ADD_ROOM}>
+        <Plus fontSize="25px" />
+      </CircleButton>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="add-room-form">
         <Modal.Header closeButton>
           <Modal.Title>Add Room</Modal.Title>
         </Modal.Header>

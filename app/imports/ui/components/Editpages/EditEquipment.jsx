@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField, NumField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField, NumField, SelectField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -12,7 +12,7 @@ import LoadingSpinner from '../LoadingSpinner';
 // form based on RoomEquipments collection
 const bridge = new SimpleSchema2Bridge(RoomEquipments._schema);
 
-/* Renders the AddNote component for adding a new note. */
+/* Renders the AddRoomNote component for adding a new note. */
 const EditEquipment = ({ equipmentId }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
@@ -34,11 +34,12 @@ const EditEquipment = ({ equipmentId }) => {
     };
   }, [equipmentId]);
 
+  console.log(doc);
   // data submitted to edit an equipment. If there are errors, an error message will pop up. If the data is successfully updated, a success message will appear.
   const submit = (data) => {
-    const { description, quantity, serialNumber, assetTag } = data;
+    const { description, quantity, serialNumber, assetTag, equipmentType } = data;
     const collectionName = RoomEquipments.getCollectionName();
-    const updateData = { id: equipmentId, description, quantity, serialNumber, assetTag };
+    const updateData = { id: equipmentId, description, quantity, serialNumber, assetTag, equipmentType };
     updateMethod.callPromise({ collectionName, updateData })
       .catch(error => swal('Error', error.message, 'error'))
       .then(() => swal('Success', 'Equipment updated successfully', 'success'));
@@ -60,6 +61,7 @@ const EditEquipment = ({ equipmentId }) => {
             <NumField name="quantity" decimal={null} />
             <TextField name="serialNumber" />
             <TextField name="assetTag" />
+            <SelectField name="equipmentType" allowedValues={['furniture', 'tech']} />
             <SubmitField value="Submit" />
             <ErrorsField />
             <HiddenField name="roomId" value={doc.roomId} />

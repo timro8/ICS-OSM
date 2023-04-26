@@ -1,6 +1,7 @@
 import SimpleSchema from 'simpl-schema';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { check } from 'meteor/check';
 import BaseProfileCollection from './BaseProfileCollection';
 import { ROLE } from '../role/Role';
 import { Users } from './UserCollection';
@@ -68,10 +69,10 @@ class StudentProfileCollection extends BaseProfileCollection {
    * @param profileID The ID for this profile object.
    */
   removeIt(profileID) {
-    if (this.isDefined(profileID)) {
-      return super.removeIt(profileID);
-    }
-    return null;
+    const doc = this.findDoc(profileID);
+    check(doc, Object);
+    this._collection.remove(doc._id);
+    return true;
   }
 
   /**

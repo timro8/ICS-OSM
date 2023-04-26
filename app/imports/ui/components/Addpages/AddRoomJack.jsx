@@ -5,8 +5,11 @@ import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField } from 'unif
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { Plus } from 'react-bootstrap-icons';
 import { RoomJacks } from '../../../api/room/RoomJacks';
+import { COMPONENT_IDS } from '../../utilities/ComponentIDs';
 import { defineMethod } from '../../../api/base/BaseCollection.methods';
+import CircleButton from '../CircleButton';
 
 // form schema based on the RoomJacks collection.
 const formSchema = new SimpleSchema({
@@ -32,7 +35,7 @@ const formSchema = new SimpleSchema({
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /* Renders the AddJac component for adding a new jack. */
-const AddJack = ({ roomKey }) => {
+const AddRoomJack = ({ roomKey }) => {
   // eslint-disable-next-line react/prop-types
   const [show, setShow] = useState(false);
 
@@ -54,10 +57,9 @@ const AddJack = ({ roomKey }) => {
   let fRef = null;
   return (
     <>
-      <Button variant="primary" size="sm" onClick={handleShow}>
-        Add Jacks
-      </Button>
-
+      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_ROOM_JACK}>
+        <Plus fontSize="25px" />
+      </CircleButton>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Jacks</Modal.Title>
@@ -84,8 +86,8 @@ const AddJack = ({ roomKey }) => {
   );
 };
 
-AddJack.propTypes = {
+AddRoomJack.propTypes = {
   roomKey: PropTypes.string.isRequired,
 };
 
-export default AddJack;
+export default AddRoomJack;

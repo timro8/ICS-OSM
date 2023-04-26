@@ -61,7 +61,7 @@ const Admin = () => {
                     <th style={{ width: '30mm' }}>Room</th>
                     <th style={{ width: '30mm' }}>{ /* Add Faculty button */ }
                       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
-                        [<Button key={Math.random()} style={{ marginLeft: '1vw' }} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>]
+                        [<Button id="add-faculty" key={Math.random()} style={{ marginLeft: '1vw' }} variant="primary" onClick={() => setShow(true)}>Add Faculty </Button>]
                       ) : ''}
 
                       { /* pop up for add faculty */ }

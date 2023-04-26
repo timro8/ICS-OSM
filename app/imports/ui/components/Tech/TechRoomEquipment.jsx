@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import swal from 'sweetalert';
 import { RoomEquipments } from '../../../api/room/RoomEquipments';
-import EditEquipment from '../Editpages/EditEquipment';
+import EditTechEquipment from '../Editpages/EditTechEquipment';
 import { removeItMethod } from '../../../api/base/BaseCollection.methods';
 
 // Renders the jacks for the room. See pages/Tech.jsx. The EditJack component used for each jack based on jackId
@@ -25,8 +25,10 @@ const TechRoomEquipment = ({ equipment }) => {
       <td>{equipment.description}</td>
       <td>{equipment.serialNumber}</td>
       <td>{equipment.assetTag}</td>
-      <td>{equipment.equipmentType}</td>
-      <td><EditEquipment equipmentId={equipment._id} /> <Button variant="outline-danger" size="sm" onClick={deleteEquipment}>Delete {equipment.description}</Button></td>
+      <td><EditTechEquipment equipmentId={equipment._id} /></td>
+      <td>
+        <Button variant="outline-danger" size="sm" onClick={deleteEquipment}>Delete {equipment.description}</Button>
+      </td>
     </tr>
   );
 };
@@ -40,7 +42,6 @@ TechRoomEquipment.propTypes = {
     _id: PropTypes.string,
     roomNumber: PropTypes.arrayOf(PropTypes.string),
     assetTag: PropTypes.string,
-    equipmentType: PropTypes.string,
   }).isRequired,
 };
 
