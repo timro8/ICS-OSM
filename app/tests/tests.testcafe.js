@@ -42,9 +42,11 @@ const editRoomEquipment = { quantity: '1', description: 'Herman Miller chair', s
 
 const editRoomJack = { jackNumber: '9000', wallLocation: 'DH', IDFRoom: 'POST 399', description: '2 fax lines'};
 
+const editTechEquipment = { quantity: '1', description: 'Dell XPS 17', serialNumber: '2000DZX', assetTag: 'UH 1001' };
+
 fixture('meteor-application-template-production localhost test with default db')
   .page('http://localhost:3000');
-/*
+
 test('Test that landing page shows up', async () => {
   await landingPage.isDisplayed();
 });
@@ -84,25 +86,6 @@ test('Test that admin pages show up', async () => {
   await facultyPage.isDisplayed();
 });
 
-test('Room details shows up', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.isDisplayed();
-  await listRoomAdminPage.gotoRoomDetails();
-});
-
-test('Add Room', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.addRoom(addNewRoom);
-});
-*/
-
-/*
 test('Navigating to profile from faculty page', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -113,20 +96,6 @@ test('Navigating to profile from faculty page', async () => {
   await facultyProfilePage.isDisplayed();
 });
 
-
-test('Edit Room', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.isDisplayed();
-  await listRoomAdminPage.gotoRoomDetails();
-  await listRoomAdminPage.editRoom(editRoom);
-  await navBar.gotoListRoomAdminPage();
-});
-
- */
-/*
 test('Navigating to club page', async () => {
   await navBar.gotoSignInPage();
   await signInPage.signin(adminCredentials.username, adminCredentials.password);
@@ -147,101 +116,5 @@ test('Edit faculty', async () => {
   await editFaculty.editFaculty(editFacultyCredentials);
 });
 
-test('Add Room Admin Equipment', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.addEquipment(addNewRoomEquipment);
-});
-
-
-test('Add Room Admin Jack', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.addJack(addNewRoomJack);
-});
-
-
-test('Add Tech Equipment', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(techCredentials.username, techCredentials.password);
-  await navBar.isLoggedIn(techCredentials.username);
-  await navBar.gotoTechPage();
-  await techPageComponents.addTechEquipment(addNewTechEquipment);
-});
-test('Add Tech Jack', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(techCredentials.username, techCredentials.password);
-  await navBar.isLoggedIn(techCredentials.username);
-  await navBar.gotoTechPage();
-  await techPageComponents.addTechJack(addNewTechJack);
-});
-
-
-test('Add Room Occupant in Room Details', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.isDisplayed();
-  await listRoomAdminPage.gotoRoomDetails();
-  await listRoomAdminPage.addRoomOccupant();
-});
-
-test('Add Room Note in Room Details', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.isDisplayed();
-  await listRoomAdminPage.gotoRoomDetails();
-  await listRoomAdminPage.addRoomNote();
-});
-
-test('Add Room Equipment in Room Details', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.isDisplayed();
-  await listRoomAdminPage.gotoRoomDetails();
-  await listRoomAdminPage.addRoomEquipment(addNewRoomEquipment);
-});
-
-test('Add Room Jack in Room Details', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.isDisplayed();
-  await listRoomAdminPage.gotoRoomDetails();
-  await listRoomAdminPage.addRoomJack(addNewRoomDetailJack);
-});
-
-test('Edit Room Equipment in Room Details', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.isDisplayed();
-  await listRoomAdminPage.gotoRoomDetails();
-  await listRoomAdminPage.editRoomEquipment(editRoomEquipment);
-});
-*/
-test('Edit Room Jack in Room Details', async () => {
-  await navBar.gotoSignInPage();
-  await signInPage.signin(adminCredentials.username, adminCredentials.password);
-  await navBar.isLoggedIn(adminCredentials.username);
-  await navBar.gotoListRoomAdminPage();
-  await listRoomAdminPage.isDisplayed();
-  await listRoomAdminPage.gotoRoomDetails();
-  await listRoomAdminPage.editRoomJack(editRoomJack);
-});
-
 // TODO: implement test for adding club
 // TODO: implement test for editing club
-// TODO: implement test for edit jack
-// TODO: implement test for edit equipment

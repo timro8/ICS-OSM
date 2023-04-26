@@ -24,7 +24,7 @@ const TechRoomJack = ({ jack }) => {
       <td>{jack.wallLocation}</td>
       <td>{jack.description}</td>
       <td>{jack.IDFRoom}</td>
-      <td><EditJack jackId={jack._id} /> <Button variant="outline-danger" size="sm" onClick={deleteJack}>Delete {jack.jackNumber}</Button></td>
+      <td><EditJack jackId={jack._id} /> <Button variant="outline-danger" size="sm" onClick={deleteJack} id="delete-jack">Delete {jack.jackNumber}</Button></td>
     </tr>
   );
 };

@@ -64,6 +64,52 @@ class TechPage {
 
     await t.click(`#${COMPONENT_IDS.ADD_JACK_FORM_CLOSE_BUTTON}`);
   }
+
+  async editTechEquipment(editTechEquipment) {
+    await t.click(Selector('button').withText('Equipment'));
+    await t.click('#edit-tech-equipment');
+    await t.expect(Selector(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM}`).exists).ok();
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM_DESCRIPTION}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM_DESCRIPTION}`, editTechEquipment.description);
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM_QUANTITY}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM_QUANTITY}`, editTechEquipment.quantity);
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM_SERIALNUMBER}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM_SERIALNUMBER}`, editTechEquipment.serialNumber);
+
+    await t.selectText(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM_ASSETTAG}`);
+    await t.pressKey('shift+right');
+    await t.pressKey('delete');
+    await t.typeText(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM_ASSETTAG}`, editTechEquipment.assetTag);
+
+    await t.click(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM_SUBMIT}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+
+    await t.click(`#${COMPONENT_IDS.EDIT_TECH_EQUIPMENT_FORM_CLOSE_BUTTON}`);
+  }
+
+  async deleteTechEquipment() {
+    await t.click(Selector('button').withText('Equipment'));
+    await t.click(`#${COMPONENT_IDS.DELETE_TECH_EQUIPMENT}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+  }
+
+  async deleteTechJack() {
+    await t.click(Selector('button').withText('Jacks'));
+    await t.click(`#${COMPONENT_IDS.DELETE_JACK}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+  }
 }
 
 export const techPageComponents = new TechPage();

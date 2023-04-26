@@ -293,6 +293,39 @@ class ListRoomAdmin {
 
     await t.click(`#${COMPONENT_IDS.EDIT_ROOM_DETAIL_JACK_FORM_CLOSE_BUTTON}`);
   }
+
+  async deleteAdminJack() {
+    await t.click(Selector('button').withText('Jacks'));
+    await t.click(`#${COMPONENT_IDS.DELETE_JACK}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+  }
+
+  async deleteAdminEquipment() {
+    await t.click(Selector('button').withText('Equipment'));
+    await t.click(`#${COMPONENT_IDS.DELETE_ROOM_ADMIN_EQUIPMENT}`);
+
+    await t.click(Selector('.swal-button--confirm'));
+  }
+
+  async deleteRoomOccupant() {
+    await t.click(Selector('#delete-occupant'));
+
+    await t.click(Selector('.swal-button--confirm'));
+  }
+
+  async deleteRoomDetailEquipment() {
+    await t.click(Selector('#delete-room-detail-equipment'));
+
+    await t.click(Selector('.swal-button--confirm'));
+  }
+
+  async deleteRoomDetailJack() {
+    await t.click(Selector('#delete-room-admin-jack'));
+
+    await t.click(Selector('.swal-button--confirm'));
+  }
+
 }
 
 export const listRoomAdminPage = new ListRoomAdmin();

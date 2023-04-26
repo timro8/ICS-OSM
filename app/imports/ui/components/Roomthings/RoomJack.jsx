@@ -23,7 +23,7 @@ const RoomJack = ({ jack }) => {
       <td>{jack.description}</td>
       <td>{jack.IDFRoom}</td>
       <td><EditJack jackId={jack._id} /></td>
-      <td><Button variant="outline-danger" size="sm" onClick={deleteJack}>Delete {jack.jackNumber}</Button></td>
+      <td><Button variant="outline-danger" size="sm" onClick={deleteJack} id="delete-room-admin-jack">Delete {jack.jackNumber}</Button></td>
     </tr>
   );
 };

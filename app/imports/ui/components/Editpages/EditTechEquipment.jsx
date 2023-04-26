@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField, NumField } from 'uniforms-bootstrap5';
+import { AutoForm, ErrorsField, TextField, HiddenField, NumField } from 'uniforms-bootstrap5';
 import swal from 'sweetalert';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { useTracker } from 'meteor/react-meteor-data';
@@ -46,27 +46,27 @@ const EditTechEquipment = ({ equipmentId }) => {
 
   return ready ? (
     <>
-      <Button variant="outline-secondary" size="sm" onClick={handleShow}>
+      <Button variant="outline-secondary" size="sm" onClick={handleShow} id="edit-tech-equipment">
         Edit {doc.description}
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} id="edit-tech-equipment-form">
         <Modal.Header closeButton>
           <Modal.Title>Edit Equipment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <AutoForm schema={bridge} onSubmit={data => submit(data)} model={doc}>
-            <TextField name="description" />
-            <NumField name="quantity" decimal={null} />
-            <TextField name="serialNumber" />
-            <TextField name="assetTag" />
-            <SubmitField value="Submit" />
+            <TextField name="description" id="edit-tech-equipment-form-description" />
+            <NumField name="quantity" decimal={null} id="edit-tech-equipment-form-quantity" />
+            <TextField name="serialNumber" id="edit-tech-equipment-form-serialnumber" />
+            <TextField name="assetTag" id="edit-tech-equipment-form-assettag" />
+            <Button id="edit-tech-equipment-form-submit" type="Submit" variant="success">Add</Button>
             <ErrorsField />
             <HiddenField name="roomId" value={doc.roomId} />
           </AutoForm>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose} id="edit-tech-equipment-form-close-button">
             Close
           </Button>
         </Modal.Footer>

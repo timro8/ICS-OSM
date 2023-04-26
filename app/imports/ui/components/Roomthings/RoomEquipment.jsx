@@ -27,7 +27,7 @@ const RoomEquipment = ({ equipment }) => {
       <td>{equipment.assetTag}</td>
       <td>{equipment.equipmentType}</td>
       <td><EditEquipment equipmentId={equipment._id} /></td>
-      <td><Button variant="outline-danger" size="sm" onClick={deleteEquipment}>Delete {equipment.description}</Button></td>
+      <td><Button variant="outline-danger" size="sm" onClick={deleteEquipment} id="delete-room-admin-equipment">Delete {equipment.description}</Button></td>
     </tr>
   );
 };

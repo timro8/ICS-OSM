@@ -46,7 +46,7 @@ const RoomOccupant = ({ occupant, roomId }) => {
       <td>{occupant.firstName}</td>
       <td>{occupant.lastName}</td>
       <td>{occupant.email}</td>
-      <td><Button variant="outline-danger" size="sm" onClick={deleteOccupant}>Remove {occupant.firstName}</Button></td>
+      <td><Button variant="outline-danger" size="sm" onClick={deleteOccupant} id="delete-occupant">Remove {occupant.firstName}</Button></td>
     </tr>
   );
 };
