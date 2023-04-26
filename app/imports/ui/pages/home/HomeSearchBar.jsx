@@ -2,7 +2,7 @@ import { useTracker } from 'meteor/react-meteor-data';
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { ArrowDown, ArrowReturnLeft, ArrowUp } from 'react-bootstrap-icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FacultyProfiles } from '../../../api/user/FacultyProfileCollection';
 import { Clubs } from '../../../api/club/Club';
 import { Rooms } from '../../../api/room/RoomCollection';
@@ -111,7 +111,7 @@ const HomeSearchBar = () => {
             {filteredRooms.length > 0 && (
               <>
                 <div className="search-heading">Rooms</div>
-                {filteredRooms.map((room, index) => <Link to={`/roomdetails/${room._id}`}><RoomListItem index={index + filteredClubs.length + filteredFaculties.length} room={room} selectedItemIndex={selectedItemIndex} /></Link>) }
+                {filteredRooms.map((room, index) => <RoomListItem index={index + filteredClubs.length + filteredFaculties.length} room={room} selectedItemIndex={selectedItemIndex} />) }
               </>
             )}
             {filteredItems.length === 0 && (
