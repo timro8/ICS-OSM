@@ -115,20 +115,25 @@ const HomeSearchBar = () => {
                 {filteredRooms.map((room, index) => <Link to={`/roomdetails/${room._id}`}><RoomListItem index={index + filteredClubs.length + filteredFaculties.length} room={room} selectedItemIndex={selectedItemIndex} /></Link>) }
               </>
             )}
+            {filteredItems.length === 0 && (
+              <div>No matches found</div>
+            )}
           </div>
-          <div className="key-use-info">
-            <div className="key-section">
-              <div className="move-keys">
-                <ArrowUp className="key-icon" />
-                <ArrowDown className="key-icon" />
+          {filteredItems.length !== 0 && (
+            <div className="key-use-info">
+              <div className="key-section">
+                <div className="move-keys">
+                  <ArrowUp className="key-icon" />
+                  <ArrowDown className="key-icon" />
+                </div>
+                <span className="key-text">Move</span>
               </div>
-              <span className="key-text">Move</span>
+              <div className="key-section">
+                <ArrowReturnLeft className="key-icon" />
+                <span className="key-text">Select</span>
+              </div>
             </div>
-            <div className="key-section">
-              <ArrowReturnLeft className="key-icon" />
-              <span className="key-text">Select</span>
-            </div>
-          </div>
+          )}
         </div>
       )}
     </Form>
