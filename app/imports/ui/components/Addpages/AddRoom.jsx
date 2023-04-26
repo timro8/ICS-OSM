@@ -55,7 +55,7 @@ const AddRoom = () => {
 
   return (
     <>
-      <CircleButton onClick={handleShow} variant="dark" key="add-room" id={COMPONENT_IDS.ADD_ROOM}>
+      <CircleButton onClick={handleShow} variant="dark" key="add-room" id={COMPONENT_IDS.ADD_ROOM} tooltip="Add Room">
         <Plus fontSize="25px" />
       </CircleButton>
 

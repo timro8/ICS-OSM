@@ -57,7 +57,7 @@ const AddRoomJack = ({ roomKey }) => {
   let fRef = null;
   return (
     <>
-      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_ROOM_JACK}>
+      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_ROOM_JACK} tooltip="Add Room Jack">
         <Plus fontSize="25px" />
       </CircleButton>
       <Modal show={show} onHide={handleClose}>

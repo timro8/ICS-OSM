@@ -75,7 +75,7 @@ const TechAddJack = () => {
   let fRef = null;
   return ready ? (
     <>
-      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_TECH_JACK}>
+      <CircleButton onClick={handleShow} variant="dark" id={COMPONENT_IDS.ADD_TECH_JACK} tooltip="Add Jack">
         <Plus fontSize="25px" />
       </CircleButton>
       <Modal show={show} onHide={handleClose}>

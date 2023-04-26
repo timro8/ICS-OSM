@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Button, Container, Row } from 'react-bootstrap';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
@@ -12,6 +12,7 @@ import LoadingSpinner from '../components/LoadingSpinner';
 import { FacultyProfiles } from '../../api/user/FacultyProfileCollection';
 import { ROLE } from '../../api/role/Role';
 import DownloadCSVButton from '../components/DownloadCSVButton';
+import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 import CircleButton from '../components/CircleButton';
 
 const Faculty = () => {
@@ -43,7 +44,7 @@ const Faculty = () => {
         { /* Add Faculty button */ }
         {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN, ROLE.OFFICE]) ? (
           <div className="py-3 d-flex gap-2">
-            <CircleButton onClick={() => setShow(true)} key="add-faculty" variant="dark">
+            <CircleButton tooltip="Add Faculty" id={`${COMPONENT_IDS.ADD_FACULTY}`} onClick={() => setShow(true)} key="add-faculty" variant="dark">
               <Plus fontSize="25px" />
             </CircleButton>
             <DownloadCSVButton collection={FacultyProfiles} />
